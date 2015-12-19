@@ -1,0 +1,14 @@
+// Architecture
+SDKROOT = iphoneos
+SUPPORTED_PLATFORMS = iphoneos iphonesimulator
+
+// Deployment
+TARGETED_DEVICE_FAMILY = 1,2
+
+// Packaging
+PRODUCT_NAME = 04 - Drawing in 3D
+PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.drawingin3d
+INFOPLIST_FILE = $(SRCROOT)/ios/configurations/ios.plist
+
+// APPLE LLVM - Language
+GCC_C_LANGUAGE_STANDARD = c11
