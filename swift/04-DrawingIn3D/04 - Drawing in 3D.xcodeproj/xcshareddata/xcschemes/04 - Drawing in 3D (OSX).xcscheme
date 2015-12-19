@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BCB791331C25D29E00E02523"
+               BlueprintIdentifier = "BCB26CCE1C25E70B008F139B"
                BuildableName = "04 - Drawing in 3D.app"
-               BlueprintName = "04 - Drawing in 3D"
+               BlueprintName = "04 - Drawing in 3D (OSX)"
                ReferencedContainer = "container:04 - Drawing in 3D.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BCB791331C25D29E00E02523"
+            BlueprintIdentifier = "BCB26CCE1C25E70B008F139B"
             BuildableName = "04 - Drawing in 3D.app"
-            BlueprintName = "04 - Drawing in 3D"
+            BlueprintName = "04 - Drawing in 3D (OSX)"
             ReferencedContainer = "container:04 - Drawing in 3D.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BCB791331C25D29E00E02523"
+            BlueprintIdentifier = "BCB26CCE1C25E70B008F139B"
             BuildableName = "04 - Drawing in 3D.app"
-            BlueprintName = "04 - Drawing in 3D"
+            BlueprintName = "04 - Drawing in 3D (OSX)"
             ReferencedContainer = "container:04 - Drawing in 3D.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BCB791331C25D29E00E02523"
+            BlueprintIdentifier = "BCB26CCE1C25E70B008F139B"
             BuildableName = "04 - Drawing in 3D.app"
-            BlueprintName = "04 - Drawing in 3D"
+            BlueprintName = "04 - Drawing in 3D (OSX)"
             ReferencedContainer = "container:04 - Drawing in 3D.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

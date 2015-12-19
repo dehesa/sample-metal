@@ -1,0 +1,13 @@
+// Architecture
+SDKROOT = macosx
+
+// Deployment
+TARGETED_DEVICE_FAMILY = 1,2
+
+// Packaging
+PRODUCT_NAME = 03 - Drawing in 2D
+PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.drawingin2d
+INFOPLIST_FILE = $(SRCROOT)/osx/configurations/osx.plist
+
+// APPLE LLVM - Language
+GCC_C_LANGUAGE_STANDARD = c11

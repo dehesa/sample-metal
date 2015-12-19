@@ -1,8 +1,8 @@
-import UIKit
+import Cocoa
 import Metal
 import simd
 
-final class MetalView : UIView {
+class MetalView: NSView {
     
     // MARK: Definitions
     
@@ -11,17 +11,19 @@ final class MetalView : UIView {
         var color : float4
     }
     
-    override static func layerClass() -> AnyClass { return CAMetalLayer.self }
+    override func makeBackingLayer() -> CALayer {
+        return CAMetalLayer()
+    }
     
     // MARK: Properties
     
-    private var metalLayer : CAMetalLayer { return self.layer as! CAMetalLayer }
+    private var metalLayer : CAMetalLayer!
     private let metalDevice : MTLDevice = { guard let device = MTLCreateSystemDefaultDevice() else { fatalError() }; return device }()
     
     private var metalPipeline : MTLRenderPipelineState!
     private var metalQueue : MTLCommandQueue!
     private var metalVertexBuffer : MTLBuffer!
-    private var displayLink : CADisplayLink?
+    //private var displayLink : CVDisplayLink?
     
     // MARK: Functionality
     
@@ -31,6 +33,11 @@ final class MetalView : UIView {
     }
     
     private func setup() {
+        // Setup layer (hosted-layer)
+        self.metalLayer = CAMetalLayer()
+        self.layer = self.metalLayer
+        self.wantsLayer = true
+        
         // Setup device
         self.metalLayer.device = metalDevice
         self.metalLayer.pixelFormat = .BGRA8Unorm   // 8-bit unsigned integer [0, 255]
@@ -46,7 +53,7 @@ final class MetalView : UIView {
         // Setup pipeline
         guard let library = self.metalDevice.newDefaultLibrary() else { fatalError("No default library") }
         guard let vertexFunc: MTLFunction = library.newFunctionWithName("vertex_main"),
-              let fragmentFunc: MTLFunction = library.newFunctionWithName("fragment_main") else { fatalError("Shader not found") }
+            let fragmentFunc: MTLFunction = library.newFunctionWithName("fragment_main") else { fatalError("Shader not found") }
         
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
         pipelineDescriptor.vertexFunction = vertexFunc
@@ -57,23 +64,15 @@ final class MetalView : UIView {
         metalQueue = self.metalDevice.newCommandQueue()
     }
     
-    override func didMoveToWindow() {
-        super.didMoveToWindow()
+    override func viewDidMoveToWindow() {
+        super.viewDidMoveToWindow()
         
         if let window = self.window {
-            self.metalLayer.contentsScale = window.screen.nativeScale
-            
-            if let dl = self.displayLink { dl.invalidate() }
-            self.displayLink = CADisplayLink(target: self, selector: "displayLinkDidFire:")
-            self.displayLink!.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
+            self.metalLayer.contentsScale = window.backingScaleFactor
         } else {
-            self.displayLink?.invalidate()
-            self.displayLink = nil
+            // Nothing for now
         }
-    }
-    
-    func displayLinkDidFire(displayLink: CADisplayLink) {
-        redraw()
+        self.redraw()
     }
     
     private func redraw() {
