@@ -2,77 +2,100 @@ import UIKit
 import Metal
 import simd
 
+protocol MetalViewDelegate {
+    func drawInView(metalView: MetalView)
+}
+
 final class MetalView : UIView {
     
     // MARK: Definitions
     
-    private struct Vertex {
-        var position : float4
-        var color : float4
-    }
+    /// The delegate of this view, responsible for drawing.
+    var delegate : MetalViewDelegate?
     
+    /// The layer used by this view (`CAMetalLayer`).
     override static func layerClass() -> AnyClass { return CAMetalLayer.self }
+    
     
     // MARK: Properties
     
+    /// The metal layer that backs this view.
     private var metalLayer : CAMetalLayer { return self.layer as! CAMetalLayer }
-    private let metalDevice : MTLDevice = { guard let device = MTLCreateSystemDefaultDevice() else { fatalError() }; return device }()
     
-    private var metalPipeline : MTLRenderPipelineState!
-    private var metalQueue : MTLCommandQueue!
-    private var metalVertexBuffer : MTLBuffer!
+    /// The view's layer's current drawable. This is valid only in the context of a callback to the delegate's `drawInView:` method.
+    private var currentDrawable : CAMetalDrawable?
+    
+    /// A render pass descriptor configured to use the current drawable's texture as its primary color attachment and an internal depth texture of the same size as its depth attachment's texture.
+    var currentRenderPassDescriptor : MTLRenderPassDescriptor? {
+        guard let drawable = self.currentDrawable else { return nil }
+        
+        let passDescriptor = MTLRenderPassDescriptor()
+        passDescriptor.colorAttachments[0].texture = drawable.texture
+        passDescriptor.colorAttachments[0].clearColor = self.clearColor
+        passDescriptor.colorAttachments[0].loadAction = .Clear
+        passDescriptor.colorAttachments[0].storeAction = .Store
+        
+        passDescriptor.depthAttachment.texture = self.depthTexture
+        passDescriptor.depthAttachment.clearDepth = 1
+        passDescriptor.depthAttachment.loadAction = .Clear
+        passDescriptor.depthAttachment.storeAction = .DontCare
+        return passDescriptor
+    }
+    
+    /// The desired pixel format of the color attachment.
+    private var colorPixelFormat : MTLPixelFormat {
+        get { return self.metalLayer.pixelFormat }
+        set { self.metalLayer.pixelFormat = newValue }
+    }
+    
+    private var depthTexture : MTLTexture?
+    
+    /// The color to which the color attachment should be cleared at the start of a rendering pass.
+    var clearColor : MTLClearColor = MTLClearColor(red: 1, green: 1, blue: 1, alpha: 1)
+    
+    /// The target frame rate (in Hz). For best results, this should be a number that evenly divides 60 (e.g., 60, 30, 15).
+    private var preferredFramesPerSecond : UInt = 60
+    
+    /// The duration (in seconds) of the previous frame. This is valid only in the context of a callback to the delegate's `drawInView:` method.
+    var frameDuration : NSTimeInterval = 1.0 / 60.0
+    
     private var displayLink : CADisplayLink?
+    
+    override var frame : CGRect {
+        didSet {
+            // During the first layout pass, we will not be in a view hierarchy, so we guess our scale.
+            // If we've moved to a window by the time our frame is being set, we can take its scale as our own
+            let scale = self.window?.screen.scale ?? UIScreen.mainScreen().scale
+            
+            // Since drawable size is in pixels, we need to multiply by the scale to move from points to pixels
+            var drawableSize = self.bounds.size
+            drawableSize.width *= scale
+            drawableSize.height *= scale
+            self.metalLayer.drawableSize = drawableSize
+            
+            self.makeDepthTexture()
+        }
+    }
+    
     
     // MARK: Functionality
     
-    init() {
-        super.init(frame: CGRectZero)
-        self.setup()
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.setup()
-    }
-    
-    private func setup() {
-        // Setup device
-        self.metalLayer.device = metalDevice
         self.metalLayer.pixelFormat = .BGRA8Unorm   // 8-bit unsigned integer [0, 255]
-        
-        // Setup buffer
-        let vertices = [    // Coordinates defined in clip space coords: [-1,+1]
-            Vertex(position: [-1,  1,  1,  1], color: [0,1,1,1]),
-            Vertex(position: [-1, -1,  1,  1], color: [0,0,1,1]),
-            Vertex(position: [ 1, -1,  1,  1], color: [1,0,1,1]),
-            Vertex(position: [ 1,  1,  1,  1], color: [1,1,1,1]),
-            Vertex(position: [-1,  1, -1,  1], color: [0,1,0,1]),
-            Vertex(position: [-1, -1, -1,  1], color: [0,0,0,1]),
-            Vertex(position: [ 1, -1, -1,  1], color: [1,0,0,1]),
-            Vertex(position: [ 1,  1, -1,  1], color: [1,1,0,1])
-        ]
-        self.metalVertexBuffer = metalDevice.newBufferWithBytes(vertices, length: sizeof(Vertex) * vertices.count, options: [.CPUCacheModeDefaultCache])
-        
-        // Setup pipeline
-        guard let library = self.metalDevice.newDefaultLibrary() else { fatalError("No default library") }
-        guard let vertexFunc: MTLFunction = library.newFunctionWithName("vertex_main"),
-              let fragmentFunc: MTLFunction = library.newFunctionWithName("fragment_main") else { fatalError("Shader not found") }
-        
-        let pipelineDescriptor = MTLRenderPipelineDescriptor()
-        pipelineDescriptor.vertexFunction = vertexFunc
-        pipelineDescriptor.fragmentFunction = fragmentFunc
-        pipelineDescriptor.colorAttachments[0].pixelFormat = self.metalLayer.pixelFormat
-        metalPipeline = try! self.metalDevice.newRenderPipelineStateWithDescriptor(pipelineDescriptor)
-        
-        metalQueue = self.metalDevice.newCommandQueue()
     }
     
     override func didMoveToWindow() {
         super.didMoveToWindow()
         
+        let idealFrameDuration  : NSTimeInterval = 1.0 / 60.0
+        let targetFrameDuration : NSTimeInterval = 1.0 / Double(self.preferredFramesPerSecond)
+        let frameInterval = Int(round(targetFrameDuration / idealFrameDuration))
+        
         if let _ = self.superview {
             if let dl = self.displayLink { dl.invalidate() }
             self.displayLink = CADisplayLink(target: self, selector: "displayLinkDidFire:")
+            self.displayLink!.frameInterval = frameInterval
             self.displayLink!.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
         } else {
             self.displayLink?.invalidate()
@@ -81,27 +104,19 @@ final class MetalView : UIView {
     }
     
     func displayLinkDidFire(displayLink: CADisplayLink) {
-        redraw()
+        self.frameDuration = displayLink.duration
+        self.currentDrawable = self.metalLayer.nextDrawable()
+        
+        guard let _ = self.currentDrawable else { return }
+        delegate?.drawInView(self)
     }
     
-    private func redraw() {
-        guard let drawable = self.metalLayer.nextDrawable() else { return }
-        let framebufferTexture = drawable.texture
+    private func makeDepthTexture() {
+        let drawableSize = self.metalLayer.drawableSize
+        let width = Int(drawableSize.width), height = Int(drawableSize.height)
+        if let texture = self.depthTexture where texture.width == width && texture.height == height { return }
         
-        let renderPass = MTLRenderPassDescriptor()
-        renderPass.colorAttachments[0].texture = framebufferTexture
-        renderPass.colorAttachments[0].clearColor = MTLClearColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1)
-        renderPass.colorAttachments[0].loadAction = .Clear
-        renderPass.colorAttachments[0].storeAction = .Store
-        
-        let cmdBuffer = metalQueue.commandBuffer()
-        let encoder = cmdBuffer.renderCommandEncoderWithDescriptor(renderPass)
-        encoder.setRenderPipelineState(self.metalPipeline)
-        encoder.setVertexBuffer(metalVertexBuffer, offset: 0, atIndex: 0)
-        encoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 3)
-        encoder.endEncoding()
-        
-        cmdBuffer.presentDrawable(drawable)
-        cmdBuffer.commit()
+        let textureDescriptor = MTLTextureDescriptor.texture2DDescriptorWithPixelFormat(.Depth32Float, width: width, height: height, mipmapped: false)
+        self.depthTexture = self.metalLayer.device?.newTextureWithDescriptor(textureDescriptor)
     }
 }

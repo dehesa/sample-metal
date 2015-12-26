@@ -17,7 +17,7 @@ class MetalView: NSView {
     
     // MARK: Properties
     
-    private var metalLayer : CAMetalLayer!
+    private var metalLayer : CAMetalLayer { return self.layer as! CAMetalLayer }
     private let metalDevice : MTLDevice = { guard let device = MTLCreateSystemDefaultDevice() else { fatalError() }; return device }()
     
     private var metalPipeline : MTLRenderPipelineState!
@@ -33,9 +33,7 @@ class MetalView: NSView {
     }
     
     private func setup() {
-        // Setup layer (hosted-layer)
-        self.metalLayer = CAMetalLayer()
-        self.layer = self.metalLayer
+        // Setup layer (backing layer)
         self.wantsLayer = true
         
         // Setup device
@@ -72,6 +70,18 @@ class MetalView: NSView {
         } else {
             // Nothing for now
         }
+        self.redraw()
+    }
+    
+    override func setBoundsSize(newSize: NSSize) {
+        super.setBoundsSize(newSize)
+        metalLayer.drawableSize = convertRectToBacking(bounds).size
+        self.redraw()
+    }
+    
+    override func setFrameSize(newSize: NSSize) {
+        super.setFrameSize(newSize)
+        metalLayer.drawableSize = convertRectToBacking(bounds).size
         self.redraw()
     }
     
