@@ -329,10 +329,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCB26CCA1C25E1FE008F139B /* Shader.metal in Sources */,
-				BCB26CC91C25D988008F139B /* MetalView.swift in Sources */,
 				BCB26CC01C25D741008F139B /* AppDelegate.swift in Sources */,
 				BCB26CC51C25D7BF008F139B /* MasterController.swift in Sources */,
+				BCB26CC91C25D988008F139B /* MetalView.swift in Sources */,
+				BCB26CCA1C25E1FE008F139B /* Shader.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +514,7 @@
 				BCB26CAE1C25D6A8008F139B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BCB790F31C25CE4E00E02523 /* Build configuration list for PBXProject "03 - Drawing in 2D" */ = {
 			isa = XCConfigurationList;

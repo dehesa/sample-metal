@@ -1,15 +1,15 @@
 // Architecture
 SDKROOT = iphoneos
-SUPPORTED_PLATFORMS = iphoneos iphonesimulator
+SUPPORTED_PLATFORMS = iphoneos
 
 // Deployment
 TARGETED_DEVICE_FAMILY = 1,2
 
 // Packaging
-PRODUCT_NAME = 03 - Drawing in 2D
-PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.drawingin2d
+PRODUCT_NAME = 02 - Clear Screen
+PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.clearscreen
 INFOPLIST_FILE = $(SRCROOT)/ios/configurations/ios.plist
-PRODUCT_MODULE_NAME = DrawingIn2D
+PRODUCT_MODULE_NAME = ClearScreen
 
 // APPLE LLVM - Language
 GCC_C_LANGUAGE_STANDARD = c11
