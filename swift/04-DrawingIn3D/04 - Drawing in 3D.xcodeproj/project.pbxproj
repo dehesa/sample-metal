@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC17970E1C7A200600FFF290 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC17970D1C7A200600FFF290 /* Math.swift */; };
+		BC17970F1C7A200600FFF290 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC17970D1C7A200600FFF290 /* Math.swift */; };
 		BCB1DCA31C2F3E3800CC82D8 /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DCA21C2F3E3800CC82D8 /* MetalRenderer.swift */; };
 		BCB26CED1C25E71B008F139B /* osx.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB26CE01C25E71B008F139B /* osx.xcassets */; };
 		BCB26CEE1C25E71B008F139B /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB26CE21C25E71B008F139B /* main.storyboard */; };
@@ -20,9 +22,11 @@
 		BCB791641C25D2E600E02523 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB791591C25D2E600E02523 /* AppDelegate.swift */; };
 		BCB791651C25D2E600E02523 /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB7915B1C25D2E600E02523 /* MasterController.swift */; };
 		BCB791661C25D2E600E02523 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB7915D1C25D2E600E02523 /* MetalView.swift */; };
+		BCCEA1891C79FD6200E51DD2 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCB7914C1C25D2E600E02523 /* Shader.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC17970D1C7A200600FFF290 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		BCB1DCA21C2F3E3800CC82D8 /* MetalRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalRenderer.swift; sourceTree = "<group>"; };
 		BCB26CCF1C25E70B008F139B /* 04 - Drawing in 3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "04 - Drawing in 3D.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB26CE01C25E71B008F139B /* osx.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = osx.xcassets; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 		BCB7914A1C25D2E600E02523 /* sources */ = {
 			isa = PBXGroup;
 			children = (
+				BC17970D1C7A200600FFF290 /* Math.swift */,
 				BCB7914B1C25D2E600E02523 /* shaders */,
 			);
 			path = sources;
@@ -339,9 +344,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCCEA1891C79FD6200E51DD2 /* Shader.metal in Sources */,
 				BCB26CF31C25E71B008F139B /* MetalView.swift in Sources */,
 				BCB26CF11C25E71B008F139B /* AppDelegate.swift in Sources */,
 				BCB26CF21C25E71B008F139B /* MasterController.swift in Sources */,
+				BC17970F1C7A200600FFF290 /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +361,7 @@
 				BCB791661C25D2E600E02523 /* MetalView.swift in Sources */,
 				BCB7915E1C25D2E600E02523 /* Shader.metal in Sources */,
 				BCB1DCA31C2F3E3800CC82D8 /* MetalRenderer.swift in Sources */,
+				BC17970E1C7A200600FFF290 /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +507,7 @@
 			baseConfigurationReference = BCB791571C25D2E600E02523 /* ios.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.drawingin3d;
 			};
@@ -509,6 +518,7 @@
 			baseConfigurationReference = BCB791571C25D2E600E02523 /* ios.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.drawingin3d;
 			};

@@ -489,6 +489,7 @@
 			baseConfigurationReference = BCB7911B1C25CF0D00E02523 /* ios.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.drawingin2D;
 			};
@@ -499,6 +500,7 @@
 			baseConfigurationReference = BCB7911B1C25CF0D00E02523 /* ios.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.drawingin2D;
 			};

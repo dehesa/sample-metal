@@ -436,7 +436,9 @@
 			baseConfigurationReference = BCE30BAB1C58317D00DDD94B /* ios.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -445,7 +447,9 @@
 			baseConfigurationReference = BCE30BAB1C58317D00DDD94B /* ios.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -495,6 +499,7 @@
 				BCE30BA01C58306200DDD94B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BCE30BDA1C58362100DDD94B /* Build configuration list for PBXNativeTarget "02 - Clear Screen (OSX)" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +508,7 @@
 				BCE30BDC1C58362100DDD94B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

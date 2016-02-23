@@ -16,14 +16,13 @@ final class MetalView : UIView {
     /// The layer used by this view (`CAMetalLayer`).
     override static func layerClass() -> AnyClass { return CAMetalLayer.self }
     
-    
     // MARK: Properties
     
     /// The metal layer that backs this view.
-    private var metalLayer : CAMetalLayer { return self.layer as! CAMetalLayer }
+    var metalLayer : CAMetalLayer { return self.layer as! CAMetalLayer }
     
     /// The view's layer's current drawable. This is valid only in the context of a callback to the delegate's `drawInView:` method.
-    private var currentDrawable : CAMetalDrawable?
+    var currentDrawable : CAMetalDrawable?
     
     /// A render pass descriptor configured to use the current drawable's texture as its primary color attachment and an internal depth texture of the same size as its depth attachment's texture.
     var currentRenderPassDescriptor : MTLRenderPassDescriptor? {

@@ -16,27 +16,18 @@ final class MetalView : UIView {
     // MARK: Properties
     
     private var metalLayer : CAMetalLayer { return self.layer as! CAMetalLayer }
-    private let device : MTLDevice
-    private var pipeline : MTLRenderPipelineState
+    private let device : MTLDevice = MTLCreateSystemDefaultDevice()!
     private var commandQueue : MTLCommandQueue
+    private var pipelineState : MTLRenderPipelineState
     private var vertexBuffer : MTLBuffer
     private var displayLink : CADisplayLink?
     
     // MARK: Functionality
     
     required init?(coder aDecoder: NSCoder) {
-        device = MTLCreateSystemDefaultDevice()!
         commandQueue = device.newCommandQueue()
         
-        // Setup buffer (non-transient)
-        let vertices = [    // Coordinates defined in clip space: [-1,+1]
-            Vertex(position: [ 0,    0.5, 0, 1], color: [1,0,0,1]),
-            Vertex(position: [-0.5, -0.5, 0, 1], color: [0,1,0,1]),
-            Vertex(position: [ 0.5, -0.5, 0, 1], color: [0,0,1,1])
-        ]
-        vertexBuffer = device.newBufferWithBytes(vertices, length: sizeof(Vertex) * vertices.count, options: .CPUCacheModeDefaultCache)
-        
-        // Setup shader library
+        // Setup library
         guard let library = device.newDefaultLibrary() else { fatalError("No default library") }
         guard let vertexFunc: MTLFunction   = library.newFunctionWithName("vertex_main"),
               let fragmentFunc: MTLFunction = library.newFunctionWithName("fragment_main") else { fatalError("Shader not found") }
@@ -46,7 +37,15 @@ final class MetalView : UIView {
         pipelineDescriptor.vertexFunction = vertexFunc
         pipelineDescriptor.fragmentFunction = fragmentFunc
         pipelineDescriptor.colorAttachments[0].pixelFormat = .BGRA8Unorm   // 8-bit unsigned integer [0, 255]
-        pipeline = try! device.newRenderPipelineStateWithDescriptor(pipelineDescriptor)
+        pipelineState = try! device.newRenderPipelineStateWithDescriptor(pipelineDescriptor)
+        
+        // Setup buffer (non-transient)
+        let vertices = [    // Coordinates defined in clip space: [-1,+1]
+            Vertex(position: [ 0,    0.5, 0, 1], color: [1,0,0,1]),
+            Vertex(position: [-0.5, -0.5, 0, 1], color: [0,1,0,1]),
+            Vertex(position: [ 0.5, -0.5, 0, 1], color: [0,0,1,1])
+        ]
+        vertexBuffer = device.newBufferWithBytes(vertices, length: sizeof(Vertex) * vertices.count, options: .CPUCacheModeDefaultCache)
         
         super.init(coder: aDecoder)
         
@@ -89,7 +88,7 @@ final class MetalView : UIView {
         
         // Setup Command Encoders (transient)
         let encoder = cmdBuffer.renderCommandEncoderWithDescriptor(renderPass)
-        encoder.setRenderPipelineState(self.pipeline)
+        encoder.setRenderPipelineState(self.pipelineState)
         encoder.setVertexBuffer(self.vertexBuffer, offset: 0, atIndex: 0)
         encoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 3)
         encoder.endEncoding()
