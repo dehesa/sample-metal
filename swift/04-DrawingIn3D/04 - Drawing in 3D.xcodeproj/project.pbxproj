@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		BC17970E1C7A200600FFF290 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC17970D1C7A200600FFF290 /* Math.swift */; };
 		BC17970F1C7A200600FFF290 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC17970D1C7A200600FFF290 /* Math.swift */; };
-		BCB1DCA31C2F3E3800CC82D8 /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DCA21C2F3E3800CC82D8 /* MetalRenderer.swift */; };
+		BC70FEC21C84E2D300156B53 /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70FEC11C84E2D300156B53 /* MetalRenderer.swift */; };
+		BC70FEC31C84E2D300156B53 /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70FEC11C84E2D300156B53 /* MetalRenderer.swift */; };
 		BCB26CED1C25E71B008F139B /* osx.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB26CE01C25E71B008F139B /* osx.xcassets */; };
 		BCB26CEE1C25E71B008F139B /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB26CE21C25E71B008F139B /* main.storyboard */; };
 		BCB26CF11C25E71B008F139B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB26CE81C25E71B008F139B /* AppDelegate.swift */; };
@@ -27,7 +28,7 @@
 
 /* Begin PBXFileReference section */
 		BC17970D1C7A200600FFF290 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
-		BCB1DCA21C2F3E3800CC82D8 /* MetalRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalRenderer.swift; sourceTree = "<group>"; };
+		BC70FEC11C84E2D300156B53 /* MetalRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalRenderer.swift; sourceTree = "<group>"; };
 		BCB26CCF1C25E70B008F139B /* 04 - Drawing in 3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "04 - Drawing in 3D.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB26CE01C25E71B008F139B /* osx.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = osx.xcassets; sourceTree = "<group>"; };
 		BCB26CE31C25E71B008F139B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/main.storyboard; sourceTree = "<group>"; };
@@ -66,14 +67,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BCB1DCA11C2F3DF600CC82D8 /* models */ = {
-			isa = PBXGroup;
-			children = (
-				BCB1DCA21C2F3E3800CC82D8 /* MetalRenderer.swift */,
-			);
-			path = models;
-			sourceTree = "<group>";
-		};
 		BCB26CDE1C25E71B008F139B /* osx */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				BC17970D1C7A200600FFF290 /* Math.swift */,
+				BC70FEC11C84E2D300156B53 /* MetalRenderer.swift */,
 				BCB7914B1C25D2E600E02523 /* shaders */,
 			);
 			path = sources;
@@ -223,7 +217,6 @@
 				BCB791591C25D2E600E02523 /* AppDelegate.swift */,
 				BCB7915A1C25D2E600E02523 /* controllers */,
 				BCB7915C1C25D2E600E02523 /* views */,
-				BCB1DCA11C2F3DF600CC82D8 /* models */,
 			);
 			path = sources;
 			sourceTree = "<group>";
@@ -346,6 +339,7 @@
 			files = (
 				BCCEA1891C79FD6200E51DD2 /* Shader.metal in Sources */,
 				BCB26CF31C25E71B008F139B /* MetalView.swift in Sources */,
+				BC70FEC31C84E2D300156B53 /* MetalRenderer.swift in Sources */,
 				BCB26CF11C25E71B008F139B /* AppDelegate.swift in Sources */,
 				BCB26CF21C25E71B008F139B /* MasterController.swift in Sources */,
 				BC17970F1C7A200600FFF290 /* Math.swift in Sources */,
@@ -358,9 +352,9 @@
 			files = (
 				BCB791641C25D2E600E02523 /* AppDelegate.swift in Sources */,
 				BCB791651C25D2E600E02523 /* MasterController.swift in Sources */,
+				BC70FEC21C84E2D300156B53 /* MetalRenderer.swift in Sources */,
 				BCB791661C25D2E600E02523 /* MetalView.swift in Sources */,
 				BCB7915E1C25D2E600E02523 /* Shader.metal in Sources */,
-				BCB1DCA31C2F3E3800CC82D8 /* MetalRenderer.swift in Sources */,
 				BC17970E1C7A200600FFF290 /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

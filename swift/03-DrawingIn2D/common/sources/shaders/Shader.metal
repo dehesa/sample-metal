@@ -9,12 +9,12 @@ struct Vertex {
 };
 
 // The definition of Metal shader functions must be prefixed with a function qualifier: vertex, fragment, or kernel.
-vertex Vertex vertex_main(device Vertex *vertices [[buffer(0)]], uint vid [[vertex_id]]) {
+vertex Vertex vertex_main(device Vertex* vertices [[buffer(0)]], uint vid [[vertex_id]]) {
     return vertices[vid];
 }
 
 // [[stage_in]] attribute identifies it as per-fragment data rather than data that is constant accross a draw call.
 // The Vertex here is an interpolated value.
-fragment float4 fragment_main(Vertex inVertex [[stage_in]]) {
-    return inVertex.color;
+fragment float4 fragment_main(Vertex interpolatedVertex [[stage_in]]) {
+    return interpolatedVertex.color;
 }

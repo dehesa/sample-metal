@@ -4,7 +4,8 @@ class MasterController : UIViewController {
     
     // MARK: Properties
     
-    private let renderer = MetalRenderer()
+    private var renderer : MetalRenderer!
+    private var metalView : MetalView { return self.view as! MetalView }
     
     // MARK: Functionality
 
@@ -14,7 +15,7 @@ class MasterController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        (self.view as! MetalView).delegate = self.renderer
+        self.renderer = MetalRenderer(withDevice: metalView.metalLayer.device!)
+        self.metalView.delegate = self.renderer
     }
 }
-

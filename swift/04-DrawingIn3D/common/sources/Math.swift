@@ -28,13 +28,16 @@ extension float4x4 {
     
     public init(perspectiveWithAspect aspect: Float, fovy: Float, near: Float, far: Float) {
         let yScale = 1 / tan(fovy * 0.5)
+        let xScale = yScale / aspect
         let zRange = far - near
+        let zScale = -(far + near) / zRange
+        let wzScale = -2 * far * near / zRange
         
         // List of the matrix' columns
-        let vectorP : float4 = [yScale/aspect, 0, 0, 0]
-        let vectorQ : float4 = [0, yScale, 0, 0]
-        let vectorR : float4 = [0, 0, -(far+near)/zRange, -1]
-        let vectorS : float4 = [0, 0, -2*far*near/zRange, 0]
+        let vectorP : float4 = [xScale,      0,       0,  0]
+        let vectorQ : float4 = [     0, yScale,       0,  0]
+        let vectorR : float4 = [     0,      0,  zScale, -1]
+        let vectorS : float4 = [     0,      0, wzScale,  0]
         self.init([vectorP, vectorQ, vectorR, vectorS])
     }
     

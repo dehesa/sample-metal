@@ -43,11 +43,13 @@ class MetalView: NSView {
               let fragmentFunc: MTLFunction = library.newFunctionWithName("fragment_main") else { fatalError("Shader not found") }
         
         // Setup pipeline (non-transient)
-        let pipelineDescriptor = MTLRenderPipelineDescriptor()
-        pipelineDescriptor.vertexFunction = vertexFunc
-        pipelineDescriptor.fragmentFunction = fragmentFunc
-        pipelineDescriptor.colorAttachments[0].pixelFormat = .BGRA8Unorm   // 8-bit unsigned integer [0, 255]
-        pipeline = try! device.newRenderPipelineStateWithDescriptor(pipelineDescriptor)
+        pipeline = try! device.newRenderPipelineStateWithDescriptor({ () -> MTLRenderPipelineDescriptor in
+            let descriptor = MTLRenderPipelineDescriptor()
+            descriptor.vertexFunction = vertexFunc
+            descriptor.fragmentFunction = fragmentFunc
+            descriptor.colorAttachments[0].pixelFormat = .BGRA8Unorm   // 8-bit unsigned integer [0, 255]
+            return descriptor
+        }())
         
         super.init(coder: aDecoder)
         
@@ -82,19 +84,19 @@ class MetalView: NSView {
     
     private func redraw() {
         guard let drawable = self.metalLayer.nextDrawable() else { return }
-        let framebufferTexture = drawable.texture
-        
-        let renderPass = MTLRenderPassDescriptor()
-        renderPass.colorAttachments[0].texture = framebufferTexture
-        renderPass.colorAttachments[0].clearColor = MTLClearColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1)
-        renderPass.colorAttachments[0].loadAction = .Clear
-        renderPass.colorAttachments[0].storeAction = .Store
         
         // Setup Command Buffers (transient)
         let cmdBuffer = self.commandQueue.commandBuffer()
         
         // Setup Command Encoders (transient)
-        let encoder = cmdBuffer.renderCommandEncoderWithDescriptor(renderPass)
+        let encoder = cmdBuffer.renderCommandEncoderWithDescriptor({
+            let descriptor = MTLRenderPassDescriptor()
+            descriptor.colorAttachments[0].texture = drawable.texture
+            descriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1)
+            descriptor.colorAttachments[0].loadAction = .Clear
+            descriptor.colorAttachments[0].storeAction = .Store
+            return descriptor
+        }())
         encoder.setRenderPipelineState(self.pipeline)
         encoder.setVertexBuffer(self.vertexBuffer, offset: 0, atIndex: 0)
         encoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 3)
