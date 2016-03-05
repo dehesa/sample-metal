@@ -10,4 +10,7 @@
    <FileRef
       location = "group:04-DrawingIn3D/04 - Drawing in 3D.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:/Users/dehesa/workspace/github/metal-by-example/swift/05-Lighting/05 - Lighting.xcodeproj">
+   </FileRef>
 </Workspace>

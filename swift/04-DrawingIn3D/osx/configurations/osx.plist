@@ -17,15 +17,15 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(DYLIB_CURRENT_VERSION)</string>
 	<key>CFBundleSignature</key>
-	<string>MSDC</string>
+	<string>$(BUNDLE_SIGNATURE)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSMainStoryboardFile</key>
-	<string>main</string>
+	<string>$(MAIN_STORYBOARD)</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

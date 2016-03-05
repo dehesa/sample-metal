@@ -1,9 +1,12 @@
 // Architecture
 SDKROOT = iphoneos
-SUPPORTED_PLATFORMS = iphoneos iphonesimulator
+SUPPORTED_PLATFORMS = iphoneos
 
 // Deployment
 TARGETED_DEVICE_FAMILY = 1,2
+
+// Code Signing
+CODE_SIGN_IDENTITY = iPhone Developer
 
 // Packaging
 PRODUCT_NAME = 04 - Drawing in 3D
@@ -11,5 +14,15 @@ PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.drawingin3D
 INFOPLIST_FILE = $(SRCROOT)/ios/configurations/ios.plist
 PRODUCT_MODULE_NAME = DrawingIn3D
 
+// Versioning
+CURRENT_PROJECT_VERSION = 1
+DYLIB_CURRENT_VERSION = 2.0.0
+DYLIB_COMPATIBILITY_VERSION = $(DYLIB_CURRENT_VERSION)
+
 // APPLE LLVM - Language
 GCC_C_LANGUAGE_STANDARD = c11
+
+// User-Generated
+MAIN_LAUNCHSCREEN = launchscreen
+MAIN_STORYBOARD = main
+BUNDLE_SIGNATURE = MSDC

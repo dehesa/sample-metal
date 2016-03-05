@@ -3,34 +3,36 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC11C87E1C8AF44E0076017C /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC11C87C1C8AF44E0076017C /* MasterController.swift */; };
+		BC11C87F1C8AF44E0076017C /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC11C87D1C8AF44E0076017C /* MetalView.swift */; };
+		BC11C8821C8AF4C10076017C /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC11C8801C8AF4C10076017C /* MasterController.swift */; };
+		BC11C8831C8AF4C10076017C /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC11C8811C8AF4C10076017C /* MetalView.swift */; };
 		BCB26CBC1C25D741008F139B /* osx.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB26CB21C25D741008F139B /* osx.xcassets */; };
 		BCB26CBD1C25D741008F139B /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB26CB41C25D741008F139B /* main.storyboard */; };
 		BCB26CC01C25D741008F139B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB26CBA1C25D741008F139B /* AppDelegate.swift */; };
-		BCB26CC51C25D7BF008F139B /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB26CC31C25D7BF008F139B /* MasterController.swift */; };
-		BCB26CC91C25D988008F139B /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB26CC81C25D988008F139B /* MetalView.swift */; };
 		BCB26CCA1C25E1FE008F139B /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCB791101C25CF0D00E02523 /* Shader.metal */; };
 		BCB791221C25CF0D00E02523 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCB791101C25CF0D00E02523 /* Shader.metal */; };
 		BCB791231C25CF0D00E02523 /* ios.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB791131C25CF0D00E02523 /* ios.xcassets */; };
 		BCB791241C25CF0D00E02523 /* launchscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB791151C25CF0D00E02523 /* launchscreen.storyboard */; };
 		BCB791251C25CF0D00E02523 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB791171C25CF0D00E02523 /* main.storyboard */; };
 		BCB791281C25CF0D00E02523 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB7911D1C25CF0D00E02523 /* AppDelegate.swift */; };
-		BCB791291C25CF0D00E02523 /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB7911F1C25CF0D00E02523 /* MasterController.swift */; };
-		BCB7912A1C25CF0D00E02523 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB791211C25CF0D00E02523 /* MetalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC11C87C1C8AF44E0076017C /* MasterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
+		BC11C87D1C8AF44E0076017C /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
+		BC11C8801C8AF4C10076017C /* MasterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
+		BC11C8811C8AF4C10076017C /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		BCB26CA11C25D6A8008F139B /* 03 - Drawing in 2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "03 - Drawing in 2D.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB26CB21C25D741008F139B /* osx.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = osx.xcassets; sourceTree = "<group>"; };
 		BCB26CB51C25D741008F139B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/main.storyboard; sourceTree = "<group>"; };
 		BCB26CB71C25D741008F139B /* osx.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = osx.plist; sourceTree = "<group>"; };
 		BCB26CB81C25D741008F139B /* osx.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = osx.xcconfig; sourceTree = "<group>"; };
 		BCB26CBA1C25D741008F139B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BCB26CC31C25D7BF008F139B /* MasterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
-		BCB26CC81C25D988008F139B /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		BCB790F81C25CE4E00E02523 /* 03 - Drawing in 2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "03 - Drawing in 2D.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB791101C25CF0D00E02523 /* Shader.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
 		BCB791131C25CF0D00E02523 /* ios.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ios.xcassets; sourceTree = "<group>"; };
@@ -39,8 +41,6 @@
 		BCB7911A1C25CF0D00E02523 /* ios.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ios.plist; sourceTree = "<group>"; };
 		BCB7911B1C25CF0D00E02523 /* ios.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ios.xcconfig; sourceTree = "<group>"; };
 		BCB7911D1C25CF0D00E02523 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BCB7911F1C25CF0D00E02523 /* MasterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
-		BCB791211C25CF0D00E02523 /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,26 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				BCB26CBA1C25D741008F139B /* AppDelegate.swift */,
-				BCB26CC21C25D7BF008F139B /* controllers */,
-				BCB26CC41C25D7BF008F139B /* views */,
+				BC11C8801C8AF4C10076017C /* MasterController.swift */,
+				BC11C8811C8AF4C10076017C /* MetalView.swift */,
 			);
 			path = sources;
-			sourceTree = "<group>";
-		};
-		BCB26CC21C25D7BF008F139B /* controllers */ = {
-			isa = PBXGroup;
-			children = (
-				BCB26CC31C25D7BF008F139B /* MasterController.swift */,
-			);
-			path = controllers;
-			sourceTree = "<group>";
-		};
-		BCB26CC41C25D7BF008F139B /* views */ = {
-			isa = PBXGroup;
-			children = (
-				BCB26CC81C25D988008F139B /* MetalView.swift */,
-			);
-			path = views;
 			sourceTree = "<group>";
 		};
 		BCB790EF1C25CE4E00E02523 = {
@@ -207,26 +191,10 @@
 			isa = PBXGroup;
 			children = (
 				BCB7911D1C25CF0D00E02523 /* AppDelegate.swift */,
-				BCB7911E1C25CF0D00E02523 /* controllers */,
-				BCB791201C25CF0D00E02523 /* views */,
+				BC11C87C1C8AF44E0076017C /* MasterController.swift */,
+				BC11C87D1C8AF44E0076017C /* MetalView.swift */,
 			);
 			path = sources;
-			sourceTree = "<group>";
-		};
-		BCB7911E1C25CF0D00E02523 /* controllers */ = {
-			isa = PBXGroup;
-			children = (
-				BCB7911F1C25CF0D00E02523 /* MasterController.swift */,
-			);
-			path = controllers;
-			sourceTree = "<group>";
-		};
-		BCB791201C25CF0D00E02523 /* views */ = {
-			isa = PBXGroup;
-			children = (
-				BCB791211C25CF0D00E02523 /* MetalView.swift */,
-			);
-			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +242,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Marcos Sanchez-Dehesa";
 				TargetAttributes = {
 					BCB26CA01C25D6A8008F139B = {
 						CreatedOnToolsVersion = 7.2;
@@ -284,7 +253,7 @@
 				};
 			};
 			buildConfigurationList = BCB790F31C25CE4E00E02523 /* Build configuration list for PBXProject "03 - Drawing in 2D" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -330,8 +299,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCB26CC01C25D741008F139B /* AppDelegate.swift in Sources */,
-				BCB26CC51C25D7BF008F139B /* MasterController.swift in Sources */,
-				BCB26CC91C25D988008F139B /* MetalView.swift in Sources */,
+				BC11C8821C8AF4C10076017C /* MasterController.swift in Sources */,
+				BC11C8831C8AF4C10076017C /* MetalView.swift in Sources */,
 				BCB26CCA1C25E1FE008F139B /* Shader.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,8 +310,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCB791281C25CF0D00E02523 /* AppDelegate.swift in Sources */,
-				BCB791291C25CF0D00E02523 /* MasterController.swift in Sources */,
-				BCB7912A1C25CF0D00E02523 /* MetalView.swift in Sources */,
+				BC11C87E1C8AF44E0076017C /* MasterController.swift in Sources */,
+				BC11C87F1C8AF44E0076017C /* MetalView.swift in Sources */,
 				BCB791221C25CF0D00E02523 /* Shader.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,7 +458,6 @@
 			baseConfigurationReference = BCB7911B1C25CF0D00E02523 /* ios.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.drawingin2D;
 			};
@@ -500,7 +468,6 @@
 			baseConfigurationReference = BCB7911B1C25CF0D00E02523 /* ios.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.drawingin2D;
 			};

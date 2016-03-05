@@ -16,8 +16,6 @@ class MetalRenderer : MetalViewDelegate {
     
     // MARK: Properties
     
-    private static let inFlightBufferCount : Int = 3
-    
     private let device : MTLDevice
     private let pipelineState : MTLRenderPipelineState
     private let depthStencilState : MTLDepthStencilState
@@ -26,7 +24,7 @@ class MetalRenderer : MetalViewDelegate {
     private let indecesBuffer : MTLBuffer
     private let uniformsBuffer : MTLBuffer
     
-    private let displaySemaphore : dispatch_semaphore_t = dispatch_semaphore_create(MetalRenderer.inFlightBufferCount)
+    private let displaySemaphore : dispatch_semaphore_t = dispatch_semaphore_create(1)
     private var (time, rotationX, rotationY) : (Float, Float, Float) = (0,0,0)
     
     // MARK: Initializer
@@ -36,8 +34,8 @@ class MetalRenderer : MetalViewDelegate {
         commandQueue = device.newCommandQueue()
         
         guard let library = device.newDefaultLibrary() else { fatalError("No default library") }
-        guard let vertexFunc: MTLFunction = library.newFunctionWithName("vertex_main"),
-              let fragmentFunc: MTLFunction = library.newFunctionWithName("fragment_main") else { fatalError("Shader not found") }
+        guard let vertexFunc: MTLFunction = library.newFunctionWithName("main_vertex"),
+              let fragmentFunc: MTLFunction = library.newFunctionWithName("main_fragment") else { fatalError("Shader not found") }
         
         pipelineState = try! device.newRenderPipelineStateWithDescriptor({ () -> MTLRenderPipelineDescriptor in
             let descriptor = MTLRenderPipelineDescriptor()
@@ -86,7 +84,8 @@ class MetalRenderer : MetalViewDelegate {
     // MARK: Functionality
     
     func drawInView(metalView: MetalView) {
-        guard let drawable = metalView.currentDrawable else { return}
+        dispatch_semaphore_wait(self.displaySemaphore, DISPATCH_TIME_FOREVER);
+        guard let drawable = metalView.currentDrawable else { dispatch_semaphore_signal(self.displaySemaphore); return }
         
         let drawableSize = metalView.metalLayer.drawableSize
         updateUniforms(withDrawableSize: float2(Float(drawableSize.width), Float(drawableSize.height)), duration: metalView.frameDuration)
@@ -104,6 +103,7 @@ class MetalRenderer : MetalViewDelegate {
         encoder.endEncoding()
         
         commandBuffer.presentDrawable(drawable)
+        commandBuffer.addCompletedHandler { (_) in dispatch_semaphore_signal(self.displaySemaphore) }
         commandBuffer.commit()
     }
     

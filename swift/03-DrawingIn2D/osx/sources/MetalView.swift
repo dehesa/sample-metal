@@ -39,8 +39,8 @@ class MetalView: NSView {
         
         // Setup shader library
         guard let library = device.newDefaultLibrary() else { fatalError("No default library") }
-        guard let vertexFunc: MTLFunction   = library.newFunctionWithName("vertex_main"),
-              let fragmentFunc: MTLFunction = library.newFunctionWithName("fragment_main") else { fatalError("Shader not found") }
+        guard let vertexFunc: MTLFunction   = library.newFunctionWithName("main_vertex"),
+              let fragmentFunc: MTLFunction = library.newFunctionWithName("main_fragment") else { fatalError("Shader not found") }
         
         // Setup pipeline (non-transient)
         pipeline = try! device.newRenderPipelineStateWithDescriptor({ () -> MTLRenderPipelineDescriptor in

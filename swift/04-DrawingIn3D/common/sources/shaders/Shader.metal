@@ -10,7 +10,7 @@ struct Uniforms {
     float4x4 modelViewProjectionMatrix;
 };
 
-vertex Vertex vertex_main(device Vertex* vertices [[buffer(0)]],
+vertex Vertex main_vertex(device Vertex* vertices [[buffer(0)]],
                           constant Uniforms* uniforms [[buffer(1)]],
                           uint vid [[vertex_id]]) {
     Vertex vertexOut;
@@ -19,6 +19,6 @@ vertex Vertex vertex_main(device Vertex* vertices [[buffer(0)]],
     return vertexOut;
 }
 
-fragment float4 fragment_main(Vertex inVertex [[stage_in]]) {
+fragment float4 main_fragment(Vertex inVertex [[stage_in]]) {
     return inVertex.color;
 }
