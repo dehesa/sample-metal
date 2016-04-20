@@ -2,19 +2,7 @@
 SDKROOT = macosx
 
 // Packaging
-PRODUCT_NAME = 02 - Clear Screen
-PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.clearscreen
 INFOPLIST_FILE = $(SRCROOT)/osx/configurations/osx.plist
-PRODUCT_MODULE_NAME = ClearScreen
-
-// Versioning
-CURRENT_PROJECT_VERSION = 1
-DYLIB_CURRENT_VERSION = 2.0.0
-DYLIB_COMPATIBILITY_VERSION = $(DYLIB_CURRENT_VERSION)
-
-// APPLE LLVM - Language
-GCC_C_LANGUAGE_STANDARD = c11
 
 // User-Generated
 MAIN_STORYBOARD = main
-BUNDLE_SIGNATURE = MSDC

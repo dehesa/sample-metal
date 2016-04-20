@@ -27,9 +27,10 @@ extension float3 {
 extension float4x4 {
     
     public init(perspectiveWithAspect aspect: Float, fovy: Float, near: Float, far: Float) {
+		let zRange = far - near
+		
         let yScale = 1 / tan(fovy * 0.5)
         let xScale = yScale / aspect
-        let zRange = far - near
         let zScale = -(far + near) / zRange
         let wzScale = -2 * far * near / zRange
         

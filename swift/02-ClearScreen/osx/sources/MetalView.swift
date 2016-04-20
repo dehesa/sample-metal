@@ -2,7 +2,7 @@ import Cocoa
 import Metal
 import simd
 
-class MetalView: NSView {
+class MetalView : NSView {
     
     // MARK: Definitions
     
@@ -12,52 +12,49 @@ class MetalView: NSView {
     
     // MARK: Properties
     
-    private var metalLayer : CAMetalLayer { return self.layer as! CAMetalLayer }
-    private let device : MTLDevice
-    private var commandQueue : MTLCommandQueue
+    private var metalLayer : CAMetalLayer { return layer as! CAMetalLayer }
+    private let device : MTLDevice = MTLCreateSystemDefaultDevice()!
+    private let commandQueue : MTLCommandQueue
     
     // MARK: Functionality
     
     required init?(coder aDecoder: NSCoder) {
-        // Setup device
-        device = MTLCreateSystemDefaultDevice()!
-        
         // Setup Command Queue (non-transient object: expensive to create. Do save it)
         commandQueue = device.newCommandQueue()
         
         super.init(coder: aDecoder)
         
         // Setup layer (backing layer)
-        self.wantsLayer = true
-        self.metalLayer.device = device
-        self.metalLayer.pixelFormat = .BGRA8Unorm
+        wantsLayer = true
+        metalLayer.device = device
+        metalLayer.pixelFormat = .BGRA8Unorm
     }
     
     override func viewDidMoveToWindow() {
         super.viewDidMoveToWindow()
         
         guard let window = self.window else { return }
-        self.metalLayer.contentsScale = window.backingScaleFactor
-        self.redraw()
+        metalLayer.contentsScale = window.backingScaleFactor
+        redraw()
     }
     
     override func setBoundsSize(newSize: NSSize) {
         super.setBoundsSize(newSize)
         metalLayer.drawableSize = convertRectToBacking(bounds).size
-        self.redraw()
+        redraw()
     }
     
     override func setFrameSize(newSize: NSSize) {
         super.setFrameSize(newSize)
         metalLayer.drawableSize = convertRectToBacking(bounds).size
-        self.redraw()
+        redraw()
     }
     
     private func redraw() {
-        guard let drawable = self.metalLayer.nextDrawable() else { return }
+        guard let drawable = metalLayer.nextDrawable() else { return }
         
         // Setup Command Buffers (transient)
-        let cmdBuffer = self.commandQueue.commandBuffer()
+        let cmdBuffer = commandQueue.commandBuffer()
         
         // Setup Command Encoders (transient)
         let encoder = cmdBuffer.renderCommandEncoderWithDescriptor({

@@ -7,13 +7,13 @@ protocol MetalViewDelegate {
     func drawInView(metalView: MetalView)
 }
 
-class MetalView: NSView {
+class MetalView : NSView {
     
     /// The layer used by this view (`CAMetalLayer`).
     override func makeBackingLayer() -> CALayer {
         return CAMetalLayer()
     }
-    
+	
     // MARK: Properties
     
     /// The metal layer that backs this view.
@@ -55,6 +55,9 @@ class MetalView: NSView {
     
     /// The duration (in seconds) of the previous frame. This is valid only in the context of a callback to the delegate's `drawInView:` method.
     var frameDuration : NSTimeInterval = 1 / 60
+	
+	/// Helper for the CVDisplayLink instance
+	private var previousTimeStamp : UInt64 = CVGetCurrentHostTime()
     
     // MARK: Initializer
     
@@ -62,7 +65,8 @@ class MetalView: NSView {
         super.init(coder: aDecoder)
         
         // Setup layer (backing layer)
-        self.wantsLayer = true
+		layer = CAMetalLayer()
+        wantsLayer = true
         guard let device = MTLCreateSystemDefaultDevice() else { return nil }
         metalLayer.device = device
         metalLayer.pixelFormat = .BGRA8Unorm   // 8-bit unsigned integer [0, 255]
@@ -73,25 +77,35 @@ class MetalView: NSView {
     override func viewDidMoveToWindow() {
         super.viewDidMoveToWindow()
         
-        let idealFrameDuration  : NSTimeInterval = 1 / 60
-        let targetFrameDuration : NSTimeInterval = 1 / Double(preferredFramesPerSecond)
-        let frameInterval = Int(round(targetFrameDuration / idealFrameDuration))
-        
         func displayLinkOutputCallback(displayLink: CVDisplayLink, _ inNow: UnsafePointer<CVTimeStamp>, _ inOutputTime: UnsafePointer<CVTimeStamp>, _ flagsIn: CVOptionFlags, _ flagsOut: UnsafeMutablePointer<CVOptionFlags>, _ displayLinkContext: UnsafeMutablePointer<Void>) -> CVReturn {
-            unsafeBitCast(displayLinkContext, MetalView.self).displayLinkDidFire()
+			let view = unsafeBitCast(displayLinkContext, MetalView.self)
+			
+			let futureTimeStamp = inOutputTime.memory.hostTime
+			view.frameDuration = NSTimeInterval(futureTimeStamp-view.previousTimeStamp) / NSTimeInterval(NSEC_PER_SEC)
+			view.previousTimeStamp = futureTimeStamp
+			Swift.print(view.frameDuration)
+			
+			dispatch_async(dispatch_get_main_queue()) {
+				view.displayLinkDidFire()
+			}
             return kCVReturnSuccess
         }
         
-        if let window = self.window {
-            self.metalLayer.contentsScale = window.backingScaleFactor
-            if let dl = displayLink { CVDisplayLinkStop(dl) }
-            guard CVDisplayLinkCreateWithActiveCGDisplays(&self.displayLink) == kCVReturnSuccess else { fatalError("Display Link could not be created") }
-            CVDisplayLinkSetOutputCallback(self.displayLink!, displayLinkOutputCallback, UnsafeMutablePointer<Void>(unsafeAddressOf(self)))
-            CVDisplayLinkStart(displayLink!)
-        } else if let displayLink = self.displayLink {
-            CVDisplayLinkStop(displayLink)
-            self.displayLink = nil
-        }
+		guard let window = self.window else {
+			if let displayLink = self.displayLink {
+				CVDisplayLinkStop(displayLink)
+				self.displayLink = nil
+			}
+			return
+		}
+		
+		metalLayer.contentsScale = window.backingScaleFactor
+		if let dl = displayLink { CVDisplayLinkStop(dl) }
+		guard CVDisplayLinkCreateWithCGDisplay(CGMainDisplayID(), &displayLink) == kCVReturnSuccess else { fatalError("Display Link could not be created") }
+		CVDisplayLinkSetOutputCallback(displayLink!, displayLinkOutputCallback, UnsafeMutablePointer<Void>(unsafeAddressOf(self)))
+		
+		previousTimeStamp = CVGetCurrentHostTime()
+		CVDisplayLinkStart(displayLink!)
     }
     
     override func setBoundsSize(newSize: NSSize) {
@@ -113,16 +127,16 @@ class MetalView: NSView {
         guard depthTexture == nil || depthTexture!.width != w || depthTexture!.height != h else { return }
         
         metalLayer.drawableSize = size
-        depthTexture = metalLayer.device!.newTextureWithDescriptor({ () -> MTLTextureDescriptor in
-            let descriptor = MTLTextureDescriptor.texture2DDescriptorWithPixelFormat(.Depth32Float, width: w, height: h, mipmapped: false)
-            descriptor.storageMode = .Private
-            return descriptor
-        }())
+		
+		let depthDescriptor = MTLTextureDescriptor.texture2DDescriptorWithPixelFormat(.Depth32Float, width: w, height: h, mipmapped: false)
+		depthDescriptor.storageMode = .Private
+		depthDescriptor.usage = .RenderTarget
+        depthTexture = metalLayer.device!.newTextureWithDescriptor(depthDescriptor)
     }
     
     func displayLinkDidFire() {
+		Swift.print("\tdrawable\n")
         currentDrawable = metalLayer.nextDrawable()
-//        frameDuration = displayLink.duration
         delegate?.drawInView(self)
     }
 }

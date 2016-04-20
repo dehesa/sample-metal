@@ -24,7 +24,7 @@ class MetalRenderer : MetalViewDelegate {
     private let indecesBuffer : MTLBuffer
     private let uniformsBuffer : MTLBuffer
     
-    private let displaySemaphore : dispatch_semaphore_t = dispatch_semaphore_create(1)
+    private let displaySemaphore : dispatch_semaphore_t = dispatch_semaphore_create(3)
     private var (time, rotationX, rotationY) : (Float, Float, Float) = (0,0,0)
     
     // MARK: Initializer
@@ -84,8 +84,8 @@ class MetalRenderer : MetalViewDelegate {
     // MARK: Functionality
     
     func drawInView(metalView: MetalView) {
-        dispatch_semaphore_wait(self.displaySemaphore, DISPATCH_TIME_FOREVER);
-        guard let drawable = metalView.currentDrawable else { dispatch_semaphore_signal(self.displaySemaphore); return }
+        dispatch_semaphore_wait(displaySemaphore, DISPATCH_TIME_FOREVER);
+        guard let drawable = metalView.currentDrawable else { dispatch_semaphore_signal(displaySemaphore); return }
         
         let drawableSize = metalView.metalLayer.drawableSize
         updateUniforms(withDrawableSize: float2(Float(drawableSize.width), Float(drawableSize.height)), duration: metalView.frameDuration)

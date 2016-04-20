@@ -41,6 +41,7 @@
 		BCB7911A1C25CF0D00E02523 /* ios.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ios.plist; sourceTree = "<group>"; };
 		BCB7911B1C25CF0D00E02523 /* ios.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ios.xcconfig; sourceTree = "<group>"; };
 		BCB7911D1C25CF0D00E02523 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BCC6CB681CC194F90009EBA6 /* common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = common.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +130,7 @@
 		BCB7910D1C25CF0D00E02523 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				BCC6CB671CC194F90009EBA6 /* configurations */,
 				BCB7910E1C25CF0D00E02523 /* sources */,
 			);
 			path = common;
@@ -195,6 +197,14 @@
 				BC11C87D1C8AF44E0076017C /* MetalView.swift */,
 			);
 			path = sources;
+			sourceTree = "<group>";
+		};
+		BCC6CB671CC194F90009EBA6 /* configurations */ = {
+			isa = PBXGroup;
+			children = (
+				BCC6CB681CC194F90009EBA6 /* common.xcconfig */,
+			);
+			path = configurations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,7 +364,6 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
 			};
 			name = Debug;
 		};
@@ -366,12 +375,12 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
 			};
 			name = Release;
 		};
 		BCB791081C25CE4E00E02523 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCC6CB681CC194F90009EBA6 /* common.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -392,7 +401,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -417,6 +426,7 @@
 		};
 		BCB791091C25CE4E00E02523 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCC6CB681CC194F90009EBA6 /* common.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -437,7 +447,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -459,7 +469,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.drawingin2D;
 			};
 			name = Debug;
 		};
@@ -469,7 +478,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.drawingin2D;
 			};
 			name = Release;
 		};

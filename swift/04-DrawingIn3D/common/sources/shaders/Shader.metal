@@ -10,9 +10,9 @@ struct Uniforms {
     float4x4 modelViewProjectionMatrix;
 };
 
-vertex Vertex main_vertex(device Vertex* vertices [[buffer(0)]],
+vertex Vertex main_vertex(device   Vertex*   vertices [[buffer(0)]],
                           constant Uniforms* uniforms [[buffer(1)]],
-                          uint vid [[vertex_id]]) {
+							       uint      vid	  [[vertex_id]]) {
     Vertex vertexOut;
     vertexOut.position = uniforms->modelViewProjectionMatrix *vertices[vid].position;
     vertexOut.color = vertices[vid].color;

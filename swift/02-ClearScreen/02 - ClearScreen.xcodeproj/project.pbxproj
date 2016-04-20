@@ -25,6 +25,7 @@
 		BC11C8751C8AF3820076017C /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		BC11C8781C8AF3BD0076017C /* MasterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
 		BC11C8791C8AF3BD0076017C /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
+		BCC6CB661CC193AB0009EBA6 /* common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = common.xcconfig; sourceTree = "<group>"; };
 		BCE30B8C1C58306200DDD94B /* 02 - Clear Screen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "02 - Clear Screen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCE30BA31C58317D00DDD94B /* ios.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ios.xcassets; sourceTree = "<group>"; };
 		BCE30BA61C58317D00DDD94B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/launchscreen.storyboard; sourceTree = "<group>"; };
@@ -58,9 +59,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BCC6CB641CC193720009EBA6 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				BCC6CB651CC193A20009EBA6 /* configurations */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		BCC6CB651CC193A20009EBA6 /* configurations */ = {
+			isa = PBXGroup;
+			children = (
+				BCC6CB661CC193AB0009EBA6 /* common.xcconfig */,
+			);
+			path = configurations;
+			sourceTree = "<group>";
+		};
 		BCE30B831C58306200DDD94B = {
 			isa = PBXGroup;
 			children = (
+				BCC6CB641CC193720009EBA6 /* common */,
 				BCE30BA11C58317D00DDD94B /* ios */,
 				BCE30BB11C58317D00DDD94B /* osx */,
 				BCE30B8D1C58306200DDD94B /* Products */,
@@ -318,6 +336,7 @@
 /* Begin XCBuildConfiguration section */
 		BCE30B9C1C58306200DDD94B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCC6CB661CC193AB0009EBA6 /* common.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -338,7 +357,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -363,6 +382,7 @@
 		};
 		BCE30B9D1C58306200DDD94B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCC6CB661CC193AB0009EBA6 /* common.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -383,7 +403,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -405,7 +425,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -415,7 +434,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -424,12 +442,10 @@
 			baseConfigurationReference = BCE30BB81C58317D00DDD94B /* osx.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -438,7 +454,6 @@
 			baseConfigurationReference = BCE30BB81C58317D00DDD94B /* osx.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

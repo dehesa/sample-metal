@@ -2,7 +2,7 @@ import Cocoa
 import Metal
 import simd
 
-class MetalView: NSView {
+class MetalView : NSView {
     
     // MARK: Definitions
     
@@ -17,16 +17,15 @@ class MetalView: NSView {
     
     // MARK: Properties
     
-    private var metalLayer : CAMetalLayer { return self.layer as! CAMetalLayer }
-    private let device : MTLDevice
-    private var pipeline : MTLRenderPipelineState
-    private var commandQueue : MTLCommandQueue
-    private var vertexBuffer : MTLBuffer
+    private var metalLayer : CAMetalLayer { return layer as! CAMetalLayer }
+    private let device : MTLDevice = MTLCreateSystemDefaultDevice()!
+    private let pipeline : MTLRenderPipelineState
+    private let commandQueue : MTLCommandQueue
+    private let vertexBuffer : MTLBuffer
     
     // MARK: Functionality
     
     required init?(coder aDecoder: NSCoder) {
-        device = MTLCreateSystemDefaultDevice()!
         commandQueue = device.newCommandQueue()
         
         // Setup buffer (non-transient)
@@ -39,8 +38,8 @@ class MetalView: NSView {
         
         // Setup shader library
         guard let library = device.newDefaultLibrary() else { fatalError("No default library") }
-        guard let vertexFunc: MTLFunction   = library.newFunctionWithName("main_vertex"),
-              let fragmentFunc: MTLFunction = library.newFunctionWithName("main_fragment") else { fatalError("Shader not found") }
+        guard let vertexFunc : MTLFunction   = library.newFunctionWithName("main_vertex"),
+              let fragmentFunc : MTLFunction = library.newFunctionWithName("main_fragment") else { fatalError("Shader not found") }
         
         // Setup pipeline (non-transient)
         pipeline = try! device.newRenderPipelineStateWithDescriptor({ () -> MTLRenderPipelineDescriptor in
@@ -54,39 +53,36 @@ class MetalView: NSView {
         super.init(coder: aDecoder)
         
         // Setup layer (backing layer)
-        self.wantsLayer = true
-        self.metalLayer.device = device
-        self.metalLayer.pixelFormat = .BGRA8Unorm
+        wantsLayer = true
+        metalLayer.device = device
+        metalLayer.pixelFormat = .BGRA8Unorm
     }
     
     override func viewDidMoveToWindow() {
         super.viewDidMoveToWindow()
         
-        if let window = self.window {
-            self.metalLayer.contentsScale = window.backingScaleFactor
-        } else {
-            // Nothing for now
-        }
-        self.redraw()
+		guard let window = self.window else { return }
+		metalLayer.contentsScale = window.backingScaleFactor
+        redraw()
     }
     
     override func setBoundsSize(newSize: NSSize) {
         super.setBoundsSize(newSize)
         metalLayer.drawableSize = convertRectToBacking(bounds).size
-        self.redraw()
+        redraw()
     }
     
     override func setFrameSize(newSize: NSSize) {
         super.setFrameSize(newSize)
         metalLayer.drawableSize = convertRectToBacking(bounds).size
-        self.redraw()
+        redraw()
     }
     
     private func redraw() {
-        guard let drawable = self.metalLayer.nextDrawable() else { return }
+        guard let drawable = metalLayer.nextDrawable() else { return }
         
         // Setup Command Buffers (transient)
-        let cmdBuffer = self.commandQueue.commandBuffer()
+        let cmdBuffer = commandQueue.commandBuffer()
         
         // Setup Command Encoders (transient)
         let encoder = cmdBuffer.renderCommandEncoderWithDescriptor({
@@ -97,8 +93,8 @@ class MetalView: NSView {
             descriptor.colorAttachments[0].storeAction = .Store
             return descriptor
         }())
-        encoder.setRenderPipelineState(self.pipeline)
-        encoder.setVertexBuffer(self.vertexBuffer, offset: 0, atIndex: 0)
+        encoder.setRenderPipelineState(pipeline)
+        encoder.setVertexBuffer(vertexBuffer, offset: 0, atIndex: 0)
         encoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 3)
         encoder.endEncoding()
         

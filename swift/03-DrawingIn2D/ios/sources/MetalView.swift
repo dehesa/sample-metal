@@ -15,11 +15,11 @@ final class MetalView : UIView {
     
     // MARK: Properties
     
-    private var metalLayer : CAMetalLayer { return self.layer as! CAMetalLayer }
+    private var metalLayer : CAMetalLayer { return layer as! CAMetalLayer }
     private let device : MTLDevice = MTLCreateSystemDefaultDevice()!
-    private var commandQueue : MTLCommandQueue
-    private var pipelineState : MTLRenderPipelineState
-    private var vertexBuffer : MTLBuffer
+    private let commandQueue : MTLCommandQueue
+    private let pipelineState : MTLRenderPipelineState
+    private let vertexBuffer : MTLBuffer
     private var displayLink : CADisplayLink?
     
     // MARK: Functionality
@@ -52,52 +52,48 @@ final class MetalView : UIView {
         super.init(coder: aDecoder)
         
         // Setup Core Animation related functionality
-        self.metalLayer.device = device
-        self.metalLayer.pixelFormat = .BGRA8Unorm
+        metalLayer.device = device
+        metalLayer.pixelFormat = .BGRA8Unorm
     }
     
     override func didMoveToWindow() {
         super.didMoveToWindow()
         
-        if let window = self.window {
-            self.metalLayer.contentsScale = window.screen.nativeScale
+		guard let window = self.window else {
+			displayLink?.invalidate()
+			displayLink = nil; return
+		}
+		
+		metalLayer.contentsScale = window.screen.nativeScale
             
-            if let dl = self.displayLink { dl.invalidate() }
-            self.displayLink = CADisplayLink(target: self, selector: "displayLinkDidFire:")
-            self.displayLink!.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
-        } else {
-            self.displayLink?.invalidate()
-            self.displayLink = nil
-        }
+		if let dl = displayLink { dl.invalidate() }
+		displayLink = CADisplayLink(target: self, selector: #selector(displayLinkDidFire(_:)))
+		displayLink!.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
     }
     
     func displayLinkDidFire(displayLink: CADisplayLink) {
-        redraw()
-    }
-    
-    private func redraw() {
-        guard let drawable = self.metalLayer.nextDrawable() else { return }
-        let framebufferTexture = drawable.texture
-        
-        // Setup Command Buffers (transient)
-        let cmdBuffer = self.commandQueue.commandBuffer()
-        
-        // Setup Command Encoders (transient)
-        let encoder = cmdBuffer.renderCommandEncoderWithDescriptor({
-            let descriptor = MTLRenderPassDescriptor()
-            descriptor.colorAttachments[0].texture = framebufferTexture
-            descriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1)
-            descriptor.colorAttachments[0].loadAction = .Clear
-            descriptor.colorAttachments[0].storeAction = .Store
-            return descriptor
-        }())
-        encoder.setRenderPipelineState(self.pipelineState)
-        encoder.setVertexBuffer(self.vertexBuffer, offset: 0, atIndex: 0)
-        encoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 3)
-        encoder.endEncoding()
-        
-        // Present drawable is a convenience completion block that will get executed once your command buffer finishes, and will output the final texture to screen.
-        cmdBuffer.presentDrawable(drawable)
-        cmdBuffer.commit()
+		guard let drawable = metalLayer.nextDrawable() else { return }
+		let framebufferTexture = drawable.texture
+		
+		// Setup Command Buffers (transient)
+		let cmdBuffer = commandQueue.commandBuffer()
+		
+		// Setup Command Encoders (transient)
+		let encoder = cmdBuffer.renderCommandEncoderWithDescriptor({
+			let descriptor = MTLRenderPassDescriptor()
+			descriptor.colorAttachments[0].texture = framebufferTexture
+			descriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1)
+			descriptor.colorAttachments[0].loadAction = .Clear
+			descriptor.colorAttachments[0].storeAction = .Store
+			return descriptor
+		}())
+		encoder.setRenderPipelineState(pipelineState)
+		encoder.setVertexBuffer(vertexBuffer, offset: 0, atIndex: 0)
+		encoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 3)
+		encoder.endEncoding()
+		
+		// Present drawable is a convenience completion block that will get executed once your command buffer finishes, and will output the final texture to screen.
+		cmdBuffer.presentDrawable(drawable)
+		cmdBuffer.commit()
     }
 }

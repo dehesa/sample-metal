@@ -4,45 +4,40 @@ import simd
 
 final class MetalView : UIView {
     
-    // MARK: Definitions
+    override static func layerClass() -> AnyClass {
+		return CAMetalLayer.self
+	}
     
-    override static func layerClass() -> AnyClass { return CAMetalLayer.self }
-    
-    // MARK: Properties
-    
-    private var metalLayer : CAMetalLayer { return self.layer as! CAMetalLayer }
-    private let device : MTLDevice
-    private var commandQueue : MTLCommandQueue
+    private var metalLayer : CAMetalLayer { return layer as! CAMetalLayer }
+    private let device : MTLDevice = MTLCreateSystemDefaultDevice()!
+    private let commandQueue : MTLCommandQueue
     
     // MARK: Functionality
     
     required init?(coder aDecoder: NSCoder) {
-        // Setup device
-        device = MTLCreateSystemDefaultDevice()!
-        
-        // Setup Command Queue (non-transient object: expensive to create. Do save it)
+        // Setup Command Queue (non-transient object: expensive to create)
         commandQueue = device.newCommandQueue()
-        
+		
         super.init(coder: aDecoder)
         
         // Setup Core Animation related functionality
-        self.metalLayer.device = device
-        self.metalLayer.pixelFormat = .BGRA8Unorm
+        metalLayer.device = device
+        metalLayer.pixelFormat = .BGRA8Unorm
     }
     
     override func didMoveToWindow() {
         super.didMoveToWindow()
         
         guard let window = self.window else { return }
-        self.metalLayer.contentsScale = window.screen.nativeScale
-        self.redraw()
+        metalLayer.contentsScale = window.screen.nativeScale
+        redraw()
     }
     
     private func redraw() {
-        guard let drawable = self.metalLayer.nextDrawable() else { return }
+        guard let drawable = metalLayer.nextDrawable() else { return }
         
         // Setup Command Buffers (transient)
-        let cmdBuffer = self.commandQueue.commandBuffer()
+        let cmdBuffer = commandQueue.commandBuffer()
         
         // Setup Command Encoders (transient)
         let encoder = cmdBuffer.renderCommandEncoderWithDescriptor({

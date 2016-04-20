@@ -8,7 +8,6 @@ protocol MetalViewDelegate {
 }
 
 final class MetalView : UIView {
-    
     /// The layer used by this view (`CAMetalLayer`).
     override static func layerClass() -> AnyClass { return CAMetalLayer.self }
     
@@ -70,18 +69,19 @@ final class MetalView : UIView {
         super.didMoveToWindow()
         
         let idealFrameDuration  : NSTimeInterval = 1 / 60
-        let targetFrameDuration : NSTimeInterval = 1 / Double(preferredFramesPerSecond)
+        let targetFrameDuration : NSTimeInterval = 1 / NSTimeInterval(preferredFramesPerSecond)
         let frameInterval = Int(round(targetFrameDuration / idealFrameDuration))
-        
-        if let _ = superview {
-            if let dl = displayLink { dl.invalidate() }
-            displayLink = CADisplayLink(target: self, selector: "displayLinkDidFire:")
-            displayLink!.frameInterval = frameInterval
-            displayLink!.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
-        } else {
-            displayLink?.invalidate()
-            displayLink = nil
-        }
+		
+		guard superview != nil else {
+			displayLink?.invalidate()
+			displayLink = nil
+			return
+		}
+		
+		if let dl = displayLink { dl.invalidate() }
+		displayLink = CADisplayLink(target: self, selector: #selector(displayLinkDidFire(_:)))
+		displayLink!.frameInterval = frameInterval
+		displayLink!.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
     }
     
     override func layoutSubviews() {

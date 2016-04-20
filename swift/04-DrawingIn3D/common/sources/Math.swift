@@ -1,7 +1,6 @@
 import simd
 
 extension float3 {
-    
     public var translationMatrix : float4x4 {
         // List of the matrix' columns
         let vectorX : float4 = [1, 0, 0, 0]
@@ -25,7 +24,6 @@ extension float3 {
 }
 
 extension float4x4 {
-    
     public init(perspectiveWithAspect aspect: Float, fovy: Float, near: Float, far: Float) {
         let yScale = 1 / tan(fovy * 0.5)
         let xScale = yScale / aspect
@@ -40,5 +38,4 @@ extension float4x4 {
         let vectorS : float4 = [     0,      0, wzScale,  0]
         self.init([vectorP, vectorQ, vectorR, vectorS])
     }
-    
 }
