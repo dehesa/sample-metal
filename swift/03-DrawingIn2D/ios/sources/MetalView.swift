@@ -2,44 +2,48 @@ import UIKit
 import Metal
 import simd
 
-final class MetalView : UIView {
-    
-    // MARK: Definitions
-    
+extension MetalView {
     private struct Vertex {
-        var position : float4
-        var color : float4
+        var position: float4
+        var color: float4
+    }
+}
+
+final class MetalView : UIView {
+    private let device: MTLDevice
+    private let commandQueue: MTLCommandQueue
+    private let vertexBuffer : MTLBuffer
+    private let pipelineState : MTLRenderPipelineState
+    private var displayLink : CADisplayLink?
+    
+    private var metalLayer: CAMetalLayer {
+        return layer as! CAMetalLayer
     }
     
-    override static func layerClass() -> AnyClass { return CAMetalLayer.self }
-    
-    // MARK: Properties
-    
-    private var metalLayer : CAMetalLayer { return layer as! CAMetalLayer }
-    private let device : MTLDevice = MTLCreateSystemDefaultDevice()!
-    private let commandQueue : MTLCommandQueue
-    private let pipelineState : MTLRenderPipelineState
-    private let vertexBuffer : MTLBuffer
-    private var displayLink : CADisplayLink?
+    override static var layerClass: AnyClass {
+        return CAMetalLayer.self
+    }
     
     // MARK: Functionality
     
     required init?(coder aDecoder: NSCoder) {
-        commandQueue = device.newCommandQueue()
+        // Setup the Device and Command Queue (non-transient objects: expensive to create. Do save it)
+        guard let device = MTLCreateSystemDefaultDevice(),
+              let commandQueue = device.makeCommandQueue() else { return nil }
+        (self.device, self.commandQueue) = (device, commandQueue)
         
-        // Setup library
-        guard let library = device.newDefaultLibrary() else { fatalError("No default library") }
-        guard let vertexFunc: MTLFunction   = library.newFunctionWithName("main_vertex"),
-              let fragmentFunc: MTLFunction = library.newFunctionWithName("main_fragment") else { fatalError("Shader not found") }
+        // Setup shader library
+        guard let library = device.makeDefaultLibrary(),
+              let vertexFunc   = library.makeFunction(name: "main_vertex"),
+              let fragmentFunc = library.makeFunction(name: "main_fragment") else { fatalError("Library or shaders not found") }
         
         // Setup pipeline (non-transient)
-        pipelineState = try! device.newRenderPipelineStateWithDescriptor({ () -> MTLRenderPipelineDescriptor in
-            let descriptor = MTLRenderPipelineDescriptor()
-            descriptor.vertexFunction = vertexFunc
-            descriptor.fragmentFunction = fragmentFunc
-            descriptor.colorAttachments[0].pixelFormat = .BGRA8Unorm   // 8-bit unsigned integer [0, 255]
-            return descriptor
-        }())
+        let descriptor = MTLRenderPipelineDescriptor()
+        descriptor.vertexFunction = vertexFunc
+        descriptor.fragmentFunction = fragmentFunc
+        descriptor.colorAttachments[0].pixelFormat = .bgra8Unorm   // 8-bit unsigned integer [0, 255]
+        guard let pipeline = try? device.makeRenderPipelineState(descriptor: descriptor) else { return nil }
+        self.pipelineState = pipeline
         
         // Setup buffer (non-transient)
         let vertices = [    // Coordinates defined in clip space: [-1,+1]
@@ -47,53 +51,51 @@ final class MetalView : UIView {
             Vertex(position: [-0.5, -0.5, 0, 1], color: [0,1,0,1]),
             Vertex(position: [ 0.5, -0.5, 0, 1], color: [0,0,1,1])
         ]
-        vertexBuffer = device.newBufferWithBytes(vertices, length: sizeof(Vertex) * vertices.count, options: .CPUCacheModeDefaultCache)
+        guard let vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.size*vertices.count) else { return nil }
+        self.vertexBuffer = vertexBuffer
         
         super.init(coder: aDecoder)
         
         // Setup Core Animation related functionality
-        metalLayer.device = device
-        metalLayer.pixelFormat = .BGRA8Unorm
+        self.metalLayer.device = device
+        self.metalLayer.pixelFormat = .bgra8Unorm
     }
     
     override func didMoveToWindow() {
         super.didMoveToWindow()
         
 		guard let window = self.window else {
-			displayLink?.invalidate()
-			displayLink = nil; return
+			self.displayLink?.invalidate()
+			self.displayLink = nil; return
 		}
 		
-		metalLayer.contentsScale = window.screen.nativeScale
+		self.metalLayer.contentsScale = window.screen.nativeScale
             
-		if let dl = displayLink { dl.invalidate() }
-		displayLink = CADisplayLink(target: self, selector: #selector(displayLinkDidFire(_:)))
-		displayLink!.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
+		if let dl = self.displayLink { dl.invalidate() }
+		self.displayLink = CADisplayLink(target: self, selector: #selector(MetalView.tickTrigger(from:)))
+		self.displayLink!.add(to: .main, forMode: .commonModes)
     }
     
-    func displayLinkDidFire(displayLink: CADisplayLink) {
-		guard let drawable = metalLayer.nextDrawable() else { return }
-		let framebufferTexture = drawable.texture
-		
-		// Setup Command Buffers (transient)
-		let cmdBuffer = commandQueue.commandBuffer()
+    @objc func tickTrigger(from displayLink: CADisplayLink) {
+        // Setup Command Buffers (transient)
+		guard let drawable = metalLayer.nextDrawable(),
+              let commandBuffer = self.commandQueue.makeCommandBuffer() else { return }
 		
 		// Setup Command Encoders (transient)
-		let encoder = cmdBuffer.renderCommandEncoderWithDescriptor({
-			let descriptor = MTLRenderPassDescriptor()
-			descriptor.colorAttachments[0].texture = framebufferTexture
-			descriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1)
-			descriptor.colorAttachments[0].loadAction = .Clear
-			descriptor.colorAttachments[0].storeAction = .Store
-			return descriptor
-		}())
+        let descriptor = MTLRenderPassDescriptor()
+        descriptor.colorAttachments[0].texture = drawable.texture
+        descriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1)
+        descriptor.colorAttachments[0].loadAction = .clear
+        descriptor.colorAttachments[0].storeAction = .store
+		guard let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor) else { return }
+        
 		encoder.setRenderPipelineState(pipelineState)
-		encoder.setVertexBuffer(vertexBuffer, offset: 0, atIndex: 0)
-		encoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 3)
+		encoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+        encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)
 		encoder.endEncoding()
 		
 		// Present drawable is a convenience completion block that will get executed once your command buffer finishes, and will output the final texture to screen.
-		cmdBuffer.presentDrawable(drawable)
-		cmdBuffer.commit()
+		commandBuffer.present(drawable)
+		commandBuffer.commit()
     }
 }

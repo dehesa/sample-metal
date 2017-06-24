@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Workspace
-   version = "1.0">
-   <FileRef
-      location = "group:02-ClearScreen/02 - ClearScreen.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:03-DrawingIn2D/03 - Drawing in 2D.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:04-DrawingIn3D/04 - Drawing in 3D.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/dehesa/workspace/github/metal-by-example/swift/05-Lighting/05 - Lighting.xcodeproj">
-   </FileRef>
+<Workspace version = "1.0">
+   <FileRef location = "group:02-ClearScreen/02 - ClearScreen.xcodeproj"></FileRef>
+   <FileRef location = "group:03-DrawingIn2D/03 - Drawing in 2D.xcodeproj"></FileRef>
+   <FileRef location = "group:04-DrawingIn3D/04 - Drawing in 3D.xcodeproj"></FileRef>
+   <FileRef location = "group:05-Lighting/05 - Lighting.xcodeproj"></FileRef>
 </Workspace>

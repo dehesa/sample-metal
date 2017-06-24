@@ -83,7 +83,6 @@ class MetalView : NSView {
 			let futureTimeStamp = inOutputTime.memory.hostTime
 			view.frameDuration = NSTimeInterval(futureTimeStamp-view.previousTimeStamp) / NSTimeInterval(NSEC_PER_SEC)
 			view.previousTimeStamp = futureTimeStamp
-			Swift.print(view.frameDuration)
 			
 			dispatch_async(dispatch_get_main_queue()) {
 				view.displayLinkDidFire()
@@ -135,8 +134,9 @@ class MetalView : NSView {
     }
     
     func displayLinkDidFire() {
-		Swift.print("\tdrawable\n")
-        currentDrawable = metalLayer.nextDrawable()
-        delegate?.drawInView(self)
+		autoreleasepool {
+			currentDrawable = metalLayer.nextDrawable()
+			delegate?.drawInView(self)
+		}
     }
 }
