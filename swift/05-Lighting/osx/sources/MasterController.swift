@@ -1,11 +1,11 @@
 import Cocoa
 
-class MasterController : NSViewController {
+class MasterController: NSViewController {
 
     // MARK: Properties
     
-    private var renderer : MetalRenderer!
-    private var metalView : MetalView { return self.view as! MetalView }
+    private var renderer: MetalRenderer!
+    private var metalView: MetalView { return self.view as! MetalView }
     
     override func viewDidLoad() {
         super.viewDidLoad()

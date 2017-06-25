@@ -1,11 +1,11 @@
 import UIKit
 
-class MasterController : UIViewController {
+class MasterController: UIViewController {
     
     // MARK: Properties
     
-    private var renderer : MetalRenderer!
-    private var metalView : MetalView { return self.view as! MetalView }
+    private var renderer: MetalRenderer!
+    private var metalView: MetalView { return self.view as! MetalView }
     
     // MARK: Functionality
 

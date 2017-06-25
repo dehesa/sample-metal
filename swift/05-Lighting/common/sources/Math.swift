@@ -2,24 +2,24 @@ import simd
 
 extension float3 {
     
-    public var translationMatrix : float4x4 {
+    public var translationMatrix: float4x4 {
         // List of the matrix' columns
-        let vectorX : float4 = [1, 0, 0, 0]
-        let vectorY : float4 = [0, 1, 0, 0]
-        let vectorZ : float4 = [0, 0, 1, 0]
-        let vectorW : float4 = [x, y, z, 1]
+        let vectorX: float4 = [1, 0, 0, 0]
+        let vectorY: float4 = [0, 1, 0, 0]
+        let vectorZ: float4 = [0, 0, 1, 0]
+        let vectorW: float4 = [x, y, z, 1]
         return float4x4([vectorX, vectorY, vectorZ, vectorW])
     }
     
     public func rotationMatrix(withAngle angle: Float) -> float4x4 {
-        let c : Float = cos(angle)
-        let s : Float = sin(angle)
+        let c: Float = cos(angle)
+        let s: Float = sin(angle)
         
         // List of the matrix' columns
-        let vectorX : float4 = [x*x + (1-x*x)*c, x*y*(1-c) - z*s, x*z*(1-c) + y*s, 0]
-        let vectorY : float4 = [x*y*(1-c) + z*s, y*y + (1-y*y)*c, y*z*(1-c) - x*s, 0]
-        let vectorZ : float4 = [x*z*(1-c) - y*s, y*z*(1-c) + x*s, z*z + (1-z*z)*c, 0]
-        let vectorW : float4 = [0, 0, 0, 1]
+        let vectorX: float4 = [x*x + (1-x*x)*c, x*y*(1-c) - z*s, x*z*(1-c) + y*s, 0]
+        let vectorY: float4 = [x*y*(1-c) + z*s, y*y + (1-y*y)*c, y*z*(1-c) - x*s, 0]
+        let vectorZ: float4 = [x*z*(1-c) - y*s, y*z*(1-c) + x*s, z*z + (1-z*z)*c, 0]
+        let vectorW: float4 = [0, 0, 0, 1]
         return float4x4([vectorX, vectorY, vectorZ, vectorW])
     }
 }
@@ -35,10 +35,10 @@ extension float4x4 {
         let wzScale = -2 * far * near / zRange
         
         // List of the matrix' columns
-        let vectorP : float4 = [xScale,      0,       0,  0]
-        let vectorQ : float4 = [     0, yScale,       0,  0]
-        let vectorR : float4 = [     0,      0,  zScale, -1]
-        let vectorS : float4 = [     0,      0, wzScale,  0]
+        let vectorP: float4 = [xScale,      0,       0,  0]
+        let vectorQ: float4 = [     0, yScale,       0,  0]
+        let vectorR: float4 = [     0,      0,  zScale, -1]
+        let vectorS: float4 = [     0,      0, wzScale,  0]
         self.init([vectorP, vectorQ, vectorR, vectorS])
     }
     

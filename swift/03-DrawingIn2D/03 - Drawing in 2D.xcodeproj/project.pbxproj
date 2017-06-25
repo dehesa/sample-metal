@@ -7,41 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC11C87E1C8AF44E0076017C /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC11C87C1C8AF44E0076017C /* MasterController.swift */; };
-		BC11C87F1C8AF44E0076017C /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC11C87D1C8AF44E0076017C /* MetalView.swift */; };
-		BC11C8821C8AF4C10076017C /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC11C8801C8AF4C10076017C /* MasterController.swift */; };
-		BC11C8831C8AF4C10076017C /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC11C8811C8AF4C10076017C /* MetalView.swift */; };
-		BCB26CBC1C25D741008F139B /* osx.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB26CB21C25D741008F139B /* osx.xcassets */; };
-		BCB26CBD1C25D741008F139B /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB26CB41C25D741008F139B /* main.storyboard */; };
-		BCB26CC01C25D741008F139B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB26CBA1C25D741008F139B /* AppDelegate.swift */; };
-		BCB26CCA1C25E1FE008F139B /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCB791101C25CF0D00E02523 /* Shader.metal */; };
-		BCB791221C25CF0D00E02523 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCB791101C25CF0D00E02523 /* Shader.metal */; };
-		BCB791231C25CF0D00E02523 /* ios.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB791131C25CF0D00E02523 /* ios.xcassets */; };
-		BCB791241C25CF0D00E02523 /* launchscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB791151C25CF0D00E02523 /* launchscreen.storyboard */; };
-		BCB791251C25CF0D00E02523 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB791171C25CF0D00E02523 /* main.storyboard */; };
-		BCB791281C25CF0D00E02523 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB7911D1C25CF0D00E02523 /* AppDelegate.swift */; };
+		8DB38D4A1F004864001EC3AD /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB38D481F004705001EC3AD /* SetUp.swift */; };
+		8DB38D4B1F004864001EC3AD /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB38D481F004705001EC3AD /* SetUp.swift */; };
+		8DB38D4C1F00529C001EC3AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB794441EFFA57A00DC8877 /* AppDelegate.swift */; };
+		8DB38D4D1F00529C001EC3AD /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7944C1EFFA57A00DC8877 /* MasterController.swift */; };
+		8DB38D4E1F00529C001EC3AD /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7944D1EFFA57A00DC8877 /* MetalView.swift */; };
+		8DB794571EFFA64300DC8877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7944F1EFFA57A00DC8877 /* AppDelegate.swift */; };
+		8DB794581EFFA64300DC8877 /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB794551EFFA57A00DC8877 /* MasterController.swift */; };
+		8DB794591EFFA64300DC8877 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB794561EFFA57A00DC8877 /* MetalView.swift */; };
+		8DB7945A1EFFA64B00DC8877 /* macOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB794511EFFA57A00DC8877 /* macOS.xcassets */; };
+		8DB7945B1EFFA64F00DC8877 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DB794531EFFA57A00DC8877 /* Main.storyboard */; };
+		8DB7945C1EFFA6DC00DC8877 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8DB794421EFFA57A00DC8877 /* Shader.metal */; };
+		8DB7945D1EFFA6DC00DC8877 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8DB794421EFFA57A00DC8877 /* Shader.metal */; };
+		8DB794911F003D8900DC8877 /* iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB794461EFFA57A00DC8877 /* iOS.xcassets */; };
+		8DB794921F003D9200DC8877 /* Launchscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DB794481EFFA57A00DC8877 /* Launchscreen.storyboard */; };
+		8DB794931F003D9200DC8877 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DB7944A1EFFA57A00DC8877 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BC11C87C1C8AF44E0076017C /* MasterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
-		BC11C87D1C8AF44E0076017C /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
-		BC11C8801C8AF4C10076017C /* MasterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
-		BC11C8811C8AF4C10076017C /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
+		8DB38D481F004705001EC3AD /* SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUp.swift; sourceTree = "<group>"; };
+		8DB794391EFFA57A00DC8877 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
+		8DB7943B1EFFA57A00DC8877 /* iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = iOS.plist; sourceTree = "<group>"; };
+		8DB7943C1EFFA57A00DC8877 /* iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = iOS.xcconfig; sourceTree = "<group>"; };
+		8DB7943E1EFFA57A00DC8877 /* macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = macOS.plist; sourceTree = "<group>"; };
+		8DB7943F1EFFA57A00DC8877 /* macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = macOS.xcconfig; sourceTree = "<group>"; };
+		8DB794421EFFA57A00DC8877 /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
+		8DB794441EFFA57A00DC8877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8DB794461EFFA57A00DC8877 /* iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iOS.xcassets; sourceTree = "<group>"; };
+		8DB794491EFFA57A00DC8877 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launchscreen.storyboard; sourceTree = "<group>"; };
+		8DB7944B1EFFA57A00DC8877 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8DB7944C1EFFA57A00DC8877 /* MasterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
+		8DB7944D1EFFA57A00DC8877 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
+		8DB7944F1EFFA57A00DC8877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8DB794511EFFA57A00DC8877 /* macOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = macOS.xcassets; sourceTree = "<group>"; };
+		8DB794541EFFA57A00DC8877 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8DB794551EFFA57A00DC8877 /* MasterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
+		8DB794561EFFA57A00DC8877 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		BCB26CA11C25D6A8008F139B /* 03 - Drawing in 2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "03 - Drawing in 2D.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCB26CB21C25D741008F139B /* osx.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = osx.xcassets; sourceTree = "<group>"; };
-		BCB26CB51C25D741008F139B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/main.storyboard; sourceTree = "<group>"; };
-		BCB26CB71C25D741008F139B /* osx.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = osx.plist; sourceTree = "<group>"; };
-		BCB26CB81C25D741008F139B /* osx.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = osx.xcconfig; sourceTree = "<group>"; };
-		BCB26CBA1C25D741008F139B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCB790F81C25CE4E00E02523 /* 03 - Drawing in 2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "03 - Drawing in 2D.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCB791101C25CF0D00E02523 /* Shader.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
-		BCB791131C25CF0D00E02523 /* ios.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ios.xcassets; sourceTree = "<group>"; };
-		BCB791161C25CF0D00E02523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/launchscreen.storyboard; sourceTree = "<group>"; };
-		BCB791181C25CF0D00E02523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/main.storyboard; sourceTree = "<group>"; };
-		BCB7911A1C25CF0D00E02523 /* ios.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ios.plist; sourceTree = "<group>"; };
-		BCB7911B1C25CF0D00E02523 /* ios.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ios.xcconfig; sourceTree = "<group>"; };
-		BCB7911D1C25CF0D00E02523 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BCC6CB681CC194F90009EBA6 /* common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = common.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,58 +65,123 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BCB26CB01C25D741008F139B /* osx */ = {
+		8DB794371EFFA57A00DC8877 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				BCB26CB11C25D741008F139B /* assets */,
-				BCB26CB61C25D741008F139B /* configurations */,
-				BCB26CB91C25D741008F139B /* sources */,
+				8DB794381EFFA57A00DC8877 /* Common */,
+				8DB7943A1EFFA57A00DC8877 /* iOS */,
+				8DB7943D1EFFA57A00DC8877 /* macOS */,
 			);
-			path = osx;
+			path = Configuration;
 			sourceTree = "<group>";
 		};
-		BCB26CB11C25D741008F139B /* assets */ = {
+		8DB794381EFFA57A00DC8877 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				BCB26CB21C25D741008F139B /* osx.xcassets */,
-				BCB26CB31C25D741008F139B /* storyboards */,
+				8DB794391EFFA57A00DC8877 /* Common.xcconfig */,
 			);
-			path = assets;
+			path = Common;
 			sourceTree = "<group>";
 		};
-		BCB26CB31C25D741008F139B /* storyboards */ = {
+		8DB7943A1EFFA57A00DC8877 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				BCB26CB41C25D741008F139B /* main.storyboard */,
+				8DB7943C1EFFA57A00DC8877 /* iOS.xcconfig */,
+				8DB7943B1EFFA57A00DC8877 /* iOS.plist */,
 			);
-			path = storyboards;
+			path = iOS;
 			sourceTree = "<group>";
 		};
-		BCB26CB61C25D741008F139B /* configurations */ = {
+		8DB7943D1EFFA57A00DC8877 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				BCB26CB71C25D741008F139B /* osx.plist */,
-				BCB26CB81C25D741008F139B /* osx.xcconfig */,
+				8DB7943F1EFFA57A00DC8877 /* macOS.xcconfig */,
+				8DB7943E1EFFA57A00DC8877 /* macOS.plist */,
 			);
-			path = configurations;
+			path = macOS;
 			sourceTree = "<group>";
 		};
-		BCB26CB91C25D741008F139B /* sources */ = {
+		8DB794401EFFA57A00DC8877 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				BCB26CBA1C25D741008F139B /* AppDelegate.swift */,
-				BC11C8801C8AF4C10076017C /* MasterController.swift */,
-				BC11C8811C8AF4C10076017C /* MetalView.swift */,
+				8DB794411EFFA57A00DC8877 /* Common */,
+				8DB794431EFFA57A00DC8877 /* iOS */,
+				8DB7944E1EFFA57A00DC8877 /* macOS */,
 			);
-			path = sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		8DB794411EFFA57A00DC8877 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8DB38D481F004705001EC3AD /* SetUp.swift */,
+				8DB794421EFFA57A00DC8877 /* Shader.metal */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		8DB794431EFFA57A00DC8877 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				8DB794451EFFA57A00DC8877 /* Assets */,
+				8DB794441EFFA57A00DC8877 /* AppDelegate.swift */,
+				8DB7944C1EFFA57A00DC8877 /* MasterController.swift */,
+				8DB7944D1EFFA57A00DC8877 /* MetalView.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		8DB794451EFFA57A00DC8877 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8DB794461EFFA57A00DC8877 /* iOS.xcassets */,
+				8DB794471EFFA57A00DC8877 /* Storyboards */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		8DB794471EFFA57A00DC8877 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8DB794481EFFA57A00DC8877 /* Launchscreen.storyboard */,
+				8DB7944A1EFFA57A00DC8877 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		8DB7944E1EFFA57A00DC8877 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				8DB794501EFFA57A00DC8877 /* Assets */,
+				8DB7944F1EFFA57A00DC8877 /* AppDelegate.swift */,
+				8DB794551EFFA57A00DC8877 /* MasterController.swift */,
+				8DB794561EFFA57A00DC8877 /* MetalView.swift */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		8DB794501EFFA57A00DC8877 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8DB794511EFFA57A00DC8877 /* macOS.xcassets */,
+				8DB794521EFFA57A00DC8877 /* Storyboards */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		8DB794521EFFA57A00DC8877 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8DB794531EFFA57A00DC8877 /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		BCB790EF1C25CE4E00E02523 = {
 			isa = PBXGroup;
 			children = (
-				BCB7910D1C25CF0D00E02523 /* common */,
-				BCB791111C25CF0D00E02523 /* ios */,
-				BCB26CB01C25D741008F139B /* osx */,
+				8DB794371EFFA57A00DC8877 /* Configuration */,
+				8DB794401EFFA57A00DC8877 /* Sources */,
 				BCB790F91C25CE4E00E02523 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -127,92 +195,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BCB7910D1C25CF0D00E02523 /* common */ = {
-			isa = PBXGroup;
-			children = (
-				BCC6CB671CC194F90009EBA6 /* configurations */,
-				BCB7910E1C25CF0D00E02523 /* sources */,
-			);
-			path = common;
-			sourceTree = "<group>";
-		};
-		BCB7910E1C25CF0D00E02523 /* sources */ = {
-			isa = PBXGroup;
-			children = (
-				BCB7910F1C25CF0D00E02523 /* shaders */,
-			);
-			path = sources;
-			sourceTree = "<group>";
-		};
-		BCB7910F1C25CF0D00E02523 /* shaders */ = {
-			isa = PBXGroup;
-			children = (
-				BCB791101C25CF0D00E02523 /* Shader.metal */,
-			);
-			path = shaders;
-			sourceTree = "<group>";
-		};
-		BCB791111C25CF0D00E02523 /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				BCB791121C25CF0D00E02523 /* assets */,
-				BCB791191C25CF0D00E02523 /* configurations */,
-				BCB7911C1C25CF0D00E02523 /* sources */,
-			);
-			path = ios;
-			sourceTree = "<group>";
-		};
-		BCB791121C25CF0D00E02523 /* assets */ = {
-			isa = PBXGroup;
-			children = (
-				BCB791131C25CF0D00E02523 /* ios.xcassets */,
-				BCB791141C25CF0D00E02523 /* storyboards */,
-			);
-			path = assets;
-			sourceTree = "<group>";
-		};
-		BCB791141C25CF0D00E02523 /* storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				BCB791151C25CF0D00E02523 /* launchscreen.storyboard */,
-				BCB791171C25CF0D00E02523 /* main.storyboard */,
-			);
-			path = storyboards;
-			sourceTree = "<group>";
-		};
-		BCB791191C25CF0D00E02523 /* configurations */ = {
-			isa = PBXGroup;
-			children = (
-				BCB7911A1C25CF0D00E02523 /* ios.plist */,
-				BCB7911B1C25CF0D00E02523 /* ios.xcconfig */,
-			);
-			path = configurations;
-			sourceTree = "<group>";
-		};
-		BCB7911C1C25CF0D00E02523 /* sources */ = {
-			isa = PBXGroup;
-			children = (
-				BCB7911D1C25CF0D00E02523 /* AppDelegate.swift */,
-				BC11C87C1C8AF44E0076017C /* MasterController.swift */,
-				BC11C87D1C8AF44E0076017C /* MetalView.swift */,
-			);
-			path = sources;
-			sourceTree = "<group>";
-		};
-		BCC6CB671CC194F90009EBA6 /* configurations */ = {
-			isa = PBXGroup;
-			children = (
-				BCC6CB681CC194F90009EBA6 /* common.xcconfig */,
-			);
-			path = configurations;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BCB26CA01C25D6A8008F139B /* 03 - Drawing in 2D (OSX) */ = {
+		BCB26CA01C25D6A8008F139B /* 03 - Drawing in 2D (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BCB26CAF1C25D6A8008F139B /* Build configuration list for PBXNativeTarget "03 - Drawing in 2D (OSX)" */;
+			buildConfigurationList = BCB26CAF1C25D6A8008F139B /* Build configuration list for PBXNativeTarget "03 - Drawing in 2D (macOS)" */;
 			buildPhases = (
 				BCB26C9D1C25D6A8008F139B /* Sources */,
 				BCB26C9E1C25D6A8008F139B /* Frameworks */,
@@ -222,7 +210,7 @@
 			);
 			dependencies = (
 			);
-			name = "03 - Drawing in 2D (OSX)";
+			name = "03 - Drawing in 2D (macOS)";
 			productName = "Drawing in 2D";
 			productReference = BCB26CA11C25D6A8008F139B /* 03 - Drawing in 2D.app */;
 			productType = "com.apple.product-type.application";
@@ -276,7 +264,7 @@
 			projectRoot = "";
 			targets = (
 				BCB790F71C25CE4E00E02523 /* 03 - Drawing in 2D (iOS) */,
-				BCB26CA01C25D6A8008F139B /* 03 - Drawing in 2D (OSX) */,
+				BCB26CA01C25D6A8008F139B /* 03 - Drawing in 2D (macOS) */,
 			);
 		};
 /* End PBXProject section */
@@ -286,8 +274,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCB26CBC1C25D741008F139B /* osx.xcassets in Resources */,
-				BCB26CBD1C25D741008F139B /* main.storyboard in Resources */,
+				8DB7945A1EFFA64B00DC8877 /* macOS.xcassets in Resources */,
+				8DB7945B1EFFA64F00DC8877 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,9 +283,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCB791231C25CF0D00E02523 /* ios.xcassets in Resources */,
-				BCB791241C25CF0D00E02523 /* launchscreen.storyboard in Resources */,
-				BCB791251C25CF0D00E02523 /* main.storyboard in Resources */,
+				8DB794931F003D9200DC8877 /* Main.storyboard in Resources */,
+				8DB794911F003D8900DC8877 /* iOS.xcassets in Resources */,
+				8DB794921F003D9200DC8877 /* Launchscreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,10 +296,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCB26CC01C25D741008F139B /* AppDelegate.swift in Sources */,
-				BC11C8821C8AF4C10076017C /* MasterController.swift in Sources */,
-				BC11C8831C8AF4C10076017C /* MetalView.swift in Sources */,
-				BCB26CCA1C25E1FE008F139B /* Shader.metal in Sources */,
+				8DB7945C1EFFA6DC00DC8877 /* Shader.metal in Sources */,
+				8DB794591EFFA64300DC8877 /* MetalView.swift in Sources */,
+				8DB38D4A1F004864001EC3AD /* SetUp.swift in Sources */,
+				8DB794571EFFA64300DC8877 /* AppDelegate.swift in Sources */,
+				8DB794581EFFA64300DC8877 /* MasterController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,38 +308,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCB791281C25CF0D00E02523 /* AppDelegate.swift in Sources */,
-				BC11C87E1C8AF44E0076017C /* MasterController.swift in Sources */,
-				BC11C87F1C8AF44E0076017C /* MetalView.swift in Sources */,
-				BCB791221C25CF0D00E02523 /* Shader.metal in Sources */,
+				8DB38D4C1F00529C001EC3AD /* AppDelegate.swift in Sources */,
+				8DB38D4D1F00529C001EC3AD /* MasterController.swift in Sources */,
+				8DB38D4E1F00529C001EC3AD /* MetalView.swift in Sources */,
+				8DB7945D1EFFA6DC00DC8877 /* Shader.metal in Sources */,
+				8DB38D4B1F004864001EC3AD /* SetUp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BCB26CB41C25D741008F139B /* main.storyboard */ = {
+		8DB794481EFFA57A00DC8877 /* Launchscreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BCB26CB51C25D741008F139B /* Base */,
+				8DB794491EFFA57A00DC8877 /* Base */,
 			);
-			name = main.storyboard;
+			name = Launchscreen.storyboard;
 			sourceTree = "<group>";
 		};
-		BCB791151C25CF0D00E02523 /* launchscreen.storyboard */ = {
+		8DB7944A1EFFA57A00DC8877 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BCB791161C25CF0D00E02523 /* Base */,
+				8DB7944B1EFFA57A00DC8877 /* Base */,
 			);
-			name = launchscreen.storyboard;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		BCB791171C25CF0D00E02523 /* main.storyboard */ = {
+		8DB794531EFFA57A00DC8877 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BCB791181C25CF0D00E02523 /* Base */,
+				8DB794541EFFA57A00DC8877 /* Base */,
 			);
-			name = main.storyboard;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -358,7 +348,7 @@
 /* Begin XCBuildConfiguration section */
 		BCB26CAD1C25D6A8008F139B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCB26CB81C25D741008F139B /* osx.xcconfig */;
+			baseConfigurationReference = 8DB7943F1EFFA57A00DC8877 /* macOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
@@ -370,7 +360,7 @@
 		};
 		BCB26CAE1C25D6A8008F139B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCB26CB81C25D741008F139B /* osx.xcconfig */;
+			baseConfigurationReference = 8DB7943F1EFFA57A00DC8877 /* macOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
@@ -382,7 +372,7 @@
 		};
 		BCB791081C25CE4E00E02523 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCC6CB681CC194F90009EBA6 /* common.xcconfig */;
+			baseConfigurationReference = 8DB794391EFFA57A00DC8877 /* Common.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -436,7 +426,7 @@
 		};
 		BCB791091C25CE4E00E02523 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCC6CB681CC194F90009EBA6 /* common.xcconfig */;
+			baseConfigurationReference = 8DB794391EFFA57A00DC8877 /* Common.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -484,7 +474,7 @@
 		};
 		BCB7910B1C25CE4E00E02523 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCB7911B1C25CF0D00E02523 /* ios.xcconfig */;
+			baseConfigurationReference = 8DB7943C1EFFA57A00DC8877 /* iOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
@@ -495,7 +485,7 @@
 		};
 		BCB7910C1C25CE4E00E02523 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCB7911B1C25CF0D00E02523 /* ios.xcconfig */;
+			baseConfigurationReference = 8DB7943C1EFFA57A00DC8877 /* iOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
@@ -507,7 +497,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BCB26CAF1C25D6A8008F139B /* Build configuration list for PBXNativeTarget "03 - Drawing in 2D (OSX)" */ = {
+		BCB26CAF1C25D6A8008F139B /* Build configuration list for PBXNativeTarget "03 - Drawing in 2D (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BCB26CAD1C25D6A8008F139B /* Debug */,

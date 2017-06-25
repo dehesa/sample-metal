@@ -1,25 +1,25 @@
 import Metal
 import simd
 
-class MetalRenderer : MetalViewDelegate {
+class MetalRenderer: MetalViewDelegate {
     
     // MARK: Definitions
     
     private struct Uniforms {
-        var modelViewProjectionMatrix : float4x4
+        var modelViewProjectionMatrix: float4x4
     }
     
     // MARK: Properties
     
-    private let device : MTLDevice
-    private let pipelineState : MTLRenderPipelineState
-    private let depthStencilState : MTLDepthStencilState
-    private var commandQueue : MTLCommandQueue
-	private let mesh : Mesh
-    private let uniformsBuffer : MTLBuffer
+    private let device: MTLDevice
+    private let pipelineState: MTLRenderPipelineState
+    private let depthStencilState: MTLDepthStencilState
+    private var commandQueue: MTLCommandQueue
+	private let mesh: Mesh
+    private let uniformsBuffer: MTLBuffer
     
-    private let displaySemaphore : dispatch_semaphore_t = dispatch_semaphore_create(1)
-    private var (time, rotationX, rotationY) : (Float, Float, Float) = (0,0,0)
+    private let displaySemaphore: dispatch_semaphore_t = dispatch_semaphore_create(1)
+    private var (time, rotationX, rotationY): (Float, Float, Float) = (0,0,0)
     
     // MARK: Initializer
     
@@ -88,7 +88,7 @@ class MetalRenderer : MetalViewDelegate {
         rotationX += Float(duration * M_PI_2)
         rotationY += Float(duration * M_PI / 3)
         
-        let scaleFactor : Float = 1
+        let scaleFactor: Float = 1
         let xRotMatrix = float3(1, 0, 0).rotationMatrix(withAngle: rotationX)
         let yRotMatrix = float3(0, 1, 0).rotationMatrix(withAngle: rotationY)
         let scaleMatrix = float4x4(diagonal: [scaleFactor, scaleFactor, scaleFactor, 1])

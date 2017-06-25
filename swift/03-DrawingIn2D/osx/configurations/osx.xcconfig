@@ -1,8 +1,0 @@
-// Architecture
-SDKROOT = macosx
-
-// Packaging
-INFOPLIST_FILE = $(SRCROOT)/osx/configurations/osx.plist
-
-// User-Generated
-MAIN_STORYBOARD = main

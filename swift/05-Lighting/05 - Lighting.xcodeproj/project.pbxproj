@@ -245,9 +245,9 @@
 			productReference = BC11C8011C8AE7730076017C /* 05 - Lighting.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BC11C8561C8AEEA80076017C /* 05 - Lighting (OSX) */ = {
+		BC11C8561C8AEEA80076017C /* 05 - Lighting (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC11C8631C8AEEA80076017C /* Build configuration list for PBXNativeTarget "05 - Lighting (OSX)" */;
+			buildConfigurationList = BC11C8631C8AEEA80076017C /* Build configuration list for PBXNativeTarget "05 - Lighting (macOS)" */;
 			buildPhases = (
 				BC11C8531C8AEEA80076017C /* Sources */,
 				BC11C8541C8AEEA80076017C /* Frameworks */,
@@ -257,7 +257,7 @@
 			);
 			dependencies = (
 			);
-			name = "05 - Lighting (OSX)";
+			name = "05 - Lighting (macOS)";
 			productName = "05-Lighting";
 			productReference = BC11C8571C8AEEA80076017C /* 05 - Lighting.app */;
 			productType = "com.apple.product-type.application";
@@ -294,7 +294,7 @@
 			projectRoot = "";
 			targets = (
 				BC11C8001C8AE7730076017C /* 05 - Lighting (iOS) */,
-				BC11C8561C8AEEA80076017C /* 05 - Lighting (OSX) */,
+				BC11C8561C8AEEA80076017C /* 05 - Lighting (macOS) */,
 			);
 		};
 /* End PBXProject section */
@@ -489,6 +489,7 @@
 			baseConfigurationReference = BC11C8261C8AE7D40076017C /* ios.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 			};
 			name = Debug;
@@ -498,6 +499,7 @@
 			baseConfigurationReference = BC11C8261C8AE7D40076017C /* ios.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 			};
 			name = Release;
@@ -510,7 +512,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 			};
 			name = Debug;
 		};
@@ -522,7 +524,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 			};
 			name = Release;
 		};
@@ -547,7 +549,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC11C8631C8AEEA80076017C /* Build configuration list for PBXNativeTarget "05 - Lighting (OSX)" */ = {
+		BC11C8631C8AEEA80076017C /* Build configuration list for PBXNativeTarget "05 - Lighting (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC11C8641C8AEEA80076017C /* Debug */,

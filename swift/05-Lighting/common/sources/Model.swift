@@ -7,24 +7,24 @@ struct ModelOBJ {
 	// MARK: Definitions
 	
 	struct Vertex {
-		var position : float4
-		var normal : float4
+		var position: float4
+		var normal: float4
 	}
 	
 	typealias Index = UInt16
 	
-	struct Group : CustomStringConvertible {
-		var vertexData : NSData?
-		var indexData : NSData?
+	struct Group: CustomStringConvertible {
+		var vertexData: NSData?
+		var indexData: NSData?
 	}
 	
 	// MARK: Properties
 	
-	var vertices  : [float4]
-	var normals   : [float4]
-	var texCoords : [float2]
-	var groupVertices : [Vertex]
-	var groupIndices  : [Index]
+	var vertices: [float4]
+	var normals: [float4]
+	var texCoords: [float2]
+	var groupVertices: [Vertex]
+	var groupIndices: [Index]
 	
 	// MARK: Initializer
 	

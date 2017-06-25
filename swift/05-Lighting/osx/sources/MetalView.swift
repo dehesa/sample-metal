@@ -17,22 +17,22 @@ class MetalView: NSView {
     // MARK: Properties
     
     /// The metal layer that backs this view.
-    var metalLayer : CAMetalLayer { return layer as! CAMetalLayer }
+    var metalLayer: CAMetalLayer { return layer as! CAMetalLayer }
     
     /// The delegate of this view, responsible for drawing.
-    var delegate : MetalViewDelegate?
+    var delegate: MetalViewDelegate?
     
     /// Texture containing the depth data from the depth/stencil test.
-    private var depthTexture : MTLTexture?
+    private var depthTexture: MTLTexture?
     
     /// The color to which the color attachment should be cleared at the start of a rendering pass.
-    let clearColor : MTLClearColor = MTLClearColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+    let clearColor: MTLClearColor = MTLClearColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
     
     /// The view's layer's current drawable. This is valid only in the context of a callback to the delegate's `drawInView:` method.
-    var currentDrawable : CAMetalDrawable?
+    var currentDrawable: CAMetalDrawable?
     
     /// A render pass descriptor configured to use the current drawable's texture as its primary color attachment and an internal depth texture of the same size as its depth attachment's texture.
-    var currentRenderPassDescriptor : MTLRenderPassDescriptor? {
+    var currentRenderPassDescriptor: MTLRenderPassDescriptor? {
         guard let drawable = currentDrawable, let depthTexture = self.depthTexture else { return nil }
         
         let desc = MTLRenderPassDescriptor()
@@ -48,13 +48,13 @@ class MetalView: NSView {
     }
     
     /// Timer sync with the screen refresh controlling when the drawing loop is fired.
-    private var displayLink : CVDisplayLink?
+    private var displayLink: CVDisplayLink?
     
     /// The target frame rate (in Hz). For best results, this should be a number that evenly divides 60 (e.g., 60, 30, 15).
-    private let preferredFramesPerSecond : UInt = 60
+    private let preferredFramesPerSecond: UInt = 60
     
     /// The duration (in seconds) of the previous frame. This is valid only in the context of a callback to the delegate's `drawInView:` method.
-    var frameDuration : NSTimeInterval = 1 / 60
+    var frameDuration: NSTimeInterval = 1 / 60
     
     // MARK: Initializer
     
@@ -73,8 +73,8 @@ class MetalView: NSView {
     override func viewDidMoveToWindow() {
         super.viewDidMoveToWindow()
         
-        let idealFrameDuration  : NSTimeInterval = 1 / 60
-        let targetFrameDuration : NSTimeInterval = 1 / Double(preferredFramesPerSecond)
+        let idealFrameDuration: NSTimeInterval = 1 / 60
+        let targetFrameDuration: NSTimeInterval = 1 / Double(preferredFramesPerSecond)
         let frameInterval = Int(round(targetFrameDuration / idealFrameDuration))
         
         func displayLinkOutputCallback(displayLink: CVDisplayLink, _ inNow: UnsafePointer<CVTimeStamp>, _ inOutputTime: UnsafePointer<CVTimeStamp>, _ flagsIn: CVOptionFlags, _ flagsOut: UnsafeMutablePointer<CVOptionFlags>, _ displayLinkContext: UnsafeMutablePointer<Void>) -> CVReturn {

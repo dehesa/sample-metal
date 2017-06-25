@@ -10,8 +10,8 @@ struct Mesh {
 	
 	// MARK: Properties
 	
-	var vertexBuffer : MTLBuffer
-	var indexBuffer  : MTLBuffer
+	var vertexBuffer: MTLBuffer
+	var indexBuffer: MTLBuffer
 	
 	// MARK: Initializer
 	
