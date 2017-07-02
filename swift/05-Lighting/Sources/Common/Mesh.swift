@@ -13,8 +13,6 @@ struct Mesh {
 	var vertexBuffer: MTLBuffer
 	var indexBuffer: MTLBuffer
 	
-	// MARK: Initializer
-	
 	init(withOBJGroup group: ModelOBJ.Group, device: MTLDevice) {
 		
 	}

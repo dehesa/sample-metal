@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BC11C8001C8AE7730076017C"
-               BuildableName = "05 - Lighting.app"
+               BuildableName = ".app"
                BlueprintName = "05 - Lighting (iOS)"
                ReferencedContainer = "container:05 - Lighting.xcodeproj">
             </BuildableReference>
@@ -34,7 +34,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC11C8001C8AE7730076017C"
-            BuildableName = "05 - Lighting.app"
+            BuildableName = ".app"
             BlueprintName = "05 - Lighting (iOS)"
             ReferencedContainer = "container:05 - Lighting.xcodeproj">
          </BuildableReference>
@@ -58,7 +58,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC11C8001C8AE7730076017C"
-            BuildableName = "05 - Lighting.app"
+            BuildableName = ".app"
             BlueprintName = "05 - Lighting (iOS)"
             ReferencedContainer = "container:05 - Lighting.xcodeproj">
          </BuildableReference>
@@ -77,7 +77,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC11C8001C8AE7730076017C"
-            BuildableName = "05 - Lighting.app"
+            BuildableName = ".app"
             BlueprintName = "05 - Lighting (iOS)"
             ReferencedContainer = "container:05 - Lighting.xcodeproj">
          </BuildableReference>

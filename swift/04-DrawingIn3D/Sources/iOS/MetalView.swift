@@ -4,7 +4,7 @@ import simd
 
 protocol MetalViewDelegate {
     /// This method is called once per frame. Within the method, you may access any of the properties of the view, and request the current render pass descriptor to get a descriptor configured with renderable color and depth textures.
-    func drawInView(_ metalView: MetalView)
+    func draw(view metalView: MetalView)
 }
 
 final class MetalView: UIView {
@@ -14,11 +14,11 @@ final class MetalView: UIView {
     private var displayLink: CADisplayLink?
     /// The target frame rate (in Hz). For best results, this should be a number that evenly divides 60 (e.g., 60, 30, 15).
     private let preferredFramesPerSecond: UInt = 60
-    /// The duration (in seconds) of the previous frame. This is valid only in the context of a callback to the delegate's `drawInView:` method.
+    /// The duration (in seconds) of the previous frame. This is valid only in the context of a callback to the delegate's `draw(view:)` method.
     var frameDuration: TimeInterval = 1 / 60
     /// The color to which the color attachment should be cleared at the start of a rendering pass.
     let clearColor: MTLClearColor = MTLClearColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-    /// The view's layer's current drawable. This is valid only in the context of a callback to the delegate's `drawInView:` method.
+    /// The view's layer's current drawable. This is valid only in the context of a callback to the delegate's `draw(view:)` method.
     var currentDrawable: CAMetalDrawable?
     /// The delegate of this view, responsible for drawing.
     var delegate: MetalViewDelegate?
@@ -69,11 +69,12 @@ final class MetalView: UIView {
         super.didMoveToWindow()
         
         self.displayLink?.invalidate()
-		guard let _ = superview else {
-			return displayLink = nil
+		guard let window = self.window else {
+			return self.displayLink = nil
 		}
         
-        displayLink = CADisplayLink(target: self, selector: #selector(MetalView.tickTrigger(from:))).set {
+        self.metalLayer.contentsScale = window.screen.scale
+        self.displayLink = CADisplayLink(target: self, selector: #selector(MetalView.tickTrigger(from:))).set {
             $0.preferredFramesPerSecond = Int(preferredFramesPerSecond)
             $0.add(to: .main, forMode: .commonModes)
         }
@@ -83,20 +84,20 @@ final class MetalView: UIView {
         super.layoutSubviews()
         
         // Since drawable size is in pixels, we need to multiply by the scale to move from points to pixels.
-        let scale = window?.screen.scale ?? UIScreen.main.scale
-        let size = bounds.size.applying(CGAffineTransform(scaleX: scale, y: scale))
+        let scale = self.metalLayer.contentsScale
+        let size = self.bounds.size.applying(CGAffineTransform(scaleX: scale, y: scale))
         
         // If there are no changes on the width and height of the depth texture, don't recreate it.
-        let w = Int(size.width), h = Int(size.height)
-        guard depthTexture == nil || depthTexture!.width != w || depthTexture!.height != h else { return }
+        if let texture = self.depthTexture,
+           CGSize(width: texture.width, height: texture.height).equalTo(size) { return }
         
-        metalLayer.drawableSize = size
-        depthTexture = self.device.makeTexture(descriptor: MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: w, height: h, mipmapped: false))
+        self.metalLayer.drawableSize = size
+        self.depthTexture = self.device.makeTexture(descriptor: MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: Int(size.width), height: Int(size.height), mipmapped: false))
     }
     
     @objc func tickTrigger(from displayLink: CADisplayLink) {
-        currentDrawable = metalLayer.nextDrawable()
-        frameDuration = displayLink.duration
-        delegate?.drawInView(self)
+        self.currentDrawable = metalLayer.nextDrawable()
+        self.frameDuration = displayLink.duration
+        self.delegate?.draw(view: self)
     }
 }

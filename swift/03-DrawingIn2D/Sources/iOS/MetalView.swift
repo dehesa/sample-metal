@@ -61,14 +61,12 @@ final class MetalView: UIView {
     override func didMoveToWindow() {
         super.didMoveToWindow()
         
+        self.displayLink?.invalidate()
 		guard let window = self.window else {
-			self.displayLink?.invalidate()
             return self.displayLink = nil
 		}
 		
 		self.metalLayer.contentsScale = window.screen.nativeScale
-            
-		if let dl = self.displayLink { dl.invalidate() }
         self.displayLink = CADisplayLink(target: self, selector: #selector(MetalView.tickTrigger(from:))).set {
             // $0.preferredFramesPerSecond = 60
             $0.add(to: .main, forMode: .commonModes)

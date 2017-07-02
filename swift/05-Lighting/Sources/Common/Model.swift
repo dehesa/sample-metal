@@ -28,7 +28,7 @@ struct ModelOBJ {
 	
 	// MARK: Initializer
 	
-	init?(withURL url: NSURL, generateNormals: Bool) {
+	init?(withURL url: URL, generateNormals: Bool) {
 		guard let fileString = try? String(contentsOfURL: url, encoding: NSASCIIStringEncoding) else { return nil }
 		
 		let scanner = NSScanner(string: fileString)

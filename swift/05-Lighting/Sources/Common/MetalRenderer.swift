@@ -2,11 +2,6 @@ import Metal
 import simd
 
 extension MetalRenderer {
-    private struct Vertex {
-        var position: float4
-        var color: float4
-    }
-    
     private struct Uniforms {
         var modelViewProjectionMatrix: float4x4
     }
@@ -17,8 +12,7 @@ class MetalRenderer: MetalViewDelegate {
     private let renderPipeline: MTLRenderPipelineState
     private let depthStencilState: MTLDepthStencilState
     private var commandQueue: MTLCommandQueue
-    private let verticesBuffer: MTLBuffer
-    private let indecesBuffer: MTLBuffer
+	private let mesh: Mesh
     private let uniformsBuffer: MTLBuffer
     
     private let displaySemaphore = DispatchSemaphore(value: 3)
@@ -29,8 +23,8 @@ class MetalRenderer: MetalViewDelegate {
         self.commandQueue = device.makeCommandQueue()!
         
         guard let library = device.makeDefaultLibrary(),
-              let vertexFunc   = library.makeFunction(name: "main_vertex"),
-              let fragmentFunc = library.makeFunction(name: "main_fragment") else { fatalError("Library or Shaders not found") }
+              let vertexFunc: MTLFunction = library.makeFunction(name: "main_vertex"),
+              let fragmentFunc: MTLFunction = library.makeFunction(name: "main_fragment") else { fatalError("Library or Shaders not found") }
         
         self.renderPipeline = try! device.makeRenderPipelineState(descriptor: MTLRenderPipelineDescriptor().set {
             $0.vertexFunction = vertexFunc
@@ -44,40 +38,26 @@ class MetalRenderer: MetalViewDelegate {
             $0.isDepthWriteEnabled = true
         })!
         
-        // Setup buffers. Coordinates defined in clip space coords: [-1,+1]
-        let vertices = [Vertex(position: [-1,  1,  1, 1], color: [0, 1, 1, 1]),
-                        Vertex(position: [-1, -1,  1, 1], color: [0, 0, 1, 1]),
-                        Vertex(position: [ 1, -1,  1, 1], color: [1, 0, 1, 1]),
-                        Vertex(position: [ 1,  1,  1, 1], color: [1, 1, 1, 1]),
-                        Vertex(position: [-1,  1, -1, 1], color: [0, 1, 0, 1]),
-                        Vertex(position: [-1, -1, -1, 1], color: [0, 0, 0, 1]),
-                        Vertex(position: [ 1, -1, -1, 1], color: [1, 0, 0, 1]),
-                        Vertex(position: [ 1,  1, -1, 1], color: [1, 1, 0, 1]) ]
-        self.verticesBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Vertex>.stride)!
-        self.verticesBuffer.label = "me.dehesa.metal.buffers.vertices"
-        
-        typealias IndexType = UInt16
-        let indices: [IndexType] = [3, 2, 6, 6, 7, 3,
-                                    4, 5, 1, 1, 0, 4,
-                                    4, 0, 3, 3, 7, 4,
-                                    1, 5, 6, 6, 2, 1,
-                                    0, 1, 2, 2, 3, 0,
-                                    7, 6, 5, 5, 4, 7, ]
-        self.indecesBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<IndexType>.stride)!
-        self.indecesBuffer.label = "me.dehesa.metal.buffers.indices"
-        
+        // Setup buffers
+        guard let modelURL = Bundle.main.url(forResource: "teapot", withExtension: "obj") else { fatalError("teapot not found") }
+		guard let model = ModelOBJ(withURL: modelURL, generateNormals: true) else { fatalError("teapot cound not be generated") }
+		guard let group = model.group(withName: "teapot") else { fatalError("teapot group not found") }
+		self.mesh = Mesh(withOBJGroup: group, device: device)
+		
         self.uniformsBuffer = device.makeBuffer(length: MemoryLayout<Uniforms>.stride)!
         self.uniformsBuffer.label = "me.dehesa.metal.buffers.uniform"
     }
     
+    // MARK: Functionality
+    
     func draw(view metalView: MetalView) {
-        self.displaySemaphore.wait()
+        displaySemaphore.wait()
         guard let drawable = metalView.currentDrawable,
-              let commandBuffer = commandQueue.makeCommandBuffer(),
-              let renderPass = metalView.currentRenderPassDescriptor,
-              let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPass) else {
-            let _ = self.displaySemaphore.signal()
-            return
+            let commandBuffer = commandQueue.makeCommandBuffer(),
+            let renderPass = metalView.currentRenderPassDescriptor,
+            let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPass) else {
+                let _ = displaySemaphore.signal()
+                return
         }
         
         let drawableSize = metalView.metalLayer.drawableSize
@@ -88,9 +68,9 @@ class MetalRenderer: MetalViewDelegate {
         encoder.setFrontFacing(.counterClockwise)
         encoder.setCullMode(.back)
         
-        encoder.setVertexBuffer(self.verticesBuffer, offset: 0, index: 0)
+        encoder.setVertexBuffer(self.mesh.vertexBuffer, offset: 0, index: 0)
         encoder.setVertexBuffer(self.uniformsBuffer, offset: 0, index: 1)
-        encoder.drawIndexedPrimitives(type: .triangle, indexCount: self.indecesBuffer.length / MemoryLayout<UInt16>.size, indexType: .uint16, indexBuffer: indecesBuffer, indexBufferOffset: 0)
+        encoder.drawIndexedPrimitives(type: .triangle, indexCount: self.mesh.indexBuffer.length / MemoryLayout<UInt16>.size, indexType: .uint16, indexBuffer: self.mesh.indexBuffer, indexBufferOffset: 0)
         encoder.endEncoding()
         
         commandBuffer.present(drawable)
@@ -103,14 +83,14 @@ class MetalRenderer: MetalViewDelegate {
         self.rotationX += (0.25 * .tau) * duration
         self.rotationY += (.tau / 6.0) * duration
         
-        let scaleFactor: Float = sin(5 * self.time) * 0.25 + 1
+        let scaleFactor: Float = 1
         let xRotMatrix = float4x4(rotate: float3(1, 0, 0), angle: self.rotationX)
         let yRotMatrix = float4x4(rotate: float3(0, 1, 0), angle: self.rotationX)
         let scaleMatrix = float4x4(diagonal: [scaleFactor, scaleFactor, scaleFactor, 1])
         let modelMatrix = (xRotMatrix * yRotMatrix) * scaleMatrix
         
-        let viewMatrix = float4x4(translation: float3(0, 0, -5))
-        let projectionMatrix = float4x4(perspectiveWithAspect: drawableSize.x/drawableSize.y, fovy: .tau/5, near: 1, far: 100)
+        let viewMatrix = float4x4(translation: float3(0, 0, -1.5))
+        let projectionMatrix = float4x4(perspectiveWithAspect: drawableSize.x/drawableSize.y, fovy: .tau/5, near: 0.1, far: 100)
         
         var uni = Uniforms(modelViewProjectionMatrix:  projectionMatrix * (viewMatrix * modelMatrix))
         memcpy(uniformsBuffer.contents(), &uni, MemoryLayout<Uniforms>.size)
