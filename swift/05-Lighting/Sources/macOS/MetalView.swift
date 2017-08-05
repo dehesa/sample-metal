@@ -33,7 +33,7 @@ class MetalView: NSView {
     /// A render pass descriptor configured to use the current drawable's texture as its primary color attachment and an internal depth texture of the same size as its depth attachment's texture.
     var currentRenderPassDescriptor: MTLRenderPassDescriptor? {
         guard let drawable = self.currentDrawable,
-            let depthTexture = self.depthTexture else { return nil }
+              let depthTexture = self.depthTexture else { return nil }
         
         return MTLRenderPassDescriptor().set { (renderPass) in
             renderPass.colorAttachments[0].setUp { (attachment) in
@@ -70,40 +70,40 @@ class MetalView: NSView {
     override func viewDidMoveToWindow() {
         super.viewDidMoveToWindow()
         
-        func displayLinkOutputCallback(_ displayLink: CVDisplayLink, _ inNow: UnsafePointer<CVTimeStamp>, _ inOutputTime: UnsafePointer<CVTimeStamp>, _ flagsIn: CVOptionFlags, _ flagsOut: UnsafeMutablePointer<CVOptionFlags>, _ displayLinkContext: UnsafeMutableRawPointer?) -> CVReturn {
-            guard let context = displayLinkContext else { return kCVReturnInvalidArgument }
-            let view = unsafeBitCast(context, to: MetalView.self)
-            
-            let futureTimeStamp = inOutputTime.pointee.hostTime
-            view.frameDuration = TimeInterval(futureTimeStamp-view.previousTimeStamp) / TimeInterval(NSEC_PER_SEC)
-            view.previousTimeStamp = futureTimeStamp
-            
-            DispatchQueue.main.async {
-                view.displayLinkDidFire()
-            }
-            return kCVReturnSuccess
-        }
-        
-        guard let window = self.window else {
-            if let displayLink = self.displayLink {
-                CVDisplayLinkStop(displayLink)
-                self.displayLink = nil
-            }
-            return
-        }
-        
-        self.metalLayer.contentsScale = window.backingScaleFactor
-        if let dl = self.displayLink {
-            CVDisplayLinkStop(dl)
-        }
-        guard CVDisplayLinkCreateWithCGDisplay(CGMainDisplayID(), &self.displayLink) == kCVReturnSuccess else {
-            fatalError("Display Link could not be created")
-        }
-        
-        CVDisplayLinkSetOutputCallback(self.displayLink!, displayLinkOutputCallback, Unmanaged.passUnretained(self).toOpaque())
-        
-        self.previousTimeStamp = CVGetCurrentHostTime()
-        CVDisplayLinkStart(self.displayLink!)
+//        func displayLinkOutputCallback(_ displayLink: CVDisplayLink, _ inNow: UnsafePointer<CVTimeStamp>, _ inOutputTime: UnsafePointer<CVTimeStamp>, _ flagsIn: CVOptionFlags, _ flagsOut: UnsafeMutablePointer<CVOptionFlags>, _ displayLinkContext: UnsafeMutableRawPointer?) -> CVReturn {
+//            guard let context = displayLinkContext else { return kCVReturnInvalidArgument }
+//            let view = unsafeBitCast(context, to: MetalView.self)
+//
+//            let futureTimeStamp = inOutputTime.pointee.hostTime
+//            view.frameDuration = TimeInterval(futureTimeStamp-view.previousTimeStamp) / TimeInterval(NSEC_PER_SEC)
+//            view.previousTimeStamp = futureTimeStamp
+//
+//            DispatchQueue.main.async {
+//                view.displayLinkDidFire()
+//            }
+//            return kCVReturnSuccess
+//        }
+//
+//        guard let window = self.window else {
+//            if let displayLink = self.displayLink {
+//                CVDisplayLinkStop(displayLink)
+//                self.displayLink = nil
+//            }
+//            return
+//        }
+//
+//        self.metalLayer.contentsScale = window.backingScaleFactor
+//        if let dl = self.displayLink {
+//            CVDisplayLinkStop(dl)
+//        }
+//        guard CVDisplayLinkCreateWithCGDisplay(CGMainDisplayID(), &self.displayLink) == kCVReturnSuccess else {
+//            fatalError("Display Link could not be created")
+//        }
+//
+//        CVDisplayLinkSetOutputCallback(self.displayLink!, displayLinkOutputCallback, Unmanaged.passUnretained(self).toOpaque())
+//
+//        self.previousTimeStamp = CVGetCurrentHostTime()
+//        CVDisplayLinkStart(self.displayLink!)
     }
     
     override func setBoundsSize(_ newSize: NSSize) {

@@ -12,7 +12,7 @@ class MetalRenderer: MetalViewDelegate {
     private let renderPipeline: MTLRenderPipelineState
     private let depthStencilState: MTLDepthStencilState
     private var commandQueue: MTLCommandQueue
-	private let mesh: Mesh
+    private let mesh: Mesh
     private let uniformsBuffer: MTLBuffer
     
     private let displaySemaphore = DispatchSemaphore(value: 3)
@@ -40,42 +40,39 @@ class MetalRenderer: MetalViewDelegate {
         
         // Setup buffers
         guard let modelURL = Bundle.main.url(forResource: "teapot", withExtension: "obj") else { fatalError("teapot not found") }
-		guard let model = ModelOBJ(withURL: modelURL, generateNormals: true) else { fatalError("teapot cound not be generated") }
-		guard let group = model.group(withName: "teapot") else { fatalError("teapot group not found") }
-		self.mesh = Mesh(withOBJGroup: group, device: device)
+        let model = try! Model.OBJ(url: modelURL, generateNormals: true)
+        self.mesh = try! Mesh(group: model[name: "teapot"], device: device)
 		
         self.uniformsBuffer = device.makeBuffer(length: MemoryLayout<Uniforms>.stride)!
         self.uniformsBuffer.label = "me.dehesa.metal.buffers.uniform"
     }
     
-    // MARK: Functionality
-    
     func draw(view metalView: MetalView) {
-        displaySemaphore.wait()
-        guard let drawable = metalView.currentDrawable,
-            let commandBuffer = commandQueue.makeCommandBuffer(),
-            let renderPass = metalView.currentRenderPassDescriptor,
-            let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPass) else {
-                let _ = displaySemaphore.signal()
-                return
-        }
-        
-        let drawableSize = metalView.metalLayer.drawableSize
-        updateUniforms(drawableSize: float2(Float(drawableSize.width), Float(drawableSize.height)), duration: Float(metalView.frameDuration))
-        
-        encoder.setRenderPipelineState(self.renderPipeline)
-        encoder.setDepthStencilState(self.depthStencilState)
-        encoder.setFrontFacing(.counterClockwise)
-        encoder.setCullMode(.back)
-        
-        encoder.setVertexBuffer(self.mesh.vertexBuffer, offset: 0, index: 0)
-        encoder.setVertexBuffer(self.uniformsBuffer, offset: 0, index: 1)
-        encoder.drawIndexedPrimitives(type: .triangle, indexCount: self.mesh.indexBuffer.length / MemoryLayout<UInt16>.size, indexType: .uint16, indexBuffer: self.mesh.indexBuffer, indexBufferOffset: 0)
-        encoder.endEncoding()
-        
-        commandBuffer.present(drawable)
-        commandBuffer.addCompletedHandler { (_) in let _ = self.displaySemaphore.signal() }
-        commandBuffer.commit()
+//        displaySemaphore.wait()
+//        guard let drawable = metalView.currentDrawable,
+//            let commandBuffer = commandQueue.makeCommandBuffer(),
+//            let renderPass = metalView.currentRenderPassDescriptor,
+//            let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPass) else {
+//                let _ = displaySemaphore.signal()
+//                return
+//        }
+//        
+//        let drawableSize = metalView.metalLayer.drawableSize
+//        updateUniforms(drawableSize: float2(Float(drawableSize.width), Float(drawableSize.height)), duration: Float(metalView.frameDuration))
+//        
+//        encoder.setRenderPipelineState(self.renderPipeline)
+//        encoder.setDepthStencilState(self.depthStencilState)
+//        encoder.setFrontFacing(.counterClockwise)
+//        encoder.setCullMode(.back)
+//        
+//        encoder.setVertexBuffer(self.mesh.vertexBuffer, offset: 0, index: 0)
+//        encoder.setVertexBuffer(self.uniformsBuffer, offset: 0, index: 1)
+//        encoder.drawIndexedPrimitives(type: .triangle, indexCount: self.mesh.indexBuffer.length / MemoryLayout<UInt16>.size, indexType: .uint16, indexBuffer: self.mesh.indexBuffer, indexBufferOffset: 0)
+//        encoder.endEncoding()
+//        
+//        commandBuffer.present(drawable)
+//        commandBuffer.addCompletedHandler { (_) in let _ = self.displaySemaphore.signal() }
+//        commandBuffer.commit()
     }
     
     private func updateUniforms(drawableSize: float2, duration: Float) {

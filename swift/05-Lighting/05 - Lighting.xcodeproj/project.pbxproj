@@ -13,8 +13,8 @@
 		8D5BB0471F099D84005B6DDF /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02A1F099D60005B6DDF /* Math.swift */; };
 		8D5BB0481F099D8C005B6DDF /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02C1F099D60005B6DDF /* MetalRenderer.swift */; };
 		8D5BB0491F099D8C005B6DDF /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02C1F099D60005B6DDF /* MetalRenderer.swift */; };
-		8D5BB04A1F099D8F005B6DDF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02D1F099D60005B6DDF /* Model.swift */; };
-		8D5BB04B1F099D90005B6DDF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02D1F099D60005B6DDF /* Model.swift */; };
+		8D5BB04A1F099D8F005B6DDF /* ModelOBJ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02D1F099D60005B6DDF /* ModelOBJ.swift */; };
+		8D5BB04B1F099D90005B6DDF /* ModelOBJ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02D1F099D60005B6DDF /* ModelOBJ.swift */; };
 		8D5BB04C1F099D93005B6DDF /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02E1F099D60005B6DDF /* SetUp.swift */; };
 		8D5BB04D1F099D93005B6DDF /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02E1F099D60005B6DDF /* SetUp.swift */; };
 		8D5BB04E1F099D97005B6DDF /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02F1F099D60005B6DDF /* Shader.metal */; };
@@ -44,7 +44,7 @@
 		8D5BB02A1F099D60005B6DDF /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		8D5BB02B1F099D60005B6DDF /* Mesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mesh.swift; sourceTree = "<group>"; };
 		8D5BB02C1F099D60005B6DDF /* MetalRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderer.swift; sourceTree = "<group>"; };
-		8D5BB02D1F099D60005B6DDF /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		8D5BB02D1F099D60005B6DDF /* ModelOBJ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOBJ.swift; sourceTree = "<group>"; };
 		8D5BB02E1F099D60005B6DDF /* SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUp.swift; sourceTree = "<group>"; };
 		8D5BB02F1F099D60005B6DDF /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
 		8D5BB0311F099D60005B6DDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,12 +129,12 @@
 		8D5BB0271F099D60005B6DDF /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				8D5BB0281F099D60005B6DDF /* Assets */,
+				8D5BB02E1F099D60005B6DDF /* SetUp.swift */,
 				8D5BB02A1F099D60005B6DDF /* Math.swift */,
+				8D5BB0281F099D60005B6DDF /* Assets */,
 				8D5BB02B1F099D60005B6DDF /* Mesh.swift */,
 				8D5BB02C1F099D60005B6DDF /* MetalRenderer.swift */,
-				8D5BB02D1F099D60005B6DDF /* Model.swift */,
-				8D5BB02E1F099D60005B6DDF /* SetUp.swift */,
+				8D5BB02D1F099D60005B6DDF /* ModelOBJ.swift */,
 				8D5BB02F1F099D60005B6DDF /* Shader.metal */,
 			);
 			path = Common;
@@ -329,7 +329,7 @@
 				8D5BB0521F099DA8005B6DDF /* MetalView.swift in Sources */,
 				8D5BB0501F099DA8005B6DDF /* AppDelegate.swift in Sources */,
 				8D5BB0511F099DA8005B6DDF /* MasterController.swift in Sources */,
-				8D5BB04B1F099D90005B6DDF /* Model.swift in Sources */,
+				8D5BB04B1F099D90005B6DDF /* ModelOBJ.swift in Sources */,
 				8D5BB0491F099D8C005B6DDF /* MetalRenderer.swift in Sources */,
 				8D5BB0471F099D84005B6DDF /* Math.swift in Sources */,
 				8D5BB05C1F09A0EF005B6DDF /* Mesh.swift in Sources */,
@@ -345,7 +345,7 @@
 				8D5BB0581F099DC3005B6DDF /* MetalView.swift in Sources */,
 				8D5BB0561F099DC3005B6DDF /* AppDelegate.swift in Sources */,
 				8D5BB0571F099DC3005B6DDF /* MasterController.swift in Sources */,
-				8D5BB04A1F099D8F005B6DDF /* Model.swift in Sources */,
+				8D5BB04A1F099D8F005B6DDF /* ModelOBJ.swift in Sources */,
 				8D5BB0481F099D8C005B6DDF /* MetalRenderer.swift in Sources */,
 				8D5BB0461F099D83005B6DDF /* Math.swift in Sources */,
 				8D5BB05B1F09A0EE005B6DDF /* Mesh.swift in Sources */,
