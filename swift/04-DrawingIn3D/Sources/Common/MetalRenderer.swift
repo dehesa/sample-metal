@@ -100,8 +100,8 @@ class MetalRenderer: MetalViewDelegate {
     
     private func updateUniforms(drawableSize: float2, duration: Float) {
         self.time += duration
-        self.rotationX += (0.25 * .tau) * duration
-        self.rotationY += (.tau / 6.0) * duration
+        self.rotationX += (0.25 * .𝝉) * duration
+        self.rotationY += (.𝝉 / 6.0) * duration
         
         let scaleFactor: Float = sin(5 * self.time) * 0.25 + 1
         let xRotMatrix = float4x4(rotate: float3(1, 0, 0), angle: self.rotationX)
@@ -109,8 +109,8 @@ class MetalRenderer: MetalViewDelegate {
         let scaleMatrix = float4x4(diagonal: [scaleFactor, scaleFactor, scaleFactor, 1])
         let modelMatrix = (xRotMatrix * yRotMatrix) * scaleMatrix
         
-        let viewMatrix = float4x4(translation: float3(0, 0, -5))
-        let projectionMatrix = float4x4(perspectiveWithAspect: drawableSize.x/drawableSize.y, fovy: .tau/5, near: 1, far: 100)
+        let viewMatrix = float4x4(translate: float3(0, 0, -5))
+        let projectionMatrix = float4x4(perspectiveWithAspect: drawableSize.x/drawableSize.y, fovy: .𝝉/5, near: 1, far: 100)
         
         var uni = Uniforms(modelViewProjectionMatrix:  projectionMatrix * (viewMatrix * modelMatrix))
         memcpy(uniformsBuffer.contents(), &uni, MemoryLayout<Uniforms>.size)

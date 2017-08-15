@@ -1,19 +1,53 @@
 import simd
+import CoreGraphics
+
+extension Double {
+    /// Number of radians in *one turn*.
+    public static let 𝝉: Double = Double.pi * 2
+    /// Number of radians in *half a turn*.
+    public static let π: Double = Double.pi
+}
 
 extension Float {
-    /// Better value to use for arithmetic calculations.
-    public static let tau: Float = Float(Double.pi * 2)
+    /// Number of radians in *one turn*.
+    public static let 𝝉: Float = Float(Double.𝝉)
+    /// Number of radians in *half a turn*.
+    public static let π: Float = Float(Double.π)
+}
+
+extension CGSize {
+    /// Transforms a `CGSize` into a vector with two numbers
+    var float2: simd.float2 {
+        return simd.float2(Float(self.width), Float(self.height))
+    }
+}
+
+extension float4 {
+    var xy: float2 {
+        return float2([self.x, self.y])
+    }
+    
+    var xyz: float3 {
+        return float3([self.x, self.y, self.z])
+    }
 }
 
 extension float4x4 {
-    /// Creates a 4x4 matrix from the receiving vector.
-    init(translation vector: float3) {
+    /// Creates a 4x4 matrix representing a translation given by the provided vector.
+    /// - parameter vector: Vector giving the direction and magnitude of the translation.
+    init(translate vector: float3) {
         // List of the matrix' columns
-        let vectorX: float4 = [1, 0, 0, 0]
-        let vectorY: float4 = [0, 1, 0, 0]
-        let vectorZ: float4 = [0, 0, 1, 0]
-        let vectorW: float4 = [vector.x, vector.y, vector.z, 1]
-        self.init(vectorX, vectorY, vectorZ, vectorW)
+        let baseX: float4 = [1, 0, 0, 0]
+        let baseY: float4 = [0, 1, 0, 0]
+        let baseZ: float4 = [0, 0, 1, 0]
+        let baseW: float4 = [vector.x, vector.y, vector.z, 1]
+        self.init(baseX, baseY, baseZ, baseW)
+    }
+    
+    /// Creates a 4x4 matrix representing a uniform scale given by the provided scalar.
+    /// - parameter s: Scalar giving the uniform magnitude of the scale.
+    init(scale s: Float) {
+        self.init(diagonal: [s, s, s, 1])
     }
     
     /// Creates a 4x4 matrix that will rotate through the given vector and given angle.
@@ -36,11 +70,11 @@ extension float4x4 {
         let z2 = vector.z*vector.z + (1-vector.z*vector.z)*c
         
         // List of the matrix' columns
-        let vectorX: float4 = [x0, x1, x2, 0]
-        let vectorY: float4 = [y0, y1, y2, 0]
-        let vectorZ: float4 = [z0, z1, z2, 0]
-        let vectorW: float4 = [ 0,  0,  0, 1]
-        self.init(vectorX, vectorY, vectorZ, vectorW)
+        let baseX: float4 = [x0, x1, x2, 0]
+        let baseY: float4 = [y0, y1, y2, 0]
+        let baseZ: float4 = [z0, z1, z2, 0]
+        let baseW: float4 = [ 0,  0,  0, 1]
+        self.init(baseX, baseY, baseZ, baseW)
     }
     
     /// Creates a perspective matrix from an aspect ratio, field of view, and near/far Z planes.
@@ -59,3 +93,4 @@ extension float4x4 {
         self.init(vectorP, vectorQ, vectorR, vectorS)
     }
 }
+

@@ -11,27 +11,21 @@
 		8D5BB0451F099D7D005B6DDF /* teapot.obj in Resources */ = {isa = PBXBuildFile; fileRef = 8D5BB0291F099D60005B6DDF /* teapot.obj */; };
 		8D5BB0461F099D83005B6DDF /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02A1F099D60005B6DDF /* Math.swift */; };
 		8D5BB0471F099D84005B6DDF /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02A1F099D60005B6DDF /* Math.swift */; };
-		8D5BB0481F099D8C005B6DDF /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02C1F099D60005B6DDF /* MetalRenderer.swift */; };
-		8D5BB0491F099D8C005B6DDF /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02C1F099D60005B6DDF /* MetalRenderer.swift */; };
-		8D5BB04A1F099D8F005B6DDF /* ModelOBJ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02D1F099D60005B6DDF /* ModelOBJ.swift */; };
-		8D5BB04B1F099D90005B6DDF /* ModelOBJ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02D1F099D60005B6DDF /* ModelOBJ.swift */; };
+		8D5BB0481F099D8C005B6DDF /* TeapotRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02C1F099D60005B6DDF /* TeapotRenderer.swift */; };
+		8D5BB0491F099D8C005B6DDF /* TeapotRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02C1F099D60005B6DDF /* TeapotRenderer.swift */; };
 		8D5BB04C1F099D93005B6DDF /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02E1F099D60005B6DDF /* SetUp.swift */; };
 		8D5BB04D1F099D93005B6DDF /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02E1F099D60005B6DDF /* SetUp.swift */; };
 		8D5BB04E1F099D97005B6DDF /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02F1F099D60005B6DDF /* Shader.metal */; };
 		8D5BB04F1F099D97005B6DDF /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02F1F099D60005B6DDF /* Shader.metal */; };
 		8D5BB0501F099DA8005B6DDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB0311F099D60005B6DDF /* AppDelegate.swift */; };
 		8D5BB0511F099DA8005B6DDF /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB0391F099D60005B6DDF /* MasterController.swift */; };
-		8D5BB0521F099DA8005B6DDF /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB03A1F099D60005B6DDF /* MetalView.swift */; };
 		8D5BB0531F099DB5005B6DDF /* Launchscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D5BB0351F099D60005B6DDF /* Launchscreen.storyboard */; };
 		8D5BB0541F099DB5005B6DDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D5BB0371F099D60005B6DDF /* Main.storyboard */; };
 		8D5BB0551F099DB9005B6DDF /* iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D5BB0331F099D60005B6DDF /* iOS.xcassets */; };
 		8D5BB0561F099DC3005B6DDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB03C1F099D60005B6DDF /* AppDelegate.swift */; };
 		8D5BB0571F099DC3005B6DDF /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB0421F099D60005B6DDF /* MasterController.swift */; };
-		8D5BB0581F099DC3005B6DDF /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB0431F099D60005B6DDF /* MetalView.swift */; };
 		8D5BB0591F099DC7005B6DDF /* macOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D5BB03E1F099D60005B6DDF /* macOS.xcassets */; };
 		8D5BB05A1F099DD4005B6DDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D5BB0401F099D60005B6DDF /* Main.storyboard */; };
-		8D5BB05B1F09A0EE005B6DDF /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02B1F099D60005B6DDF /* Mesh.swift */; };
-		8D5BB05C1F09A0EF005B6DDF /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BB02B1F099D60005B6DDF /* Mesh.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,9 +36,7 @@
 		8D5BB0251F099C70005B6DDF /* macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = macOS.xcconfig; sourceTree = "<group>"; };
 		8D5BB0291F099D60005B6DDF /* teapot.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = teapot.obj; sourceTree = "<group>"; };
 		8D5BB02A1F099D60005B6DDF /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
-		8D5BB02B1F099D60005B6DDF /* Mesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mesh.swift; sourceTree = "<group>"; };
-		8D5BB02C1F099D60005B6DDF /* MetalRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderer.swift; sourceTree = "<group>"; };
-		8D5BB02D1F099D60005B6DDF /* ModelOBJ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOBJ.swift; sourceTree = "<group>"; };
+		8D5BB02C1F099D60005B6DDF /* TeapotRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeapotRenderer.swift; sourceTree = "<group>"; };
 		8D5BB02E1F099D60005B6DDF /* SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUp.swift; sourceTree = "<group>"; };
 		8D5BB02F1F099D60005B6DDF /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
 		8D5BB0311F099D60005B6DDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,12 +44,10 @@
 		8D5BB0361F099D60005B6DDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launchscreen.storyboard; sourceTree = "<group>"; };
 		8D5BB0381F099D60005B6DDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D5BB0391F099D60005B6DDF /* MasterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
-		8D5BB03A1F099D60005B6DDF /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		8D5BB03C1F099D60005B6DDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D5BB03E1F099D60005B6DDF /* macOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = macOS.xcassets; sourceTree = "<group>"; };
 		8D5BB0411F099D60005B6DDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D5BB0421F099D60005B6DDF /* MasterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
-		8D5BB0431F099D60005B6DDF /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		BC11C8011C8AE7730076017C /* 05 - Lighting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "05 - Lighting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC11C8571C8AEEA80076017C /* 05 - Lighting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "05 - Lighting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -132,9 +122,7 @@
 				8D5BB02E1F099D60005B6DDF /* SetUp.swift */,
 				8D5BB02A1F099D60005B6DDF /* Math.swift */,
 				8D5BB0281F099D60005B6DDF /* Assets */,
-				8D5BB02B1F099D60005B6DDF /* Mesh.swift */,
-				8D5BB02C1F099D60005B6DDF /* MetalRenderer.swift */,
-				8D5BB02D1F099D60005B6DDF /* ModelOBJ.swift */,
+				8D5BB02C1F099D60005B6DDF /* TeapotRenderer.swift */,
 				8D5BB02F1F099D60005B6DDF /* Shader.metal */,
 			);
 			path = Common;
@@ -154,7 +142,6 @@
 				8D5BB0321F099D60005B6DDF /* Assets */,
 				8D5BB0311F099D60005B6DDF /* AppDelegate.swift */,
 				8D5BB0391F099D60005B6DDF /* MasterController.swift */,
-				8D5BB03A1F099D60005B6DDF /* MetalView.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -183,7 +170,6 @@
 				8D5BB03D1F099D60005B6DDF /* Assets */,
 				8D5BB03C1F099D60005B6DDF /* AppDelegate.swift */,
 				8D5BB0421F099D60005B6DDF /* MasterController.swift */,
-				8D5BB0431F099D60005B6DDF /* MetalView.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -326,13 +312,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D5BB0521F099DA8005B6DDF /* MetalView.swift in Sources */,
 				8D5BB0501F099DA8005B6DDF /* AppDelegate.swift in Sources */,
 				8D5BB0511F099DA8005B6DDF /* MasterController.swift in Sources */,
-				8D5BB04B1F099D90005B6DDF /* ModelOBJ.swift in Sources */,
-				8D5BB0491F099D8C005B6DDF /* MetalRenderer.swift in Sources */,
+				8D5BB0491F099D8C005B6DDF /* TeapotRenderer.swift in Sources */,
 				8D5BB0471F099D84005B6DDF /* Math.swift in Sources */,
-				8D5BB05C1F09A0EF005B6DDF /* Mesh.swift in Sources */,
 				8D5BB04F1F099D97005B6DDF /* Shader.metal in Sources */,
 				8D5BB04D1F099D93005B6DDF /* SetUp.swift in Sources */,
 			);
@@ -342,13 +325,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D5BB0581F099DC3005B6DDF /* MetalView.swift in Sources */,
 				8D5BB0561F099DC3005B6DDF /* AppDelegate.swift in Sources */,
 				8D5BB0571F099DC3005B6DDF /* MasterController.swift in Sources */,
-				8D5BB04A1F099D8F005B6DDF /* ModelOBJ.swift in Sources */,
-				8D5BB0481F099D8C005B6DDF /* MetalRenderer.swift in Sources */,
+				8D5BB0481F099D8C005B6DDF /* TeapotRenderer.swift in Sources */,
 				8D5BB0461F099D83005B6DDF /* Math.swift in Sources */,
-				8D5BB05B1F09A0EE005B6DDF /* Mesh.swift in Sources */,
 				8D5BB04E1F099D97005B6DDF /* Shader.metal in Sources */,
 				8D5BB04C1F099D93005B6DDF /* SetUp.swift in Sources */,
 			);
@@ -491,6 +471,7 @@
 			baseConfigurationReference = 8D5BB0221F099C70005B6DDF /* iOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = V4LZL56CA7;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 			};
@@ -501,6 +482,7 @@
 			baseConfigurationReference = 8D5BB0221F099C70005B6DDF /* iOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = V4LZL56CA7;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 			};
