@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "Metal By Example">
+      <FileRef
+         location = "group:Metal By Example/02-ClearScreen/02 - ClearScreen.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Metal By Example/03-DrawingIn2D/03 - Drawing in 2D.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Metal By Example/04-DrawingIn3D/04 - Drawing in 3D.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Metal By Example/05-Lighting/05 - Lighting.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Metal By Example/06-Texturing/06 - Texturing.xcodeproj">
+      </FileRef>
+   </Group>
+</Workspace>
