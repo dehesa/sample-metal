@@ -2,13 +2,13 @@ import Cocoa
 import MetalKit
 
 class MasterController: NSViewController {
-    private var renderer: TeapotRenderer!
+    private var renderer: CowRenderer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let metalView = self.view as! MTKView
-        self.renderer = try! TeapotRenderer(view: metalView)
+        self.renderer = try! CowRenderer(view: metalView)
         metalView.delegate = self.renderer
     }
 }

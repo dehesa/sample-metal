@@ -5,9 +5,9 @@ constant float3 kSpecularColor= { 1, 1, 1 };
 constant float kSpecularPower = 80;
 
 struct VertexInput {
-    packed_float4 position;
-    packed_float4 normal;
-    packed_float2 texCoords;
+    float4 position  [[attribute(0)]];
+    float4 normal    [[attribute(1)]];
+    float2 texCoords [[attribute(2)]];
 };
 
 struct Uniforms {
@@ -23,17 +23,13 @@ struct VertexProjected {
     float2 texCoords;
 };
 
-vertex VertexProjected main_vertex(device   VertexInput* v   [[buffer(0)]],
-                                   constant Uniforms&    u   [[buffer(1)]],
-                                            uint         vid [[vertex_id]]) {
-    float4 position = v[vid].position;
-    float4 normal = v[vid].normal;
-
+vertex VertexProjected main_vertex(const    VertexInput v   [[stage_in]],
+                                   constant Uniforms&   u   [[buffer(1)]]) {
     return VertexProjected{
-        .position = u.modelViewProjectionMatrix * position,
-        .eyePosition = -(u.modelViewMatrix * position).xyz,
-        .normal = u.normalMatrix * normal.xyz,
-        .texCoords = v[vid].texCoords
+        .position = u.modelViewProjectionMatrix * v.position,
+        .eyePosition = -(u.modelViewMatrix * v.position).xyz,
+        .normal = u.normalMatrix * v.normal.xyz,
+        .texCoords = v.texCoords
     };
 }
 
@@ -45,15 +41,15 @@ struct Light {
 };
 
 constant Light light = {
-    .direction = { 0.13, 0.72, 0.68 },
-    .ambientColor = { 0.05, 0.05, 0.05 },
-    .diffuseColor = { 1, 1, 1 },
+    .direction     = { 0.13, 0.72, 0.68 },
+    .ambientColor  = { 0.05, 0.05, 0.05 },
+    .diffuseColor  = { 1, 1, 1 },
     .specularColor = { 0.2, 0.2, 0.2 }
 };
 
-fragment float4 main_fragmemnt(VertexProjected  v              [[stage_in]],
-                               texture2d<float> diffuseTexture [[texture(0)]],
-                               sampler          samplr         [[sampler(0)]]) {
+fragment float4 main_fragment(VertexProjected  v              [[stage_in]],
+                              texture2d<float> diffuseTexture [[texture(0)]],
+                              sampler          samplr         [[sampler(0)]]) {
     float3 diffuseColor = diffuseTexture.sample(samplr, v.texCoords).rgb;
     
     float3 ambientTerm = light.ambientColor * diffuseColor;

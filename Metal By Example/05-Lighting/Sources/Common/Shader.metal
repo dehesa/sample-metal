@@ -4,7 +4,7 @@ using namespace metal;
 
 struct VertexInput {
     float4 position [[attribute(0)]];
-    float4 normal [[attribute(1)]];
+    float4 normal   [[attribute(1)]];
 };
 
 struct Uniforms {
@@ -19,13 +19,12 @@ struct VertexProjected {
     float3 normal;
 };
 
-vertex VertexProjected main_vertex(const    VertexInput v   [[stage_in]],
-                                   constant Uniforms&   u   [[buffer(1)]],
-                                            uint        vid [[vertex_id]]) {
+vertex VertexProjected main_vertex(const    VertexInput v [[stage_in]],
+                                   constant Uniforms&   u [[buffer(1)]]) {
     return VertexProjected{
-        .position = u.modelViewProjectionMatrix * v.position,
-        .eye = -(u.modelViewMatrix * v.position).xyz,
-        .normal = u.normalMatrix * v.normal.xyz
+        .position =   u.modelViewProjectionMatrix * v.position,
+        .eye      = -(u.modelViewMatrix * v.position).xyz,
+        .normal   =   u.normalMatrix * v.normal.xyz
     };
 }
 
@@ -44,34 +43,34 @@ struct Material {
 };
 
 constant Light light = {
-    .direction = { 0.13, 0.72, 0.68 },
-    .ambientColor = { 0.05, 0.05, 0.05 },
-    .diffuseColor = { 0.9, 0.9, 0.9 },
+    .direction     = { 0.13, 0.72, 0.68 },
+    .ambientColor  = { 0.05, 0.05, 0.05 },
+    .diffuseColor  = { 0.9, 0.9, 0.9 },
     .specularColor = { 1, 1, 1 }
 };
 
 constant Material material = {
-    .ambientColor = { 0.9, 0.1, 0 },
-    .diffuseColor = { 0.9, 0.1, 0 },
+    .ambientColor  = { 0.9, 0.1, 0 },
+    .diffuseColor  = { 0.9, 0.1, 0 },
     .specularColor = { 1, 1, 1 },
     .specularPower = 100
 };
 
-fragment float4 main_fragment(const    VertexProjected v [[stage_in]]) {
-    float3 ambientTerm = light.ambientColor * material.ambientColor;
+fragment float4 main_fragment(const VertexProjected v [[stage_in]]) {
+    const float3 ambient = light.ambientColor * material.ambientColor;
     
-    float3 normal = normalize(v.normal);
-    float diffuseIntensity = saturate(dot(normal, light.direction));
-    float3 diffuseTerm = light.diffuseColor * material.diffuseColor * diffuseIntensity;
+    const float3 normal = normalize(v.normal);
+    const float intensityDiffuse = saturate(dot(normal, light.direction));
+    const float3 diffuse = light.diffuseColor * material.diffuseColor * intensityDiffuse;
     
-    float3 specularTerm(0);
-    if (diffuseIntensity > 0) {
-        float3 eyeDirection = normalize(v.eye);
-        float3 halfway = normalize(light.direction + eyeDirection);
-        float specularFactor = pow(saturate(dot(normal, halfway)), material.specularPower);
-        specularTerm = light.specularColor * material.specularColor * specularFactor;
+    float3 specular(0);
+    if (intensityDiffuse > 0) {
+        const float3 eyeDirection = normalize(v.eye);
+        const float3 halfway = normalize(light.direction + eyeDirection);
+        const float specularFactor = pow(saturate(dot(normal, halfway)), material.specularPower);
+        specular = light.specularColor * material.specularColor * specularFactor;
     }
     
-    return float4(ambientTerm + diffuseTerm + specularTerm, 1);
+    return float4(ambient + diffuse + specular, 1);
 }
 

@@ -2,7 +2,7 @@ import UIKit
 import MetalKit
 
 class MasterController: UIViewController {
-    private var renderer: TeapotRenderer!
+    private var renderer: CowRenderer!
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -12,7 +12,7 @@ class MasterController: UIViewController {
         super.viewDidLoad()
         
         let metalView = self.view as! MTKView
-        self.renderer = try! TeapotRenderer(view: metalView)
+        self.renderer = try! CowRenderer(view: metalView)
         metalView.delegate = self.renderer
     }
 }

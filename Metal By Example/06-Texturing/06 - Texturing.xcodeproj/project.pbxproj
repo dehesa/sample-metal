@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D42C63D1F44DDD600B1244F /* spot_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D43FBE71F43244F001167FD /* spot_texture.png */; };
+		8D42C63E1F44DDD700B1244F /* spot_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D43FBE71F43244F001167FD /* spot_texture.png */; };
+		8D7EB88F1F44E49F00454E08 /* spot.obj in Resources */ = {isa = PBXBuildFile; fileRef = 8DBE599B1F44E1B200BDAB2F /* spot.obj */; };
 		8D85700A1F431CD000853F8B /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FDF1F431AEE00853F8B /* SetUp.swift */; };
 		8D85700B1F431CD000853F8B /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FDF1F431AEE00853F8B /* SetUp.swift */; };
 		8D85700C1F431CD300853F8B /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FDE1F431AEE00853F8B /* Math.swift */; };
 		8D85700D1F431CD400853F8B /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FDE1F431AEE00853F8B /* Math.swift */; };
 		8D85700E1F431CD600853F8B /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FE01F431AEE00853F8B /* Shader.metal */; };
 		8D85700F1F431CD600853F8B /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FE01F431AEE00853F8B /* Shader.metal */; };
-		8D8570101F431CD900853F8B /* TeapotRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FE11F431AEE00853F8B /* TeapotRenderer.swift */; };
-		8D8570111F431CD900853F8B /* TeapotRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FE11F431AEE00853F8B /* TeapotRenderer.swift */; };
+		8D8570101F431CD900853F8B /* CowRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FE11F431AEE00853F8B /* CowRenderer.swift */; };
+		8D8570111F431CD900853F8B /* CowRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FE11F431AEE00853F8B /* CowRenderer.swift */; };
 		8D8570141F431CE400853F8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FE31F431AEE00853F8B /* AppDelegate.swift */; };
 		8D8570151F431CE400853F8B /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FEB1F431AEE00853F8B /* MasterController.swift */; };
 		8D8570161F431CEC00853F8B /* iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D856FE51F431AEE00853F8B /* iOS.xcassets */; };
@@ -24,18 +27,15 @@
 		8D85701A1F431D0700853F8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D856FF11F431AEE00853F8B /* Main.storyboard */; };
 		8D85701B1F431D0B00853F8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FED1F431AEE00853F8B /* AppDelegate.swift */; };
 		8D85701C1F431D0E00853F8B /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FF31F431AEE00853F8B /* MasterController.swift */; };
+		8DBE599C1F44E1BF00BDAB2F /* spot.obj in Resources */ = {isa = PBXBuildFile; fileRef = 8DBE599B1F44E1B200BDAB2F /* spot.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8D22D7321F431A230030D36B /* 06.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 06.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D43FBE51F43244F001167FD /* moo.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = moo.aiff; sourceTree = "<group>"; };
-		8D43FBE61F43244F001167FD /* spot_quadrangulated.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = spot_quadrangulated.obj; sourceTree = "<group>"; };
 		8D43FBE71F43244F001167FD /* spot_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spot_texture.png; sourceTree = "<group>"; };
 		8D43FBE81F43244F001167FD /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		8D43FBE91F43244F001167FD /* spot_texture.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = spot_texture.svg; sourceTree = "<group>"; };
-		8D43FBEA1F43244F001167FD /* spot.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = spot.obj; sourceTree = "<group>"; };
-		8D43FBEB1F43244F001167FD /* spot_triangulated.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = spot_triangulated.obj; sourceTree = "<group>"; };
-		8D43FBEC1F43244F001167FD /* spot_control_mesh.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = spot_control_mesh.obj; sourceTree = "<group>"; };
 		8D856FD31F431AEE00853F8B /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		8D856FD51F431AEE00853F8B /* iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = iOS.plist; sourceTree = "<group>"; };
 		8D856FD61F431AEE00853F8B /* iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = iOS.xcconfig; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		8D856FDE1F431AEE00853F8B /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		8D856FDF1F431AEE00853F8B /* SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUp.swift; sourceTree = "<group>"; };
 		8D856FE01F431AEE00853F8B /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
-		8D856FE11F431AEE00853F8B /* TeapotRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeapotRenderer.swift; sourceTree = "<group>"; };
+		8D856FE11F431AEE00853F8B /* CowRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowRenderer.swift; sourceTree = "<group>"; };
 		8D856FE31F431AEE00853F8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D856FE51F431AEE00853F8B /* iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iOS.xcassets; sourceTree = "<group>"; };
 		8D856FE81F431AEE00853F8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launchscreen.storyboard; sourceTree = "<group>"; };
@@ -55,6 +55,7 @@
 		8D856FF21F431AEE00853F8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D856FF31F431AEE00853F8B /* MasterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
 		8D856FF81F431BB800853F8B /* 06.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 06.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DBE599B1F44E1B200BDAB2F /* spot.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = spot.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +147,7 @@
 				8D856FDE1F431AEE00853F8B /* Math.swift */,
 				8D856FDC1F431AEE00853F8B /* Assets */,
 				8D856FE01F431AEE00853F8B /* Shader.metal */,
-				8D856FE11F431AEE00853F8B /* TeapotRenderer.swift */,
+				8D856FE11F431AEE00853F8B /* CowRenderer.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -155,10 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				8D43FBE81F43244F001167FD /* README.txt */,
-				8D43FBEA1F43244F001167FD /* spot.obj */,
-				8D43FBEC1F43244F001167FD /* spot_control_mesh.obj */,
-				8D43FBEB1F43244F001167FD /* spot_triangulated.obj */,
-				8D43FBE61F43244F001167FD /* spot_quadrangulated.obj */,
+				8DBE599B1F44E1B200BDAB2F /* spot.obj */,
 				8D43FBE71F43244F001167FD /* spot_texture.png */,
 				8D43FBE91F43244F001167FD /* spot_texture.svg */,
 				8D43FBE51F43244F001167FD /* moo.aiff */,
@@ -300,6 +298,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DBE599C1F44E1BF00BDAB2F /* spot.obj in Resources */,
+				8D42C63D1F44DDD600B1244F /* spot_texture.png in Resources */,
 				8D85701A1F431D0700853F8B /* Main.storyboard in Resources */,
 				8D8570191F431D0300853F8B /* macOS.xcassets in Resources */,
 			);
@@ -309,6 +309,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D7EB88F1F44E49F00454E08 /* spot.obj in Resources */,
+				8D42C63E1F44DDD700B1244F /* spot_texture.png in Resources */,
 				8D8570171F431CF900853F8B /* Launchscreen.storyboard in Resources */,
 				8D8570161F431CEC00853F8B /* iOS.xcassets in Resources */,
 				8D8570181F431CFD00853F8B /* Main.storyboard in Resources */,
@@ -327,7 +329,7 @@
 				8D85700C1F431CD300853F8B /* Math.swift in Sources */,
 				8D85701C1F431D0E00853F8B /* MasterController.swift in Sources */,
 				8D85701B1F431D0B00853F8B /* AppDelegate.swift in Sources */,
-				8D8570101F431CD900853F8B /* TeapotRenderer.swift in Sources */,
+				8D8570101F431CD900853F8B /* CowRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +342,7 @@
 				8D85700D1F431CD400853F8B /* Math.swift in Sources */,
 				8D8570151F431CE400853F8B /* MasterController.swift in Sources */,
 				8D8570141F431CE400853F8B /* AppDelegate.swift in Sources */,
-				8D8570111F431CD900853F8B /* TeapotRenderer.swift in Sources */,
+				8D8570111F431CD900853F8B /* CowRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,7 +514,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SWIFT_VERSION = 4.0;
 			};
@@ -524,7 +526,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
