@@ -7,5 +7,3 @@ This repository contains sample code for Metal: Apple's GPU APIs. It started fro
 - Platforms: macOS, iOS
 - Swift: 4.0
 - Metal: 2.0
-
-

@@ -19,5 +19,8 @@
       <FileRef
          location = "group:Metal By Example/06-Texturing/06 - Texturing.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:Metal By Example/07-Mipmapping/07 - Mipmapping.xcodeproj">
+      </FileRef>
    </Group>
 </Workspace>
