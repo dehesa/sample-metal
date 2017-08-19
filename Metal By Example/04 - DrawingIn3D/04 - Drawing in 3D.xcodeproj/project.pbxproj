@@ -15,10 +15,10 @@
 		8DB794831F003CC300DC8877 /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7947E1F003A2900DC8877 /* MasterController.swift */; };
 		8DB794841F003CC300DC8877 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7947F1F003A2900DC8877 /* MetalView.swift */; };
 		8DB794851F003CCB00DC8877 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB794691F003A2900DC8877 /* Math.swift */; };
-		8DB794861F003CCB00DC8877 /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7946A1F003A2900DC8877 /* MetalRenderer.swift */; };
+		8DB794861F003CCB00DC8877 /* CubeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7946A1F003A2900DC8877 /* CubeRenderer.swift */; };
 		8DB794871F003CCB00DC8877 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7946B1F003A2900DC8877 /* Shader.metal */; };
 		8DB794881F003CCB00DC8877 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB794691F003A2900DC8877 /* Math.swift */; };
-		8DB794891F003CCB00DC8877 /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7946A1F003A2900DC8877 /* MetalRenderer.swift */; };
+		8DB794891F003CCB00DC8877 /* CubeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7946A1F003A2900DC8877 /* CubeRenderer.swift */; };
 		8DB7948A1F003CCB00DC8877 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7946B1F003A2900DC8877 /* Shader.metal */; };
 		8DB7948B1F003CD800DC8877 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7946D1F003A2900DC8877 /* AppDelegate.swift */; };
 		8DB7948C1F003CD800DC8877 /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB794751F003A2900DC8877 /* MasterController.swift */; };
@@ -31,7 +31,7 @@
 /* Begin PBXFileReference section */
 		8DB38D491F004718001EC3AD /* SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUp.swift; sourceTree = "<group>"; };
 		8DB794691F003A2900DC8877 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
-		8DB7946A1F003A2900DC8877 /* MetalRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderer.swift; sourceTree = "<group>"; };
+		8DB7946A1F003A2900DC8877 /* CubeRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeRenderer.swift; sourceTree = "<group>"; };
 		8DB7946B1F003A2900DC8877 /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
 		8DB7946D1F003A2900DC8877 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DB7946F1F003A2900DC8877 /* iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iOS.xcassets; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 			children = (
 				8DB38D491F004718001EC3AD /* SetUp.swift */,
 				8DB794691F003A2900DC8877 /* Math.swift */,
-				8DB7946A1F003A2900DC8877 /* MetalRenderer.swift */,
+				8DB7946A1F003A2900DC8877 /* CubeRenderer.swift */,
 				8DB7946B1F003A2900DC8877 /* Shader.metal */,
 			);
 			path = Common;
@@ -310,7 +310,7 @@
 				8DB794821F003CC300DC8877 /* AppDelegate.swift in Sources */,
 				8DB794831F003CC300DC8877 /* MasterController.swift in Sources */,
 				8DB794851F003CCB00DC8877 /* Math.swift in Sources */,
-				8DB794861F003CCB00DC8877 /* MetalRenderer.swift in Sources */,
+				8DB794861F003CCB00DC8877 /* CubeRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +323,7 @@
 				8DB7948C1F003CD800DC8877 /* MasterController.swift in Sources */,
 				8DB7948B1F003CD800DC8877 /* AppDelegate.swift in Sources */,
 				8DB7948A1F003CCB00DC8877 /* Shader.metal in Sources */,
-				8DB794891F003CCB00DC8877 /* MetalRenderer.swift in Sources */,
+				8DB794891F003CCB00DC8877 /* CubeRenderer.swift in Sources */,
 				8DB794881F003CCB00DC8877 /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

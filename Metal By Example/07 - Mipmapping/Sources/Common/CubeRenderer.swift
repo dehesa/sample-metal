@@ -20,17 +20,22 @@ extension CubeRenderer {
         case failedToCreateMetalBuffer(device: MTLDevice)
         case failedToCreateMetalSampler(device: MTLDevice)
     }
+    
+    private typealias CubeTextures = (checker: MTLTexture, vibrant: MTLTexture, depth: MTLTexture)
+    private typealias CubeSamplers = (notMip: MTLSamplerState, nearestMip: MTLSamplerState, linearMip: MTLSamplerState)
 }
 
 class CubeRenderer: NSObject, MTKViewDelegate {
     private let device: MTLDevice
     private let commandQueue: MTLCommandQueue
     private let state: (render: MTLRenderPipelineState, depth: MTLDepthStencilState)
-    private let uniformsBuffer: MTLBuffer
-    private let diffuseTexture: MTLTexture
-    private let samplerTexture: MTLSamplerState
-    private let meshes: [MTKMesh]
+    private let buffers: (vertices: MTLBuffer, indices: MTLBuffer, uniforms: MTLBuffer)
+    private let textures: CubeTextures
+    private let samplers: CubeSamplers
     private var (time, rotationX, rotationY): (Float, Float, Float) = (0,0,0)
+    
+    var mipmapMode = MipmapMode.none
+    var cameraDistance: Float = 1.0
     
     init(view: MTKView) throws {
         // Create GPU representation (MTLDevice) and Command Queue.
@@ -45,14 +50,23 @@ class CubeRenderer: NSObject, MTKViewDelegate {
         guard let depthStencilState = device.makeDepthStencilState(descriptor: descriptors.depthStencil) else { throw Error.failedToCreateDepthStencilState(device: device) }
         self.state = (renderPipelineState, depthStencilState)
         
-        /// Creates the texture and meshes from the external models.
-        self.meshes = try CubeRenderer.makeMeshes(device: device, vertexDescriptor: descriptors.renderPipeline.vertexDescriptor!)
-        (self.diffuseTexture, self.samplerTexture) = try CubeRenderer.makeTexture(device: device)
-        
         // Create buffers used in the shader
+        let mesh = try Generator.Cube.makeBuffers(device: device, size: 1.0)
         guard let uniformBuffer = device.makeBuffer(length: MemoryLayout<Uniforms>.stride) else { throw Error.failedToCreateMetalBuffer(device: device) }
+        mesh.vertices.label = "me.dehesa.metal.buffers.vertices"
+        mesh.indices.label = "me.dehesa.metal.buffers.indices"
         uniformBuffer.label = "me.dehesa.metal.buffers.uniform"
-        self.uniformsBuffer = uniformBuffer
+        self.buffers = (mesh.vertices, mesh.indices, uniformBuffer)
+        
+        // Create the textures.
+        let board: (size: CGSize, tileCount: Int) = (CGSize(width: 512, height: 512), 8)
+        let checkerTexture = try Generator.Texture.makeCheckboard(size: board.size, tileCount: board.tileCount, inColor: false, with: device)
+        let vibrantTexture = try Generator.Texture.makeCheckboard(size: board.size, tileCount: board.tileCount, inColor: true,  with: device)
+        let depthTexture = try Generator.Texture.makeDepth(size: view.drawableSize, pixelFormat: pixelFormats.depth, with: device)
+        self.textures = (checkerTexture, vibrantTexture, depthTexture)
+        
+        // Create the samplers
+        self.samplers = try Generator.Texture.makeSamplers(with: device)
         
         // Setup the MTKView.
         view.setUp {
@@ -124,19 +138,23 @@ extension CubeRenderer {
                 $0.attributes[0].setUp { (attribute) in
                     attribute.bufferIndex = 0
                     attribute.offset = 0
-                    attribute.format = .float3
+                    attribute.format = .float4
                 }
                 $0.attributes[1].setUp { (attribute) in
                     attribute.bufferIndex = 0
-                    attribute.offset = MemoryLayout<Float>.stride * 3
+                    attribute.offset = MemoryLayout<Float>.stride * 4
                     attribute.format = .float4
                 }
                 $0.attributes[2].setUp { (attribute) in
                     attribute.bufferIndex = 0
-                    attribute.offset = MemoryLayout<Float>.stride * 7
+                    attribute.offset = MemoryLayout<Float>.stride * 8
                     attribute.format = .float2
                 }
-                $0.layouts[0].stride = MemoryLayout<Float>.stride * 9
+                $0.layouts[0].setUp { (layout) in
+                    layout.stride = MemoryLayout<Float>.stride * 10
+                    layout.stepFunction = .perVertex
+                    layout.stepRate = 1
+                }
             }
             
             pipeline.fragmentFunction = fragmentFunction
@@ -150,45 +168,6 @@ extension CubeRenderer {
         }
         
         return (renderPipelineDescriptor, depthStencilStateDescriptor)
-    }
-    
-    /// Initializes the asset from the external model
-    private static func makeMeshes(device: MTLDevice, vertexDescriptor: MTLVertexDescriptor) throws -> [MTKMesh] {
-        let file: (name: String, `extension`: String) = ("spot", "obj")
-        guard let url = Bundle.main.url(forResource: file.name, withExtension: file.`extension`) else { throw Error.failedToFoundFile(name: "\(file.name).\(file.`extension`)") }
-        
-        let modelDescriptor = MTKModelIOVertexDescriptorFromMetal(vertexDescriptor).set {
-            ($0.attributes[0] as! MDLVertexAttribute).name = MDLVertexAttributePosition
-            ($0.attributes[1] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
-            ($0.attributes[2] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
-        }
-        
-        let asset = MDLAsset(url: url, vertexDescriptor: modelDescriptor, bufferAllocator: MTKMeshBufferAllocator(device: device))
-        #if os(iOS)
-        return try MTKMesh.__newMeshes(from: asset, device: device, sourceMeshes: nil)
-        #else
-        return try MTKMesh.newMeshes(from: asset, device: device, sourceMeshes: nil)
-        #endif
-    }
-    
-    /// Initializes a texture buffer from an external image.
-    private static func makeTexture(device: MTLDevice) throws -> (texture: MTLTexture, sampler: MTLSamplerState) {
-        let file: (name: String, `extension`: String) = ("spot_texture", "png")
-        guard let url = Bundle.main.url(forResource: file.name, withExtension: file.`extension`) else { throw Error.failedToFoundFile(name: "\(file.name).\(file.`extension`)") }
-        
-        let loader = MTKTextureLoader(device: device)
-        #if os(iOS)
-        let texture = try loader.newTexture(URL: url, options: [.origin: MTKTextureLoader.Origin.bottomLeft, .generateMipmaps: true])
-        #else
-        let texture = try loader.newTexture(withContentsOf: url, options: [.origin: MTKTextureLoader.Origin.bottomLeft, .generateMipmaps: true])
-        #endif
-        
-        let samplerDescriptor = MTLSamplerDescriptor().set {
-            ($0.sAddressMode, $0.tAddressMode) = (.clampToEdge, .clampToEdge)
-            ($0.minFilter, $0.magFilter, $0.mipFilter) = (.nearest, .linear, .linear)
-        }
-        guard let sampler = device.makeSamplerState(descriptor: samplerDescriptor) else { throw Error.failedToCreateMetalSampler(device: device) }
-        return (texture, sampler)
     }
     
     /// Updates the internal values with the passed arguments.

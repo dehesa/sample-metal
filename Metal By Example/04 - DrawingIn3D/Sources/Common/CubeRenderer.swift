@@ -1,7 +1,7 @@
 import Metal
 import simd
 
-extension MetalRenderer {
+extension CubeRenderer {
     private struct Vertex {
         var position: float4
         var color: float4
@@ -12,7 +12,7 @@ extension MetalRenderer {
     }
 }
 
-class MetalRenderer: MetalViewDelegate {
+class CubeRenderer: MetalViewDelegate {
     private let device: MTLDevice
     private let renderPipeline: MTLRenderPipelineState
     private let depthStencilState: MTLDepthStencilState

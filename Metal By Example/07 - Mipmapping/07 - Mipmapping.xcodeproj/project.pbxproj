@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D2FAC191F482DE10038E3E6 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2FAC181F482DE10038E3E6 /* Generator.swift */; };
+		8D2FAC1A1F482DE10038E3E6 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2FAC181F482DE10038E3E6 /* Generator.swift */; };
 		8D85700A1F431CD000853F8B /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FDF1F431AEE00853F8B /* SetUp.swift */; };
 		8D85700B1F431CD000853F8B /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FDF1F431AEE00853F8B /* SetUp.swift */; };
 		8D85700C1F431CD300853F8B /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D856FDE1F431AEE00853F8B /* Math.swift */; };
@@ -28,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		8D22D7321F431A230030D36B /* 07.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 07.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D2FAC181F482DE10038E3E6 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		8D856FD31F431AEE00853F8B /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		8D856FD51F431AEE00853F8B /* iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = iOS.plist; sourceTree = "<group>"; };
 		8D856FD61F431AEE00853F8B /* iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = iOS.xcconfig; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 				8D856FDE1F431AEE00853F8B /* Math.swift */,
 				8D856FE01F431AEE00853F8B /* Shader.metal */,
 				8D856FE11F431AEE00853F8B /* CubeRenderer.swift */,
+				8D2FAC181F482DE10038E3E6 /* Generator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -300,6 +304,7 @@
 			files = (
 				8D85700E1F431CD600853F8B /* Shader.metal in Sources */,
 				8D85700A1F431CD000853F8B /* SetUp.swift in Sources */,
+				8D2FAC1A1F482DE10038E3E6 /* Generator.swift in Sources */,
 				8D85700C1F431CD300853F8B /* Math.swift in Sources */,
 				8D85701C1F431D0E00853F8B /* MasterController.swift in Sources */,
 				8D85701B1F431D0B00853F8B /* AppDelegate.swift in Sources */,
@@ -313,6 +318,7 @@
 			files = (
 				8D85700F1F431CD600853F8B /* Shader.metal in Sources */,
 				8D85700B1F431CD000853F8B /* SetUp.swift in Sources */,
+				8D2FAC191F482DE10038E3E6 /* Generator.swift in Sources */,
 				8D85700D1F431CD400853F8B /* Math.swift in Sources */,
 				8D8570151F431CE400853F8B /* MasterController.swift in Sources */,
 				8D8570141F431CE400853F8B /* AppDelegate.swift in Sources */,

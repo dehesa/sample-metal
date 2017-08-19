@@ -30,9 +30,9 @@ vertex VertexProjected main_vertex(const    VertexInput v   [[stage_in]],
     };
 }
 
-fragment half4 fragment_texture(ProjectedVertex vert [[stage_in]],
-                                texture2d<float,access::sample> texture [[texture(0)]],
-                                sampler texSampler [[sampler(0)]]) {
+fragment half4 main_fragment(VertexProjected                 vert       [[stage_in]],
+                             texture2d<float,access::sample> texture    [[texture(0)]],
+                             sampler                         texSampler [[sampler(0)]]) {
     float diffuseIntensity = max(0.33, dot(normalize(vert.normal), -kLightDirection));
     float4 diffuseColor = texture.sample(texSampler, vert.texCoords);
     float4 color = diffuseColor * diffuseIntensity;

@@ -76,8 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				8DA8FA081F47B95700897B9B /* Assets */,
-				8DA8FA0A1F47B95700897B9B /* GrayScale.metal */,
 				8DA8FA0B1F47B95700897B9B /* Processor.swift */,
+				8DA8FA0A1F47B95700897B9B /* GrayScale.metal */,
 			);
 			path = Common;
 			sourceTree = "<group>";
