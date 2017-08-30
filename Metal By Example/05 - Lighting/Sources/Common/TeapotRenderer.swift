@@ -48,6 +48,7 @@ class TeapotRenderer: NSObject, MTKViewDelegate {
         // Create buffers used in the shader
         guard let uniformBuffer = device.makeBuffer(length: MemoryLayout<Uniforms>.stride) else { throw Error.failedToCreateMetalBuffer(device: device) }
         uniformBuffer.label = "me.dehesa.metal.buffers.uniform"
+        uniformBuffer.contents().bindMemory(to: Uniforms.self, capacity: 1)
         self.uniformsBuffer = uniformBuffer
         
         // Setup the MTKView.
@@ -155,7 +156,7 @@ extension TeapotRenderer {
         #if os(iOS)
             return try MTKMesh.__newMeshes(from: asset, device: device, sourceMeshes: nil)
         #else
-            return try MTKMesh.newMeshes(from: asset, device: device, sourceMeshes: nil)
+            return try MTKMesh.newMeshes(asset: asset, device: device).metalKitMeshes
         #endif
     }
     
@@ -183,7 +184,8 @@ extension TeapotRenderer {
             return float3x3(x, y, z)
         }(modelViewMatrix)
         
-        var uni = Uniforms(modelViewProjectionMatrix: modelViewProjectionMatrix, modelViewMatrix: modelViewMatrix, normalMatrix: normalMatrix)
-        memcpy(uniformsBuffer.contents(), &uni, MemoryLayout<Uniforms>.size)
+        
+        let ptr = uniformsBuffer.contents().assumingMemoryBound(to: Uniforms.self)
+        ptr.pointee = Uniforms(modelViewProjectionMatrix: modelViewProjectionMatrix, modelViewMatrix: modelViewMatrix, normalMatrix: normalMatrix)
     }
 }

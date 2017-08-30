@@ -52,6 +52,7 @@ class CowRenderer: NSObject, MTKViewDelegate {
         // Create buffers used in the shader
         guard let uniformBuffer = device.makeBuffer(length: MemoryLayout<Uniforms>.stride) else { throw Error.failedToCreateMetalBuffer(device: device) }
         uniformBuffer.label = "me.dehesa.metal.buffers.uniform"
+        uniformBuffer.contents().bindMemory(to: Uniforms.self, capacity: 1)
         self.uniformsBuffer = uniformBuffer
         
         // Setup the MTKView.
@@ -167,7 +168,7 @@ extension CowRenderer {
         #if os(iOS)
         return try MTKMesh.__newMeshes(from: asset, device: device, sourceMeshes: nil)
         #else
-        return try MTKMesh.newMeshes(from: asset, device: device, sourceMeshes: nil)
+        return try MTKMesh.newMeshes(asset: asset, device: device).metalKitMeshes
         #endif
     }
     
@@ -177,11 +178,7 @@ extension CowRenderer {
         guard let url = Bundle.main.url(forResource: file.name, withExtension: file.`extension`) else { throw Error.failedToFoundFile(name: "\(file.name).\(file.`extension`)") }
         
         let loader = MTKTextureLoader(device: device)
-        #if os(iOS)
         let texture = try loader.newTexture(URL: url, options: [.origin: MTKTextureLoader.Origin.bottomLeft, .generateMipmaps: true])
-        #else
-        let texture = try loader.newTexture(withContentsOf: url, options: [.origin: MTKTextureLoader.Origin.bottomLeft, .generateMipmaps: true])
-        #endif
         
         let samplerDescriptor = MTLSamplerDescriptor().set {
             ($0.sAddressMode, $0.tAddressMode) = (.clampToEdge, .clampToEdge)
@@ -215,8 +212,8 @@ extension CowRenderer {
             return float3x3(x, y, z)
         }(modelViewMatrix)
         
-        var uni = Uniforms(modelViewProjectionMatrix: modelViewProjectionMatrix, modelViewMatrix: modelViewMatrix, normalMatrix: normalMatrix)
-        memcpy(uniformsBuffer.contents(), &uni, MemoryLayout<Uniforms>.size)
+        let ptr = uniformsBuffer.contents().assumingMemoryBound(to: Uniforms.self)
+        ptr.pointee = Uniforms(modelViewProjectionMatrix: modelViewProjectionMatrix, modelViewMatrix: modelViewMatrix, normalMatrix: normalMatrix)
     }
 }
 

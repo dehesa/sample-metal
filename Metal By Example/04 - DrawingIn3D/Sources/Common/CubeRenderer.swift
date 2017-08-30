@@ -53,9 +53,9 @@ class CubeRenderer: MetalViewDelegate {
                         Vertex(position: [-1, -1, -1, 1], color: [0, 0, 0, 1]),
                         Vertex(position: [ 1, -1, -1, 1], color: [1, 0, 0, 1]),
                         Vertex(position: [ 1,  1, -1, 1], color: [1, 1, 0, 1]) ]
-        self.verticesBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Vertex>.stride)!
-        self.verticesBuffer.label = "me.dehesa.metal.buffers.vertices"
-        
+        self.verticesBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Vertex>.stride)!.set {
+            $0.label = "me.dehesa.metal.buffers.vertices"
+        }
         typealias IndexType = UInt16
         let indices: [IndexType] = [3, 2, 6, 6, 7, 3,
                                     4, 5, 1, 1, 0, 4,
@@ -63,11 +63,12 @@ class CubeRenderer: MetalViewDelegate {
                                     1, 5, 6, 6, 2, 1,
                                     0, 1, 2, 2, 3, 0,
                                     7, 6, 5, 5, 4, 7, ]
-        self.indecesBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<IndexType>.stride)!
-        self.indecesBuffer.label = "me.dehesa.metal.buffers.indices"
-        
-        self.uniformsBuffer = device.makeBuffer(length: MemoryLayout<Uniforms>.stride)!
-        self.uniformsBuffer.label = "me.dehesa.metal.buffers.uniform"
+        self.indecesBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<IndexType>.stride)!.set {
+            $0.label = "me.dehesa.metal.buffers.indices"
+        }
+        self.uniformsBuffer = device.makeBuffer(length: MemoryLayout<Uniforms>.stride)!.set {
+            $0.label = "me.dehesa.metal.buffers.uniform"
+        }
     }
     
     func draw(view metalView: MetalView) {
@@ -83,15 +84,17 @@ class CubeRenderer: MetalViewDelegate {
         let drawableSize = metalView.metalLayer.drawableSize
         updateUniforms(drawableSize: float2(Float(drawableSize.width), Float(drawableSize.height)), duration: Float(metalView.frameDuration))
         
-        encoder.setRenderPipelineState(self.renderPipeline)
-        encoder.setDepthStencilState(self.depthStencilState)
-        encoder.setFrontFacing(.counterClockwise)
-        encoder.setCullMode(.back)
-        
-        encoder.setVertexBuffer(self.verticesBuffer, offset: 0, index: 0)
-        encoder.setVertexBuffer(self.uniformsBuffer, offset: 0, index: 1)
-        encoder.drawIndexedPrimitives(type: .triangle, indexCount: self.indecesBuffer.length / MemoryLayout<UInt16>.size, indexType: .uint16, indexBuffer: indecesBuffer, indexBufferOffset: 0)
-        encoder.endEncoding()
+        encoder.setUp {
+            $0.setRenderPipelineState(self.renderPipeline)
+            $0.setDepthStencilState(self.depthStencilState)
+            $0.setFrontFacing(.counterClockwise)
+            $0.setCullMode(.back)
+            
+            $0.setVertexBuffer(self.verticesBuffer, offset: 0, index: 0)
+            $0.setVertexBuffer(self.uniformsBuffer, offset: 0, index: 1)
+            $0.drawIndexedPrimitives(type: .triangle, indexCount: self.indecesBuffer.length / MemoryLayout<UInt16>.size, indexType: .uint16, indexBuffer: indecesBuffer, indexBufferOffset: 0)
+            $0.endEncoding()
+        }
         
         commandBuffer.present(drawable)
         commandBuffer.addCompletedHandler { (_) in let _ = self.displaySemaphore.signal() }
@@ -100,7 +103,7 @@ class CubeRenderer: MetalViewDelegate {
     
     private func updateUniforms(drawableSize: float2, duration: Float) {
         self.time += duration
-        self.rotationX += (0.25 * .𝝉) * duration
+        self.rotationX += (.𝝉 / 4.0) * duration
         self.rotationY += (.𝝉 / 6.0) * duration
         
         let scaleFactor: Float = sin(5 * self.time) * 0.25 + 1
@@ -112,7 +115,8 @@ class CubeRenderer: MetalViewDelegate {
         let viewMatrix = float4x4(translate: float3(0, 0, -5))
         let projectionMatrix = float4x4(perspectiveWithAspect: drawableSize.x/drawableSize.y, fovy: .𝝉/5, near: 1, far: 100)
         
-        var uni = Uniforms(modelViewProjectionMatrix:  projectionMatrix * (viewMatrix * modelMatrix))
-        memcpy(uniformsBuffer.contents(), &uni, MemoryLayout<Uniforms>.size)
+        
+        let ptr = uniformsBuffer.contents().assumingMemoryBound(to: Uniforms.self)
+        ptr.pointee = Uniforms(modelViewProjectionMatrix:  projectionMatrix * (viewMatrix * modelMatrix))
     }
 }

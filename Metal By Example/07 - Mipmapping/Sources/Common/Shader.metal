@@ -23,7 +23,7 @@ struct VertexProjected {
 
 vertex VertexProjected main_vertex(const    VertexInput v   [[stage_in]],
                                    constant Uniforms&   u   [[buffer(1)]]) {
-    return VertexProjected{
+    return VertexProjected {
         .position = u.modelViewProjectionMatrix * v.position,
         .normal = u.normalMatrix * v.normal.xyz,
         .texCoords = v.texCoords

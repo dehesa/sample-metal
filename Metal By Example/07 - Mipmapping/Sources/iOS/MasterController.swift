@@ -13,8 +13,11 @@ class MasterController: UIViewController {
         super.viewDidLoad()
         
         let metalView = self.view as! MTKView
-        self.renderer = try! CubeRenderer(view: metalView)
-        metalView.delegate = self.renderer
+        self.renderer = try! CubeRenderer(view: metalView).set {
+            $0.mipmapMode = .none
+            $0.cameraDistance = zoomFactor.base * zoomFactor.pinch
+            metalView.delegate = $0
+        }
         
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleTap(from:)))
         metalView.addGestureRecognizer(tapGR)
@@ -39,5 +42,6 @@ class MasterController: UIViewController {
         
         let constraintZoom = max(1.0, min(100.0, zoomFactor.base*zoomFactor.pinch))
         zoomFactor.pinch = constraintZoom / zoomFactor.base
+        renderer.cameraDistance = self.zoomFactor.base * self.zoomFactor.pinch
     }
 }

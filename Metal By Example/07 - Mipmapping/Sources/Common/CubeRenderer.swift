@@ -17,8 +17,7 @@ extension CubeRenderer {
         case failedToCreateShaderFunction(name: String)
         case failedToCreateDepthStencilState(device: MTLDevice)
         case failedToFoundFile(name: String)
-        case failedToCreateMetalBuffer(device: MTLDevice)
-        case failedToCreateMetalSampler(device: MTLDevice)
+        case failedToCreateMetalBuffers(device: MTLDevice)
     }
     
     private typealias CubeTextures = (checker: MTLTexture, vibrant: MTLTexture, depth: MTLTexture)
@@ -30,7 +29,7 @@ class CubeRenderer: NSObject, MTKViewDelegate {
     private let commandQueue: MTLCommandQueue
     private let state: (render: MTLRenderPipelineState, depth: MTLDepthStencilState)
     private let buffers: (vertices: MTLBuffer, indices: MTLBuffer, uniforms: MTLBuffer)
-    private let textures: CubeTextures
+    private var textures: CubeTextures
     private let samplers: CubeSamplers
     private var (time, rotationX, rotationY): (Float, Float, Float) = (0,0,0)
     
@@ -52,7 +51,7 @@ class CubeRenderer: NSObject, MTKViewDelegate {
         
         // Create buffers used in the shader
         let mesh = try Generator.Cube.makeBuffers(device: device, size: 1.0)
-        guard let uniformBuffer = device.makeBuffer(length: MemoryLayout<Uniforms>.stride) else { throw Error.failedToCreateMetalBuffer(device: device) }
+        guard let uniformBuffer = device.makeBuffer(length: MemoryLayout<Uniforms>.stride) else { throw Error.failedToCreateMetalBuffers(device: device) }
         mesh.vertices.label = "me.dehesa.metal.buffers.vertices"
         mesh.indices.label = "me.dehesa.metal.buffers.indices"
         uniformBuffer.label = "me.dehesa.metal.buffers.uniform"
@@ -60,8 +59,8 @@ class CubeRenderer: NSObject, MTKViewDelegate {
         
         // Create the textures.
         let board: (size: CGSize, tileCount: Int) = (CGSize(width: 512, height: 512), 8)
-        let checkerTexture = try Generator.Texture.makeCheckboard(size: board.size, tileCount: board.tileCount, inColor: false, with: device)
-        let vibrantTexture = try Generator.Texture.makeCheckboard(size: board.size, tileCount: board.tileCount, inColor: true,  with: device)
+        let checkerTexture = try Generator.Texture.makeSimpleCheckerboard(size: board.size, tileCount: board.tileCount, pixelFormat: pixelFormats.color, with: (device, commandQueue))
+        let vibrantTexture = try Generator.Texture.makeTintedCheckerboard(size: board.size, tileCount: board.tileCount, pixelFormat: pixelFormats.color, with: device)
         let depthTexture = try Generator.Texture.makeDepth(size: view.drawableSize, pixelFormat: pixelFormats.depth, with: device)
         self.textures = (checkerTexture, vibrantTexture, depthTexture)
         
@@ -76,7 +75,9 @@ class CubeRenderer: NSObject, MTKViewDelegate {
     }
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        
+        let depthSize = CGSize(width: textures.depth.width, height: textures.depth.height)
+        guard !size.equalTo(depthSize) else { return }
+        self.textures.depth = try! Generator.Texture.makeDepth(size: size, pixelFormat: view.colorPixelFormat, with: device)
     }
     
     func draw(in view: MTKView) {
@@ -194,8 +195,8 @@ extension CubeRenderer {
             return float3x3(x, y, z)
         }(modelViewMatrix)
         
-        var uni = Uniforms(modelViewProjectionMatrix: modelViewProjectionMatrix, modelViewMatrix: modelViewMatrix, normalMatrix: normalMatrix)
-        memcpy(uniformsBuffer.contents(), &uni, MemoryLayout<Uniforms>.size)
+        let ptr = uniformsBuffer.contents().assumingMemoryBound(to: Uniforms.self)
+        ptr.pointee = Uniforms(modelViewProjectionMatrix: modelViewProjectionMatrix, modelViewMatrix: modelViewMatrix, normalMatrix: normalMatrix)
     }
 }
 

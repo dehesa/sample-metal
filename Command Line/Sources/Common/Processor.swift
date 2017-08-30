@@ -15,7 +15,7 @@ enum Processor {
         let pipelineState = try device.makeComputePipelineState(function: kernel)
         
         let loader = MTKTextureLoader(device: device)
-        let inTexture = try loader.newTexture(withContentsOf: fileURL, options: nil)
+        let inTexture = try loader.newTexture(URL: fileURL)
         let (width, height) = (inTexture.width, inTexture.height)
         
         let outTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Unorm, width: width, height: height, mipmapped: false)

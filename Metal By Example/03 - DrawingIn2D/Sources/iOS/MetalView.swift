@@ -78,20 +78,19 @@ final class MetalView: UIView {
 		guard let drawable = metalLayer.nextDrawable(),
               let commandBuffer = self.queue.makeCommandBuffer() else { return }
 		
-		// Setup Command Encoders (transient)
-        let renderPass = MTLRenderPassDescriptor().set {
+        guard let _ = commandBuffer.makeRenderCommandEncoder(descriptor: MTLRenderPassDescriptor().set {
             $0.colorAttachments[0].setUp { (attachment) in
                 attachment.texture = drawable.texture
                 attachment.clearColor = MTLClearColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1)
                 attachment.loadAction = .clear
                 attachment.storeAction = .store
             }
-        }
-		guard let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPass) else { return }
-		encoder.setRenderPipelineState(renderPipeline)
-		encoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-        encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)
-		encoder.endEncoding()
+        })?.set({
+            $0.setRenderPipelineState(renderPipeline)
+            $0.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+            $0.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)
+            $0.endEncoding()
+        }) else { return }
 		
 		// Present drawable is a convenience completion block that will get executed once your command buffer finishes, and will output the final texture to screen.
 		commandBuffer.present(drawable)
