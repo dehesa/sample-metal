@@ -11,8 +11,8 @@ struct VertexInput {
 
 struct Uniforms {
     float4x4 modelMatrix;
-    float3x3 normalMatrix;
     float4x4 modelViewProjectionMatrix;
+    float3x3 normalMatrix;
 };
 
 struct VertexProjected {

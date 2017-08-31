@@ -3,27 +3,6 @@ import MetalKit
 import ModelIO
 import simd
 
-extension CubeRenderer {
-    private struct Uniforms {
-        var modelViewProjectionMatrix: float4x4
-        var modelViewMatrix: float4x4
-        var normalMatrix: float3x3
-    }
-    
-    enum Error: Swift.Error {
-        case failedToCreateMetalDevice
-        case failedToCreateMetalCommandQueue(device: MTLDevice)
-        case failedToCreateMetalLibrary(device: MTLDevice)
-        case failedToCreateShaderFunction(name: String)
-        case failedToCreateDepthStencilState(device: MTLDevice)
-        case failedToFoundFile(name: String)
-        case failedToCreateMetalBuffers(device: MTLDevice)
-    }
-    
-    private typealias CubeTextures = (checker: MTLTexture, vibrant: MTLTexture, depth: MTLTexture)
-    private typealias CubeSamplers = (notMip: MTLSamplerState, nearestMip: MTLSamplerState, linearMip: MTLSamplerState)
-}
-
 class CubeRenderer: NSObject, MTKViewDelegate {
     private let device: MTLDevice
     private let commandQueue: MTLCommandQueue
@@ -31,7 +10,7 @@ class CubeRenderer: NSObject, MTKViewDelegate {
     private let buffers: (vertices: MTLBuffer, indices: MTLBuffer, uniforms: MTLBuffer)
     private var textures: CubeTextures
     private let samplers: CubeSamplers
-    private var (time, rotationX, rotationY): (Float, Float, Float) = (0,0,0)
+    private var angles: (x: Float, y: Float) = (0, 0)
     
     var mipmapMode = MipmapMode.none
     var cameraDistance: Float = 1.0
@@ -74,16 +53,17 @@ class CubeRenderer: NSObject, MTKViewDelegate {
         }
     }
     
+    
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         let depthSize = CGSize(width: textures.depth.width, height: textures.depth.height)
         guard !size.equalTo(depthSize) else { return }
         self.textures.depth = try! Generator.Texture.makeDepth(size: size, pixelFormat: view.colorPixelFormat, with: device)
     }
     
+    
     func draw(in view: MTKView) {
-        guard let mesh = meshes.first,
-            let drawable = view.currentDrawable,
-            let descriptor = view.currentRenderPassDescriptor else { return }
+        guard let drawable = view.currentDrawable,
+              let descriptor = view.currentRenderPassDescriptor else { return }
         
         descriptor.setUp {
             $0.colorAttachments[0].texture = drawable.texture
@@ -92,7 +72,7 @@ class CubeRenderer: NSObject, MTKViewDelegate {
         }
         
         guard let commandBuffer = self.commandQueue.makeCommandBuffer(),
-            let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor) else { return }
+              let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor) else { return }
         
         let drawableSize = drawable.layer.drawableSize.float2
         updateUniforms(drawableSize: drawableSize, duration: Float(1.0 / 60.0))
@@ -103,14 +83,15 @@ class CubeRenderer: NSObject, MTKViewDelegate {
             encoder.setCullMode(.back)
             encoder.setFrontFacing(.counterClockwise)
             
-            let vertexBuffer = mesh.vertexBuffers[0]
-            encoder.setVertexBuffer(vertexBuffer.buffer, offset: vertexBuffer.offset, index: 0)
-            encoder.setVertexBuffer(self.uniformsBuffer, offset: 0, index: 1)
-            encoder.setFragmentTexture(self.diffuseTexture, index: 0)
-            encoder.setFragmentSamplerState(self.samplerTexture, index: 0)
+            encoder.setVertexBuffer(self.buffers.vertices, offset: 0, index: 0)
+            encoder.setVertexBuffer(self.buffers.uniforms, offset: 0, index: 1)
             
-            guard let submesh = mesh.submeshes.first else { fatalError("Submesh not found.") }
-            encoder.drawIndexedPrimitives(type: submesh.primitiveType, indexCount: submesh.indexCount, indexType: submesh.indexType, indexBuffer: submesh.indexBuffer.buffer, indexBufferOffset: submesh.indexBuffer.offset)
+            let fragment = self.mipmapMode.selector(textures: self.textures, samplers: self.samplers)
+            encoder.setFragmentTexture(fragment.texture, index: 0)
+            encoder.setFragmentSamplerState(fragment.sampler, index: 0)
+            
+            let indicesCount = self.buffers.indices.length / MemoryLayout<Generator.Cube.Index>.stride
+            encoder.drawIndexedPrimitives(type: .triangle, indexCount: indicesCount, indexType: .uint16, indexBuffer: self.buffers.uniforms, indexBufferOffset: 0)
             
             encoder.endEncoding()
         }
@@ -122,7 +103,7 @@ class CubeRenderer: NSObject, MTKViewDelegate {
 
 extension CubeRenderer {
     /// Pixel formats used by the renderer.
-    typealias PixelFormats = (color: MTLPixelFormat, depth: MTLPixelFormat)
+    private typealias PixelFormats = (color: MTLPixelFormat, depth: MTLPixelFormat)
     
     /// Creates the descriptors for the render pipeline state and depth stencil state.
     private static func makeStateDescriptors(device: MTLDevice, pixelFormats: PixelFormats) throws -> (renderPipeline: MTLRenderPipelineDescriptor, depthStencil: MTLDepthStencilDescriptor) {
@@ -173,18 +154,14 @@ extension CubeRenderer {
     
     /// Updates the internal values with the passed arguments.
     private func updateUniforms(drawableSize size: float2, duration: Float) {
-        self.time += duration
-        self.rotationX += duration * (.𝝉 / 4.0)
-        self.rotationY += duration * (.𝝉 / 6.0)
+        let cubePosition: float3 = [0, 0, 0]
+        let modelMatrix = float4x4(translate: cubePosition) * (float4x4(rotate: [1, 0, 0], angle: self.angles.x) * float4x4(rotate: [0, 1, 0], angle: self.angles.y))
         
-        let scaleFactor: Float = 1
-        let xRotMatrix  = float4x4(rotate: float3(1, 0, 0), angle: self.rotationX)
-        let yRotMatrix  = float4x4(rotate: float3(0, 1, 0), angle: self.rotationX)
-        let scaleMatrix = float4x4(scale: scaleFactor)
+        let cameraPosition: float3 = [0, 0, -self.cameraDistance]
+        let viewMatrix = float4x4(translate: cameraPosition)
         
-        let modelMatrix = (xRotMatrix * yRotMatrix) * scaleMatrix
-        let viewMatrix = float4x4(translate: [0, 0, -1.25])
-        let projectionMatrix = float4x4(perspectiveWithAspect: size.x/size.y, fovy: .𝝉/5, near: 0.1, far: 100)
+        let fov: Float = (size.x / size.y) > 1 ? (.𝝉/6) : (.𝝉/4)
+        let projectionMatrix = float4x4(perspectiveWithAspect: size.x/size.y, fovy: fov, near: 0.1, far: 100)
         
         let modelViewMatrix = viewMatrix * modelMatrix
         let modelViewProjectionMatrix = projectionMatrix * modelViewMatrix
@@ -195,8 +172,55 @@ extension CubeRenderer {
             return float3x3(x, y, z)
         }(modelViewMatrix)
         
-        let ptr = uniformsBuffer.contents().assumingMemoryBound(to: Uniforms.self)
-        ptr.pointee = Uniforms(modelViewProjectionMatrix: modelViewProjectionMatrix, modelViewMatrix: modelViewMatrix, normalMatrix: normalMatrix)
+        let ptr = self.buffers.uniforms.contents().assumingMemoryBound(to: Uniforms.self)
+        ptr.pointee = Uniforms(modelMatrix: modelMatrix, modelViewProjectionMatrix: modelViewProjectionMatrix, normalMatrix: normalMatrix.inverse.transpose)
     }
 }
 
+extension CubeRenderer {
+    /// The uniform buffer passed to shader.
+    private struct Uniforms {
+        var modelMatrix: float4x4
+        var modelViewProjectionMatrix: float4x4
+        var normalMatrix: float3x3
+    }
+    /// Types of errors generated on this renderer.
+    enum Error: Swift.Error {
+        case failedToCreateMetalDevice
+        case failedToCreateMetalCommandQueue(device: MTLDevice)
+        case failedToCreateMetalLibrary(device: MTLDevice)
+        case failedToCreateShaderFunction(name: String)
+        case failedToCreateDepthStencilState(device: MTLDevice)
+        case failedToFoundFile(name: String)
+        case failedToCreateMetalBuffers(device: MTLDevice)
+    }
+    /// All possible texture used by this renderer.
+    fileprivate typealias CubeTextures = (checker: MTLTexture, vibrant: MTLTexture, depth: MTLTexture)
+    /// All possible samplers used by this  renderer.
+    fileprivate typealias CubeSamplers = (notMip: MTLSamplerState, nearestMip: MTLSamplerState, linearMip: MTLSamplerState)
+    /// Enumeration for all the mipmapping options.
+    enum MipmapMode: Int {
+        case none = 0
+        case blitGeneratedLinear
+        case vibrantLinear
+        case vibrantNearest
+        
+        var next: MipmapMode {
+            let nextRawValue = (self.rawValue + 1) % (MipmapMode.last.rawValue + 1)
+            return MipmapMode(rawValue: nextRawValue)!
+        }
+        
+        private static var last: MipmapMode {
+            return .vibrantNearest
+        }
+        
+        fileprivate func selector(textures: CubeTextures, samplers: CubeSamplers) -> (texture: MTLTexture, sampler: MTLSamplerState) {
+            switch self {
+            case .none:                return (textures.checker, samplers.notMip)
+            case .blitGeneratedLinear: return (textures.checker, samplers.linearMip)
+            case .vibrantNearest:      return (textures.vibrant, samplers.nearestMip)
+            case .vibrantLinear:       return (textures.vibrant, samplers.linearMip)
+            }
+        }
+    }
+}

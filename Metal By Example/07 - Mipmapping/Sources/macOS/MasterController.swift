@@ -3,7 +3,7 @@ import MetalKit
 
 class MasterController: NSViewController {
     private var renderer: CubeRenderer!
-    private var zoomFactor = (base: CGFloat(2.0), pinch: CGFloat(1.0))
+    private var zoomFactor: (base: CGFloat, pinch: CGFloat) = (2, 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()

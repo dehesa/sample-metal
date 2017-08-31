@@ -3,22 +3,6 @@ import CoreGraphics
 import Metal
 import simd
 
-enum MipmapMode: Int {
-    case none = 0
-    case blitGeneratedLinear
-    case vibrantLinear
-    case vibrantNearest
-    
-    var next: MipmapMode {
-        let nextRawValue = (self.rawValue + 1) % (MipmapMode.last.rawValue + 1)
-        return MipmapMode(rawValue: nextRawValue)!
-    }
-    
-    private static var last: MipmapMode {
-        return .vibrantNearest
-    }
-}
-
 /// List the generators provided by this binary.
 enum Generator {
     /// Cube vertices/indices generator.
@@ -162,7 +146,7 @@ enum Generator {
                 texture.replace(region: region, mipmapLevel: 0, withBytes: ptr, bytesPerRow: bytesPerRow)
             }
             
-            var (level, mipWidth, mipHeight, levelImage) = (1, texture.width, texture.height, image)
+            var (level, mipWidth, mipHeight, levelImage) = (1, texture.width/2, texture.height/2, image)
             while mipWidth > 1 && mipHeight > 1 {
                 let mipBytesPerRow = bytesPerPixel * mipWidth
                 let tintColor = makeTintColor(level: level - 1)
@@ -187,6 +171,8 @@ enum Generator {
         static func makeDepth(size: CGSize, pixelFormat: MTLPixelFormat, with device: MTLDevice) throws -> MTLTexture {
             let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: pixelFormat, width: Int(size.width), height: Int(size.height), mipmapped: false).set {
                 $0.usage = .renderTarget
+                $0.storageMode = .`private`
+                
             }
             guard let depthTexture = device.makeTexture(descriptor: descriptor) else { throw Error.failedToCreateTexture(device: device) }
             return depthTexture
