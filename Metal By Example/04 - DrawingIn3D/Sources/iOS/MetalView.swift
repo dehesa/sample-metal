@@ -92,7 +92,12 @@ final class MetalView: UIView {
            CGSize(width: texture.width, height: texture.height).equalTo(size) { return }
         
         self.metalLayer.drawableSize = size
-        self.depthTexture = self.device.makeTexture(descriptor: MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: Int(size.width), height: Int(size.height), mipmapped: false))
+        
+        let depthDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: Int(size.width), height: Int(size.height), mipmapped: false).set {
+            $0.storageMode = .`private`
+            $0.usage = .renderTarget
+        }
+        self.depthTexture = self.device.makeTexture(descriptor: depthDescriptor)
     }
     
     @objc func tickTrigger(from displayLink: CADisplayLink) {

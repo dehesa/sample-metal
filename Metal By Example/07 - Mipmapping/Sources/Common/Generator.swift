@@ -21,8 +21,12 @@ enum Generator {
             case failedToCreateIndexBuffer(indices: [Cube.Index])
         }
         /// Makes a Metal buffer given a specific cube size (in model view units).
+        /// - parameter device: Metal device where the buffers will be stored.
+        /// - parameter size: Side square size.
+        /// - Vertex & Index buffer for a perfect square.
         static func makeBuffers(device: MTLDevice, size: Float) throws -> (vertices: MTLBuffer, indices: MTLBuffer) {
-            let (s, n) = (0.5 * size, Float(1.0))
+            /// Half side and normal to be used as coordinates.
+            let (s, n): (Float, Float) = (0.5*size, 1)
             // Points
             let lbf = float4(x: -s, y: -s, z: -s, w: 1) // x: left,  y: bottom, z: front
             let lbb = float4(x: -s, y: -s, z:  s, w: 1) // x: right, y: bottom, z: back
@@ -97,6 +101,8 @@ enum Generator {
                 throw Error.failedToCreateIndexBuffer(indices: indices)
             }
             
+            vertexBuffer.label = "me.dehesa.metal.buffers.vertices"
+            indexBuffer.label = "me.dehesa.metal.buffers.indices"
             return (vertexBuffer, indexBuffer)
         }
     }

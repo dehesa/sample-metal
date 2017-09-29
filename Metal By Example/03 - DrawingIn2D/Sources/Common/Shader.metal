@@ -9,7 +9,8 @@ struct Vertex {
 };
 
 // The definition of Metal shader functions must be prefixed with a function qualifier: vertex, fragment, or kernel.
-vertex Vertex main_vertex(device Vertex* vertices [[buffer(0)]], uint vid [[vertex_id]]) {
+vertex Vertex main_vertex(device Vertex* vertices [[buffer(0)]],
+                          uint   vid              [[vertex_id]]) {
     return vertices[vid];
 }
 

@@ -7,16 +7,16 @@ struct Vertex {
 };
 
 struct Uniforms {
-    float4x4 modelViewProjectionMatrix;
+    float4x4 mvpMatrix;
 };
 
 vertex Vertex main_vertex(device   Vertex*   vertices [[buffer(0)]],
                           constant Uniforms* uniforms [[buffer(1)]],
 							       uint      vid	  [[vertex_id]]) {
-    Vertex vertexOut;
-    vertexOut.position = uniforms->modelViewProjectionMatrix *vertices[vid].position;
-    vertexOut.color = vertices[vid].color;
-    return vertexOut;
+    return Vertex {
+        .position = uniforms->mvpMatrix * vertices[vid].position,
+        .color = vertices[vid].color
+    };
 }
 
 fragment float4 main_fragment(Vertex inVertex [[stage_in]]) {

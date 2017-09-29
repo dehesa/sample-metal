@@ -16,37 +16,35 @@ class CubeRenderer: NSObject, MTKViewDelegate {
     var cameraDistance: Float = 1.0
     
     init(view: MTKView) throws {
-        // Create GPU representation (MTLDevice) and Command Queue.
+        // 1. Create GPU representation (MTLDevice) and Command Queue.
         guard let device = MTLCreateSystemDefaultDevice() else { throw Error.failedToCreateMetalDevice }
         guard let commandQueue = device.makeCommandQueue() else { throw Error.failedToCreateMetalCommandQueue(device: device) }
         (self.device, self.commandQueue) = (device, commandQueue)
         
-        // Creates the render states
+        // 2. Creates the render states
         let pixelFormats: PixelFormats = (.bgra8Unorm, .depth32Float)
         let descriptors = try CubeRenderer.makeStateDescriptors(device: device, pixelFormats: pixelFormats)
         let renderPipelineState = try device.makeRenderPipelineState(descriptor: descriptors.renderPipeline)
         guard let depthStencilState = device.makeDepthStencilState(descriptor: descriptors.depthStencil) else { throw Error.failedToCreateDepthStencilState(device: device) }
         self.state = (renderPipelineState, depthStencilState)
         
-        // Create buffers used in the shader
+        // 3. Create buffers used in the shader
         let mesh = try Generator.Cube.makeBuffers(device: device, size: 1.0)
         guard let uniformBuffer = device.makeBuffer(length: MemoryLayout<Uniforms>.stride) else { throw Error.failedToCreateMetalBuffers(device: device) }
-        mesh.vertices.label = "me.dehesa.metal.buffers.vertices"
-        mesh.indices.label = "me.dehesa.metal.buffers.indices"
         uniformBuffer.label = "me.dehesa.metal.buffers.uniform"
         self.buffers = (mesh.vertices, mesh.indices, uniformBuffer)
         
-        // Create the textures.
+        // 4. Create the textures.
         let board: (size: CGSize, tileCount: Int) = (CGSize(width: 512, height: 512), 8)
         let checkerTexture = try Generator.Texture.makeSimpleCheckerboard(size: board.size, tileCount: board.tileCount, pixelFormat: pixelFormats.color, with: (device, commandQueue))
         let vibrantTexture = try Generator.Texture.makeTintedCheckerboard(size: board.size, tileCount: board.tileCount, pixelFormat: pixelFormats.color, with: device)
         let depthTexture = try Generator.Texture.makeDepth(size: view.drawableSize, pixelFormat: pixelFormats.depth, with: device)
         self.textures = (checkerTexture, vibrantTexture, depthTexture)
         
-        // Create the samplers
+        // 5. Create the samplers
         self.samplers = try Generator.Texture.makeSamplers(with: device)
         
-        // Setup the MTKView.
+        // 6. Setup the MTKView.
         view.setUp {
             ($0.device, $0.clearColor) = (device, MTLClearColorMake(0, 0, 0, 1))
             ($0.colorPixelFormat, $0.depthStencilPixelFormat) = pixelFormats
@@ -91,7 +89,7 @@ class CubeRenderer: NSObject, MTKViewDelegate {
             encoder.setFragmentSamplerState(fragment.sampler, index: 0)
             
             let indicesCount = self.buffers.indices.length / MemoryLayout<Generator.Cube.Index>.stride
-            encoder.drawIndexedPrimitives(type: .triangle, indexCount: indicesCount, indexType: .uint16, indexBuffer: self.buffers.uniforms, indexBufferOffset: 0)
+            encoder.drawIndexedPrimitives(type: .triangle, indexCount: indicesCount, indexType: .uint16, indexBuffer: self.buffers.indices, indexBufferOffset: 0)
             
             encoder.endEncoding()
         }
@@ -106,6 +104,9 @@ extension CubeRenderer {
     private typealias PixelFormats = (color: MTLPixelFormat, depth: MTLPixelFormat)
     
     /// Creates the descriptors for the render pipeline state and depth stencil state.
+    /// - parameter device: Metal device where the render pipeline will be created.
+    /// - parameter pixelFormats: Pixel formats for the color and depth attachments.
+    /// - returns: Fully constructer render pipeline (with vertex and fragment function) and the depth state.
     private static func makeStateDescriptors(device: MTLDevice, pixelFormats: PixelFormats) throws -> (renderPipeline: MTLRenderPipelineDescriptor, depthStencil: MTLDepthStencilDescriptor) {
         // Initialize the library and respective metal functions.
         let functionName: (vertex: String, fragment: String) = ("main_vertex", "main_fragment")
@@ -154,10 +155,11 @@ extension CubeRenderer {
     
     /// Updates the internal values with the passed arguments.
     private func updateUniforms(drawableSize size: float2, duration: Float) {
-        let cubePosition: float3 = [0, 0, 0]
-        let modelMatrix = float4x4(translate: cubePosition) * (float4x4(rotate: [1, 0, 0], angle: self.angles.x) * float4x4(rotate: [0, 1, 0], angle: self.angles.y))
+        let cubePosition: float3 = [0, 0, 20]
+        let modelMatrix = float4x4(translate: cubePosition) //* (float4x4(rotate: [1, 0, 0], angle: self.angles.x) * float4x4(rotate: [0, 1, 0], angle: self.angles.y))
         
-        let cameraPosition: float3 = [0, 0, -self.cameraDistance]
+        let cameraPosition: float3 = [0, 0, -1.25]
+//        let cameraPosition: float3 = [0, 0, -self.cameraDistance]
         let viewMatrix = float4x4(translate: cameraPosition)
         
         let fov: Float = (size.x / size.y) > 1 ? (.𝝉/6) : (.𝝉/4)

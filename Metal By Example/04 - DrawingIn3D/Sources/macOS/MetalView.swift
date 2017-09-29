@@ -127,10 +127,12 @@ class MetalView: NSView {
         guard self.depthTexture == nil || self.depthTexture!.width != w || self.depthTexture!.height != h else { return }
         
         self.metalLayer.drawableSize = size
-        self.depthTexture = self.device.makeTexture(descriptor: MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: w, height: h, mipmapped: false).set {
-            $0.storageMode = .private
+        
+        let depthDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: Int(size.width), height: Int(size.height), mipmapped: false).set {
+            $0.storageMode = .`private`
             $0.usage = .renderTarget
-        })
+        }
+        self.depthTexture = self.device.makeTexture(descriptor: depthDescriptor)
     }
     
     func displayLinkDidFire() {

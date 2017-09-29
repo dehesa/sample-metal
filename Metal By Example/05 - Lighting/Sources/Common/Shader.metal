@@ -8,8 +8,8 @@ struct VertexInput {
 };
 
 struct Uniforms {
-    float4x4 modelViewProjectionMatrix;
-    float4x4 modelViewMatrix;
+    float4x4 mvpMatrix;
+    float4x4 mvMatrix;
     float3x3 normalMatrix;
 };
 
@@ -22,8 +22,8 @@ struct VertexProjected {
 vertex VertexProjected main_vertex(const    VertexInput v [[stage_in]],
                                    constant Uniforms&   u [[buffer(1)]]) {
     return VertexProjected{
-        .position =   u.modelViewProjectionMatrix * v.position,
-        .eye      = -(u.modelViewMatrix * v.position).xyz,
+        .position =   u.mvpMatrix * v.position,
+        .eye      = -(u.mvMatrix * v.position).xyz,
         .normal   =   u.normalMatrix * v.normal.xyz
     };
 }
@@ -60,8 +60,8 @@ fragment float4 main_fragment(const VertexProjected v [[stage_in]]) {
     const float3 ambient = light.ambientColor * material.ambientColor;
     
     const float3 normal = normalize(v.normal);
-    const float intensityDiffuse = saturate(dot(normal, light.direction));
-    const float3 diffuse = light.diffuseColor * material.diffuseColor * intensityDiffuse;
+    const float intensityDiffuse = saturate(dot(normal, light.direction));  // `saturate` clamps the value between 0 and 1.
+    const float3 diffuse = intensityDiffuse * (light.diffuseColor * material.diffuseColor);
     
     float3 specular(0);
     if (intensityDiffuse > 0) {

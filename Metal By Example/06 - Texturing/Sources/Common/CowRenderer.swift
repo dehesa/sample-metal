@@ -165,11 +165,7 @@ extension CowRenderer {
         }
         
         let asset = MDLAsset(url: url, vertexDescriptor: modelDescriptor, bufferAllocator: MTKMeshBufferAllocator(device: device))
-        #if os(iOS)
-        return try MTKMesh.__newMeshes(from: asset, device: device, sourceMeshes: nil)
-        #else
         return try MTKMesh.newMeshes(asset: asset, device: device).metalKitMeshes
-        #endif
     }
     
     /// Initializes a texture buffer from an external image.
@@ -194,12 +190,11 @@ extension CowRenderer {
         self.rotationX += duration * (.𝝉 / 4.0)
         self.rotationY += duration * (.𝝉 / 6.0)
         
-        let scaleFactor: Float = 1
+        let scaleMatrix = float4x4(scale: 1)
         let xRotMatrix  = float4x4(rotate: float3(1, 0, 0), angle: self.rotationX)
         let yRotMatrix  = float4x4(rotate: float3(0, 1, 0), angle: self.rotationX)
-        let scaleMatrix = float4x4(scale: scaleFactor)
         
-        let modelMatrix = (xRotMatrix * yRotMatrix) * scaleMatrix
+        let modelMatrix = (yRotMatrix * xRotMatrix) * scaleMatrix
         let viewMatrix = float4x4(translate: [0, 0, -1.25])
         let projectionMatrix = float4x4(perspectiveWithAspect: size.x/size.y, fovy: .𝝉/5, near: 0.1, far: 100)
         

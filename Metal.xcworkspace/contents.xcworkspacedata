@@ -2,6 +2,13 @@
 <Workspace
    version = "1.0">
    <Group
+      location = "group:Playground"
+      name = "Playground">
+      <FileRef
+         location = "group:Metal.playground">
+      </FileRef>
+   </Group>
+   <Group
       location = "group:Metal By Example"
       name = "Metal By Example">
       <FileRef

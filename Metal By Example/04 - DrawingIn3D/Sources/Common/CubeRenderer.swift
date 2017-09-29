@@ -44,15 +44,15 @@ class CubeRenderer: MetalViewDelegate {
             $0.isDepthWriteEnabled = true
         })!
         
-        // Setup buffers. Coordinates defined in clip space coords: [-1,+1]
-        let vertices = [Vertex(position: [-1,  1,  1, 1], color: [0, 1, 1, 1]),
-                        Vertex(position: [-1, -1,  1, 1], color: [0, 0, 1, 1]),
-                        Vertex(position: [ 1, -1,  1, 1], color: [1, 0, 1, 1]),
-                        Vertex(position: [ 1,  1,  1, 1], color: [1, 1, 1, 1]),
-                        Vertex(position: [-1,  1, -1, 1], color: [0, 1, 0, 1]),
-                        Vertex(position: [-1, -1, -1, 1], color: [0, 0, 0, 1]),
-                        Vertex(position: [ 1, -1, -1, 1], color: [1, 0, 0, 1]),
-                        Vertex(position: [ 1,  1, -1, 1], color: [1, 1, 0, 1]) ]
+        // Setup buffers. Coordinates defined in clip space coords: [-1,+1] for x and y; and [0,+1] for z.
+        let vertices = [Vertex(position: [-1,  1,  1, 1], color: [0, 1, 1, 1]), // left,  top,    back
+                        Vertex(position: [-1, -1,  1, 1], color: [0, 0, 1, 1]), // left,  bottom, back
+                        Vertex(position: [ 1, -1,  1, 1], color: [1, 0, 1, 1]), // right, bottom, back
+                        Vertex(position: [ 1,  1,  1, 1], color: [1, 1, 1, 1]), // right, top,    back
+                        Vertex(position: [-1,  1, -1, 1], color: [0, 1, 0, 1]), // left,  top,    front
+                        Vertex(position: [-1, -1, -1, 1], color: [0, 0, 0, 1]), // left,  bottom, front
+                        Vertex(position: [ 1, -1, -1, 1], color: [1, 0, 0, 1]), // right, bottom, front
+                        Vertex(position: [ 1,  1, -1, 1], color: [1, 1, 0, 1])] // right, top,    front
         self.verticesBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Vertex>.stride)!.set {
             $0.label = "me.dehesa.metal.buffers.vertices"
         }
@@ -82,7 +82,7 @@ class CubeRenderer: MetalViewDelegate {
         }
         
         let drawableSize = metalView.metalLayer.drawableSize
-        updateUniforms(drawableSize: float2(Float(drawableSize.width), Float(drawableSize.height)), duration: Float(metalView.frameDuration))
+        updateUniforms(drawableSize: [Float(drawableSize.width), Float(drawableSize.height)], duration: Float(metalView.frameDuration))
         
         encoder.setUp {
             $0.setRenderPipelineState(self.renderPipeline)
@@ -106,13 +106,13 @@ class CubeRenderer: MetalViewDelegate {
         self.rotationX += (.𝝉 / 4.0) * duration
         self.rotationY += (.𝝉 / 6.0) * duration
         
-        let scaleFactor: Float = sin(5 * self.time) * 0.25 + 1
-        let xRotMatrix = float4x4(rotate: float3(1, 0, 0), angle: self.rotationX)
-        let yRotMatrix = float4x4(rotate: float3(0, 1, 0), angle: self.rotationX)
+        let scaleFactor: Float = 1 + 0.25*sin(5 * self.time)
+        let xRotMatrix = float4x4(rotate: [1, 0, 0], angle: self.rotationX)
+        let yRotMatrix = float4x4(rotate: [0, 1, 0], angle: self.rotationX)
         let scaleMatrix = float4x4(diagonal: [scaleFactor, scaleFactor, scaleFactor, 1])
-        let modelMatrix = (xRotMatrix * yRotMatrix) * scaleMatrix
+        let modelMatrix = (yRotMatrix * xRotMatrix) * scaleMatrix
         
-        let viewMatrix = float4x4(translate: float3(0, 0, -5))
+        let viewMatrix = float4x4(translate: float3(0, 0, -5))  // Move the camera 5 units on the -z axis. Equal to push object 5 units on +z axis diraction.
         let projectionMatrix = float4x4(perspectiveWithAspect: drawableSize.x/drawableSize.y, fovy: .𝝉/5, near: 1, far: 100)
         
         

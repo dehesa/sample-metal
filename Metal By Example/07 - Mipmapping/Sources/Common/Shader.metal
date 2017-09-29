@@ -10,21 +10,21 @@ struct VertexInput {
 };
 
 struct Uniforms {
-    float4x4 modelMatrix;
-    float4x4 modelViewProjectionMatrix;
+    float4x4 mMatrix;
+    float4x4 mvpMatrix;
     float3x3 normalMatrix;
 };
 
 struct VertexProjected {
-    float4 position [[position]];
-    float3 normal [[user(normal)]];
+    float4 position  [[position]];
+    float3 normal    [[user(normal)]];
     float2 texCoords [[user(tex_coords)]];
 };
 
 vertex VertexProjected main_vertex(const    VertexInput v   [[stage_in]],
                                    constant Uniforms&   u   [[buffer(1)]]) {
     return VertexProjected {
-        .position = u.modelViewProjectionMatrix * v.position,
+        .position = u.mvpMatrix * v.position,
         .normal = u.normalMatrix * v.normal.xyz,
         .texCoords = v.texCoords
     };
