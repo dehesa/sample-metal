@@ -59,9 +59,10 @@ final class MetalView: UIView {
         guard let device = MTLCreateSystemDefaultDevice() else { return nil }
         super.init(coder: aDecoder)
         
-        self.metalLayer.setUp {
-            $0.device = device
-            $0.pixelFormat = .bgra8Unorm    // 8-bit unsigned integer [0, 255]
+        self.metalLayer.setUp { (layer) in
+            layer.device = device
+            layer.pixelFormat = .bgra8Unorm    // 8-bit unsigned integer [0, 255]
+            layer.framebufferOnly = true
         }
     }
     

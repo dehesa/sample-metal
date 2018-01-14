@@ -53,17 +53,14 @@ class CubeRenderer: MetalViewDelegate {
                         Vertex(position: [-1, -1, -1, 1], color: [0, 0, 0, 1]), // left,  bottom, front
                         Vertex(position: [ 1, -1, -1, 1], color: [1, 0, 0, 1]), // right, bottom, front
                         Vertex(position: [ 1,  1, -1, 1], color: [1, 1, 0, 1])] // right, top,    front
-        self.verticesBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Vertex>.stride)!.set {
+        self.verticesBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Vertex>.stride, options: .cpuCacheModeWriteCombined)!.set {
             $0.label = "me.dehesa.metal.buffers.vertices"
         }
         typealias IndexType = UInt16
-        let indices: [IndexType] = [3, 2, 6, 6, 7, 3,
-                                    4, 5, 1, 1, 0, 4,
-                                    4, 0, 3, 3, 7, 4,
-                                    1, 5, 6, 6, 2, 1,
-                                    0, 1, 2, 2, 3, 0,
-                                    7, 6, 5, 5, 4, 7, ]
-        self.indecesBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<IndexType>.stride)!.set {
+        let indices: [IndexType] = [3, 2, 6, 6, 7, 3,   4, 5, 1, 1, 0, 4,
+                                    4, 0, 3, 3, 7, 4,   1, 5, 6, 6, 2, 1,
+                                    0, 1, 2, 2, 3, 0,   7, 6, 5, 5, 4, 7 ]
+        self.indecesBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<IndexType>.stride, options: .cpuCacheModeWriteCombined)!.set {
             $0.label = "me.dehesa.metal.buffers.indices"
         }
         self.uniformsBuffer = device.makeBuffer(length: MemoryLayout<Uniforms>.stride)!.set {

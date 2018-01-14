@@ -61,12 +61,13 @@ class MetalView: NSView {
         guard let device = MTLCreateSystemDefaultDevice() else { return nil }
         super.init(coder: aDecoder)
         
-        // Setup layer (backing layer)
-        self.layer = CAMetalLayer().set {
-            $0.device = device
-            $0.pixelFormat = .bgra8Unorm   // 8-bit unsigned integer [0, 255]
+        // Setup layer (layer-hosting)
+        self.layer = CAMetalLayer().set { (layer) in
+            layer.device = device
+            layer.pixelFormat = .bgra8Unorm   // 8-bit unsigned integer [0, 255]
+            layer.framebufferOnly = true
         }
-        wantsLayer = true
+        self.wantsLayer = true
     }
     
     override func viewDidMoveToWindow() {

@@ -15,10 +15,12 @@ enum Processor {
         let pipelineState = try device.makeComputePipelineState(function: kernel)
         
         let loader = MTKTextureLoader(device: device)
-        let inTexture = try loader.newTexture(URL: fileURL)
+        let inTexture = try loader.newTexture(URL: fileURL, options: [.textureCPUCacheMode:MTLCPUCacheMode.writeCombined.rawValue, .textureUsage:MTLTextureUsage.shaderRead.rawValue])
         let (width, height) = (inTexture.width, inTexture.height)
         
         let outTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Unorm, width: width, height: height, mipmapped: false)
+        outTextureDescriptor.cpuCacheMode = .defaultCache
+        outTextureDescriptor.usage = .shaderWrite
         guard let outTexture = device.makeTexture(descriptor: outTextureDescriptor) else { throw Error.failedToCreateMetalTexture(device: device, descriptor: outTextureDescriptor) }
         
         // Create the *transient* metal objects.

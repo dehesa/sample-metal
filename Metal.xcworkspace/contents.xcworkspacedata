@@ -3,7 +3,7 @@
    version = "1.0">
    <Group
       location = "group:Playground"
-      name = "Playground">
+      name = "Playgrounds">
       <FileRef
          location = "group:Metal.playground">
       </FileRef>

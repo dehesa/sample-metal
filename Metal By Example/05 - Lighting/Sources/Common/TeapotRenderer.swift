@@ -59,7 +59,7 @@ class TeapotRenderer: NSObject, MTKViewDelegate {
     }
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        
+        // Fill up with size-changing drawing methods...
     }
     
     func draw(in view: MTKView) {

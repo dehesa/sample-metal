@@ -56,6 +56,7 @@ class MetalView: NSView {
         self.metalLayer.setUp { (layer) in
             layer.device = device
             layer.pixelFormat = .bgra8Unorm
+            layer.framebufferOnly = true
         }
     }
     

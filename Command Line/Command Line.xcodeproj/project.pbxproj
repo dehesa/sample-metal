@@ -303,7 +303,6 @@
 			baseConfigurationReference = 8DA8FA131F47B95700897B9B /* macOS.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = V4LZL56CA7;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -312,7 +311,6 @@
 			baseConfigurationReference = 8DA8FA131F47B95700897B9B /* macOS.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = V4LZL56CA7;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

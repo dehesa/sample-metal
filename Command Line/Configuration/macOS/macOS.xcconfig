@@ -3,4 +3,3 @@ SDKROOT = macosx
 
 // Packaging
 INFOPLIST_FILE = $(SRCROOT)/Configuration/macOS/macOS.plist
-
