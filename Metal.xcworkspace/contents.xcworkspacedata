@@ -34,7 +34,7 @@
       location = "group:Command Line"
       name = "Command Line">
       <FileRef
-         location = "group:Command Line.xcodeproj">
+         location = "group:/Users/marcos/Workspace/Code/Github/Metal/Command Line/Simple GPGPU.xcodeproj">
       </FileRef>
    </Group>
 </Workspace>

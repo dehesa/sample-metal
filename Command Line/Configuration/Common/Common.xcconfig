@@ -1,7 +1,6 @@
 // Packaging
-PRODUCT_NAME = MetalCLI
-PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.commandline
-PRODUCT_MODULE_NAME = MetalCLI
+PRODUCT_NAME = gpgpu
+PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.commandline.gpgpu
 
 // Versioning
 CURRENT_PROJECT_VERSION = 1

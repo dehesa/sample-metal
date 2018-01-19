@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0920"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8DA8F9FB1F47B86D00897B9B"
-               BuildableName = "MetalCLI"
-               BlueprintName = "Command Line"
-               ReferencedContainer = "container:Command Line.xcodeproj">
+               BuildableName = "gpgpu_grayscale"
+               BlueprintName = "Grayscale"
+               ReferencedContainer = "container:Simple GPGPU.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +34,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DA8F9FB1F47B86D00897B9B"
-            BuildableName = "MetalCLI"
-            BlueprintName = "Command Line"
-            ReferencedContainer = "container:Command Line.xcodeproj">
+            BuildableName = "gpgpu_grayscale"
+            BlueprintName = "Grayscale"
+            ReferencedContainer = "container:Simple GPGPU.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,17 +58,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DA8F9FB1F47B86D00897B9B"
-            BuildableName = "MetalCLI"
-            BlueprintName = "Command Line"
-            ReferencedContainer = "container:Command Line.xcodeproj">
+            BuildableName = "gpgpu_grayscale"
+            BlueprintName = "Grayscale"
+            ReferencedContainer = "container:Simple GPGPU.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "&quot;$(SRCROOT)/Sources/Common/Assets/Sample.jpg&quot;"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -83,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DA8F9FB1F47B86D00897B9B"
-            BuildableName = "MetalCLI"
-            BlueprintName = "Command Line"
-            ReferencedContainer = "container:Command Line.xcodeproj">
+            BuildableName = "gpgpu_grayscale"
+            BlueprintName = "Grayscale"
+            ReferencedContainer = "container:Simple GPGPU.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
