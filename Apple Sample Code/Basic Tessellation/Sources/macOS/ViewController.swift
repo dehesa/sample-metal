@@ -39,7 +39,7 @@ class ViewController: NSViewController {
     }
     
     @IBAction func insideSliderDidChange(_ sender: NSSlider) {
-        self.insideLabel.stringValue = String(format: "%1.f", sender.floatValue)
+        self.insideLabel.stringValue = String(format: "%.1f", sender.floatValue)
         self.pipeline.factors.inside = sender.floatValue
         self.metalView.draw()
     }

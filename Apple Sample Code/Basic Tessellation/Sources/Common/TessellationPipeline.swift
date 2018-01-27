@@ -28,6 +28,9 @@ class TessellationPipeline: NSObject {
         self.buffers = TessellationPipeline.setupBuffers(device: metal.device)
         
         super.init()
+        
+        view.device = self.metal.device
+        view.delegate = self
     }
 }
 
@@ -175,16 +178,6 @@ private extension TessellationPipeline {
     }
 }
 
-private extension TessellationPipeline {
-    func computeTessellationFactors(on commandBuffer: MTLCommandBuffer) {
-        
-    }
-    
-    func tessellateAndRender(view: MTKView, commandBuffer: MTLCommandBuffer) {
-        
-    }
-}
-
 extension TessellationPipeline: MTKViewDelegate {
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
@@ -193,7 +186,66 @@ extension TessellationPipeline: MTKViewDelegate {
     
     func draw(in view: MTKView) {
         autoreleasepool {
+            guard let buffer = self.metal.queue.makeCommandBuffer() else { return }
+            buffer.label = "Tessellation Pass"
             
+            if self.computeTessellationFactors(on: buffer),
+               self.tessellateAndRender(view: view, on: buffer),
+               let drawable = view.currentDrawable {
+                buffer.present(drawable)
+            }
+            buffer.commit()
         }
+    }
+    
+    private func computeTessellationFactors(on commandBuffer: MTLCommandBuffer) -> Bool {
+        guard let encoder = commandBuffer.makeComputeCommandEncoder() else { return false }
+        
+        encoder.label = "Compute Command Encoder"
+        encoder.pushDebugGroup("Compute Tessellation Factors")
+        
+        // Set the correct pipeline.
+        encoder.setComputePipelineState((self.patchType == .triangle) ? self.computePipelines.triangle : self.computePipelines.quad)
+        // Bind the buffers (user selection & tessellation factor)
+        encoder.setBytes(&factors.edge,   length: MemoryLayout.size(ofValue: factors.edge),   index: 0)
+        encoder.setBytes(&factors.inside, length: MemoryLayout.size(ofValue: factors.inside), index: 1)
+        encoder.setBuffer(self.buffers.tessellationFactors, offset: 0, index: 2)
+        // Dispatch threadgroups
+        encoder.dispatchThreadgroups(MTLSize(width: 1, height: 1, depth: 1), threadsPerThreadgroup: MTLSize(width: 1, height: 1, depth: 1))
+        
+        encoder.popDebugGroup()
+        encoder.endEncoding()
+        
+        return true
+    }
+    
+    private func tessellateAndRender(view: MTKView, on commandBuffer: MTLCommandBuffer) -> Bool {
+        guard let renderPassDescriptor = view.currentRenderPassDescriptor,
+              let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else { return false }
+        
+        encoder.label = "Render Command Encoder"
+        encoder.pushDebugGroup("Tessellate and Render")
+        let numControlPoints: Int
+        
+        // Set the correct render pipeline and bind the correct control points buffer.
+        if case .triangle = self.patchType {
+            numControlPoints = 3
+            encoder.setRenderPipelineState(self.renderPipelines.triangle)
+            encoder.setVertexBuffer(self.buffers.triangleControlPoints, offset: 0, index: 0)
+        } else {
+            numControlPoints = 4
+            encoder.setRenderPipelineState(self.renderPipelines.quad)
+            encoder.setVertexBuffer(self.buffers.quadControlPoints, offset: 0, index: 0)
+        }
+        // Enable/Disable wireframe mode.
+        encoder.setTriangleFillMode((self.wireframe) ? .lines : .fill)
+        // Encode tessellation-specific commands.
+        encoder.setTessellationFactorBuffer(self.buffers.tessellationFactors, offset: 0, instanceStride: 0)
+        encoder.drawPatches(numberOfPatchControlPoints: numControlPoints, patchStart: 0, patchCount: 1, patchIndexBuffer: nil, patchIndexBufferOffset: 0, instanceCount: 1, baseInstance: 0)
+        
+        encoder.popDebugGroup()
+        encoder.endEncoding()
+        
+        return true
     }
 }

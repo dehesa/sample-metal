@@ -737,6 +737,9 @@
                                         <segment label="Quad" width="84" tag="1"/>
                                     </segments>
                                 </segmentedCell>
+                                <connections>
+                                    <action selector="patchTypeSegmentedControlDidChange:" target="XfG-lQ-9wD" id="ldr-Rd-u3A"/>
+                                </connections>
                             </segmentedControl>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="EpP-rc-JUv">
                                 <rect key="frame" x="508" y="412" width="172" height="17"/>
@@ -769,6 +772,9 @@
                                             <constraint firstAttribute="width" constant="90" id="pYr-5R-uaG"/>
                                         </constraints>
                                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="2" maxValue="64" doubleValue="2" tickMarkPosition="above" sliderType="linear" id="C2N-IV-Wy1"/>
+                                        <connections>
+                                            <action selector="edgeSliderDidChange:" target="XfG-lQ-9wD" id="AfE-Nv-hwO"/>
+                                        </connections>
                                     </slider>
                                 </subviews>
                                 <constraints>
@@ -815,6 +821,9 @@
                                             <constraint firstAttribute="width" constant="90" id="t77-H8-mhg"/>
                                         </constraints>
                                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="2" maxValue="64" doubleValue="2" tickMarkPosition="above" sliderType="linear" id="xfC-GK-R0T"/>
+                                        <connections>
+                                            <action selector="insideSliderDidChange:" target="XfG-lQ-9wD" id="Bmp-hL-GEu"/>
+                                        </connections>
                                     </slider>
                                 </subviews>
                                 <constraints>
