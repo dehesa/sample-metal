@@ -269,8 +269,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D856FF71F431BB800853F8B /* 07 - Mipmapping (iOS) */,
 				8D22D7311F431A230030D36B /* 07 - Mipmapping (macOS) */,
+				8D856FF71F431BB800853F8B /* 07 - Mipmapping (iOS) */,
 			);
 		};
 /* End PBXProject section */

@@ -10,6 +10,14 @@
 		8D47496E201CB4DD00CD64C2 /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D47496D201CB4DD00CD64C2 /* SetUp.swift */; };
 		8D7669AE201C654000515DC3 /* Tessellation.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D7669AD201C654000515DC3 /* Tessellation.metal */; };
 		8D7669B0201C737E00515DC3 /* TessellationPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7669AF201C737E00515DC3 /* TessellationPipeline.swift */; };
+		8D7CA26C201D3668003CFBBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7CA26B201D3668003CFBBC /* AppDelegate.swift */; };
+		8D7CA26E201D3668003CFBBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7CA26D201D3668003CFBBC /* ViewController.swift */; };
+		8D7CA271201D3668003CFBBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D7CA26F201D3668003CFBBC /* Main.storyboard */; };
+		8D7CA273201D3668003CFBBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D7CA272201D3668003CFBBC /* Assets.xcassets */; };
+		8D7CA276201D3668003CFBBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D7CA274201D3668003CFBBC /* LaunchScreen.storyboard */; };
+		8D7CA27C201D387F003CFBBC /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D47496D201CB4DD00CD64C2 /* SetUp.swift */; };
+		8D7CA27D201D3882003CFBBC /* TessellationPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7669AF201C737E00515DC3 /* TessellationPipeline.swift */; };
+		8D7CA27E201D3885003CFBBC /* Tessellation.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D7669AD201C654000515DC3 /* Tessellation.metal */; };
 		8DABABFC201B11B900155C89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DABABFB201B11B900155C89 /* AppDelegate.swift */; };
 		8DABABFE201B11B900155C89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DABABFD201B11B900155C89 /* ViewController.swift */; };
 		8DABAC00201B11B900155C89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DABABFF201B11B900155C89 /* Assets.xcassets */; };
@@ -20,6 +28,12 @@
 		8D47496D201CB4DD00CD64C2 /* SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUp.swift; sourceTree = "<group>"; };
 		8D7669AD201C654000515DC3 /* Tessellation.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Tessellation.metal; sourceTree = "<group>"; };
 		8D7669AF201C737E00515DC3 /* TessellationPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TessellationPipeline.swift; sourceTree = "<group>"; };
+		8D7CA269201D3667003CFBBC /* Tessellation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tessellation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D7CA26B201D3668003CFBBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8D7CA26D201D3668003CFBBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8D7CA270201D3668003CFBBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8D7CA272201D3668003CFBBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8D7CA275201D3668003CFBBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DABABEC201B0DD700155C89 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		8DABABED201B0E7B00155C89 /* macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = macOS.xcconfig; sourceTree = "<group>"; };
 		8DABABEE201B0E7B00155C89 /* macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = macOS.plist; sourceTree = "<group>"; };
@@ -34,6 +48,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8D7CA266201D3667003CFBBC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DABABF5201B11B900155C89 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -44,6 +65,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D7CA27B201D379C003CFBBC /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8D7CA272201D3668003CFBBC /* Assets.xcassets */,
+				8D7CA274201D3668003CFBBC /* LaunchScreen.storyboard */,
+				8D7CA26F201D3668003CFBBC /* Main.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		8DABABE0201B0D0000155C89 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +144,9 @@
 		8DABABF2201B118300155C89 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				8D7CA26B201D3668003CFBBC /* AppDelegate.swift */,
+				8D7CA26D201D3668003CFBBC /* ViewController.swift */,
+				8D7CA27B201D379C003CFBBC /* Assets */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -131,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				8DABABF8201B11B900155C89 /* Tessellation.app */,
+				8D7CA269201D3667003CFBBC /* Tessellation.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,9 +182,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8DABABF7201B11B900155C89 /* Tessellation */ = {
+		8D7CA268201D3667003CFBBC /* Tessellation (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8DABAC06201B11B900155C89 /* Build configuration list for PBXNativeTarget "Tessellation" */;
+			buildConfigurationList = 8D7CA27A201D3668003CFBBC /* Build configuration list for PBXNativeTarget "Tessellation (iOS)" */;
+			buildPhases = (
+				8D7CA265201D3667003CFBBC /* Sources */,
+				8D7CA266201D3667003CFBBC /* Frameworks */,
+				8D7CA267201D3667003CFBBC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Tessellation (iOS)";
+			productName = "Tessellation iOS";
+			productReference = 8D7CA269201D3667003CFBBC /* Tessellation.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8DABABF7201B11B900155C89 /* Tessellation (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DABAC06201B11B900155C89 /* Build configuration list for PBXNativeTarget "Tessellation (macOS)" */;
 			buildPhases = (
 				8DABABF4201B11B900155C89 /* Sources */,
 				8DABABF5201B11B900155C89 /* Frameworks */,
@@ -159,7 +211,7 @@
 			);
 			dependencies = (
 			);
-			name = Tessellation;
+			name = "Tessellation (macOS)";
 			productName = Tessellation;
 			productReference = 8DABABF8201B11B900155C89 /* Tessellation.app */;
 			productType = "com.apple.product-type.application";
@@ -173,6 +225,10 @@
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
 				TargetAttributes = {
+					8D7CA268201D3667003CFBBC = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					8DABABF7201B11B900155C89 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -192,12 +248,23 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8DABABF7201B11B900155C89 /* Tessellation */,
+				8DABABF7201B11B900155C89 /* Tessellation (macOS) */,
+				8D7CA268201D3667003CFBBC /* Tessellation (iOS) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8D7CA267201D3667003CFBBC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D7CA276201D3668003CFBBC /* LaunchScreen.storyboard in Resources */,
+				8D7CA273201D3668003CFBBC /* Assets.xcassets in Resources */,
+				8D7CA271201D3668003CFBBC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DABABF6201B11B900155C89 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -210,6 +277,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8D7CA265201D3667003CFBBC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D7CA26E201D3668003CFBBC /* ViewController.swift in Sources */,
+				8D7CA27E201D3885003CFBBC /* Tessellation.metal in Sources */,
+				8D7CA26C201D3668003CFBBC /* AppDelegate.swift in Sources */,
+				8D7CA27D201D3882003CFBBC /* TessellationPipeline.swift in Sources */,
+				8D7CA27C201D387F003CFBBC /* SetUp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DABABF4201B11B900155C89 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -225,6 +304,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		8D7CA26F201D3668003CFBBC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D7CA270201D3668003CFBBC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8D7CA274201D3668003CFBBC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D7CA275201D3668003CFBBC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		8DABAC01201B11B900155C89 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -236,6 +331,119 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8D7CA278201D3668003CFBBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DABABF0201B0E9D00155C89 /* iOS.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = V4LZL56CA7;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		8D7CA279201D3668003CFBBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DABABF0201B0E9D00155C89 /* iOS.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = V4LZL56CA7;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		8DABABE5201B0D0000155C89 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8DABABEC201B0DD700155C89 /* Common.xcconfig */;
@@ -367,6 +575,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8D7CA27A201D3668003CFBBC /* Build configuration list for PBXNativeTarget "Tessellation (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D7CA278201D3668003CFBBC /* Debug */,
+				8D7CA279201D3668003CFBBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8DABABE4201B0D0000155C89 /* Build configuration list for PBXProject "Basic Tessellation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -376,7 +593,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8DABAC06201B11B900155C89 /* Build configuration list for PBXNativeTarget "Tessellation" */ = {
+		8DABAC06201B11B900155C89 /* Build configuration list for PBXNativeTarget "Tessellation (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8DABAC07201B11B900155C89 /* Debug */,

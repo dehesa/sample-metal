@@ -271,8 +271,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BCB791331C25D29E00E02523 /* 04 - Drawing in 3D (iOS) */,
 				BCB26CCE1C25E70B008F139B /* 04 - Drawing in 3D (macOS) */,
+				BCB791331C25D29E00E02523 /* 04 - Drawing in 3D (iOS) */,
 			);
 		};
 /* End PBXProject section */

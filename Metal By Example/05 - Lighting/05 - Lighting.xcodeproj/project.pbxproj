@@ -277,8 +277,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BC11C8001C8AE7730076017C /* 05 - Lighting (iOS) */,
 				BC11C8561C8AEEA80076017C /* 05 - Lighting (macOS) */,
+				BC11C8001C8AE7730076017C /* 05 - Lighting (iOS) */,
 			);
 		};
 /* End PBXProject section */

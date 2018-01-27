@@ -264,8 +264,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BCE30B8B1C58306200DDD94B /* 02 - Clear Screen (iOS) */,
 				BCE30BCD1C58362100DDD94B /* 02 - Clear Screen (macOS) */,
+				BCE30B8B1C58306200DDD94B /* 02 - Clear Screen (iOS) */,
 			);
 		};
 /* End PBXProject section */

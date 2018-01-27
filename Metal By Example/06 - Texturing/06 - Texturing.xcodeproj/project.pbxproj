@@ -287,8 +287,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D856FF71F431BB800853F8B /* 06 - Texturing (iOS) */,
 				8D22D7311F431A230030D36B /* 06 - Texturing (macOS) */,
+				8D856FF71F431BB800853F8B /* 06 - Texturing (iOS) */,
 			);
 		};
 /* End PBXProject section */
