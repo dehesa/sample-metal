@@ -6,7 +6,7 @@ using namespace metal;
 /// Triangle compute kernel.
 ///
 /// It populates a per-patch tessellation factors buffer.
-kernel void tessellation_kernel_triangle(constant float& edge_factor    [[buffer(0)]],
+kernel void kernel_triangle(constant float& edge_factor    [[buffer(0)]],
                                          constant float& inside_factor  [[buffer(1)]],
                                          device   MTLTriangleTessellationFactorsHalf* factors [[buffer(2)]],
                                                   uint   pid            [[thread_position_in_grid]]) {
@@ -21,7 +21,7 @@ kernel void tessellation_kernel_triangle(constant float& edge_factor    [[buffer
 /// Quad compute kernel.
 ///
 /// It populates a per-patch tessellation factors buffer.
-kernel void tessellation_kernel_quad(constant float& edge_factor   [[buffer(0)]],
+kernel void kernel_quad(constant float& edge_factor   [[buffer(0)]],
                                      constant float& inside_factor [[buffer(1)]],
                                      device   MTLQuadTessellationFactorsHalf* factors [[buffer(2)]],
                                               uint   pid           [[thread_position_in_grid]]) {
@@ -57,8 +57,8 @@ struct VertexFragmentProperties {
 ///
 /// It converts patch coordinates to display coordinates.
 [[patch(triangle, 3)]]
-vertex VertexFragmentProperties tessellation_vertex_triangle(PatchIn patchIn     [[stage_in]],
-                                                             float3  patch_coord [[position_in_patch]]) {
+vertex VertexFragmentProperties vertex_triangle(PatchIn patchIn     [[stage_in]],
+                                                float3  patch_coord [[position_in_patch]]) {
     // Barycentric coordinates
     float u = patch_coord.x;
     float v = patch_coord.y;
@@ -78,8 +78,8 @@ vertex VertexFragmentProperties tessellation_vertex_triangle(PatchIn patchIn    
 ///
 /// It converts patch coordinates to display coordinates.
 [[patch(quad, 4)]]
-vertex VertexFragmentProperties tessellation_vertex_quad(PatchIn patchIn     [[stage_in]],
-                                                         float2  patch_coord [[position_in_patch]]) {
+vertex VertexFragmentProperties vertex_quad(PatchIn patchIn     [[stage_in]],
+                                            float2  patch_coord [[position_in_patch]]) {
     // Parameter coordinates
     float u = patch_coord.x;
     float v = patch_coord.y;
@@ -100,6 +100,6 @@ vertex VertexFragmentProperties tessellation_vertex_quad(PatchIn patchIn     [[s
 ///
 /// It outputs a flat color for each vertex position.
 /// - parameter fragmentIn: Properties for the targeted fragment passed from the rasterizer.
-fragment half4 tessellation_fragment(VertexFragmentProperties fragmentIn [[stage_in]]) {
+fragment half4 fragment_both(VertexFragmentProperties fragmentIn [[stage_in]]) {
     return fragmentIn.color;
 }

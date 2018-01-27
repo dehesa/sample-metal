@@ -17,3 +17,16 @@ import simd
 "Half  (size: \(MemoryLayout<UInt16>.size), stride: \(MemoryLayout<UInt16>.stride), alignment: \(MemoryLayout<UInt16>.alignment))"
 "Float  (size: \(MemoryLayout<Float>.size), stride: \(MemoryLayout<Float>.stride), alignment: \(MemoryLayout<Float>.alignment))"
 "Double (size: \(MemoryLayout<Double>.size), stride: \(MemoryLayout<Double>.stride), alignment: \(MemoryLayout<Double>.alignment))"
+
+let triangleControlPointPositions: [Float] = [
+    -0.8, -0.8, 0.0, 1.0,   // lower-left
+    0.0,  0.8, 0.0, 1.0,   // upper-middle
+    0.8, -0.8, 0.0, 1.0,   // lower-right
+]
+
+let quadControlPointPositions: [Float] = [
+    -0.8,  0.8, 0.0, 1.0,   // upper-left
+    0.8,  0.8, 0.0, 1.0,   // upper-right
+    0.8, -0.8, 0.0, 1.0,   // lower-right
+    -0.8, -0.8, 0.0, 1.0,   // lower-left
+]

@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D7669AE201C654000515DC3 /* TessellationFunctions.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D7669AD201C654000515DC3 /* TessellationFunctions.metal */; };
+		8D47496E201CB4DD00CD64C2 /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D47496D201CB4DD00CD64C2 /* SetUp.swift */; };
+		8D7669AE201C654000515DC3 /* Tessellation.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D7669AD201C654000515DC3 /* Tessellation.metal */; };
 		8D7669B0201C737E00515DC3 /* TessellationPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7669AF201C737E00515DC3 /* TessellationPipeline.swift */; };
 		8DABABFC201B11B900155C89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DABABFB201B11B900155C89 /* AppDelegate.swift */; };
 		8DABABFE201B11B900155C89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DABABFD201B11B900155C89 /* ViewController.swift */; };
@@ -16,7 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8D7669AD201C654000515DC3 /* TessellationFunctions.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TessellationFunctions.metal; sourceTree = "<group>"; };
+		8D47496D201CB4DD00CD64C2 /* SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUp.swift; sourceTree = "<group>"; };
+		8D7669AD201C654000515DC3 /* Tessellation.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Tessellation.metal; sourceTree = "<group>"; };
 		8D7669AF201C737E00515DC3 /* TessellationPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TessellationPipeline.swift; sourceTree = "<group>"; };
 		8DABABEC201B0DD700155C89 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		8DABABED201B0E7B00155C89 /* macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = macOS.xcconfig; sourceTree = "<group>"; };
@@ -118,8 +120,9 @@
 		8DABABF3201B118900155C89 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8D47496D201CB4DD00CD64C2 /* SetUp.swift */,
 				8D7669AF201C737E00515DC3 /* TessellationPipeline.swift */,
-				8D7669AD201C654000515DC3 /* TessellationFunctions.metal */,
+				8D7669AD201C654000515DC3 /* Tessellation.metal */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -213,8 +216,9 @@
 			files = (
 				8DABABFE201B11B900155C89 /* ViewController.swift in Sources */,
 				8DABABFC201B11B900155C89 /* AppDelegate.swift in Sources */,
+				8D47496E201CB4DD00CD64C2 /* SetUp.swift in Sources */,
 				8D7669B0201C737E00515DC3 /* TessellationPipeline.swift in Sources */,
-				8D7669AE201C654000515DC3 /* TessellationFunctions.metal in Sources */,
+				8D7669AE201C654000515DC3 /* Tessellation.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
