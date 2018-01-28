@@ -19,7 +19,6 @@ class ViewController: NSViewController {
         super.viewDidAppear()
         
         self.pipeline = TessellationPipeline(view: self.metalView)
-        self.metalView.draw()
     }
     
     @IBAction func patchTypeSegmentedControlDidChange(_ sender: NSSegmentedControl) {
