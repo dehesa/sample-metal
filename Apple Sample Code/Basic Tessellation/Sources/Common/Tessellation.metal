@@ -7,47 +7,55 @@ using namespace metal;
 ///
 /// It populates a per-patch tessellation factors buffer.
 kernel void kernel_triangle(constant float& edge_factor    [[buffer(0)]],
-                                         constant float& inside_factor  [[buffer(1)]],
-                                         device   MTLTriangleTessellationFactorsHalf* factors [[buffer(2)]],
-                                                  uint   pid            [[thread_position_in_grid]]) {
-    // Simple passthrough operation
-    // More sophisticated compute kernels might determine the tessellation factors based on the state of the scene (e.g. camera distance)
-    factors[pid].edgeTessellationFactor[0] = edge_factor;
-    factors[pid].edgeTessellationFactor[1] = edge_factor;
-    factors[pid].edgeTessellationFactor[2] = edge_factor;
-    factors[pid].insideTessellationFactor = inside_factor;
+                            constant float& inside_factor  [[buffer(1)]],
+                            device   MTLTriangleTessellationFactorsHalf* factors [[buffer(2)]],
+                            const    uint   pid            [[thread_position_in_grid]]) {
+    // Simple passthrough operation.
+    // More sophisticated compute kernels might determine the tessellation factors based on the state of the scene (e.g. camera distance).
+    const half edge = half(edge_factor);
+    const half inside = half(inside_factor);
+    
+    factors[pid] = MTLTriangleTessellationFactorsHalf {
+        // The array is composed of division/sectors along the edges: { right, bottom, left }
+        .edgeTessellationFactor = { edge, edge, edge },
+        // The number express the divisions/sectors along one of the baricentric lines.
+        .insideTessellationFactor = inside
+    };
 }
 
 /// Quad compute kernel.
 ///
 /// It populates a per-patch tessellation factors buffer.
 kernel void kernel_quad(constant float& edge_factor   [[buffer(0)]],
-                                     constant float& inside_factor [[buffer(1)]],
-                                     device   MTLQuadTessellationFactorsHalf* factors [[buffer(2)]],
-                                              uint   pid           [[thread_position_in_grid]]) {
-    // Simple passthrough operation
-    // More sophisticated compute kernels might determine the tessellation factors based on the state of the scene (e.g. camera distance)
-    factors[pid].edgeTessellationFactor[0] = edge_factor;
-    factors[pid].edgeTessellationFactor[1] = edge_factor;
-    factors[pid].edgeTessellationFactor[2] = edge_factor;
-    factors[pid].edgeTessellationFactor[3] = edge_factor;
-    factors[pid].insideTessellationFactor[0] = inside_factor;
-    factors[pid].insideTessellationFactor[1] = inside_factor;
+                        constant float& inside_factor [[buffer(1)]],
+                        device   MTLQuadTessellationFactorsHalf* factors [[buffer(2)]],
+                        const    uint   pid           [[thread_position_in_grid]]) {
+    // Simple passthrough operation.
+    // More sophisticated compute kernels might determine the tessellation factors based on the state of the scene (e.g. camera distance).
+    const half edge = half(edge_factor);
+    const half inside = half(inside_factor);
+    
+    factors[pid] = MTLQuadTessellationFactorsHalf {
+        // The array is composed of divisions/sectors along the edges: { left, top, right, bottom }
+        .edgeTessellationFactor = { edge, edge, edge, edge },
+        // The array is composed of divisions/sectors axis: { horizontal, vertical }
+        .insideTessellationFactor = { inside, inside }
+    };
 }
 
 #pragma mark Post-Tessellation Vertex Functions
 
-// Control Point struct
+// Control Point struct.
 struct ControlPoint {
     float4 position [[attribute(0)]];
 };
 
-// Patch struct
+// Patch struct.
 struct PatchIn {
     patch_control_point<ControlPoint> control_points;
 };
 
-// Vertex-to-Fragment struct
+// Vertex-to-Fragment struct.
 struct VertexFragmentProperties {
     float4 position [[position]];
     half4  color    [[flat]];
@@ -59,14 +67,14 @@ struct VertexFragmentProperties {
 [[patch(triangle, 3)]]
 vertex VertexFragmentProperties vertex_triangle(PatchIn patchIn     [[stage_in]],
                                                 float3  patch_coord [[position_in_patch]]) {
-    // Barycentric coordinates
-    float u = patch_coord.x;
-    float v = patch_coord.y;
-    float w = patch_coord.z;
+    // Barycentric coordinates.
+    const float u = patch_coord.x;
+    const float v = patch_coord.y;
+    const float w = patch_coord.z;
     
-    // Convert to cartesian coordinates
-    float x = u * patchIn.control_points[0].position.x + v * patchIn.control_points[1].position.x + w * patchIn.control_points[2].position.x;
-    float y = u * patchIn.control_points[0].position.y + v * patchIn.control_points[1].position.y + w * patchIn.control_points[2].position.y;
+    // Convert to cartesian coordinates.
+    const float x = u * patchIn.control_points[0].position.x + v * patchIn.control_points[1].position.x + w * patchIn.control_points[2].position.x;
+    const float y = u * patchIn.control_points[0].position.y + v * patchIn.control_points[1].position.y + w * patchIn.control_points[2].position.y;
     
     return VertexFragmentProperties {
         .position = float4(x, y, 0.0, 1.0),
@@ -80,13 +88,13 @@ vertex VertexFragmentProperties vertex_triangle(PatchIn patchIn     [[stage_in]]
 [[patch(quad, 4)]]
 vertex VertexFragmentProperties vertex_quad(PatchIn patchIn     [[stage_in]],
                                             float2  patch_coord [[position_in_patch]]) {
-    // Parameter coordinates
-    float u = patch_coord.x;
-    float v = patch_coord.y;
+    // Parameter coordinates.
+    const float u = patch_coord.x;
+    const float v = patch_coord.y;
     
-    // Linear interpolation
-    float2 upper_middle = mix(patchIn.control_points[0].position.xy, patchIn.control_points[1].position.xy, u);
-    float2 lower_middle = mix(patchIn.control_points[2].position.xy, patchIn.control_points[3].position.xy, 1-u);
+    // Linear interpolation.
+    const float2 upper_middle = mix(patchIn.control_points[0].position.xy, patchIn.control_points[1].position.xy, u);
+    const float2 lower_middle = mix(patchIn.control_points[2].position.xy, patchIn.control_points[3].position.xy, 1-u);
     
     return VertexFragmentProperties {
         .position = float4(mix(upper_middle, lower_middle, v), 0.0, 1.0),

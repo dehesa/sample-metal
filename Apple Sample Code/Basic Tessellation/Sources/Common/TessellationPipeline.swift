@@ -145,9 +145,9 @@ private extension TessellationPipeline {
             fatalError("The Metal buffers couldn't be created.")
         }
         // More sophisticated tessellation passes might have additional buffers for per-patch user data.
-        return (factorsBuffer.set { $0.label = "Tessellation Factors" },
+        return (factorsBuffer.set  { $0.label = "Tessellation Factors" },
                 triangleBuffer.set { $0.label = "Control Points Triangle" },
-                quadBuffer.set { $0.label = "Control Points Quad" })
+                quadBuffer.set     { $0.label = "Control Points Quad" })
     }
 
     /// The minimum OSes supporting Tessellation.
