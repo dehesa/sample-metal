@@ -1,7 +1,7 @@
 // Packaging
 PRODUCT_NAME = Shader Exam
-PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.apple.tessellation
-PRODUCT_MODULE_NAME = Tessellation
+PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.exam.shader
+PRODUCT_MODULE_NAME = ShaderExam
 
 // Versioning
 CURRENT_PROJECT_VERSION = 1

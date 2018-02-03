@@ -28,7 +28,7 @@
 		8D47496D201CB4DD00CD64C2 /* SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUp.swift; sourceTree = "<group>"; };
 		8D7669AD201C654000515DC3 /* Tessellation.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Tessellation.metal; sourceTree = "<group>"; };
 		8D7669AF201C737E00515DC3 /* TessellationPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TessellationPipeline.swift; sourceTree = "<group>"; };
-		8D7CA269201D3667003CFBBC /* Tessellation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tessellation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D7CA269201D3667003CFBBC /* Shader Exam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shader Exam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D7CA26B201D3668003CFBBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D7CA26D201D3668003CFBBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8D7CA270201D3668003CFBBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -39,7 +39,7 @@
 		8DABABEE201B0E7B00155C89 /* macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = macOS.plist; sourceTree = "<group>"; };
 		8DABABEF201B0E9D00155C89 /* iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = iOS.plist; sourceTree = "<group>"; };
 		8DABABF0201B0E9D00155C89 /* iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = iOS.xcconfig; sourceTree = "<group>"; };
-		8DABABF8201B11B900155C89 /* Tessellation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tessellation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DABABF8201B11B900155C89 /* Shader Exam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shader Exam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DABABFB201B11B900155C89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DABABFD201B11B900155C89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8DABABFF201B11B900155C89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -164,8 +164,8 @@
 		8DABABF9201B11B900155C89 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DABABF8201B11B900155C89 /* Tessellation.app */,
-				8D7CA269201D3667003CFBBC /* Tessellation.app */,
+				8DABABF8201B11B900155C89 /* Shader Exam.app */,
+				8D7CA269201D3667003CFBBC /* Shader Exam.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -196,7 +196,7 @@
 			);
 			name = "Tessellation (iOS)";
 			productName = "Tessellation iOS";
-			productReference = 8D7CA269201D3667003CFBBC /* Tessellation.app */;
+			productReference = 8D7CA269201D3667003CFBBC /* Shader Exam.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8DABABF7201B11B900155C89 /* Tessellation (macOS) */ = {
@@ -213,7 +213,7 @@
 			);
 			name = "Tessellation (macOS)";
 			productName = Tessellation;
-			productReference = 8DABABF8201B11B900155C89 /* Tessellation.app */;
+			productReference = 8DABABF8201B11B900155C89 /* Shader Exam.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

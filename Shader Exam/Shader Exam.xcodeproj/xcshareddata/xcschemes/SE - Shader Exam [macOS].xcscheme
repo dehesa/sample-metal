@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8D7CA268201D3667003CFBBC"
+               BlueprintIdentifier = "8DFB84562023A79C00F0A6D1"
                BuildableName = "Shader Exam.app"
-               BlueprintName = "Tessellation (iOS)"
-               ReferencedContainer = "container:Basic Tessellation.xcodeproj">
+               BlueprintName = "Shader Exam"
+               ReferencedContainer = "container:Shader Exam.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,10 +33,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8D7CA268201D3667003CFBBC"
+            BlueprintIdentifier = "8DFB84562023A79C00F0A6D1"
             BuildableName = "Shader Exam.app"
-            BlueprintName = "Tessellation (iOS)"
-            ReferencedContainer = "container:Basic Tessellation.xcodeproj">
+            BlueprintName = "Shader Exam"
+            ReferencedContainer = "container:Shader Exam.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -57,10 +57,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8D7CA268201D3667003CFBBC"
+            BlueprintIdentifier = "8DFB84562023A79C00F0A6D1"
             BuildableName = "Shader Exam.app"
-            BlueprintName = "Tessellation (iOS)"
-            ReferencedContainer = "container:Basic Tessellation.xcodeproj">
+            BlueprintName = "Shader Exam"
+            ReferencedContainer = "container:Shader Exam.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -76,10 +76,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8D7CA268201D3667003CFBBC"
+            BlueprintIdentifier = "8DFB84562023A79C00F0A6D1"
             BuildableName = "Shader Exam.app"
-            BlueprintName = "Tessellation (iOS)"
-            ReferencedContainer = "container:Basic Tessellation.xcodeproj">
+            BlueprintName = "Shader Exam"
+            ReferencedContainer = "container:Shader Exam.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

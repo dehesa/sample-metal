@@ -4,18 +4,21 @@
    <FileRef
       location = "group:README.md">
    </FileRef>
-   <Group
-      location = "group:Playground"
-      name = "Playgrounds">
-      <FileRef
-         location = "group:Metal.playground">
-      </FileRef>
-   </Group>
+   <FileRef
+      location = "group:Playgrounds/Metal.playground">
+   </FileRef>
    <Group
       location = "group:Apple Sample Code"
       name = "Apple Sample Code">
       <FileRef
          location = "group:Basic Tessellation/Basic Tessellation.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Command Line"
+      name = "Command Line">
+      <FileRef
+         location = "group:/Users/marcos/Workspace/Code/Github/Metal/Command Line/Simple GPGPU.xcodeproj">
       </FileRef>
    </Group>
    <Group
@@ -41,10 +44,10 @@
       </FileRef>
    </Group>
    <Group
-      location = "group:Command Line"
-      name = "Command Line">
+      location = "group:Shader Exam"
+      name = "Shader Exam">
       <FileRef
-         location = "group:/Users/marcos/Workspace/Code/Github/Metal/Command Line/Simple GPGPU.xcodeproj">
+         location = "group:Shader Exam.xcodeproj">
       </FileRef>
    </Group>
 </Workspace>
