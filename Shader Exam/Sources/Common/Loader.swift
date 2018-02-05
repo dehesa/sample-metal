@@ -6,7 +6,9 @@ enum Loader {
     /// - parameter device: Metal device where the mesh buffer and texture will stay.
     static func loadPikachu(to device: MTLDevice) -> (MTKMesh, MTLVertexDescriptor, MTLTexture) {
         // Load the model (through Model I/O).
-        guard let modelURL = Bundle.main.url(forResource: "pikachu", withExtension: "obj") else { fatalError("The \"pikachu.obj\" model couldn't be found.") }
+        guard let modelURL = Bundle.main.url(forResource: "pikachu", withExtension: "obj") else {
+            fatalError("The \"pikachu.obj\" model couldn't be found.")
+        }
         let mdlBufferAllocator = MTKMeshBufferAllocator(device: device)
         let mdlVertexDescriptor = MDLVertexDescriptor().set {
             $0.attributes[0] = MDLVertexAttribute(name: MDLVertexAttributePosition, format: .float3, offset: 0, bufferIndex: 0)
@@ -82,7 +84,7 @@ enum Loader {
                 }
                 vertex.attributes[1].setUp { (attribute) in
                     attribute.format = .float2
-                    attribute.offset = 0
+                    attribute.offset = 8
                     attribute.bufferIndex = 0
                 }
                 vertex.layouts[0].stride = 16

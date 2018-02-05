@@ -16,4 +16,3 @@ class ViewController: NSViewController {
         metalView.delegate = renderer
     }
 }
-

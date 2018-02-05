@@ -2,7 +2,7 @@ import Foundation
 import MetalKit
 import simd
 
-class Renderer: NSObject {
+class Renderer: NSObject, MTKViewDelegate {
     private let metal: (view: MTKView, device: MTLDevice, queue: MTLCommandQueue)
     private let pikachu: (mesh: MTKMesh, descriptor: MTLVertexDescriptor, texture: MTLTexture)
     private var textures: (color: MTLTexture, depth: MTLTexture)
@@ -29,29 +29,36 @@ class Renderer: NSObject {
         
         super.init()
     }
-}
 
-private struct Uniforms {
-    let modelViewMatrix: float4x4
-    let projectionMatrix: float4x4
-}
-
-extension Renderer: MTKViewDelegate {
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        let texture = self.textures.color
-        let previousSize = CGSize(width: texture.width, height: texture.height)
-        
-        guard previousSize != size else { return }
-        self.textures = Loader.makeOffScreenTargets(for: self.metal.device, size: size)
+        let previousSize = CGSize(width: self.textures.color.width, height: self.textures.color.height)
+        if previousSize != size {
+            self.textures = Loader.makeOffScreenTargets(for: self.metal.device, size: size)
+        }
     }
     
     func draw(in view: MTKView) {
         guard let commandBuffer = self.metal.queue.makeCommandBuffer() else { return }
+        self.mainPass(commandBuffer: commandBuffer, view: view)
+        self.postPass(commandBuffer: commandBuffer, view: view)
         
+        guard let drawable = view.currentDrawable else { return }
+        commandBuffer.present(drawable)
+        commandBuffer.commit()
+    }
+}
+
+extension Renderer {
+    private struct Uniforms {
+        let modelViewMatrix: float4x4
+        let projectionMatrix: float4x4
+    }
+    
+    private func mainPass(commandBuffer: MTLCommandBuffer, view: MTKView) {
         let mainPassDescriptor = MTLRenderPassDescriptor().set {
             $0.colorAttachments[0].setUp { (attachment) in
                 attachment.texture = self.textures.color
-                attachment.clearColor = MTLClearColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+                attachment.clearColor = MTLClearColor(red: 0.95, green: 0, blue: 0, alpha: 1)
                 attachment.loadAction = .clear
                 attachment.storeAction = .store
             }
@@ -63,7 +70,6 @@ extension Renderer: MTKViewDelegate {
             }
         }
         
-        // Main pass
         guard let mainEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: mainPassDescriptor) else { return }
         mainEncoder.setUp {
             $0.setRenderPipelineState(self.state.main)
@@ -86,10 +92,11 @@ extension Renderer: MTKViewDelegate {
             $0.drawIndexedPrimitives(type: submesh.primitiveType, indexCount: submesh.indexCount, indexType: submesh.indexType, indexBuffer: indexBuffer.buffer, indexBufferOffset: indexBuffer.offset)
         }
         mainEncoder.endEncoding()
-        
-        // Post pass
+    }
+    
+    private func postPass(commandBuffer: MTLCommandBuffer, view: MTKView) {
         guard let postPassDescriptor = view.currentRenderPassDescriptor,
-              let postEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: postPassDescriptor) else { return }
+            let postEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: postPassDescriptor) else { return }
         postEncoder.setUp {
             $0.setRenderPipelineState(self.state.post)
             $0.setFragmentTexture(self.textures.color, index: 0)
@@ -99,9 +106,5 @@ extension Renderer: MTKViewDelegate {
             $0.drawPrimitives(type: .triangleStrip, vertexStart: 0, vertexCount: 4)
         }
         postEncoder.endEncoding()
-        
-        guard let drawable = view.currentDrawable else { return }
-        commandBuffer.present(drawable)
-        commandBuffer.commit()
     }
 }

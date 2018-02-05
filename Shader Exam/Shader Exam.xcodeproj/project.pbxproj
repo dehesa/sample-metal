@@ -56,6 +56,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D2831112028A81F007A5CF7 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8D99549E20262A0A00AD8D1B /* Pikachu */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		8D9954952026257700AD8D1B /* macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +135,7 @@
 				8D9954AB202652DA00AD8D1B /* Loader.swift */,
 				8D9954A72026337600AD8D1B /* ShaderMain.metal */,
 				8D9954A92026339500AD8D1B /* ShaderQuad.metal */,
+				8D2831112028A81F007A5CF7 /* Assets */,
 				8D9954A520262BEA00AD8D1B /* SetUp.swift */,
 				8D9954AD2026598500AD8D1B /* MathUtils.swift */,
 			);
@@ -148,7 +157,6 @@
 			children = (
 				8DFB845E2023A79C00F0A6D1 /* Assets.xcassets */,
 				8DFB84602023A79C00F0A6D1 /* Main.storyboard */,
-				8D99549E20262A0A00AD8D1B /* Pikachu */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
