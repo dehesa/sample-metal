@@ -39,7 +39,7 @@ class Renderer: NSObject, MTKViewDelegate {
     
     func draw(in view: MTKView) {
         guard let commandBuffer = self.metal.queue.makeCommandBuffer() else { return }
-        self.mainPass(commandBuffer: commandBuffer, view: view)
+        self.mainPass(commandBuffer: commandBuffer, aspectRatio: Float(view.drawableSize.width / view.drawableSize.height))
         self.postPass(commandBuffer: commandBuffer, view: view)
         
         guard let drawable = view.currentDrawable else { return }
@@ -49,16 +49,21 @@ class Renderer: NSObject, MTKViewDelegate {
 }
 
 extension Renderer {
+    /// Uniform structure for the main render pass.
     private struct Uniforms {
         let modelViewMatrix: float4x4
         let projectionMatrix: float4x4
     }
     
-    private func mainPass(commandBuffer: MTLCommandBuffer, view: MTKView) {
+    /// Main passing, which clears the screen to a "whitish" color and draw the pikachu with a bit of zoom out and in the center.
+    /// The outcome of this pass is a texture with the size of the window with the pikachu right in the center.
+    /// - parameter commandBuffer: Metal Command Buffer hosting all render passes.
+    /// - parameter aspectRatio: Aspect ratio for the post render pass.
+    private func mainPass(commandBuffer: MTLCommandBuffer, aspectRatio: Float) {
         let mainPassDescriptor = MTLRenderPassDescriptor().set {
             $0.colorAttachments[0].setUp { (attachment) in
                 attachment.texture = self.textures.color
-                attachment.clearColor = MTLClearColor(red: 0.95, green: 0, blue: 0, alpha: 1)
+                attachment.clearColor = MTLClearColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
                 attachment.loadAction = .clear
                 attachment.storeAction = .store
             }
@@ -82,7 +87,6 @@ extension Renderer {
             
             let modelTransform = float4x4(translationBy: float3(0, -1.1, 0)) * float4x4(scaleBy: Float(1 / 4.5))
             let cameraTransform = float4x4(translationBy: float3(0, 0, -4))
-            let aspectRatio = Float(view.drawableSize.width / view.drawableSize.height)
             let projectionMatrix = float4x4(perspectiveProjectionFov: .pi / 6, aspectRatio: aspectRatio, nearZ: 0.1, farZ: 100)
             var uniforms = Uniforms(modelViewMatrix: cameraTransform * modelTransform, projectionMatrix: projectionMatrix)
             $0.setVertexBytes(&uniforms, length: MemoryLayout.size(ofValue: uniforms), index: 1)
@@ -94,6 +98,9 @@ extension Renderer {
         mainEncoder.endEncoding()
     }
     
+    /// Post-processing render pass where the fragment shaders will take place.
+    /// - parameter commandBuffer: Metal Command Buffer hosting all render passes.
+    /// - parameter view: MetalKit view hosting the final framebuffer.
     private func postPass(commandBuffer: MTLCommandBuffer, view: MTKView) {
         guard let postPassDescriptor = view.currentRenderPassDescriptor,
             let postEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: postPassDescriptor) else { return }
@@ -101,7 +108,10 @@ extension Renderer {
             $0.setRenderPipelineState(self.state.post)
             $0.setFragmentTexture(self.textures.color, index: 0)
             
-            let vertexData: [Float] = [-1, -1, 0, 1,    -1, 1, 0, 0,    1, -1, 1, 1,    1, 1, 1, 0]
+            let vertexData: [Float] = [-1, -1,  0,  1,
+                                       -1,  1,  0,  0,
+                                        1, -1,  1,  1,
+                                        1,  1,  1,  0]
             $0.setVertexBytes(vertexData, length: 16*4, index: 0)
             $0.drawPrimitives(type: .triangleStrip, vertexStart: 0, vertexCount: 4)
         }

@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D50AC3A202BBA2E00221070 /* ShadersPage1.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D50AC39202BBA2E00221070 /* ShadersPage1.metal */; };
+		8D50AC3C202BBABF00221070 /* ShadersPage2.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D50AC3B202BBABF00221070 /* ShadersPage2.metal */; };
+		8D50AC3E202BBAC700221070 /* ShadersPage3.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D50AC3D202BBAC700221070 /* ShadersPage3.metal */; };
+		8D50AC40202BBAD200221070 /* ShadersPage4.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D50AC3F202BBAD200221070 /* ShadersPage4.metal */; };
+		8D50AC42202BBAD900221070 /* ShadersPage5.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D50AC41202BBAD900221070 /* ShadersPage5.metal */; };
 		8D9954942026245200AD8D1B /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9954932026245200AD8D1B /* Renderer.swift */; };
 		8D99549B2026257800AD8D1B /* macOS.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8D9954962026257700AD8D1B /* macOS.xcconfig */; };
-		8D99549C2026257800AD8D1B /* macOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D9954982026257700AD8D1B /* macOS.plist */; };
 		8D99549D2026257800AD8D1B /* Common.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8D99549A2026257800AD8D1B /* Common.xcconfig */; };
 		8D9954A220262A0A00AD8D1B /* pikachu.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D99549F20262A0A00AD8D1B /* pikachu.png */; };
 		8D9954A320262A0A00AD8D1B /* pikachu.obj in Resources */ = {isa = PBXBuildFile; fileRef = 8D9954A020262A0A00AD8D1B /* pikachu.obj */; };
 		8D9954A420262A0A00AD8D1B /* pikachu.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 8D9954A120262A0A00AD8D1B /* pikachu.mtl */; };
 		8D9954A620262BEA00AD8D1B /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9954A520262BEA00AD8D1B /* SetUp.swift */; };
-		8D9954A82026337600AD8D1B /* ShaderMain.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D9954A72026337600AD8D1B /* ShaderMain.metal */; };
-		8D9954AA2026339500AD8D1B /* ShaderQuad.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D9954A92026339500AD8D1B /* ShaderQuad.metal */; };
+		8D9954A82026337600AD8D1B /* ShadersMain.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D9954A72026337600AD8D1B /* ShadersMain.metal */; };
+		8D9954AA2026339500AD8D1B /* ShadersQuad.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D9954A92026339500AD8D1B /* ShadersQuad.metal */; };
 		8D9954AC202652DA00AD8D1B /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9954AB202652DA00AD8D1B /* Loader.swift */; };
 		8D9954AE2026598500AD8D1B /* MathUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9954AD2026598500AD8D1B /* MathUtils.swift */; };
 		8DFB845B2023A79C00F0A6D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB845A2023A79C00F0A6D1 /* AppDelegate.swift */; };
@@ -26,6 +30,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D50AC34202BB8D200221070 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		8D50AC35202BB8D200221070 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		8D50AC36202BB8D200221070 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		8D50AC37202BB8D200221070 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		8D50AC38202BB8D200221070 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		8D50AC39202BBA2E00221070 /* ShadersPage1.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersPage1.metal; sourceTree = "<group>"; };
+		8D50AC3B202BBABF00221070 /* ShadersPage2.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersPage2.metal; sourceTree = "<group>"; };
+		8D50AC3D202BBAC700221070 /* ShadersPage3.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersPage3.metal; sourceTree = "<group>"; };
+		8D50AC3F202BBAD200221070 /* ShadersPage4.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersPage4.metal; sourceTree = "<group>"; };
+		8D50AC41202BBAD900221070 /* ShadersPage5.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersPage5.metal; sourceTree = "<group>"; };
 		8D9954932026245200AD8D1B /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		8D9954962026257700AD8D1B /* macOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = macOS.xcconfig; sourceTree = "<group>"; };
 		8D9954982026257700AD8D1B /* macOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = macOS.plist; sourceTree = "<group>"; };
@@ -34,8 +48,8 @@
 		8D9954A020262A0A00AD8D1B /* pikachu.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pikachu.obj; sourceTree = "<group>"; };
 		8D9954A120262A0A00AD8D1B /* pikachu.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pikachu.mtl; sourceTree = "<group>"; };
 		8D9954A520262BEA00AD8D1B /* SetUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUp.swift; sourceTree = "<group>"; };
-		8D9954A72026337600AD8D1B /* ShaderMain.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShaderMain.metal; sourceTree = "<group>"; };
-		8D9954A92026339500AD8D1B /* ShaderQuad.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShaderQuad.metal; sourceTree = "<group>"; };
+		8D9954A72026337600AD8D1B /* ShadersMain.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersMain.metal; sourceTree = "<group>"; };
+		8D9954A92026339500AD8D1B /* ShadersQuad.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersQuad.metal; sourceTree = "<group>"; };
 		8D9954AB202652DA00AD8D1B /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		8D9954AD2026598500AD8D1B /* MathUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathUtils.swift; sourceTree = "<group>"; };
 		8DFB84572023A79C00F0A6D1 /* Shader Exam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shader Exam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,9 +73,22 @@
 		8D2831112028A81F007A5CF7 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				8D50AC33202BB8D200221070 /* Exam */,
 				8D99549E20262A0A00AD8D1B /* Pikachu */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		8D50AC33202BB8D200221070 /* Exam */ = {
+			isa = PBXGroup;
+			children = (
+				8D50AC34202BB8D200221070 /* 4.png */,
+				8D50AC35202BB8D200221070 /* 5.png */,
+				8D50AC36202BB8D200221070 /* 2.png */,
+				8D50AC37202BB8D200221070 /* 3.png */,
+				8D50AC38202BB8D200221070 /* 1.png */,
+			);
+			path = Exam;
 			sourceTree = "<group>";
 		};
 		8D9954952026257700AD8D1B /* macOS */ = {
@@ -133,8 +160,13 @@
 			children = (
 				8D9954932026245200AD8D1B /* Renderer.swift */,
 				8D9954AB202652DA00AD8D1B /* Loader.swift */,
-				8D9954A72026337600AD8D1B /* ShaderMain.metal */,
-				8D9954A92026339500AD8D1B /* ShaderQuad.metal */,
+				8D9954A72026337600AD8D1B /* ShadersMain.metal */,
+				8D9954A92026339500AD8D1B /* ShadersQuad.metal */,
+				8D50AC39202BBA2E00221070 /* ShadersPage1.metal */,
+				8D50AC3B202BBABF00221070 /* ShadersPage2.metal */,
+				8D50AC3D202BBAC700221070 /* ShadersPage3.metal */,
+				8D50AC3F202BBAD200221070 /* ShadersPage4.metal */,
+				8D50AC41202BBAD900221070 /* ShadersPage5.metal */,
 				8D2831112028A81F007A5CF7 /* Assets */,
 				8D9954A520262BEA00AD8D1B /* SetUp.swift */,
 				8D9954AD2026598500AD8D1B /* MathUtils.swift */,
@@ -220,7 +252,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D99549D2026257800AD8D1B /* Common.xcconfig in Resources */,
-				8D99549C2026257800AD8D1B /* macOS.plist in Resources */,
 				8DFB845F2023A79C00F0A6D1 /* Assets.xcassets in Resources */,
 				8D9954A420262A0A00AD8D1B /* pikachu.mtl in Resources */,
 				8D9954A320262A0A00AD8D1B /* pikachu.obj in Resources */,
@@ -237,14 +268,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D9954A82026337600AD8D1B /* ShaderMain.metal in Sources */,
+				8D9954A82026337600AD8D1B /* ShadersMain.metal in Sources */,
+				8D50AC3A202BBA2E00221070 /* ShadersPage1.metal in Sources */,
 				8DFB845D2023A79C00F0A6D1 /* ViewController.swift in Sources */,
 				8D9954942026245200AD8D1B /* Renderer.swift in Sources */,
+				8D50AC3C202BBABF00221070 /* ShadersPage2.metal in Sources */,
 				8DFB845B2023A79C00F0A6D1 /* AppDelegate.swift in Sources */,
 				8D9954A620262BEA00AD8D1B /* SetUp.swift in Sources */,
 				8D9954AE2026598500AD8D1B /* MathUtils.swift in Sources */,
+				8D50AC3E202BBAC700221070 /* ShadersPage3.metal in Sources */,
 				8D9954AC202652DA00AD8D1B /* Loader.swift in Sources */,
-				8D9954AA2026339500AD8D1B /* ShaderQuad.metal in Sources */,
+				8D50AC40202BBAD200221070 /* ShadersPage4.metal in Sources */,
+				8D9954AA2026339500AD8D1B /* ShadersQuad.metal in Sources */,
+				8D50AC42202BBAD900221070 /* ShadersPage5.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
