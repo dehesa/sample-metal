@@ -26,8 +26,8 @@ half4 shaderRotation(const float2 uv, texture2d<float,access::sample> texture, s
 half4 shaderZoom(const float2 uv, texture2d<float,access::sample> texture, sampler s);
 half4 shaderZoomDistortion(const float2 uv, texture2d<float,access::sample> texture, sampler s);
 half4 shaderRepetition(const float2 uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderSpirale(const float2 uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderThunder(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderSpiral(const float2 uv, texture2d<float,access::sample> texture, sampler s);
+half4 shaderThunder(const float2 uv, texture2d<float,access::sample> texture, sampler s);
 // Page 2 shaders
 half4 shaderClamp(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
 half4 shaderPli(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
@@ -82,6 +82,8 @@ fragment half4 fragment_post(QuadVertexOut in [[stage_in]], texture2d<float,acce
     // return shaderZoom(in.texCoords, texture, sampler2d);
     // return shaderZoomDistortion(in.texCoords, texture, sampler2d);
     // return shaderRepetition(in.texCoords, texture, sampler2d);
+    // return shaderSpiral(in.texCoords, texture, sampler2d);
+    // return shaderThunder(in.texCoords, texture, sampler2d);
     
     // Page 2
     // return shaderClamp(in.texCoords, texture, sampler2d);
