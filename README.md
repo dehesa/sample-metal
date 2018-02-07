@@ -18,6 +18,11 @@ Listing of Xcode projects:
    I've migrated most chapters to the latest Swift and I've added support to macOS.
 - Leon Denise's [shader exam](https://twitter.com/leondenise).
    [Leon Denise](https://twitter.com/leondenise) wrote a [tweet](https://twitter.com/leondenise/status/953716696161882114) with a typical shader exam he gives to his students on [SupInfo.com](https://rubika-edu.com).
+   - [Page 1](https://github.com/dehesa/Metal/blob/master/Shader%20Exam/Sources/Common/Assets/Exam/Page1.png) shaders: [pass](https://github.com/dehesa/Metal/blob/master/Shader%20Exam/Sources/Common/ShadersPage1.metal#L5), [mirror](https://github.com/dehesa/Metal/blob/master/Shader%20Exam/Sources/Common/ShadersPage1.metal#L12), [symmetry](https://github.com/dehesa/Metal/blob/master/Shader%20Exam/Sources/Common/ShadersPage1.metal#L20), [rotation](https://github.com/dehesa/Metal/blob/master/Shader%20Exam/Sources/Common/ShadersPage1.metal#L28), [zoom](https://github.com/dehesa/Metal/blob/master/Shader%20Exam/Sources/Common/ShadersPage1.metal#L47), [zoomDistortion](https://github.com/dehesa/Metal/blob/master/Shader%20Exam/Sources/Common/ShadersPage1.metal#L56), [repetition](https://github.com/dehesa/Metal/blob/master/Shader%20Exam/Sources/Common/ShadersPage1.metal#L67), [spiral](https://github.com/dehesa/Metal/blob/master/Shader%20Exam/Sources/Common/ShadersPage1.metal#L75), [thunder](https://github.com/dehesa/Metal/blob/master/Shader%20Exam/Sources/Common/ShadersPage1.metal#L92).
+   - [Page 2](https://github.com/dehesa/Metal/blob/master/Shader%20Exam/Sources/Common/Assets/Exam/Page2.png) shaders:.
+   - [Page 3](https://github.com/dehesa/Metal/blob/master/Shader%20Exam/Sources/Common/Assets/Exam/Page3.png) shaders:.
+   - [Page 4](https://github.com/dehesa/Metal/blob/master/Shader%20Exam/Sources/Common/Assets/Exam/Page4.png) shaders:.
+   - [Page 5](https://github.com/dehesa/Metal/blob/master/Shader%20Exam/Sources/Common/Assets/Exam/Page5.png) shaders:.
 
 #### Command-Line Apps
 
