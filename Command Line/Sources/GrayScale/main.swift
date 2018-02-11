@@ -3,7 +3,10 @@ import Metal
 import MetalKit
 
 // The input image path is expected as the only argument (excluding the program name).
-guard CommandLine.arguments.count == 2 else { exit(EXIT_FAILURE) }
+guard CommandLine.arguments.count == 2 else {
+    print("Only one argument specifying the input image is expected.")
+    exit(EXIT_FAILURE)
+}
 let inputURL = URL(fileURLWithPath: CommandLine.arguments[1])
 
 // We will save the output directory to the desktop.

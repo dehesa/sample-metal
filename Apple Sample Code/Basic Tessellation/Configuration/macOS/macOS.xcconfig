@@ -4,8 +4,5 @@ SDKROOT = macosx
 // Packaging
 INFOPLIST_FILE = $(SRCROOT)/Configuration/macOS/macOS.plist
 
-// Signing
-CODE_SIGN_ENTITLEMENTS = $(SRCROOT)/Configuration/macOS/macOS.entitlements
-
 // User-Generated
 MAIN_STORYBOARD = Main

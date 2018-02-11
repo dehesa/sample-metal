@@ -4,8 +4,9 @@ Metal
 This repo contains code with examples on how to use Apple's Metal GPU APIs. Some sample code has been created entirely by [me](https://github.com/dehesa), while others have been picked from Github. The latter ones are in this repo because they have been heavily modified, not only to support the latest version of Swift, but also to add support to iOS or macOS (when applicable). Links to the source Github repos or websites are provided.
 
 Examples on this repository support:
-- Swift 4.0
+- Swift 4.1
 - Metal 2.0
+- Xcode 9.3
 
 Listing of Xcode projects:
 - [Apple's sample code](https://developer.apple.com/metal).
