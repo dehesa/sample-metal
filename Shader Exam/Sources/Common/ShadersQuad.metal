@@ -19,59 +19,59 @@ vertex QuadVertexOut vertex_post(QuadVertexIn in [[stage_in]]) {
 }
 
 // Page 1 shaders
-half4 shaderPass(const float2 uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderMirror(const float2 uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderSymmetry(const float2 uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderRotation(const float2 uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderZoom(const float2 uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderZoomDistortion(const float2 uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderRepetition(const float2 uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderSpiral(const float2 uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderThunder(const float2 uv, texture2d<float,access::sample> texture, sampler s);
+half4 shaderPass(float2 const uv, texture2d<float,access::sample> texture, sampler s);
+half4 shaderMirror(float2 const uv, texture2d<float,access::sample> texture, sampler s);
+half4 shaderSymmetry(float2 const uv, texture2d<float,access::sample> texture, sampler s);
+half4 shaderRotation(float2 const uv, texture2d<float,access::sample> texture, sampler s);
+half4 shaderZoom(float2 const uv, texture2d<float,access::sample> texture, sampler s);
+half4 shaderZoomDistortion(float2 const uv, texture2d<float,access::sample> texture, sampler s);
+half4 shaderRepetition(float2 const uv, texture2d<float,access::sample> texture, sampler s);
+half4 shaderSpiral(float2 const uv, texture2d<float,access::sample> texture, sampler s);
+half4 shaderThunder(float2 const uv, texture2d<float,access::sample> texture, sampler s);
 // Page 2 shaders
-half4 shaderClamp(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderPli(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderColorDirection(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderPixelation(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderVague(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderColonne(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderCrash(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderScanline(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderDoubleFrequency(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderClamp(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderPli(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderColorDirection(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderPixelation(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderVague(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderColonne(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderCrash(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderScanline(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderDoubleFrequency(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
 // Page 3 shaders
-half4 shaderBlackAndWhite(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderThreshold(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderThresholds(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderSonar(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderGrid(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderStamp(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderLocalNegative(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderChromaticAberration(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderChromaKey(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderBlackAndWhite(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderThreshold(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderThresholds(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderSonar(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderGrid(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderStamp(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderLocalNegative(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderChromaticAberration(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderChromaKey(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
 // Page 4 shaders
-half4 shaderVague2(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderChubby(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderSkinny(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderTwist(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderGlitch(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderGlitchVoxel(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderBasicShading(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderToonShading(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderCellShading(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderVague2(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderChubby(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderSkinny(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderTwist(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderGlitch(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderGlitchVoxel(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderBasicShading(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderToonShading(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderCellShading(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
 // Page 5 shaders
-half4 shaderSphere(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderSphereRepeat(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderPyramid(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderPolarModulo(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderTubeTwist(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderTubeWeb(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderVolumetricCloud(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderStranglerFig(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
-half4 shaderKirby(const float2 uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderSphere(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderSphereRepeat(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderPyramid(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderPolarModulo(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderTubeTwist(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderTubeWeb(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderVolumetricCloud(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderStranglerFig(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
+half4 shaderKirby(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
 
 fragment half4 fragment_post(QuadVertexOut in [[stage_in]], texture2d<float,access::sample> texture [[texture(0)]]) {
     // Constant sampler for the texture.
-    constexpr sampler sampler2d(coord::normalized, filter::linear);
+    constexpr sampler sampler2d(coord::normalized,filter::linear);
     // Texture coordinates range from 0 to 1. X-positive values go from the top-left to the top-right; while Y-positive go from top-left to bottom-left.
     
     // Page 1

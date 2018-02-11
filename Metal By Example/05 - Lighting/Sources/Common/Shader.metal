@@ -57,17 +57,17 @@ constant Material material = {
 };
 
 fragment float4 main_fragment(const VertexProjected v [[stage_in]]) {
-    const float3 ambient = light.ambientColor * material.ambientColor;
+    float3 const ambient = light.ambientColor * material.ambientColor;
     
-    const float3 normal = normalize(v.normal);
-    const float intensityDiffuse = saturate(dot(normal, light.direction));  // `saturate` clamps the value between 0 and 1.
-    const float3 diffuse = intensityDiffuse * (light.diffuseColor * material.diffuseColor);
+    float3 const normal = normalize(v.normal);
+    float const intensityDiffuse = saturate(dot(normal, light.direction));  // `saturate` clamps the value between 0 and 1.
+    float3 const diffuse = intensityDiffuse * (light.diffuseColor * material.diffuseColor);
     
     float3 specular(0);
     if (intensityDiffuse > 0) {
-        const float3 eyeDirection = normalize(v.eye);
-        const float3 halfway = normalize(light.direction + eyeDirection);
-        const float specularFactor = pow(saturate(dot(normal, halfway)), material.specularPower);
+        float3 const eyeDirection = normalize(v.eye);
+        float3 const halfway = normalize(light.direction + eyeDirection);
+        float const specularFactor = pow(saturate(dot(normal, halfway)), material.specularPower);
         specular = light.specularColor * material.specularColor * specularFactor;
     }
     

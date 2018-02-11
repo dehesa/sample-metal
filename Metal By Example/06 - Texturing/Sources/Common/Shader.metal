@@ -50,18 +50,18 @@ constant Light light = {
 fragment float4 main_fragment(VertexProjected  v              [[stage_in]],
                               texture2d<float> diffuseTexture [[texture(0)]],
                               sampler          samplr         [[sampler(0)]]) {
-    float3 diffuseColor = diffuseTexture.sample(samplr, v.texCoords).rgb;
+    float3 const diffuseColor = diffuseTexture.sample(samplr, v.texCoords).rgb;
     
-    float3 ambientTerm = light.ambientColor * diffuseColor;
+    float3 const ambientTerm = light.ambientColor * diffuseColor;
     
-    float3 normal = normalize(v.normal);
-    float diffuseIntensity = saturate(dot(normal, light.direction));
-    float3 diffuseTerm = light.diffuseColor * diffuseColor * diffuseIntensity;
+    float3 const normal = normalize(v.normal);
+    float const diffuseIntensity = saturate(dot(normal, light.direction));
+    float3 const diffuseTerm = light.diffuseColor * diffuseColor * diffuseIntensity;
     
     float3 specularTerm(0);
     if (diffuseIntensity > 0) {
-        float3 eyeDirection = normalize(v.eyePosition);
-        float3 halfway = normalize(light.direction + eyeDirection);
+        float3 const eyeDirection = normalize(v.eyePosition);
+        float3 const halfway = normalize(light.direction + eyeDirection);
         float specularFactor = pow(saturate(dot(normal, halfway)), kSpecularPower);
         specularTerm = light.specularColor * kSpecularColor * specularFactor;
     }

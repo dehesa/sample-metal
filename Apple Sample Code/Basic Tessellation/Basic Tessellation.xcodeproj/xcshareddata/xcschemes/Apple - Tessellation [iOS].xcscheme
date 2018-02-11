@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D7CA268201D3667003CFBBC"
-               BuildableName = "Shader Exam.app"
+               BuildableName = "Tessellation.app"
                BlueprintName = "Tessellation (iOS)"
                ReferencedContainer = "container:Basic Tessellation.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D7CA268201D3667003CFBBC"
-            BuildableName = "Shader Exam.app"
+            BuildableName = "Tessellation.app"
             BlueprintName = "Tessellation (iOS)"
             ReferencedContainer = "container:Basic Tessellation.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D7CA268201D3667003CFBBC"
-            BuildableName = "Shader Exam.app"
+            BuildableName = "Tessellation.app"
             BlueprintName = "Tessellation (iOS)"
             ReferencedContainer = "container:Basic Tessellation.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D7CA268201D3667003CFBBC"
-            BuildableName = "Shader Exam.app"
+            BuildableName = "Tessellation.app"
             BlueprintName = "Tessellation (iOS)"
             ReferencedContainer = "container:Basic Tessellation.xcodeproj">
          </BuildableReference>

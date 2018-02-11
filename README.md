@@ -19,7 +19,16 @@ Listing of Xcode projects:
    I've migrated most chapters to the latest Swift and I've added support to macOS.
 - Leon Denise's [**Shader Exam**](https://twitter.com/leondenise).
   [Leon Denise](https://twitter.com/leondenise) wrote a [tweet](https://twitter.com/leondenise/status/953716696161882114) with a typical shader exam he gives to his students on [SupInfo.com](https://rubika-edu.com).
-  - [Page 1](Shader%20Exam/Sources/Common/Assets/Exam/Page1.png) shaders: [pass](Shader%20Exam/Sources/Common/ShadersPage1.metal#L5), [mirror](Shader%20Exam/Sources/Common/ShadersPage1.metal#L12), [symmetry](Shader%20Exam/Sources/Common/ShadersPage1.metal#L20), [rotation](Shader%20Exam/Sources/Common/ShadersPage1.metal#L28), [zoom](Shader%20Exam/Sources/Common/ShadersPage1.metal#L47), [zoomDistortion](Shader%20Exam/Sources/Common/ShadersPage1.metal#L56), [repetition](Shader%20Exam/Sources/Common/ShadersPage1.metal#L67), [spiral](Shader%20Exam/Sources/Common/ShadersPage1.metal#L75), [thunder](Shader%20Exam/Sources/Common/ShadersPage1.metal#L92).
+  - [Page 1](Shader%20Exam/Sources/Common/Assets/Exam/Page1.png) shaders:
+    [pass](Shader%20Exam/Sources/Common/ShadersPage1.metal#L5),
+    [mirror](Shader%20Exam/Sources/Common/ShadersPage1.metal#L12), 
+    [symmetry](Shader%20Exam/Sources/Common/ShadersPage1.metal#L20),
+    [rotation](Shader%20Exam/Sources/Common/ShadersPage1.metal#L28),
+    [zoom](Shader%20Exam/Sources/Common/ShadersPage1.metal#L45),
+    [zoomDistortion](Shader%20Exam/Sources/Common/ShadersPage1.metal#L53),
+    [repetition](Shader%20Exam/Sources/Common/ShadersPage1.metal#L63), 
+    [spiral](Shader%20Exam/Sources/Common/ShadersPage1.metal#L71), 
+    [thunder](Shader%20Exam/Sources/Common/ShadersPage1.metal#L87).
   - [Page 2](Shader%20Exam/Sources/Common/Assets/Exam/Page2.png) shaders:.
   - [Page 3](Shader%20Exam/Sources/Common/Assets/Exam/Page3.png) shaders:.
   - [Page 4](Shader%20Exam/Sources/Common/Assets/Exam/Page4.png) shaders:.

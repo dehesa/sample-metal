@@ -12,7 +12,7 @@
 		8DA8FA151F47B9D100897B9B /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8FA0B1F47B95700897B9B /* Processor.swift */; };
 		8DA8FA161F47B9D100897B9B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8FA0D1F47B95700897B9B /* main.swift */; };
 		8DC4EA1C20147EF800DA672E /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC4EA1B20147EF800DA672E /* SetUp.swift */; };
-		8DC4EA1F201483A400DA672E /* GrayScale.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8DC4EA1E201483A400DA672E /* GrayScale.metal */; };
+		8DF1F56E2030F515007ABC29 /* GrayScale.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1F56D2030F515007ABC29 /* GrayScale.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,7 +50,7 @@
 		8DA8FA121F47B95700897B9B /* GrayScale.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GrayScale.plist; sourceTree = "<group>"; };
 		8DA8FA131F47B95700897B9B /* GrayScale.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = GrayScale.xcconfig; sourceTree = "<group>"; };
 		8DC4EA1B20147EF800DA672E /* SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUp.swift; sourceTree = "<group>"; };
-		8DC4EA1E201483A400DA672E /* GrayScale.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GrayScale.metal; sourceTree = "<group>"; };
+		8DF1F56D2030F515007ABC29 /* GrayScale.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = GrayScale.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				8D955917201214A300B9848C /* main.swift */,
-				8DC4EA1E201483A400DA672E /* GrayScale.metal */,
+				8DF1F56D2030F515007ABC29 /* GrayScale.metal */,
 			);
 			path = Detector;
 			sourceTree = "<group>";
@@ -252,7 +252,7 @@
 			files = (
 				8D955918201214A300B9848C /* main.swift in Sources */,
 				8DC4EA1C20147EF800DA672E /* SetUp.swift in Sources */,
-				8DC4EA1F201483A400DA672E /* GrayScale.metal in Sources */,
+				8DF1F56E2030F515007ABC29 /* GrayScale.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
