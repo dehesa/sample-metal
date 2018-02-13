@@ -19,15 +19,15 @@ vertex QuadVertexOut vertex_post(QuadVertexIn in [[stage_in]]) {
 }
 
 // Page 1 shaders
-half4 shaderPass(float2 const uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderMirror(float2 const uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderSymmetry(float2 const uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderRotation(float2 const uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderZoom(float2 const uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderZoomDistortion(float2 const uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderRepetition(float2 const uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderSpiral(float2 const uv, texture2d<float,access::sample> texture, sampler s);
-half4 shaderThunder(float2 const uv, texture2d<float,access::sample> texture, sampler s);
+float2 shaderPass(float2 const screen);
+float2 shaderMirror(float2 const screen);
+float2 shaderSymmetry(float2 const screen);
+float2 shaderRotation(float2 const screen, float2 const screenSize);
+float2 shaderZoom(float2 const screen);
+float2 shaderZoomDistortion(float2 const screen);
+float2 shaderRepetition(float2 const screen, float const numRepetitions);
+float2 shaderSpiral(float2 const screen, float2 const screenSize);
+float2 shaderThunder(float2 const screen, float2 const screenSize);
 // Page 2 shaders
 half4 shaderClamp(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
 half4 shaderPli(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
@@ -74,16 +74,22 @@ fragment half4 fragment_post(QuadVertexOut in [[stage_in]], texture2d<float,acce
     constexpr sampler sampler2d(coord::normalized,filter::linear);
     // Texture coordinates range from 0 to 1. X-positive values go from the top-left to the top-right; while Y-positive go from top-left to bottom-left.
     
-    // Page 1
-    return shaderPass(in.texCoords, texture, sampler2d);
-    // return shaderMirror(in.texCoords, texture, sampler2d);
-    // return shaderSymmetry(in.texCoords, texture, sampler2d);
-    // return shaderRotation(in.texCoords, texture, sampler2d);
-    // return shaderZoom(in.texCoords, texture, sampler2d);
-    // return shaderZoomDistortion(in.texCoords, texture, sampler2d);
-    // return shaderRepetition(in.texCoords, texture, sampler2d);
-    // return shaderSpiral(in.texCoords, texture, sampler2d);
-    // return shaderThunder(in.texCoords, texture, sampler2d);
+    float2 const result =
+        // Page 1
+        shaderPass(in.texCoords);
+        //shaderMirror(in.texCoords);
+        //shaderSymmetry(in.texCoords);
+        //shaderRotation(in.texCoords, float2(texture.get_width(), texture.get_height()));
+        //shaderZoom(in.texCoords);
+        //shaderZoomDistortion(in.texCoords);
+        //shaderRepetition(in.texCoords, 4);
+        //shaderSpiral(in.texCoords, float2(texture.get_width(), texture.get_height()));
+        //shaderThunder(in.texCoords, float2(texture.get_width(), texture.get_height()));
+    
+        // Page 2
+
+    float4 const color = texture.sample(sampler2d, result);
+    return half4(half3(color.rgb), 1);
     
     // Page 2
     // return shaderClamp(in.texCoords, texture, sampler2d);
