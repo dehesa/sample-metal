@@ -89,6 +89,18 @@
 			path = Exam;
 			sourceTree = "<group>";
 		};
+		8D7D8FC62032D30300483F3B /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				8D50AC39202BBA2E00221070 /* ShadersPage1.metal */,
+				8D50AC3B202BBABF00221070 /* ShadersPage2.metal */,
+				8D50AC3D202BBAC700221070 /* ShadersPage3.metal */,
+				8D50AC3F202BBAD200221070 /* ShadersPage4.metal */,
+				8D50AC41202BBAD900221070 /* ShadersPage5.metal */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
 		8D9954952026257700AD8D1B /* macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,11 +172,7 @@
 				8D9954AB202652DA00AD8D1B /* Loader.swift */,
 				8D9954A72026337600AD8D1B /* ShadersMain.metal */,
 				8D9954A92026339500AD8D1B /* ShadersQuad.metal */,
-				8D50AC39202BBA2E00221070 /* ShadersPage1.metal */,
-				8D50AC3B202BBABF00221070 /* ShadersPage2.metal */,
-				8D50AC3D202BBAC700221070 /* ShadersPage3.metal */,
-				8D50AC3F202BBAD200221070 /* ShadersPage4.metal */,
-				8D50AC41202BBAD900221070 /* ShadersPage5.metal */,
+				8D7D8FC62032D30300483F3B /* Pages */,
 				8D2831112028A81F007A5CF7 /* Assets */,
 				8D9954A520262BEA00AD8D1B /* SetUp.swift */,
 				8D9954AD2026598500AD8D1B /* MathUtils.swift */,
