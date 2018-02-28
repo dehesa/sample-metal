@@ -33,14 +33,14 @@ float2 shaderRotation(float2 const fragCoords, float2 const screenSize) {
     float2 const centered = fragCoords - 0.5f;
     // The fragment coordinates are normalized (range [0,1]). However the viewport is range [w,h].
     // If when rotating, the aspect ratio is not accounted for, we will get a distorted image.
-    float2 const absoluteCoords = float2(centered.x * screenSize.x, centered.y * screenSize.y);
+    float2 const absoluteCoords = centered * screenSize;
     
     float2 const polarCoords = float2(length(absoluteCoords), atan2(absoluteCoords.y, absoluteCoords.x));
     float const rotationAngle = M_PI_F / 4.0f;       // 𝝉/8 == 45°
     float const 𝛂 = polarCoords[1] - rotationAngle;
     
     float2 const rotatedCoords = polarCoords[0] * float2(cos(𝛂), sin(𝛂));
-    float2 const normalizedCoords = float2(rotatedCoords.x / screenSize.x, rotatedCoords.y / screenSize.y);
+    float2 const normalizedCoords = rotatedCoords / screenSize;
     return normalizedCoords + 0.5;
 }
 
@@ -88,15 +88,27 @@ float2 shaderSpiral(float2 const fragCoords) {
 ///
 /// - parameter fragCoords: Fragment coordinate in normalized screen coordinates (range [0,1]).
 /// - returns: Pikachu texture coordinate to be drawn on the targeted fragment (`fragCoords`).
-float2 shaderThunder(float2 const fragCoords, float2 const screenSize) {
-    float2 const centered = fragCoords - 0.5f;
-    
-    float const aspect = (float)screenSize.x / (float)screenSize.y;
-    float2 const absoluteCoords = float2(centered.x * aspect, centered.y);
-    
+float2 shaderThunder(float2 const fragCoords, float2 const screenSize, float const repetitions) {
+    float2 const centered = fragCoords - float2(0.5f, 1.0f);
+    float2 const absoluteCoords = centered * screenSize;
     float2 const polarCoords = float2(length(absoluteCoords), atan2(absoluteCoords.y, absoluteCoords.x));
-    float2 const transCoords = float2(exp(polarCoords[0] + 1.0f), polarCoords[1] / (M_PI_F/4.0f));
+
+    float const l = polarCoords[0];
+    float const 𝛂 = //polarCoords[1];
+                    fmod(polarCoords[1], 2.0f*M_PI_F/repetitions)*repetitions;
+    float2 const rotatedCoords = l * float2(cos(𝛂), sin(𝛂));
+
+    float2 const normalizedCoords = rotatedCoords / screenSize;
+    return normalizedCoords + float2(0.5f, 1.0f);
     
-    float2 const module = 0.5f + abs(float2(transCoords[1], transCoords[0]));
-    return fmod(module, 1.0f);
+//    float2 const centered = fragCoords - 0.5f;
+//    float const 𝝉 = 2.0*M_PI_F;
+//
+//    float const aspect = (float)screenSize.x / (float)screenSize.y;
+//    float2 const absoluteCoords = float2(centered.x * aspect, centered.y);
+//    float2 const polarCoords = float2(length(absoluteCoords), atan2(absoluteCoords.y, absoluteCoords.x));
+//
+//    float2 const transCoords = float2(exp(polarCoords[0] + 1.0f), polarCoords[1]/(𝝉/repetitions));
+//    float2 const result = abs(float2(transCoords[1], transCoords[0]));
+//    return fmod(result + 0.5f, 1.0f);
 }

@@ -1,6 +1,6 @@
 // Packaging
 PRODUCT_NAME = Shader Exam
-PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.exam.shader
+PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.exam.shader
 PRODUCT_MODULE_NAME = ShaderExam
 
 // Versioning

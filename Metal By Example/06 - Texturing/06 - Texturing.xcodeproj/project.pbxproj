@@ -495,12 +495,15 @@
 			baseConfigurationReference = 8D856FD91F431AEE00853F8B /* macOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				PROVISIONING_PROFILE = "6c99cf38-85e9-4ad7-a206-14cfcc4d0812";
+				PROVISIONING_PROFILE_SPECIFIER = "io.dehesa.* (dev,macOS)";
 			};
 			name = Debug;
 		};
@@ -509,12 +512,15 @@
 			baseConfigurationReference = 8D856FD91F431AEE00853F8B /* macOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				PROVISIONING_PROFILE = "6c99cf38-85e9-4ad7-a206-14cfcc4d0812";
+				PROVISIONING_PROFILE_SPECIFIER = "io.dehesa.* (dev,macOS)";
 			};
 			name = Release;
 		};
@@ -523,12 +529,15 @@
 			baseConfigurationReference = 8D856FD61F431AEE00853F8B /* iOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				PROVISIONING_PROFILE = "b781bf41-7bb9-456b-95c1-e80d643158d0";
+				PROVISIONING_PROFILE_SPECIFIER = "io.dehesa.* (dev,iOS)";
 			};
 			name = Debug;
 		};
@@ -537,12 +546,15 @@
 			baseConfigurationReference = 8D856FD61F431AEE00853F8B /* iOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				PROVISIONING_PROFILE = "b781bf41-7bb9-456b-95c1-e80d643158d0";
+				PROVISIONING_PROFILE_SPECIFIER = "io.dehesa.* (dev,iOS)";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

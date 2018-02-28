@@ -477,11 +477,14 @@
 			baseConfigurationReference = 8D5BB0221F099C70005B6DDF /* iOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				PROVISIONING_PROFILE = "b781bf41-7bb9-456b-95c1-e80d643158d0";
+				PROVISIONING_PROFILE_SPECIFIER = "io.dehesa.* (dev,iOS)";
 			};
 			name = Debug;
 		};
@@ -490,11 +493,14 @@
 			baseConfigurationReference = 8D5BB0221F099C70005B6DDF /* iOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				PROVISIONING_PROFILE = "b781bf41-7bb9-456b-95c1-e80d643158d0";
+				PROVISIONING_PROFILE_SPECIFIER = "io.dehesa.* (dev,iOS)";
 			};
 			name = Release;
 		};

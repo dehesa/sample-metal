@@ -1,6 +1,6 @@
 // Packaging
 PRODUCT_NAME = gpgpu
-PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.commandline.gpgpu
+PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.commandline.gpgpu
 
 // Swift
 SWIFT_VERSION = 4.1

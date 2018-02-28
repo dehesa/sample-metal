@@ -1,6 +1,6 @@
 // Packaging
 PRODUCT_NAME = 04
-PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.drawingin3D
+PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.drawingin3D
 PRODUCT_MODULE_NAME = DrawingIn3D
 
 // Versioning

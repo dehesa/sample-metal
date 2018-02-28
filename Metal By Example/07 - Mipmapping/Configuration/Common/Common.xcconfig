@@ -1,6 +1,6 @@
 // Packaging
 PRODUCT_NAME = 07
-PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.mipmapping
+PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.mipmapping
 PRODUCT_MODULE_NAME = Mipmapping
 
 // Versioning

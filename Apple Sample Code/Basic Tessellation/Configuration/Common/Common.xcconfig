@@ -1,6 +1,6 @@
 // Packaging
 PRODUCT_NAME = Tessellation
-PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.apple.tessellation
+PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.apple.tessellation
 PRODUCT_MODULE_NAME = Tessellation
 
 // Versioning

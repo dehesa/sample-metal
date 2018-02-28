@@ -14,7 +14,7 @@ Listing of Xcode projects:
    - [**Basic Tessellation**](https://developer.apple.com/library/content/samplecode/MetalBasicTessellation/Introduction/Intro.html).
 - Command-Line samples.
    - **Detector**. Small utility to check basic parameters for all your GPUs.
-   - [**Safx**](https://github.com/safx)'s gray converted [compute sample](https://github.com/safx/Metal-CommandLine-Sample-Swift).
+   - [Safx](https://github.com/safx)'s **Gray converter [compute sample](https://github.com/safx/Metal-CommandLine-Sample-Swift)**.
 - [Warren Moore](https://warrenmoore.net)'s **Metal by Example** book [sample code](https://github.com/metal-by-example/sample-code).
    I've migrated most chapters to the latest Swift and I've added support to macOS.
 - Leon Denise's [**Shader Exam**](https://github.com/leon196/SIGExam).

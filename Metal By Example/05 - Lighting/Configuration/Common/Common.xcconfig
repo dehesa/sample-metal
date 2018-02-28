@@ -1,6 +1,6 @@
 // Packaging
 PRODUCT_NAME = 05
-PRODUCT_BUNDLE_IDENTIFIER = me.dehesa.metal.lighting
+PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.lighting
 PRODUCT_MODULE_NAME = Lighting
 
 // Versioning
