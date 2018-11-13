@@ -4,9 +4,9 @@ Metal
 This repo contains code with examples on how to use Apple's Metal GPU APIs. Some sample code has been created entirely by [me](https://github.com/dehesa), while others have been picked from Github. The latter ones are in this repo because they have been heavily modified, not only to support the latest version of Swift, but also to add support to iOS or macOS (when applicable). Links to the source Github repos or websites are provided.
 
 Examples on this repository support:
-- Swift 4.1
+- Swift 4.2
 - Metal 2.0
-- Xcode 9.3
+- Xcode 10
 
 Listing of Xcode projects:
 - [Apple's sample code](https://developer.apple.com/metal).
@@ -21,13 +21,13 @@ Listing of Xcode projects:
   [Leon Denise](https://twitter.com/leondenise) wrote a [tweet](https://twitter.com/leondenise/status/953716696161882114) with a typical shader exam he gives to his students on [SupInfo.com](https://rubika-edu.com).
   - [Page 1](Shader%20Exam/Sources/Common/Assets/Exam/Page1.png) shaders:
     [pass](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L7),
-    [mirror](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L17), 
+    [mirror](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L17),
     [symmetry](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L24),
     [rotation](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L32),
     [zoom](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L50),
     [zoomDistortion](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L59),
-    [repetition](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L70), 
-    [spiral](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L77), 
+    [repetition](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L70),
+    [spiral](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L77),
     [thunder](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L91).
   - [Page 2](Shader%20Exam/Sources/Common/Assets/Exam/Page2.png) shaders:.
   - [Page 3](Shader%20Exam/Sources/Common/Assets/Exam/Page3.png) shaders:.
@@ -39,14 +39,14 @@ Listing of Xcode projects:
 You can run Command-Line projects from Xcode and see the result in Xcode console; however, you can also build those projects on your terminal and execute them outside execute.
 
 1. [Clone the project](xcode://clone?repo=https://github.com/dehesa/Metal).
-    ```swift
+   ```swift
    git clone https://github.com/dehesa/Metal
    ```
 
 2. Navigate to the _Command-Line_ source folder.
-    ```
-    cd "Command Line"
-    ```
+   ```
+   cd "Command Line"
+   ```
 
 3. Build the project you are interested in.
    ```swift
@@ -54,7 +54,7 @@ You can run Command-Line projects from Xcode and see the result in Xcode console
    ```
 
 3. Execute the Command-Line tool from the `build/Release` folder.
-    ```swift
+   ```swift
    cd build/Release
    ./$TOOL_NAME
    ```

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -230,11 +230,12 @@
 				TargetAttributes = {
 					8DFB84562023A79C00F0A6D1 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
 			buildConfigurationList = 8DFB84452023A61C00F0A6D1 /* Build configuration list for PBXProject "Shader Exam" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
