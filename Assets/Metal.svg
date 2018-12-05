@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="200px" viewBox="0 0 400 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#00FCDF" offset="0%"></stop>
+            <stop stop-color="#00F873" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#00F873" fill="url(#linearGradient-1)" x="8.5" y="16.5" width="167" height="167" rx="39"></rect>
+        <text id="etal" font-family="Arial-Black, Arial Black" font-size="100" font-weight="700" fill="#000000">
+            <tspan x="181.458008" y="138">etal</tspan>
+        </text>
+        <polygon id="Path" stroke="#00FCDF" fill="#000000" points="40 145 55.5112901 145 55.5112901 87.4445245 102.048146 145 102.048146 97.6905206 145.697723 145 164 145 86.9406871 58.5207908 86.9406871 100.299684 40 44"></polygon>
+    </g>
+</svg>

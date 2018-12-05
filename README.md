@@ -1,5 +1,6 @@
-Metal
------
+<p align="center">
+   <img src="Assets/Metal.svg" alt="Metal Logo & Name"/>
+</p>
 
 This repo contains code with examples on how to use Apple's Metal GPU APIs. Some sample code has been created entirely by [me](https://github.com/dehesa), while others have been picked from Github. The latter ones are in this repo because they have been heavily modified, not only to support the latest version of Swift, but also to add support to iOS or macOS (when applicable). Links to the source Github repos or websites are provided.
 
@@ -36,7 +37,7 @@ Listing of Xcode projects:
 
 ### Command-Line Apps
 
-You can run Command-Line projects from Xcode and see the result in Xcode console; however, you can also build those projects on your terminal and execute them outside execute.
+You can run Command-Line projects from Xcode and see the result in Xcode console; however, you can also build those projects on your terminal and execute them outside.
 
 1. [Clone the project](xcode://clone?repo=https://github.com/dehesa/Metal).
    ```swift

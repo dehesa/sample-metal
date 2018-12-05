@@ -26,3 +26,6 @@ Package.pins
 
 # Carthage
 Carthage
+
+# Project specific
+Assets/Originals
