@@ -4,12 +4,10 @@
 
 This repo contains code with examples on how to use Apple's Metal GPU APIs. Some sample code has been created entirely by [me](https://github.com/dehesa), while others have been picked from Github. The latter ones are in this repo because they have been heavily modified, not only to support the latest version of Swift, but also to add support to iOS or macOS (when applicable). Links to the source Github repos or websites are provided.
 
-Examples on this repository support:
-- Swift 4.2
-- Metal 2.0
-- Xcode 10
+![Swift 5](https://img.shields.io/badge/Swift-5-orange.svg) ![metal](https://img.shields.io/:metal-2-green.svg) ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS-lightgrey.svg) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
-Listing of Xcode projects:
+## Projects
+
 - [Apple's sample code](https://developer.apple.com/metal).
    They are usually in Objective-C and haven't been refreshed in some time. I have migrated them to the latest Swift and try to support both iOS and macOS.
    - [**Basic Tessellation**](https://developer.apple.com/library/content/samplecode/MetalBasicTessellation/Introduction/Intro.html).

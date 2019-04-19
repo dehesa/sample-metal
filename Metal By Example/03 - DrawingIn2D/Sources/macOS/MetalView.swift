@@ -1,11 +1,10 @@
 import Cocoa
 import Metal
-import simd
 
 extension MetalView {
     private struct Vertex {
-        var position: float4
-        var color: float4
+        var position: SIMD4<Float>
+        var color: SIMD4<Float>
     }
 }
 

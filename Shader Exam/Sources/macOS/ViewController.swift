@@ -1,7 +1,7 @@
 import Cocoa
 import MetalKit
 
-class ViewController: NSViewController {
+final class ViewController: NSViewController {
     private let device = MTLCreateSystemDefaultDevice()!
     private var renderer: Renderer!
 
@@ -12,7 +12,7 @@ class ViewController: NSViewController {
         metalView.device = self.device
         metalView.colorPixelFormat = .bgra8Unorm
         
-        renderer = Renderer(device: self.device, view: metalView)
-        metalView.delegate = renderer
+        self.renderer = Renderer(device: self.device, view: metalView)
+        metalView.delegate = self.renderer
     }
 }

@@ -91,8 +91,8 @@
 		8D5BB0201F099C70005B6DDF /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				8D5BB0211F099C70005B6DDF /* iOS.plist */,
 				8D5BB0221F099C70005B6DDF /* iOS.xcconfig */,
+				8D5BB0211F099C70005B6DDF /* iOS.plist */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -100,8 +100,8 @@
 		8D5BB0231F099C70005B6DDF /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				8D5BB0241F099C70005B6DDF /* macOS.plist */,
 				8D5BB0251F099C70005B6DDF /* macOS.xcconfig */,
+				8D5BB0241F099C70005B6DDF /* macOS.plist */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -253,7 +253,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Marcos Sanchez-Dehesa";
 				TargetAttributes = {
 					BC11C8001C8AE7730076017C = {
@@ -266,7 +266,7 @@
 			};
 			buildConfigurationList = BC11C7FC1C8AE7730076017C /* Build configuration list for PBXProject "05 - Lighting" */;
 			compatibilityVersion = "Xcode 10.0";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -369,6 +369,7 @@
 			baseConfigurationReference = 8D5BB01F1F099C70005B6DDF /* Common.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -411,7 +412,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -426,6 +426,7 @@
 			baseConfigurationReference = 8D5BB01F1F099C70005B6DDF /* Common.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -462,7 +463,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -477,14 +477,14 @@
 			baseConfigurationReference = 8D5BB0221F099C70005B6DDF /* iOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PROVISIONING_PROFILE = "b781bf41-7bb9-456b-95c1-e80d643158d0";
-				PROVISIONING_PROFILE_SPECIFIER = "io.dehesa.* (dev,iOS)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -493,14 +493,14 @@
 			baseConfigurationReference = 8D5BB0221F099C70005B6DDF /* iOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PROVISIONING_PROFILE = "b781bf41-7bb9-456b-95c1-e80d643158d0";
-				PROVISIONING_PROFILE_SPECIFIER = "io.dehesa.* (dev,iOS)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -509,12 +509,15 @@
 			baseConfigurationReference = 8D5BB0251F099C70005B6DDF /* macOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = V4LZL56CA7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -523,12 +526,15 @@
 			baseConfigurationReference = 8D5BB0251F099C70005B6DDF /* macOS.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = V4LZL56CA7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

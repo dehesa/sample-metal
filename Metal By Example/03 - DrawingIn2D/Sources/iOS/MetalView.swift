@@ -1,11 +1,10 @@
 import UIKit
 import Metal
-import simd
 
 extension MetalView {
     private struct Vertex {
-        var position: float4
-        var color: float4
+        var position: SIMD4<Float>
+        var color: SIMD4<Float>
     }
 }
 
@@ -70,7 +69,7 @@ final class MetalView: UIView {
 		self.metalLayer.contentsScale = window.screen.nativeScale
         self.displayLink = CADisplayLink(target: self, selector: #selector(MetalView.tickTrigger(from:))).set {
             // $0.preferredFramesPerSecond = 60
-            $0.add(to: .main, forMode: .commonModes)
+            $0.add(to: .main, forMode: .common)
         }
     }
     

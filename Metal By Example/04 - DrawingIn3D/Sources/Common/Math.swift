@@ -27,8 +27,8 @@ extension float4 {
         return float2([self.x, self.y])
     }
     
-    var xyz: float3 {
-        return float3([self.x, self.y, self.z])
+    var xyz: SIMD3<Float> {
+        return SIMD3<Float>([self.x, self.y, self.z])
     }
 }
 

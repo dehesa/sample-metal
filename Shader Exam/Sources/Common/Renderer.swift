@@ -2,14 +2,11 @@ import Foundation
 import MetalKit
 import simd
 
-class Renderer: NSObject, MTKViewDelegate {
+final class Renderer: NSObject, MTKViewDelegate {
     private let metal: (view: MTKView, device: MTLDevice, queue: MTLCommandQueue)
     private let pikachu: (mesh: MTKMesh, descriptor: MTLVertexDescriptor, texture: MTLTexture)
     private var textures: (color: MTLTexture, depth: MTLTexture)
     private var state: (main: MTLRenderPipelineState, post: MTLRenderPipelineState, depthStencil: MTLDepthStencilState)
-    
-    private let reloadFrame = 10
-    private var frameCounter = 0
     
     /// Designated initializer for the Pikachu renderer.
     /// - param device: Metal device where the mesh buffers, texture, and render pipelines will be created.
@@ -85,8 +82,8 @@ extension Renderer {
                 $0.setVertexBuffer(vertexBuffer.buffer, offset: vertexBuffer.offset, index: index)
             }
             
-            let modelTransform = float4x4(translationBy: float3(0, -1.1, 0)) * float4x4(scaleBy: Float(1 / 4.5))
-            let cameraTransform = float4x4(translationBy: float3(0, 0, -4))
+            let modelTransform = float4x4(translationBy: SIMD3<Float>(0, -1.1, 0)) * float4x4(scaleBy: Float(1 / 4.5))
+            let cameraTransform = float4x4(translationBy: SIMD3<Float>(0, 0, -4))
             let projectionMatrix = float4x4(perspectiveProjectionFov: .pi / 6, aspectRatio: aspectRatio, nearZ: 0.1, farZ: 100)
             var uniforms = Uniforms(modelViewMatrix: cameraTransform * modelTransform, projectionMatrix: projectionMatrix)
             $0.setVertexBytes(&uniforms, length: MemoryLayout.size(ofValue: uniforms), index: 1)

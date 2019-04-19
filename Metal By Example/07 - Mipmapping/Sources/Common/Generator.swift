@@ -226,7 +226,7 @@ extension Generator.Texture {
               height % tileCount == 0 else { throw Error.failedToCreateCheckerboard(size: size, tileCount: tileCount) }
         
         let bytes: (count: Int, alignment: Int) = (bytesPerPixel * width * height, MemoryLayout<UInt8>.alignment)
-        let ptr = UnsafeMutableRawPointer.allocate(bytes: bytes.count, alignedTo: bytes.alignment)
+        let ptr = UnsafeMutableRawPointer.allocate(byteCount: bytes.count, alignment: bytes.alignment)
         
         let (colorSpace, bitmapInfo) = (CGColorSpaceCreateDeviceRGB(), CGImageAlphaInfo.premultipliedLast.rawValue | CGImageByteOrderInfo.order32Big.rawValue)
         guard let context = CGContext(data: ptr, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerPixel*width, space: colorSpace, bitmapInfo: bitmapInfo) else { throw Error.failedToCreateCheckerboard(size: size, tileCount: tileCount) }
@@ -244,7 +244,7 @@ extension Generator.Texture {
         }
         
         guard let image = context.makeImage() else { throw Error.failedToCreateCheckerboard(size: size, tileCount: tileCount) }
-        let data = Data(bytesNoCopy: ptr, count: bytes.count, deallocator: Data.Deallocator.custom { $0.deallocate(bytes: $1, alignedTo: bytes.alignment) })
+        let data = Data(bytesNoCopy: ptr, count: bytes.count, deallocator: .custom { (p, _) in p.deallocate() })
         return (data, image)
     }
     
@@ -253,7 +253,7 @@ extension Generator.Texture {
         let (width, height) = (Int(size.width), Int(size.height))
         
         let bytes: (count: Int, alignment: Int) = (bytesPerPixel * width * height, MemoryLayout<UInt8>.alignment)
-        let ptr = UnsafeMutableRawPointer.allocate(bytes: bytes.count, alignedTo: bytes.alignment)
+        let ptr = UnsafeMutableRawPointer.allocate(byteCount: bytes.count, alignment: bytes.alignment)
         
         let (colorSpace, bitmapInfo) = (CGColorSpaceCreateDeviceRGB(), CGImageAlphaInfo.premultipliedLast.rawValue | CGImageByteOrderInfo.order32Big.rawValue)
         guard let context = CGContext(data: ptr, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerPixel*width, space: colorSpace, bitmapInfo: bitmapInfo) else { throw Error.failedtoCreateResizedCheckboard(size: size) }
@@ -269,7 +269,7 @@ extension Generator.Texture {
         context.setBlendMode(.multiply)
         context.fill(rect)
         
-        let data = Data(bytesNoCopy: ptr, count: bytes.count, deallocator: Data.Deallocator.custom { $0.deallocate(bytes: $1, alignedTo: bytes.alignment) })
+        let data = Data(bytesNoCopy: ptr, count: bytes.count, deallocator: .custom { (p, _) in p.deallocate() })
         return (data, image)
     }
 }

@@ -2,7 +2,7 @@ import Foundation
 import Metal
 import MetalKit
 
-class TessellationPipeline: NSObject {
+final class TessellationPipeline: NSObject {
     /// The type of tessellation patch being rendered.
     var patchType: MTLPatchType = .triangle
     /// Indicates whether only the wireframe or the whole patch will be displayed.

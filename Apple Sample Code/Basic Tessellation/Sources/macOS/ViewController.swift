@@ -1,7 +1,7 @@
 import Cocoa
 import MetalKit
 
-class ViewController: NSViewController {
+final class ViewController: NSViewController {
     @IBOutlet weak var metalView: MTKView!
     @IBOutlet weak var edgeLabel: NSTextField!
     @IBOutlet weak var insideLabel: NSTextField!

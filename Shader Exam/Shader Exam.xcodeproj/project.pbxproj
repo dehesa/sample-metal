@@ -80,11 +80,11 @@
 		8D50AC33202BB8D200221070 /* Exam */ = {
 			isa = PBXGroup;
 			children = (
-				8D50AC34202BB8D200221070 /* 4.png */,
-				8D50AC35202BB8D200221070 /* 5.png */,
+				8D50AC38202BB8D200221070 /* 1.png */,
 				8D50AC36202BB8D200221070 /* 2.png */,
 				8D50AC37202BB8D200221070 /* 3.png */,
-				8D50AC38202BB8D200221070 /* 1.png */,
+				8D50AC34202BB8D200221070 /* 4.png */,
+				8D50AC35202BB8D200221070 /* 5.png */,
 			);
 			path = Exam;
 			sourceTree = "<group>";

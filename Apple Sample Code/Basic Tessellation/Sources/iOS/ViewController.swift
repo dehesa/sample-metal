@@ -1,7 +1,7 @@
 import UIKit
 import MetalKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     @IBOutlet weak var metalView: MTKView!
     @IBOutlet weak var edgeLabel: UILabel!
     @IBOutlet weak var insideLabel: UILabel!

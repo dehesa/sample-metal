@@ -16,4 +16,3 @@ kernel void grayscale(texture2d<float,access::read>  in  [[texture(0)]],
         out.write(outColor, gid);
     }
 }
-

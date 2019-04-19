@@ -77,7 +77,7 @@ final class MetalView: UIView {
         self.metalLayer.contentsScale = window.screen.scale
         self.displayLink = CADisplayLink(target: self, selector: #selector(MetalView.tickTrigger(from:))).set {
             $0.preferredFramesPerSecond = Int(preferredFramesPerSecond)
-            $0.add(to: .main, forMode: .commonModes)
+            $0.add(to: .main, forMode: .common)
         }
     }
     

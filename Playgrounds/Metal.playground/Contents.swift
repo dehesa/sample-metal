@@ -1,6 +1,5 @@
 import Cocoa
 import Metal
-import simd
 
 "Int8:\tsize: \(MemoryLayout<Int8>.size), stride: \(MemoryLayout<Int8>.stride), align: \(MemoryLayout<Int8>.alignment)"
 "Int16:\tsize: \(MemoryLayout<Int16>.size), stride: \(MemoryLayout<Int16>.stride), align: \(MemoryLayout<Int16>.alignment)"
