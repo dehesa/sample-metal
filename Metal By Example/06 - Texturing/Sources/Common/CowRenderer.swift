@@ -185,14 +185,14 @@ extension CowRenderer {
     }
     
     /// Updates the internal values with the passed arguments.
-    private func updateUniforms(drawableSize size: float2, duration: Float) {
+    private func updateUniforms(drawableSize size: SIMD2<Float>, duration: Float) {
         self.time += duration
         self.rotationX += duration * (.𝝉 / 4.0)
         self.rotationY += duration * (.𝝉 / 6.0)
         
         let scaleMatrix = float4x4(scale: 1)
-        let xRotMatrix  = float4x4(rotate: float3(1, 0, 0), angle: self.rotationX)
-        let yRotMatrix  = float4x4(rotate: float3(0, 1, 0), angle: self.rotationX)
+        let xRotMatrix  = float4x4(rotate: SIMD3<Float>(1, 0, 0), angle: self.rotationX)
+        let yRotMatrix  = float4x4(rotate: SIMD3<Float>(0, 1, 0), angle: self.rotationX)
         
         let modelMatrix = (yRotMatrix * xRotMatrix) * scaleMatrix
         let viewMatrix = float4x4(translate: [0, 0, -1.25])

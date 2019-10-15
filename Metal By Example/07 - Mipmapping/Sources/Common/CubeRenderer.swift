@@ -154,11 +154,11 @@ extension CubeRenderer {
     }
     
     /// Updates the internal values with the passed arguments.
-    private func updateUniforms(drawableSize size: float2, duration: Float) {
-        let cubePosition: float3 = [0, 0, 20]
+    private func updateUniforms(drawableSize size: SIMD2<Float>, duration: Float) {
+        let cubePosition: SIMD3<Float> = [0, 0, 20]
         let modelMatrix = float4x4(translate: cubePosition) //* (float4x4(rotate: [1, 0, 0], angle: self.angles.x) * float4x4(rotate: [0, 1, 0], angle: self.angles.y))
         
-        let cameraPosition: float3 = [0, 0, -1.25]
+        let cameraPosition: SIMD3<Float> = [0, 0, -1.25]
 //        let cameraPosition: float3 = [0, 0, -self.cameraDistance]
         let viewMatrix = float4x4(translate: cameraPosition)
         

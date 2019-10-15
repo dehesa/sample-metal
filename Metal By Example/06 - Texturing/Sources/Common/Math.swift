@@ -17,30 +17,30 @@ extension Float {
 
 extension CGSize {
     /// Transforms a `CGSize` into a vector with two numbers
-    var float2: simd.float2 {
-        return simd.float2(Float(self.width), Float(self.height))
+    var float2: SIMD2<Float> {
+        return .init(Float(self.width), Float(self.height))
     }
 }
 
-extension float4 {
-    var xy: float2 {
-        return float2([self.x, self.y])
+extension SIMD4 {
+    var xy: SIMD2<Scalar> {
+        return .init([self.x, self.y])
     }
     
-    var xyz: float3 {
-        return float3([self.x, self.y, self.z])
+    var xyz: SIMD3<Scalar> {
+        return .init([self.x, self.y, self.z])
     }
 }
 
 extension float4x4 {
     /// Creates a 4x4 matrix representing a translation given by the provided vector.
     /// - parameter vector: Vector giving the direction and magnitude of the translation.
-    init(translate vector: float3) {
+    init(translate vector: SIMD3<Float>) {
         // List of the matrix' columns
-        let baseX: float4 = [1, 0, 0, 0]
-        let baseY: float4 = [0, 1, 0, 0]
-        let baseZ: float4 = [0, 0, 1, 0]
-        let baseW: float4 = [vector.x, vector.y, vector.z, 1]
+        let baseX: SIMD4<Float> = [1, 0, 0, 0]
+        let baseY: SIMD4<Float> = [0, 1, 0, 0]
+        let baseZ: SIMD4<Float> = [0, 0, 1, 0]
+        let baseW: SIMD4<Float> = [vector.x, vector.y, vector.z, 1]
         self.init(baseX, baseY, baseZ, baseW)
     }
     
@@ -52,7 +52,7 @@ extension float4x4 {
     
     /// Creates a 4x4 matrix that will rotate through the given vector and given angle.
     /// - parameter angle: The amount of radians to rotate from the given vector center.
-    init(rotate vector: float3, angle: Float) {
+    init(rotate vector: SIMD3<Float>, angle: Float) {
         let c: Float = cos(angle)
         let s: Float = sin(angle)
         let cm = 1 - c
@@ -70,10 +70,10 @@ extension float4x4 {
         let z2 = vector.z*vector.z + (1-vector.z*vector.z)*c
         
         // List of the matrix' columns
-        let baseX: float4 = [x0, x1, x2, 0]
-        let baseY: float4 = [y0, y1, y2, 0]
-        let baseZ: float4 = [z0, z1, z2, 0]
-        let baseW: float4 = [ 0,  0,  0, 1]
+        let baseX: SIMD4<Float> = [x0, x1, x2, 0]
+        let baseY: SIMD4<Float> = [y0, y1, y2, 0]
+        let baseZ: SIMD4<Float> = [z0, z1, z2, 0]
+        let baseW: SIMD4<Float> = [ 0,  0,  0, 1]
         self.init(baseX, baseY, baseZ, baseW)
     }
     
@@ -86,10 +86,10 @@ extension float4x4 {
         let wzScale = -2 * far * near / zRange
         
         // List of the matrix' columns
-        let vectorP: float4 = [xScale,      0,       0,  0]
-        let vectorQ: float4 = [     0, yScale,       0,  0]
-        let vectorR: float4 = [     0,      0,  zScale, -1]
-        let vectorS: float4 = [     0,      0, wzScale,  0]
+        let vectorP: SIMD4<Float> = [xScale,      0,       0,  0]
+        let vectorQ: SIMD4<Float> = [     0, yScale,       0,  0]
+        let vectorR: SIMD4<Float> = [     0,      0,  zScale, -1]
+        let vectorS: SIMD4<Float> = [     0,      0, wzScale,  0]
         self.init(vectorP, vectorQ, vectorR, vectorS)
     }
 }

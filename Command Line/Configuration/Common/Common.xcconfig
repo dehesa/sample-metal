@@ -3,7 +3,7 @@ PRODUCT_NAME = gpgpu
 PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.commandline.gpgpu
 
 // Swift
-SWIFT_VERSION = 5
+SWIFT_VERSION = 5.1
 
 // APPLE LLVM - Language
 GCC_C_LANGUAGE_STANDARD = c11

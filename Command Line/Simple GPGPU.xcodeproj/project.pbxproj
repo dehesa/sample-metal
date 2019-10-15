@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -215,7 +215,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Marcos Sanchez-Dehesa";
 				TargetAttributes = {
 					8D955914201214A300B9848C = {
@@ -228,7 +228,7 @@
 				};
 			};
 			buildConfigurationList = 8DA8F9F71F47B86D00897B9B /* Build configuration list for PBXProject "Simple GPGPU" */;
-			compatibilityVersion = "Xcode 10.0";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -274,6 +274,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D95590F2012145D00B9848C /* Detector.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
 			};
@@ -283,6 +284,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D95590F2012145D00B9848C /* Detector.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V4LZL56CA7;
 			};
@@ -402,6 +404,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8DA8FA131F47B95700897B9B /* GrayScale.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				DEVELOPMENT_TEAM = V4LZL56CA7;
 			};
 			name = Debug;
@@ -410,6 +413,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8DA8FA131F47B95700897B9B /* GrayScale.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				DEVELOPMENT_TEAM = V4LZL56CA7;
 			};
 			name = Release;

@@ -3,8 +3,8 @@ import simd
 
 extension CubeRenderer {
     private struct Vertex {
-        var position: float4
-        var color: float4
+        var position: SIMD4<Float>
+        var color: SIMD4<Float>
     }
     
     private struct Uniforms {
@@ -98,7 +98,7 @@ class CubeRenderer: MetalViewDelegate {
         commandBuffer.commit()
     }
     
-    private func updateUniforms(drawableSize: float2, duration: Float) {
+    private func updateUniforms(drawableSize: SIMD2<Float>, duration: Float) {
         self.time += duration
         self.rotationX += (.𝝉 / 4.0) * duration
         self.rotationY += (.𝝉 / 6.0) * duration
@@ -109,7 +109,7 @@ class CubeRenderer: MetalViewDelegate {
         let scaleMatrix = float4x4(diagonal: [scaleFactor, scaleFactor, scaleFactor, 1])
         let modelMatrix = (yRotMatrix * xRotMatrix) * scaleMatrix
         
-        let viewMatrix = float4x4(translate: float3(0, 0, -5))  // Move the camera 5 units on the -z axis. Equal to push object 5 units on +z axis diraction.
+        let viewMatrix = float4x4(translate: SIMD3<Float>(0, 0, -5))  // Move the camera 5 units on the -z axis. Equal to push object 5 units on +z axis diraction.
         let projectionMatrix = float4x4(perspectiveWithAspect: drawableSize.x/drawableSize.y, fovy: .𝝉/5, near: 1, far: 100)
         
         

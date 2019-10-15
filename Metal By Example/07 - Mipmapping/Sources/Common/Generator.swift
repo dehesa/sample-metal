@@ -9,9 +9,9 @@ enum Generator {
     enum Cube {
         /// Cube's point
         struct Vertex {
-            var position: float4
-            var normal: float4
-            var texCoords: float2
+            var position: SIMD4<Float>
+            var normal: SIMD4<Float>
+            var texCoords: SIMD2<Float>
         }
         /// Index to a cube's point.
         typealias Index = UInt16
@@ -28,28 +28,28 @@ enum Generator {
             /// Half side and normal to be used as coordinates.
             let (s, n): (Float, Float) = (0.5*size, 1)
             // Points
-            let lbf = float4(x: -s, y: -s, z: -s, w: 1) // x: left,  y: bottom, z: front
-            let lbb = float4(x: -s, y: -s, z:  s, w: 1) // x: right, y: bottom, z: back
-            let ltf = float4(x: -s, y:  s, z: -s, w: 1)
-            let ltb = float4(x: -s, y:  s, z:  s, w: 1)
-            let rbf = float4(x:  s, y: -s, z: -s, w: 1)
-            let rbb = float4(x:  s, y: -s, z:  s, w: 1)
-            let rtf = float4(x:  s, y:  s, z: -s, w: 1)
-            let rtb = float4(x:  s, y:  s, z:  s, w: 1)
+            let lbf = SIMD4<Float>(x: -s, y: -s, z: -s, w: 1) // x: left,  y: bottom, z: front
+            let lbb = SIMD4<Float>(x: -s, y: -s, z:  s, w: 1) // x: right, y: bottom, z: back
+            let ltf = SIMD4<Float>(x: -s, y:  s, z: -s, w: 1)
+            let ltb = SIMD4<Float>(x: -s, y:  s, z:  s, w: 1)
+            let rbf = SIMD4<Float>(x:  s, y: -s, z: -s, w: 1)
+            let rbb = SIMD4<Float>(x:  s, y: -s, z:  s, w: 1)
+            let rtf = SIMD4<Float>(x:  s, y:  s, z: -s, w: 1)
+            let rtb = SIMD4<Float>(x:  s, y:  s, z:  s, w: 1)
             
             // Normals
-            let nx = float4(x: -n, y:  0, z:  0, w: 0)
-            let px = float4(x:  n, y:  0, z:  0, w: 0)
-            let ny = float4(x:  0, y: -n, z:  0, w: 0)
-            let py = float4(x:  0, y:  n, z:  0, w: 0)
-            let nz = float4(x:  0, y:  0, z: -n, w: 0)
-            let pz = float4(x:  0, y:  0, z:  n, w: 0)
+            let nx = SIMD4<Float>(x: -n, y:  0, z:  0, w: 0)
+            let px = SIMD4<Float>(x:  n, y:  0, z:  0, w: 0)
+            let ny = SIMD4<Float>(x:  0, y: -n, z:  0, w: 0)
+            let py = SIMD4<Float>(x:  0, y:  n, z:  0, w: 0)
+            let nz = SIMD4<Float>(x:  0, y:  0, z: -n, w: 0)
+            let pz = SIMD4<Float>(x:  0, y:  0, z:  n, w: 0)
             
             // Textures
-            let lt = float2(x: 0, y: 0) // u: left,  v: top
-            let lb = float2(x: 0, y: 1) // u: left,  v: bottom
-            let rt = float2(x: 1, y: 0) // u: right, v: top
-            let rb = float2(x: 1, y: 1) // u: right, v: bottom
+            let lt = SIMD2<Float>(x: 0, y: 0) // u: left,  v: top
+            let lb = SIMD2<Float>(x: 0, y: 1) // u: left,  v: bottom
+            let rt = SIMD2<Float>(x: 1, y: 0) // u: right, v: top
+            let rb = SIMD2<Float>(x: 1, y: 1) // u: right, v: bottom
             
             let vertices: [Vertex] = [
                 // -X
@@ -126,9 +126,9 @@ enum Generator {
             let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: pixelFormat, width: Int(size.width), height: Int(size.height), mipmapped: true)
             guard let texture = metal.device.makeTexture(descriptor: descriptor) else { throw Error.failedToCreateTexture(device: metal.device) }
             
-            (try makeCheckerboardImage(size: size, tileCount: tileCount)).data.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
+            (try makeCheckerboardImage(size: size, tileCount: tileCount)).data.withUnsafeBytes { (ptr) in
                 let region = MTLRegionMake2D(0, 0, Int(size.width), Int(size.height))
-                texture.replace(region: region, mipmapLevel: 0, withBytes: ptr, bytesPerRow: bytesPerRow)
+                texture.replace(region: region, mipmapLevel: 0, withBytes: ptr.baseAddress!, bytesPerRow: bytesPerRow)
             }
             
             guard let buffer = metal.queue.makeCommandBuffer(),
@@ -147,9 +147,9 @@ enum Generator {
             guard let texture = device.makeTexture(descriptor: descriptor) else { throw Error.failedToCreateTexture(device: device) }
             
             let (data, image) = try makeCheckerboardImage(size: size, tileCount: tileCount)
-            data.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
+            data.withUnsafeBytes { (ptr) in
                 let region = MTLRegionMake2D(0, 0, Int(size.width), Int(size.height))
-                texture.replace(region: region, mipmapLevel: 0, withBytes: ptr, bytesPerRow: bytesPerRow)
+                texture.replace(region: region, mipmapLevel: 0, withBytes: ptr.baseAddress!, bytesPerRow: bytesPerRow)
             }
             
             var (level, mipWidth, mipHeight, levelImage) = (1, texture.width/2, texture.height/2, image)
@@ -160,9 +160,9 @@ enum Generator {
                 let scaled = try makeResizeImage(image: levelImage, size: CGSize(width: mipWidth, height: mipHeight), tintColor: tintColor)
                 levelImage = scaled.image
                 
-                scaled.data.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
+                scaled.data.withUnsafeBytes { (ptr) in
                     let region = MTLRegionMake2D(0, 0, mipWidth, mipHeight)
-                    texture.replace(region: region, mipmapLevel: level, withBytes: ptr, bytesPerRow: mipBytesPerRow)
+                    texture.replace(region: region, mipmapLevel: level, withBytes: ptr.baseAddress!, bytesPerRow: mipBytesPerRow)
                 }
                 
                 mipWidth /= 2
