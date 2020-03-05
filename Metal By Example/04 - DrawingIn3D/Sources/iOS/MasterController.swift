@@ -1,18 +1,17 @@
 import UIKit
 
-class MasterController: UIViewController {
-    private var renderer: CubeRenderer!
-    private var metalView: MetalView {
-        return self.view as! MetalView
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+final class MasterController: UIViewController {
+    private var renderer: CubeRenderer! = nil
+    private var metalView: MetalView { self.view as! MetalView }
+    override var prefersStatusBarHidden: Bool { true }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.renderer = CubeRenderer(withDevice: self.metalView.device)
-        self.metalView.delegate = self.renderer
+        
+        guard let device = MTLCreateSystemDefaultDevice() else { fatalError() }
+        let metalView = MetalView(frame: UIScreen.main.bounds, device: device)
+        self.renderer = CubeRenderer(withDevice: device)
+        metalView.delegate = self.renderer
+        self.view = metalView
     }
 }

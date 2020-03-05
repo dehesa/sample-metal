@@ -265,9 +265,9 @@
 				8D2525492411746E007F918E /* AppInfo.c in Sources */,
 				8D25254824117051007F918E /* App.swift in Sources */,
 				8DB38D461F0046C6001EC3AD /* SetUp.swift in Sources */,
-				8DB794311EFFA2AD00DC8877 /* AppDelegate.swift in Sources */,
-				8DB794321EFFA2AD00DC8877 /* MasterController.swift in Sources */,
 				8DB794331EFFA2AD00DC8877 /* MetalView.swift in Sources */,
+				8DB794321EFFA2AD00DC8877 /* MasterController.swift in Sources */,
+				8DB794311EFFA2AD00DC8877 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,9 +278,9 @@
 				8D25254424116E21007F918E /* AppInfo.c in Sources */,
 				8D25254724117051007F918E /* App.swift in Sources */,
 				8DB38D471F0046C6001EC3AD /* SetUp.swift in Sources */,
-				8D25254B24117686007F918E /* main.swift in Sources */,
-				8DB7942E1EFFA16300DC8877 /* AppDelegate.swift in Sources */,
 				8DB794301EFFA16300DC8877 /* MetalView.swift in Sources */,
+				8DB7942E1EFFA16300DC8877 /* AppDelegate.swift in Sources */,
+				8D25254B24117686007F918E /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

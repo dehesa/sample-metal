@@ -19,17 +19,11 @@ final class MetalView: UIView {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError()
-    }
-    
-    private var metalLayer: CAMetalLayer {
-        return layer as! CAMetalLayer
-    }
-    
-    override static var layerClass: AnyClass {
-        return CAMetalLayer.self
-    }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
+    /// The metal layer that backs this view.
+    private var metalLayer: CAMetalLayer { self.layer as! CAMetalLayer }
+    /// The layer used by this view (`CAMetalLayer`).
+    override static var layerClass: AnyClass { CAMetalLayer.self }
     
     override func didMoveToWindow() {
         super.didMoveToWindow()

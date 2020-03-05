@@ -17,11 +17,29 @@ final class MetalView: UIView {
     /// The duration (in seconds) of the previous frame. This is valid only in the context of a callback to the delegate's `draw(view:)` method.
     var frameDuration: TimeInterval = 1 / 60
     /// The color to which the color attachment should be cleared at the start of a rendering pass.
-    let clearColor: MTLClearColor = MTLClearColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+    let clearColor: MTLClearColor = MTLClearColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
     /// The view's layer's current drawable. This is valid only in the context of a callback to the delegate's `draw(view:)` method.
     var currentDrawable: CAMetalDrawable?
     /// The delegate of this view, responsible for drawing.
     var delegate: MetalViewDelegate?
+    
+    init(frame: CGRect, device: MTLDevice) {
+        super.init(frame: frame)
+        self.metalLayer.setUp {
+            $0.device = device
+            $0.pixelFormat = .bgra8Unorm    // 8-bit unsigned integer [0, 255]
+            $0.framebufferOnly = true
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) { fatalError() }
+    /// The metal layer that backs this view.
+    var metalLayer: CAMetalLayer { self.layer as! CAMetalLayer }
+    /// The device executing the tasks for the layer.
+    var device: MTLDevice { self.metalLayer.device! }
+    /// The layer used by this view (`CAMetalLayer`).
+    override static var layerClass: AnyClass { CAMetalLayer.self }
+    
     /// A render pass descriptor configured to use the current drawable's texture as its primary color attachment and an internal depth texture of the same size as its depth attachment's texture.
     var currentRenderPassDescriptor: MTLRenderPassDescriptor? {
         guard let drawable = self.currentDrawable,
@@ -42,29 +60,6 @@ final class MetalView: UIView {
             }
         }
     }
-    /// The metal layer that backs this view.
-    var metalLayer: CAMetalLayer {
-        return layer as! CAMetalLayer
-    }
-    /// The device executing the tasks for the layer.
-    var device: MTLDevice {
-        return self.metalLayer.device!
-    }
-    /// The layer used by this view (`CAMetalLayer`).
-    override static var layerClass: AnyClass {
-        return CAMetalLayer.self
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        guard let device = MTLCreateSystemDefaultDevice() else { return nil }
-        super.init(coder: aDecoder)
-        
-        self.metalLayer.setUp { (layer) in
-            layer.device = device
-            layer.pixelFormat = .bgra8Unorm    // 8-bit unsigned integer [0, 255]
-            layer.framebufferOnly = true
-        }
-    }
     
     override func didMoveToWindow() {
         super.didMoveToWindow()
@@ -76,7 +71,7 @@ final class MetalView: UIView {
         
         self.metalLayer.contentsScale = window.screen.scale
         self.displayLink = CADisplayLink(target: self, selector: #selector(MetalView.tickTrigger(from:))).set {
-            $0.preferredFramesPerSecond = Int(preferredFramesPerSecond)
+            $0.preferredFramesPerSecond = Int(self.preferredFramesPerSecond)
             $0.add(to: .main, forMode: .common)
         }
     }

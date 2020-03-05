@@ -11,6 +11,3 @@ CODE_SIGN_IDENTITY = iPhone Developer
 
 // Packaging
 INFOPLIST_FILE = $(SRCROOT)/Configuration/iOS/iOS.plist
-
-// User-Generated
-MAIN_LAUNCHSCREEN = Launchscreen

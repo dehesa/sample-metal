@@ -4,7 +4,7 @@ extension App {
     /// The delegate for this application. It receives the app events and forwards them to the window controller or SwiftUI.
     final class Delegate: NSObject {
         /// The main application window.
-        let window: NSWindow
+        private let window: NSWindow
         
         override init() {
             let size = (default: NSSize(width: 900, height: 600), minimum: NSSize(width: 300, height: 300))

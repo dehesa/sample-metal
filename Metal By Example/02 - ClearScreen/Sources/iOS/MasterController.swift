@@ -1,9 +1,7 @@
 import UIKit
 
 final class MasterController: UIViewController {
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+    override var prefersStatusBarHidden: Bool { true }
     
     override func viewDidLoad() {
         guard let device = MTLCreateSystemDefaultDevice(),

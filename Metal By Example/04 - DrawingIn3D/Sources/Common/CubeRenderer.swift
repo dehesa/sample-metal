@@ -79,7 +79,7 @@ class CubeRenderer: MetalViewDelegate {
         }
         
         let drawableSize = metalView.metalLayer.drawableSize
-        updateUniforms(drawableSize: [Float(drawableSize.width), Float(drawableSize.height)], duration: Float(metalView.frameDuration))
+        self.updateUniforms(drawableSize: [Float(drawableSize.width), Float(drawableSize.height)], duration: Float(metalView.frameDuration))
         
         encoder.setUp {
             $0.setRenderPipelineState(self.renderPipeline)
@@ -107,13 +107,13 @@ class CubeRenderer: MetalViewDelegate {
         let xRotMatrix = float4x4(rotate: [1, 0, 0], angle: self.rotationX)
         let yRotMatrix = float4x4(rotate: [0, 1, 0], angle: self.rotationX)
         let scaleMatrix = float4x4(diagonal: [scaleFactor, scaleFactor, scaleFactor, 1])
-        let modelMatrix = (yRotMatrix * xRotMatrix) * scaleMatrix
-        
-        let viewMatrix = float4x4(translate: SIMD3<Float>(0, 0, -5))  // Move the camera 5 units on the -z axis. Equal to push object 5 units on +z axis diraction.
+        let modelMatrix = yRotMatrix * (xRotMatrix * scaleMatrix)
+        // Move the camera 5 units on the -z axis. Equal to push object 5 units on +z axis diraction.
+        let viewMatrix = float4x4(translate: SIMD3<Float>(0, 0, -5))
         let projectionMatrix = float4x4(perspectiveWithAspect: drawableSize.x/drawableSize.y, fovy: .𝝉/5, near: 1, far: 100)
         
         
-        let ptr = uniformsBuffer.contents().assumingMemoryBound(to: Uniforms.self)
-        ptr.pointee = Uniforms(modelViewProjectionMatrix:  projectionMatrix * (viewMatrix * modelMatrix))
+        let ptr = self.uniformsBuffer.contents().assumingMemoryBound(to: Uniforms.self)
+        ptr.pointee = Uniforms(modelViewProjectionMatrix: projectionMatrix * (viewMatrix * modelMatrix))
     }
 }

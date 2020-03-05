@@ -65,6 +65,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D3BFD172411AA7500AE1DBA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8D3BFD062411999800AE1DBA /* App.h */,
+				8D3BFD082411999800AE1DBA /* App.swift */,
+				8D3BFD072411999800AE1DBA /* AppInfo.h */,
+				8D3BFD052411999800AE1DBA /* AppInfo.c */,
+				8DB38D481F004705001EC3AD /* SetUp.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		8DB794371EFFA57A00DC8877 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,12 +126,8 @@
 		8DB794411EFFA57A00DC8877 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				8D3BFD062411999800AE1DBA /* App.h */,
-				8D3BFD082411999800AE1DBA /* App.swift */,
-				8D3BFD072411999800AE1DBA /* AppInfo.h */,
-				8D3BFD052411999800AE1DBA /* AppInfo.c */,
-				8DB38D481F004705001EC3AD /* SetUp.swift */,
 				8DB794421EFFA57A00DC8877 /* Shader.metal */,
+				8D3BFD172411AA7500AE1DBA /* Utils */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -260,13 +268,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DB7945C1EFFA6DC00DC8877 /* Shader.metal in Sources */,
-				8D3BFD0C241199D700AE1DBA /* main.swift in Sources */,
-				8DB794591EFFA64300DC8877 /* MetalView.swift in Sources */,
-				8DB38D4A1F004864001EC3AD /* SetUp.swift in Sources */,
 				8D3BFD0A2411999F00AE1DBA /* AppInfo.c in Sources */,
 				8D3BFD0E24119A9A00AE1DBA /* App.swift in Sources */,
+				8DB38D4A1F004864001EC3AD /* SetUp.swift in Sources */,
+				8DB7945C1EFFA6DC00DC8877 /* Shader.metal in Sources */,
+				8DB794591EFFA64300DC8877 /* MetalView.swift in Sources */,
 				8DB794571EFFA64300DC8877 /* AppDelegate.swift in Sources */,
+				8D3BFD0C241199D700AE1DBA /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,13 +282,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DB38D4C1F00529C001EC3AD /* AppDelegate.swift in Sources */,
-				8DB38D4D1F00529C001EC3AD /* MasterController.swift in Sources */,
-				8DB38D4E1F00529C001EC3AD /* MetalView.swift in Sources */,
 				8D3BFD092411999F00AE1DBA /* AppInfo.c in Sources */,
-				8DB7945D1EFFA6DC00DC8877 /* Shader.metal in Sources */,
 				8D3BFD0D24119A9900AE1DBA /* App.swift in Sources */,
 				8DB38D4B1F004864001EC3AD /* SetUp.swift in Sources */,
+				8DB7945D1EFFA6DC00DC8877 /* Shader.metal in Sources */,
+				8DB38D4E1F00529C001EC3AD /* MetalView.swift in Sources */,
+				8DB38D4D1F00529C001EC3AD /* MasterController.swift in Sources */,
+				8DB38D4C1F00529C001EC3AD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,8 +331,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -351,7 +357,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -380,8 +385,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -408,7 +411,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;

@@ -53,36 +53,28 @@ final class MetalView: NSView {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError()
-    }
-    
-    private var metalLayer: CAMetalLayer {
-        return layer as! CAMetalLayer
-    }
-    
-    override func makeBackingLayer() -> CALayer {
-        return CAMetalLayer()
-    }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
+    private var metalLayer: CAMetalLayer { self.layer as! CAMetalLayer }
+    override func makeBackingLayer() -> CALayer { CAMetalLayer() }
     
     override func viewDidMoveToWindow() {
         super.viewDidMoveToWindow()
         
 		guard let window = self.window else { return }
 		self.metalLayer.contentsScale = window.backingScaleFactor
-        redraw()
+        self.redraw()
     }
     
     override func setBoundsSize(_ newSize: NSSize) {
         super.setBoundsSize(newSize)
         self.metalLayer.drawableSize = convertToBacking(bounds).size
-        redraw()
+        self.redraw()
     }
     
     override func setFrameSize(_ newSize: NSSize) {
         super.setFrameSize(newSize)
         self.metalLayer.drawableSize = convertToBacking(bounds).size
-        redraw()
+        self.redraw()
     }
 }
 
