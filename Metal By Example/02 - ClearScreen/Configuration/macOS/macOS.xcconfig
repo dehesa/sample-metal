@@ -3,6 +3,3 @@ SDKROOT = macosx
 
 // Packaging
 INFOPLIST_FILE = $(SRCROOT)/Configuration/macOS/macOS.plist
-
-// User-Generated
-MAIN_STORYBOARD = Main

@@ -1,25 +1,15 @@
 import Cocoa
 import Metal
 
-class MetalView: NSView {
+/// `NSView` handling the first basic metal commands.
+final class MetalView: NSView {
     private let device: MTLDevice
     private let queue: MTLCommandQueue
     
-    private var metalLayer: CAMetalLayer {
-        return layer as! CAMetalLayer
-    }
-    
-    override func makeBackingLayer() -> CALayer {
-        return CAMetalLayer()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
+    init?(frame: NSRect, device: MTLDevice, queue: MTLCommandQueue) {
         // Setup the Device and Command Queue (non-transient objects: expensive to create. Do save it)
-        guard let device = MTLCreateSystemDefaultDevice(),
-              let queue = device.makeCommandQueue() else { return nil }
         (self.device, self.queue) = (device, queue)
-        
-        super.init(coder: aDecoder)
+        super.init(frame: frame)
         
         // Setup layer (backing layer)
         self.wantsLayer = true
@@ -28,6 +18,18 @@ class MetalView: NSView {
             layer.pixelFormat = .bgra8Unorm
             layer.framebufferOnly = true
         }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
+    
+    private var metalLayer: CAMetalLayer {
+        return layer as! CAMetalLayer
+    }
+    
+    override func makeBackingLayer() -> CALayer {
+        return CAMetalLayer()
     }
     
     override func viewDidMoveToWindow() {
@@ -49,7 +51,9 @@ class MetalView: NSView {
         self.metalLayer.drawableSize = convertToBacking(bounds).size
         self.redraw()
     }
-    
+}
+
+extension MetalView {
     private func redraw() {
         // Setup Command Buffer (transient)
         guard let drawable = self.metalLayer.nextDrawable(),

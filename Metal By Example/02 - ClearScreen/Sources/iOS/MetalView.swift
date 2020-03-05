@@ -1,6 +1,7 @@
 import UIKit
 import Metal
 
+/// `UIView` handling the first basic metal commands.
 final class MetalView: UIView {
     private let device: MTLDevice
     private let queue: MTLCommandQueue
@@ -13,13 +14,10 @@ final class MetalView: UIView {
 		return CAMetalLayer.self
 	}
     
-    required init?(coder aDecoder: NSCoder) {
+    init(frame: CGRect, device: MTLDevice, queue: MTLCommandQueue) {
         // Setup the Device & Command Queue (non-transient objects: expensive to create)
-        guard let device = MTLCreateSystemDefaultDevice(),
-              let queue = device.makeCommandQueue() else { return nil }
         (self.device, self.queue) = (device, queue)
-		
-        super.init(coder: aDecoder)
+        super.init(frame: frame)
         
         // Setup Core Animation related functionality
         self.metalLayer.setUp { (layer) in
@@ -29,6 +27,10 @@ final class MetalView: UIView {
         }
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
+    
     override func didMoveToWindow() {
         super.didMoveToWindow()
         
@@ -36,7 +38,9 @@ final class MetalView: UIView {
         self.metalLayer.contentsScale = window.screen.nativeScale
         redraw()
     }
-    
+}
+
+extension MetalView {
     private func redraw() {
         // Setup Command Buffer (transient)
         guard let drawable = self.metalLayer.nextDrawable(),
