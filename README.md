@@ -4,16 +4,57 @@
 
 This repo contains code with examples on how to use Apple's Metal GPU APIs. Some sample code has been created entirely by [me](https://github.com/dehesa), while others have been picked from Github. The latter ones are in this repo because they have been heavily modified, not only to support the latest version of Swift, but also to add support to iOS or macOS (when applicable). Links to the source Github repos or websites are provided.
 
-![Swift 5.1](https://img.shields.io/badge/Swift-5.1-orange.svg) ![metal](https://img.shields.io/:metal-2-green.svg) ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS-lightgrey.svg) ![Xcode 11](https://img.shields.io/badge/Xcode-11-blueviolet.svg) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+![Swift 5.1](https://img.shields.io/badge/Swift-5.1-orange.svg) ![metal](https://img.shields.io/:metal-2.2-green.svg) ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS-lightgrey.svg) ![Xcode 11](https://img.shields.io/badge/Xcode-11-blueviolet.svg) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 ## Projects
 
 -   [Apple's sample code](https://developer.apple.com/metal).
     They are usually in Objective-C and haven't been refreshed in some time. I have migrated them to the latest Swift and try to support both iOS and macOS.
     -   [**Basic Tessellation**](https://developer.apple.com/library/content/samplecode/MetalBasicTessellation/Introduction/Intro.html).
--   Command-Line samples.
-    -   **Detector**. Small utility to check basic parameters for all your GPUs.
-    -   [Safx](https://github.com/safx)'s **Gray converter [compute sample](https://github.com/safx/Metal-CommandLine-Sample-Swift)**.
+-   Command-Line apps/samples.
+
+    <ul style="list-style-type: none;padding-left: 25px">
+    <li><details><summary>GPU Inspector.</summary><p>
+
+    Prints on `stdout` a brief description of all your available GPUs. For example:
+
+    ```
+    Intel(R) HD Graphics 530
+        Built-in GPU (low power)
+        Unified memory (shared with CPU)
+            max recommended working set: 1.61 GB
+        Feature set support
+            family: common 1, common 2, common 3, mac 1, mac 2
+            sets: 1v1, 1v2, 1v3, 1v4, 2v1
+        General Purpose Computing
+            max threadgroup memory: 66 KB
+            max threads per threadgroup: [1024, 1024, 1024]
+            threads execution width: 32
+
+    AMD Radeon Pro 460
+        Built-in GPU
+        Discrete memory
+            max recommended working set: 4.29 GB
+        Feature set support
+            family: common 1, common 2, common 3, mac 1, mac 2
+            sets: 1v1, 1v2, 1v3, 1v4, 2v1
+        General Purpose Computing
+            max threadgroup memory: 66 KB
+            max threads per threadgroup: [1024, 1024, 1024]
+            threads execution width: 64
+    ```
+
+    </p></details></li>
+
+    <li><details><summary>Gray converter.</summary><p>
+
+    Based on [Safx](https://github.com/safx)' Gray converter [compute sample](https://github.com/safx/Metal-CommandLine-Sample-Swift), this small command-line utility transforms a picture into its gray-scale version and place it on the user's desktop.
+
+    The command-line app expects one argument with the location of the image to transform (e.g. `$(PROJECT_DIR)/Sources/GrayScale/Assets/Sample.jpg`). If you run the program through Xcode, there is a default argument defined on the Xcode Scheme.
+
+    </p></details></li>
+    </ul>
+
 -   [Warren Moore](https://warrenmoore.net)'s **Metal by Example** book [sample code](https://github.com/metal-by-example/sample-code).
     I've migrated most chapters to the latest Swift and I've added support to macOS.
 -   Leon Denise's [**Shader Exam**](https://github.com/leon196/SIGExam).

@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D30F7CD226A5DDF00518A46 /* GrayScale.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D30F7CC226A5DDF00518A46 /* GrayScale.metal */; };
+		8D30F7CD226A5DDF00518A46 /* Empty.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D30F7CC226A5DDF00518A46 /* Empty.metal */; };
 		8D955918201214A300B9848C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D955917201214A300B9848C /* main.swift */; };
 		8DA8FA141F47B9D100897B9B /* GrayScale.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8FA0A1F47B95700897B9B /* GrayScale.metal */; };
 		8DA8FA151F47B9D100897B9B /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8FA0B1F47B95700897B9B /* Processor.swift */; };
 		8DA8FA161F47B9D100897B9B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8FA0D1F47B95700897B9B /* main.swift */; };
-		8DC4EA1C20147EF800DA672E /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC4EA1B20147EF800DA672E /* SetUp.swift */; };
+		8DB64ECF241145D200FB03BC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB64ECE241145D200FB03BC /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,10 +37,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8D30F7CC226A5DDF00518A46 /* GrayScale.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = GrayScale.metal; sourceTree = "<group>"; };
-		8D95590F2012145D00B9848C /* Detector.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Detector.xcconfig; sourceTree = "<group>"; };
-		8D9559102012147D00B9848C /* Detector.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Detector.plist; sourceTree = "<group>"; };
-		8D955915201214A300B9848C /* gpgpu_detector */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gpgpu_detector; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D30F7CC226A5DDF00518A46 /* Empty.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Empty.metal; sourceTree = "<group>"; };
+		8D95590F2012145D00B9848C /* Inspector.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Inspector.xcconfig; sourceTree = "<group>"; };
+		8D955915201214A300B9848C /* gpgpu_inspector */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gpgpu_inspector; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D955917201214A300B9848C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8DA8F9FC1F47B86D00897B9B /* gpgpu_grayscale */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gpgpu_grayscale; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA8FA091F47B95700897B9B /* Sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sample.jpg; sourceTree = "<group>"; };
@@ -48,9 +47,8 @@
 		8DA8FA0B1F47B95700897B9B /* Processor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Processor.swift; sourceTree = "<group>"; };
 		8DA8FA0D1F47B95700897B9B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8DA8FA101F47B95700897B9B /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
-		8DA8FA121F47B95700897B9B /* GrayScale.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GrayScale.plist; sourceTree = "<group>"; };
 		8DA8FA131F47B95700897B9B /* GrayScale.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = GrayScale.xcconfig; sourceTree = "<group>"; };
-		8DC4EA1B20147EF800DA672E /* SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUp.swift; sourceTree = "<group>"; };
+		8DB64ECE241145D200FB03BC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,22 +69,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8D95590E2012145100B9848C /* Detector */ = {
+		8D95590E2012145100B9848C /* Inspector */ = {
 			isa = PBXGroup;
 			children = (
-				8D95590F2012145D00B9848C /* Detector.xcconfig */,
-				8D9559102012147D00B9848C /* Detector.plist */,
+				8D95590F2012145D00B9848C /* Inspector.xcconfig */,
 			);
-			path = Detector;
+			path = Inspector;
 			sourceTree = "<group>";
 		};
-		8D955916201214A300B9848C /* Detector */ = {
+		8D955916201214A300B9848C /* Inspector */ = {
 			isa = PBXGroup;
 			children = (
 				8D955917201214A300B9848C /* main.swift */,
-				8D30F7CC226A5DDF00518A46 /* GrayScale.metal */,
+				8DB64ECE241145D200FB03BC /* Extensions.swift */,
+				8D30F7CC226A5DDF00518A46 /* Empty.metal */,
 			);
-			path = Detector;
+			path = Inspector;
 			sourceTree = "<group>";
 		};
 		8DA8F9F31F47B86D00897B9B = {
@@ -102,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				8DA8F9FC1F47B86D00897B9B /* gpgpu_grayscale */,
-				8D955915201214A300B9848C /* gpgpu_detector */,
+				8D955915201214A300B9848C /* gpgpu_inspector */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,8 +108,7 @@
 		8DA8FA061F47B95700897B9B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8DC4EA1A20147EE200DA672E /* Common */,
-				8D955916201214A300B9848C /* Detector */,
+				8D955916201214A300B9848C /* Inspector */,
 				8DA8FA0C1F47B95700897B9B /* GrayScale */,
 			);
 			path = Sources;
@@ -140,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				8DA8FA0F1F47B95700897B9B /* Common */,
-				8D95590E2012145100B9848C /* Detector */,
+				8D95590E2012145100B9848C /* Inspector */,
 				8DA8FA111F47B95700897B9B /* GrayScale */,
 			);
 			path = Configuration;
@@ -158,25 +155,16 @@
 			isa = PBXGroup;
 			children = (
 				8DA8FA131F47B95700897B9B /* GrayScale.xcconfig */,
-				8DA8FA121F47B95700897B9B /* GrayScale.plist */,
 			);
 			path = GrayScale;
-			sourceTree = "<group>";
-		};
-		8DC4EA1A20147EE200DA672E /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				8DC4EA1B20147EF800DA672E /* SetUp.swift */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D955914201214A300B9848C /* Detector */ = {
+		8D955914201214A300B9848C /* Inspector */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8D955919201214A300B9848C /* Build configuration list for PBXNativeTarget "Detector" */;
+			buildConfigurationList = 8D955919201214A300B9848C /* Build configuration list for PBXNativeTarget "Inspector" */;
 			buildPhases = (
 				8D955911201214A300B9848C /* Sources */,
 				8D955912201214A300B9848C /* Frameworks */,
@@ -186,9 +174,9 @@
 			);
 			dependencies = (
 			);
-			name = Detector;
+			name = Inspector;
 			productName = Detector;
-			productReference = 8D955915201214A300B9848C /* gpgpu_detector */;
+			productReference = 8D955915201214A300B9848C /* gpgpu_inspector */;
 			productType = "com.apple.product-type.tool";
 		};
 		8DA8F9FB1F47B86D00897B9B /* Grayscale */ = {
@@ -240,7 +228,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D955914201214A300B9848C /* Detector */,
+				8D955914201214A300B9848C /* Inspector */,
 				8DA8F9FB1F47B86D00897B9B /* Grayscale */,
 			);
 		};
@@ -251,9 +239,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D30F7CD226A5DDF00518A46 /* Empty.metal in Sources */,
+				8DB64ECF241145D200FB03BC /* Extensions.swift in Sources */,
 				8D955918201214A300B9848C /* main.swift in Sources */,
-				8DC4EA1C20147EF800DA672E /* SetUp.swift in Sources */,
-				8D30F7CD226A5DDF00518A46 /* GrayScale.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,21 +260,15 @@
 /* Begin XCBuildConfiguration section */
 		8D95591A201214A300B9848C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D95590F2012145D00B9848C /* Detector.xcconfig */;
+			baseConfigurationReference = 8D95590F2012145D00B9848C /* Inspector.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V4LZL56CA7;
 			};
 			name = Debug;
 		};
 		8D95591B201214A300B9848C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D95590F2012145D00B9848C /* Detector.xcconfig */;
+			baseConfigurationReference = 8D95590F2012145D00B9848C /* Inspector.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V4LZL56CA7;
 			};
 			name = Release;
 		};
@@ -322,7 +304,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -381,7 +362,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -404,8 +384,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8DA8FA131F47B95700897B9B /* GrayScale.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				DEVELOPMENT_TEAM = V4LZL56CA7;
 			};
 			name = Debug;
 		};
@@ -413,15 +391,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8DA8FA131F47B95700897B9B /* GrayScale.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				DEVELOPMENT_TEAM = V4LZL56CA7;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8D955919201214A300B9848C /* Build configuration list for PBXNativeTarget "Detector" */ = {
+		8D955919201214A300B9848C /* Build configuration list for PBXNativeTarget "Inspector" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8D95591A201214A300B9848C /* Debug */,

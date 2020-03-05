@@ -101,8 +101,8 @@ enum Generator {
                 throw Error.failedToCreateIndexBuffer(indices: indices)
             }
             
-            vertexBuffer.label = "me.dehesa.metal.buffers.vertices"
-            indexBuffer.label = "me.dehesa.metal.buffers.indices"
+            vertexBuffer.label = "io.dehesa.metal.buffers.vertices"
+            indexBuffer.label = "io.dehesa.metal.buffers.indices"
             return (vertexBuffer, indexBuffer)
         }
     }

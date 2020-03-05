@@ -31,7 +31,7 @@ class CubeRenderer: NSObject, MTKViewDelegate {
         // 3. Create buffers used in the shader
         let mesh = try Generator.Cube.makeBuffers(device: device, size: 1.0)
         guard let uniformBuffer = device.makeBuffer(length: MemoryLayout<Uniforms>.stride) else { throw Error.failedToCreateMetalBuffers(device: device) }
-        uniformBuffer.label = "me.dehesa.metal.buffers.uniform"
+        uniformBuffer.label = "io.dehesa.metal.buffers.uniform"
         self.buffers = (mesh.vertices, mesh.indices, uniformBuffer)
         
         // 4. Create the textures.

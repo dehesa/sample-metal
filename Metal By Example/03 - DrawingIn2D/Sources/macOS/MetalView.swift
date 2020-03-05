@@ -33,7 +33,7 @@ class MetalView: NSView {
                         Vertex(position: [-0.5, -0.5, 0, 1], color: [0,1,0,1]),
                         Vertex(position: [ 0.5, -0.5, 0, 1], color: [0,0,1,1]) ]
         self.vertexBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Vertex>.stride, options: .cpuCacheModeWriteCombined)!.set {
-            $0.label = "me.dehesa.metal.buffers.vertex"
+            $0.label = "io.dehesa.metal.buffers.vertex"
         }
         
         // Setup shader library

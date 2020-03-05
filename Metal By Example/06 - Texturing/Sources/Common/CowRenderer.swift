@@ -51,7 +51,7 @@ class CowRenderer: NSObject, MTKViewDelegate {
         
         // Create buffers used in the shader
         guard let uniformBuffer = device.makeBuffer(length: MemoryLayout<Uniforms>.stride) else { throw Error.failedToCreateMetalBuffer(device: device) }
-        uniformBuffer.label = "me.dehesa.metal.buffers.uniform"
+        uniformBuffer.label = "io.dehesa.metal.buffers.uniform"
         uniformBuffer.contents().bindMemory(to: Uniforms.self, capacity: 1)
         self.uniformsBuffer = uniformBuffer
         
