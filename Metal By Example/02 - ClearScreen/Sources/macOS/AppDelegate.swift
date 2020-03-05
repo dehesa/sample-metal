@@ -12,7 +12,7 @@ extension App {
             self.window = NSWindow(contentRect: .init(origin: .zero, size: size.default), styleMask: mask, backing: .buffered, defer: false).set {
                 $0.minSize = size.minimum
                 $0.appearance = NSAppearance(named: .darkAqua)
-                $0.title = "\(App.name) - Clear Screen"
+                $0.title = App.name + " - Clear Screen"
                 $0.isReleasedWhenClosed = false
             }
             super.init()

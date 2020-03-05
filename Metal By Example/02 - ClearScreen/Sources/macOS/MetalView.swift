@@ -6,9 +6,10 @@ final class MetalView: NSView {
     private let device: MTLDevice
     private let queue: MTLCommandQueue
     
-    init?(frame: NSRect, device: MTLDevice, queue: MTLCommandQueue) {
+    init(frame: NSRect, device: MTLDevice, queue: MTLCommandQueue) {
         // Setup the Device and Command Queue (non-transient objects: expensive to create. Do save it)
         (self.device, self.queue) = (device, queue)
+        self.queue.label = App.bundleIdentifier + ".queue"
         super.init(frame: frame)
         
         // Setup layer (backing layer)
@@ -54,6 +55,7 @@ final class MetalView: NSView {
 }
 
 extension MetalView {
+    /// Fills the metal layer with a solid color.
     private func redraw() {
         // Setup Command Buffer (transient)
         guard let drawable = self.metalLayer.nextDrawable(),

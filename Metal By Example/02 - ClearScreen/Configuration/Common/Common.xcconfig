@@ -1,6 +1,6 @@
 // Packaging
 PRODUCT_NAME = 02
-PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.clearscreen
+PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.clearscreen
 PRODUCT_MODULE_NAME = ClearScreen
 
 // Versioning

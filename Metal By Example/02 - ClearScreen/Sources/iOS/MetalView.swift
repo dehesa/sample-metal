@@ -6,14 +6,6 @@ final class MetalView: UIView {
     private let device: MTLDevice
     private let queue: MTLCommandQueue
     
-    private var metalLayer: CAMetalLayer {
-        return layer as! CAMetalLayer
-    }
-    
-    override static var layerClass: AnyClass {
-		return CAMetalLayer.self
-	}
-    
     init(frame: CGRect, device: MTLDevice, queue: MTLCommandQueue) {
         // Setup the Device & Command Queue (non-transient objects: expensive to create)
         (self.device, self.queue) = (device, queue)
@@ -29,6 +21,14 @@ final class MetalView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError()
+    }
+    
+    private var metalLayer: CAMetalLayer {
+        return layer as! CAMetalLayer
+    }
+    
+    override static var layerClass: AnyClass {
+        return CAMetalLayer.self
     }
     
     override func didMoveToWindow() {
