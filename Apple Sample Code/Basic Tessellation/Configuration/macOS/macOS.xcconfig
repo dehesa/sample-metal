@@ -1,8 +1,14 @@
 // Architecture
 SDKROOT = macosx
 
+// Deployment
+MACOSX_DEPLOYMENT_TARGET = 10.15
+
 // Packaging
 INFOPLIST_FILE = $(SRCROOT)/Configuration/macOS/macOS.plist
+
+// Signing
+CODE_SIGN_IDENTITY = -
 
 // User-Generated
 MAIN_STORYBOARD = Main

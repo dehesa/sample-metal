@@ -8,13 +8,20 @@ This repo contains code with examples on how to use Apple's Metal GPU APIs. Some
 
 ## Projects
 
--   [Apple's sample code](https://developer.apple.com/metal).
-    They are usually in Objective-C and haven't been refreshed in some time. I have migrated them to the latest Swift and try to support both iOS and macOS.
-    -   [**Basic Tessellation**](https://developer.apple.com/library/content/samplecode/MetalBasicTessellation/Introduction/Intro.html).
--   Command-Line apps/samples.
+-   [Apple's sample code](https://developer.apple.com/metal/sample-code).
 
-    <ul style="list-style-type: none;padding-left: 25px">
-    <li><details><summary>GPU Inspector.</summary><p>
+    <details><summary>Basic Tessellation.</summary><p>
+
+    [This sample](https://developer.apple.com/library/content/samplecode/MetalBasicTessellation/Introduction/Intro.html) shows how to tessellate a triangle or quad patch with adjustable per-patch tessellation factors.
+
+    </p><p align="center">
+        <img src="Assets/Tessellation.png" alt="macOS app tessellating a triangle"/>
+    </p></details>
+
+-   Command-Line apps.
+
+    <div>
+    <details><summary>GPU Inspector.</summary><p>
 
     Prints on `stdout` a brief description of all your available GPUs. For example:
 
@@ -44,21 +51,21 @@ This repo contains code with examples on how to use Apple's Metal GPU APIs. Some
             threads execution width: 64
     ```
 
-    </p></details></li>
-
-    <li><details><summary>Gray converter.</summary><p>
+    </p></details>
+    <details><summary>Gray converter.</summary><p>
 
     Based on [Safx](https://github.com/safx)' Gray converter [compute sample](https://github.com/safx/Metal-CommandLine-Sample-Swift), this small command-line utility transforms a picture into its gray-scale version and place it on the user's desktop.
 
     The command-line app expects one argument with the location of the image to transform (e.g. `$(PROJECT_DIR)/Sources/GrayScale/Assets/Sample.jpg`). If you run the program through Xcode, there is a default argument defined on the Xcode Scheme.
 
-    </p></details></li>
-    </ul>
+    </p></details>
+    </div>
 
--   [Warren Moore](https://warrenmoore.net)'s **Metal by Example** book [sample code](https://github.com/metal-by-example/sample-code).
+-   [Metal by Example](https://metalbyexample.com).
+    <br>[Warren Moore](https://warrenmoore.net) wrote this book in 2015. It was and it remains one of the best introductions to Metal I have found.
     I've migrated most chapters to the latest Swift and I've added support to macOS.
--   Leon Denise's [**Shader Exam**](https://github.com/leon196/SIGExam).
-    [Leon Denise](https://twitter.com/leondenise) wrote a [tweet](https://twitter.com/leondenise/status/953716696161882114) with a typical shader exam he gives to his students on [SupInfo.com](https://rubika-edu.com).
+-   [**Shader Exam**](https://github.com/leon196/SIGExam).
+    <br>[Leon Denise](https://twitter.com/leondenise) wrote a [tweet](https://twitter.com/leondenise/status/953716696161882114) with a typical shader exam he gives to his students on [SupInfo.com](https://rubika-edu.com).
     -   [Page 1](Shader%20Exam/Sources/Common/Assets/Exam/Page1.png) shaders:
         [pass](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L7),
         [mirror](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L17),
@@ -74,7 +81,7 @@ This repo contains code with examples on how to use Apple's Metal GPU APIs. Some
     -   [Page 4](Shader%20Exam/Sources/Common/Assets/Exam/Page4.png) shaders:.
     -   [Page 5](Shader%20Exam/Sources/Common/Assets/Exam/Page5.png) shaders:.
 
-### Command-Line Apps
+## Command-Line Apps
 
 You can run Command-Line projects from Xcode and see the result in Xcode console; however, you can also build those projects on your terminal and execute them outside.
 
