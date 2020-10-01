@@ -28,4 +28,4 @@ Package.pins
 Carthage
 
 # Project specific
-Assets/Originals
+**/experimental/

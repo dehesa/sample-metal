@@ -5,24 +5,24 @@
       location = "group:README.md">
    </FileRef>
    <FileRef
-      location = "group:Playgrounds/Metal.playground">
+      location = "group:playgrounds/Metal.playground">
    </FileRef>
    <Group
-      location = "group:Apple Sample Code"
+      location = "group:samples"
       name = "Apple Sample Code">
       <FileRef
-         location = "group:Basic Tessellation/Basic Tessellation.xcodeproj">
+         location = "group:tessellation/Basic Tessellation.xcodeproj">
       </FileRef>
    </Group>
    <Group
-      location = "group:Command Line"
+      location = "group:commands"
       name = "Command Line">
       <FileRef
          location = "group:Simple GPGPU.xcodeproj">
       </FileRef>
    </Group>
    <Group
-      location = "group:Metal By Example"
+      location = "group:books"
       name = "Metal By Example">
       <FileRef
          location = "group:02 - ClearScreen/02 - ClearScreen.xcodeproj">
@@ -44,7 +44,7 @@
       </FileRef>
    </Group>
    <Group
-      location = "group:Shader Exam"
+      location = "group:shaders"
       name = "Shader Exam">
       <FileRef
          location = "group:Shader Exam.xcodeproj">

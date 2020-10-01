@@ -1,10 +1,16 @@
 <p align="center">
-   <img src="Assets/Metal.svg" alt="Metal Logo & Name"/>
+   <img src="docs/assets/Metal.svg" alt="Metal Logo & Name"/>
+</p>
+
+<p align="center">
+    <a href="https://swift.org/about/#swiftorg-and-open-source"><img src="docs/assets/badges/Swift.svg" alt="Swift 5.x"></a>
+    <img src="docs/assets/badges/Apple.svg" alt="macOS, iOS, tvOS">
+    <a href="https://developer.apple.com/metal/"><img src="docs/assets/badges/Metal.svg" alt="Metal 2.2"></a>
+    <a href="https://developer.apple.com/xcode/"><img src="docs/assets/badges/Xcode.svg" alt="Xcode 12"></a>
+    <a href="http://doge.mit-license.org"><img src="docs/assets/badges/License.svg" alt="MIT License"></a>
 </p>
 
 This repo contains code with examples on how to use Apple's Metal GPU APIs. Some sample code has been created entirely by [me](https://github.com/dehesa), while others have been picked from Github. The latter ones are in this repo because they have been heavily modified, not only to support the latest version of Swift, but also to add support to iOS or macOS (when applicable). Links to the source Github repos or websites are provided.
-
-![Swift 5.1](https://img.shields.io/badge/Swift-5.1-orange.svg) ![metal](https://img.shields.io/:metal-2.2-green.svg) ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS-lightgrey.svg) ![Xcode 11](https://img.shields.io/badge/Xcode-11-blueviolet.svg) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 ## Projects
 
@@ -15,7 +21,7 @@ This repo contains code with examples on how to use Apple's Metal GPU APIs. Some
     [This sample](https://developer.apple.com/library/content/samplecode/MetalBasicTessellation/Introduction/Intro.html) shows how to tessellate a triangle or quad patch with adjustable per-patch tessellation factors.
 
     </p><p align="center">
-        <img src="Assets/Tessellation.png" alt="macOS app tessellating a triangle"/>
+        <img src="docs/assets/Tessellation.png" alt="macOS app tessellating a triangle"/>
     </p></details>
 
 -   Command-Line apps.
@@ -94,7 +100,7 @@ You can run Command-Line projects from Xcode and see the result in Xcode console
 2. Navigate to the _Command-Line_ source folder.
 
     ```
-    cd "Command Line"
+    cd "commands"
     ```
 
 3. Build the project you are interested in.
