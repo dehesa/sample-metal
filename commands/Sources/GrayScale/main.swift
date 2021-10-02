@@ -4,8 +4,8 @@ import MetalKit
 
 // The input image path is expected as the only argument (excluding the program name).
 guard CommandLine.arguments.count == 2 else {
-    print("Only one argument specifying the input image is expected.")
-    exit(EXIT_FAILURE)
+  print("Only one argument specifying the input image is expected.")
+  exit(EXIT_FAILURE)
 }
 let inputURL = URL(fileURLWithPath: CommandLine.arguments[1])
 
@@ -14,10 +14,10 @@ guard let desktopDirectory = FileManager.default.urls(for: .desktopDirectory, in
 let outputURL = desktopDirectory.appendingPathComponent("out.png")
 
 do {
-    let texture = try Processor.makeGrayScaleTexture(from: inputURL)
-    let image = try Processor.makeCGImage(texture: texture)
-    try Processor.store(image: image, on: outputURL)
+  let texture = try Processor.makeGrayScaleTexture(from: inputURL)
+  let image = try Processor.makeCGImage(texture: texture)
+  try Processor.store(image: image, on: outputURL)
 } catch let error {
-    print("Program failed for file: \(inputURL)\n")
-    print(error)
+  print("Program failed for file: \(inputURL)\n")
+  print(error)
 }

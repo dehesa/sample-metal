@@ -2,7 +2,7 @@
 SDKROOT = macosx
 
 // Deployment
-MACOSX_DEPLOYMENT_TARGET = 10.15
+MACOSX_DEPLOYMENT_TARGET = 11.3
 
 // Packaging
 INFOPLIST_FILE = $(SRCROOT)/Configuration/macOS/macOS.plist

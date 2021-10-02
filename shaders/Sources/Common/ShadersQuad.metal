@@ -2,20 +2,20 @@
 using namespace metal;
 
 struct QuadVertexIn {
-    float2 position  [[attribute(0)]];
-    float2 texCoords [[attribute(1)]];
+  float2 position  [[attribute(0)]];
+  float2 texCoords [[attribute(1)]];
 };
 
 struct QuadVertexOut {
-    float4 position [[position]];
-    float2 texCoords;
+  float4 position [[position]];
+  float2 texCoords;
 };
 
 vertex QuadVertexOut vertex_post(QuadVertexIn in [[stage_in]]) {
-    return QuadVertexOut {
-        .position = float4(in.position, 0, 1),
-        .texCoords = in.texCoords
-    };
+  return QuadVertexOut {
+    .position = float4(in.position, 0, 1),
+    .texCoords = in.texCoords
+  };
 }
 
 // Page 1 shaders
@@ -70,22 +70,22 @@ half4 shaderStranglerFig(float2 const uv, texture2d<float,access::sample> textur
 half4 shaderKirby(float2 const uv, texture2d<float,access::sample> texture, sampler s);   // TODO
 
 fragment half4 fragment_post(QuadVertexOut in [[stage_in]], texture2d<float,access::sample> texture [[texture(0)]]) {
-    // Constant sampler for the texture.
-    constexpr sampler sampler2d(coord::normalized,filter::linear);
-    // Texture coordinates range from 0 to 1. X-positive values go from the top-left to the top-right; while Y-positive go from top-left to bottom-left.
-    
-    float2 const result =
-        // Page 1
-        //shaderPass(in.texCoords);
-        //shaderMirror(in.texCoords);
-        //shaderSymmetry(in.texCoords);
-        //shaderRotation(in.texCoords, float2(texture.get_width(), texture.get_height()));
-        //shaderZoom(in.texCoords);
-        //shaderZoomDistortion(in.texCoords);
-        //shaderRepetition(in.texCoords, float2(4));
-        //shaderSpiral(in.texCoords);
-        shaderThunder(in.texCoords, float2(texture.get_width(), texture.get_height()), 8);
+  // Constant sampler for the texture.
+  constexpr sampler sampler2d(coord::normalized,filter::linear);
+  // Texture coordinates range from 0 to 1. X-positive values go from the top-left to the top-right; while Y-positive go from top-left to bottom-left.
 
-    float4 const color = texture.sample(sampler2d, result);
-    return half4(half3(color.rgb), 1);
+  float2 const result =
+  // Page 1
+  //shaderPass(in.texCoords);
+  //shaderMirror(in.texCoords);
+  //shaderSymmetry(in.texCoords);
+  //shaderRotation(in.texCoords, float2(texture.get_width(), texture.get_height()));
+  //shaderZoom(in.texCoords);
+  //shaderZoomDistortion(in.texCoords);
+  //shaderRepetition(in.texCoords, float2(4));
+  //shaderSpiral(in.texCoords);
+  shaderThunder(in.texCoords, float2(texture.get_width(), texture.get_height()), 8);
+
+  float4 const color = texture.sample(sampler2d, result);
+  return half4(half3(color.rgb), 1);
 }

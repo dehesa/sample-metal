@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,11 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8D50AC34202BB8D200221070 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
-		8D50AC35202BB8D200221070 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
-		8D50AC36202BB8D200221070 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
-		8D50AC37202BB8D200221070 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
-		8D50AC38202BB8D200221070 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		8D4027022708E7C3005C2681 /* Exam */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Exam; sourceTree = "<group>"; };
 		8D50AC39202BBA2E00221070 /* ShadersPage1.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersPage1.metal; sourceTree = "<group>"; };
 		8D50AC3B202BBABF00221070 /* ShadersPage2.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersPage2.metal; sourceTree = "<group>"; };
 		8D50AC3D202BBAC700221070 /* ShadersPage3.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersPage3.metal; sourceTree = "<group>"; };
@@ -71,22 +67,10 @@
 		8D2831112028A81F007A5CF7 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				8D50AC33202BB8D200221070 /* Exam */,
+				8D4027022708E7C3005C2681 /* Exam */,
 				8D99549E20262A0A00AD8D1B /* Pikachu */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		8D50AC33202BB8D200221070 /* Exam */ = {
-			isa = PBXGroup;
-			children = (
-				8D50AC38202BB8D200221070 /* 1.png */,
-				8D50AC36202BB8D200221070 /* 2.png */,
-				8D50AC37202BB8D200221070 /* 3.png */,
-				8D50AC34202BB8D200221070 /* 4.png */,
-				8D50AC35202BB8D200221070 /* 5.png */,
-			);
-			path = Exam;
 			sourceTree = "<group>";
 		};
 		8D7D8FC62032D30300483F3B /* Pages */ = {
@@ -235,7 +219,7 @@
 				};
 			};
 			buildConfigurationList = 8DFB84452023A61C00F0A6D1 /* Build configuration list for PBXProject "Shader Exam" */;
-			compatibilityVersion = "Xcode 12.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

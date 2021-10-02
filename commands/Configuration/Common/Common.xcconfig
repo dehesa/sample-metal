@@ -3,7 +3,8 @@ PRODUCT_NAME = gpgpu
 PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.commandline.gpgpu
 
 // Swift
-SWIFT_VERSION = 5.1
+SWIFT_VERSION = 5.5
+SWIFT_OPTIMIZE_OBJECT_LIFETIME = YES
 
 // User-Generated
 BUNDLE_SIGNATURE = MSDC

@@ -4,9 +4,6 @@
    <FileRef
       location = "group:README.md">
    </FileRef>
-   <FileRef
-      location = "group:playgrounds/Metal.playground">
-   </FileRef>
    <Group
       location = "group:samples"
       name = "Apple Sample Code">
@@ -21,6 +18,9 @@
          location = "group:Simple GPGPU.xcodeproj">
       </FileRef>
    </Group>
+   <FileRef
+      location = "group:playgrounds/Metal.playground">
+   </FileRef>
    <Group
       location = "group:books"
       name = "Metal By Example">
@@ -43,11 +43,7 @@
          location = "group:07 - Mipmapping/07 - Mipmapping.xcodeproj">
       </FileRef>
    </Group>
-   <Group
-      location = "group:shaders"
-      name = "Shader Exam">
-      <FileRef
-         location = "group:Shader Exam.xcodeproj">
-      </FileRef>
-   </Group>
+   <FileRef
+      location = "group:shaders/Shader Exam.xcodeproj">
+   </FileRef>
 </Workspace>

@@ -3,4 +3,3 @@ using namespace metal;
 
 kernel void empty() {
 }
-

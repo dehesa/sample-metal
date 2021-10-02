@@ -2,17 +2,17 @@ import Cocoa
 import MetalKit
 
 final class ViewController: NSViewController {
-    private let device = MTLCreateSystemDefaultDevice()!
-    private var renderer: Renderer!
+  private let _device = MTLCreateSystemDefaultDevice()!
+  private var _renderer: Renderer!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let metalView = self.view as! MTKView
-        metalView.device = self.device
-        metalView.colorPixelFormat = .bgra8Unorm
-        
-        self.renderer = Renderer(device: self.device, view: metalView)
-        metalView.delegate = self.renderer
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    let metalView = self.view as! MTKView
+    metalView.device = self._device
+    metalView.colorPixelFormat = .bgra8Unorm
+
+    self._renderer = Renderer(device: self._device, view: metalView)
+    metalView.delegate = self._renderer
+  }
 }
