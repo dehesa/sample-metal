@@ -4,13 +4,9 @@
    <FileRef
       location = "group:README.md">
    </FileRef>
-   <Group
-      location = "group:samples"
-      name = "Apple Sample Code">
-      <FileRef
-         location = "group:tessellation/Basic Tessellation.xcodeproj">
-      </FileRef>
-   </Group>
+   <FileRef
+      location = "group:playgrounds/Metal.playground">
+   </FileRef>
    <Group
       location = "group:commands"
       name = "Command Line">
@@ -18,9 +14,13 @@
          location = "group:Simple GPGPU.xcodeproj">
       </FileRef>
    </Group>
-   <FileRef
-      location = "group:playgrounds/Metal.playground">
-   </FileRef>
+   <Group
+      location = "group:samples"
+      name = "Apple Sample Code">
+      <FileRef
+         location = "group:tessellation/Basic Tessellation.xcodeproj">
+      </FileRef>
+   </Group>
    <Group
       location = "group:books"
       name = "Metal By Example">
