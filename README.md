@@ -13,6 +13,10 @@ This repo contains code with examples on how to use Apple's Metal GPU APIs. Some
 
 ## Projects
 
+-   Playground
+
+    Xcode playground for you to play with several concepts such as memory allocations or quick view drawings.
+
 -   Command-Line apps.
 
     <div>
