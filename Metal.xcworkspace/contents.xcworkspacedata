@@ -25,7 +25,7 @@
       location = "group:books"
       name = "Metal By Example">
       <FileRef
-         location = "group:02 - ClearScreen/02 - ClearScreen.xcodeproj">
+         location = "group:02 - Clear Screen/02 - Clear Screen.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:03 - DrawingIn2D/03 - Drawing in 2D.xcodeproj">
