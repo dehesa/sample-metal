@@ -1,4 +1,6 @@
-public struct Inspect {
+import PlaygroundSupport
+
+public struct Inspect: CustomPlaygroundDisplayConvertible {
   private var info: [Info] = []
 
   public init<each T>(types: repeat (each T).Type) {
@@ -7,6 +9,10 @@ public struct Inspect {
 
   public init<each T>(values: repeat each T) {
     self.init(types: repeat (each T).self)
+  }
+
+  public var playgroundDescription: Any {
+    self.table
   }
 }
 

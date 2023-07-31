@@ -15,7 +15,7 @@ This repo contains code with examples on how to use Apple's Metal GPU APIs. Some
 
 -   Playground
 
-    Xcode playground for you to play with several concepts such as memory allocations or quick view drawings.
+    Xcode playgrounds to play with several concepts such as memory size/strides or quick view drawings.
 
 -   Command-Line apps.
 
@@ -27,14 +27,14 @@ This repo contains code with examples on how to use Apple's Metal GPU APIs. Some
     ```
     Apple M1 Max
       Built-in GPU
-    Unified memory (shared with CPU)
-      max recommended working set: 48 GB
-    Feature set support
-      family: apple 1, apple 2, apple 3, apple 4, apple 5, apple 6, apple 7, metal 3
-    General Purpose Computing
-      max threadgroup memory: 32 kB
-      max threads per threadgroup: [1024, 1024, 1024]
-      threads execution width: 32
+      Unified memory (shared with CPU)
+        max recommended working set: 48 GB
+      Feature set support
+        family: apple 1, apple 2, apple 3, apple 4, apple 5, apple 6, apple 7, metal 3
+      General Purpose Computing
+        max threadgroup memory: 32 kB
+        max threads per threadgroup: [1024, 1024, 1024]
+        threads execution width: 32
     
     Intel(R) HD Graphics 530
       Built-in GPU (low power)
