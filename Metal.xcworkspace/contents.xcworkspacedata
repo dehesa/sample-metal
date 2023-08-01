@@ -28,7 +28,7 @@
          location = "group:02 - Clear Screen/02 - Clear Screen.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:03 - DrawingIn2D/03 - Drawing in 2D.xcodeproj">
+         location = "group:03 - Drawing in 2D/03 - Drawing in 2D.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:04 - DrawingIn3D/04 - Drawing in 3D.xcodeproj">

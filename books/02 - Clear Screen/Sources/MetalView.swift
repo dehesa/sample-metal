@@ -1,6 +1,7 @@
 import SwiftUI
 
 #if os(macOS)
+/// Wraps a custom `NSView` making drawing calls to the GPU.
 struct MetalView: NSViewRepresentable {
   func makeNSView(context: Context) -> LowLevelView {
     let device = MTLCreateSystemDefaultDevice()!
@@ -13,6 +14,7 @@ struct MetalView: NSViewRepresentable {
   }
 }
 #elseif canImport(UIKit)
+/// Wraps a custom `UIView` making drawing calls to the GPU.
 struct MetalView: UIViewRepresentable {
   func makeUIView(context: Context) -> LowLevelView {
     let device = MTLCreateSystemDefaultDevice()!

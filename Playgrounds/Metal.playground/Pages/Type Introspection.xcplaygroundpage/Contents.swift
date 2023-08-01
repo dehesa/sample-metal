@@ -1,7 +1,7 @@
 import PlaygroundSupport
 
 let page: PlaygroundPage = .current
- page.needsIndefiniteExecution = false
+page.needsIndefiniteExecution = false
 //: ----
 //: Let's inspect several types to figure out how much space do they occupy in memory
 Inspect(types:

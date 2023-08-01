@@ -36,25 +36,22 @@ public final class MetalView: NSView {
   }
 
   override public func viewDidMoveToWindow() {
+    self.timer = .none
     super.viewDidMoveToWindow()
 
-    self.timer = .none
     guard let window else { return }
-
     self.metalLayer.contentsScale = window.backingScaleFactor
-    self.timer = FrameTimer { [unowned(unsafe) self] now, output in
-      self.redraw(now: now, frame: output)
-    }
+    self.timer = FrameTimer { [unowned(unsafe) self] in self.redraw(now: $0, frame: $1) }
   }
 
   override public func setBoundsSize(_ newSize: NSSize) {
     super.setBoundsSize(newSize)
-    self.metalLayer.drawableSize = self.convertToBacking(bounds).size
+    self.metalLayer.drawableSize = self.convertToBacking(self.bounds).size
   }
 
   override public func setFrameSize(_ newSize: NSSize) {
     super.setFrameSize(newSize)
-    self.metalLayer.drawableSize = self.convertToBacking(bounds).size
+    self.metalLayer.drawableSize = self.convertToBacking(self.bounds).size
   }
 }
 #elseif canImport(UIKit)
@@ -88,12 +85,11 @@ public final class MetalView: UIView {
 
   override public func didMoveToWindow() {
     self.timer = .none
-    guard let window else { return }
+    super.didMoveToWindow()
 
+    guard let window else { return }
     self.metalLayer.contentsScale = window.screen.nativeScale
-    self.timer = FrameTimer { [unowned(unsafe) self] now, output in
-      self.redraw(now: now, frame: output)
-    }
+    self.timer = FrameTimer { [unowned(unsafe) self] in self.redraw(now: $0, frame: $1) }
   }
 
   public override func layoutSubviews() {

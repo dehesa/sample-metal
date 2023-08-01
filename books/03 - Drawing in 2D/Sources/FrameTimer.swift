@@ -9,7 +9,7 @@ public final class FrameTimer {
   private let displayLink: CVDisplayLink
   fileprivate let handler: Callback
 
-  @MainActor public init?(window: NSWindow? = .none, handler: @escaping Callback) {
+  @MainActor public init?(window: NSWindow? = .none, nonisolated handler: @escaping Callback) {
     var displayLink: CVDisplayLink?
     var result = CVDisplayLinkCreateWithActiveCGDisplays(&displayLink)
 
