@@ -134,7 +134,7 @@ extension CubeRenderer {
     encoder.configure {
       $0.setRenderPipelineState(self.renderPipeline)
       $0.setDepthStencilState(self.depthPipeline)
-      $0.setFrontFacing(.clockwise)
+      $0.setFrontFacing(.counterClockwise)
       $0.setCullMode(.back)
       $0.setVertexBuffer(self.verticesBuffer, offset: 0, index: 0)
       $0.setVertexBuffer(self.uniformsBuffer, offset: 0, index: 1)
@@ -227,7 +227,7 @@ private extension CubeRenderer {
 
     func projectionMatrix(size: (width: Int, height: Int)) -> float4x4 {
       let aspectRatio = Float(size.width) / Float(size.height)
-      let duration = Float(lastTimestamp - startTimestamp) / 8
+      let duration = Float(lastTimestamp - startTimestamp)
 
       let scaleFactor: Float = 1 + 0.25 * sin(5 * duration)
       let xRotMatrix = float4x4(rotate: [1, 0, 0], angle: self.rotation.x)

@@ -2,7 +2,7 @@ import SwiftUI
 
 #if os(macOS)
 struct MetalView: NSViewRepresentable {
-  @State private var renderer = CubeRenderer(device: MTLCreateSystemDefaultDevice()!)
+  @State private var renderer: Renderer? = CubeRenderer(device: MTLCreateSystemDefaultDevice()!)
 
   func makeNSView(context: Context) -> LowLevelView {
     LowLevelView(device: renderer!.device, renderer: renderer)
@@ -12,7 +12,7 @@ struct MetalView: NSViewRepresentable {
 }
 #elseif canImport(UIKit)
 struct MetalView: UIViewRepresentable {
-  @State private var renderer = CubeRenderer(device: MTLCreateSystemDefaultDevice()!)
+  @State private var renderer: Renderer? = CubeRenderer(device: MTLCreateSystemDefaultDevice()!)
 
   func makeUIView(context: Context) -> LowLevelView {
     LowLevelView(device: renderer!.device, renderer: renderer)

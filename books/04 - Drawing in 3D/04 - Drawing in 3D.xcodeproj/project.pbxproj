@@ -66,9 +66,9 @@
 				8D85336D2A79AABC00E12698 /* App.swift */,
 				8D8533822A79ABD400E12698 /* MetalView.swift */,
 				8D85338A2A79B05C00E12698 /* Renderer.swift */,
-				8D8533802A79ABD400E12698 /* LowLevelView.swift */,
 				8D8533832A79ABD400E12698 /* Shader.swift */,
 				8D85337E2A79ABD400E12698 /* Shader.metal */,
+				8D8533802A79ABD400E12698 /* LowLevelView.swift */,
 				8D85337F2A79ABD400E12698 /* FrameTimer.swift */,
 				8D8533812A79ABD400E12698 /* Helpers.swift */,
 			);
@@ -153,14 +153,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D85338B2A79B05C00E12698 /* Renderer.swift in Sources */,
-				8D8533872A79ABD400E12698 /* Shader.metal in Sources */,
-				8D8533882A79ABD400E12698 /* Helpers.swift in Sources */,
-				8D8533852A79ABD400E12698 /* MetalView.swift in Sources */,
 				8D85336E2A79AABC00E12698 /* App.swift in Sources */,
-				8D8533862A79ABD400E12698 /* FrameTimer.swift in Sources */,
-				8D8533892A79ABD400E12698 /* Shader.swift in Sources */,
+				8D8533852A79ABD400E12698 /* MetalView.swift in Sources */,
+				8D85338B2A79B05C00E12698 /* Renderer.swift in Sources */,
 				8D8533842A79ABD400E12698 /* LowLevelView.swift in Sources */,
+				8D8533892A79ABD400E12698 /* Shader.swift in Sources */,
+				8D8533872A79ABD400E12698 /* Shader.metal in Sources */,
+				8D8533862A79ABD400E12698 /* FrameTimer.swift in Sources */,
+				8D8533882A79ABD400E12698 /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +287,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Configuration/App.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -310,6 +312,7 @@
 				MARKETING_VERSION = 4.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.drawing3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
@@ -325,6 +328,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Configuration/App.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -348,6 +353,7 @@
 				MARKETING_VERSION = 4.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.drawing3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
