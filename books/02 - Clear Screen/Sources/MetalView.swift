@@ -5,7 +5,7 @@ import SwiftUI
 struct MetalView: NSViewRepresentable {
   func makeNSView(context: Context) -> LowLevelView {
     let device = MTLCreateSystemDefaultDevice()!
-    let queue = device.makeCommandQueue()!.configure { $0.label = Bundle.main.bundleIdentifier! + ".queue" }
+    let queue = device.makeCommandQueue()!.configure { $0.label = .identifier("queue")  }
     return LowLevelView(device: device, queue: queue)
   }
 
@@ -18,7 +18,7 @@ struct MetalView: NSViewRepresentable {
 struct MetalView: UIViewRepresentable {
   func makeUIView(context: Context) -> LowLevelView {
     let device = MTLCreateSystemDefaultDevice()!
-    let queue = device.makeCommandQueue()!.configure { $0.label = Bundle.main.bundleIdentifier! + ".queue" }
+    let queue = device.makeCommandQueue()!.configure { $0.label = .identifier("queue") }
     return LowLevelView(device: device, queue: queue)
   }
 

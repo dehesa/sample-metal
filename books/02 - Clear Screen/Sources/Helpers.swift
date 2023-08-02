@@ -25,6 +25,32 @@ extension NSObjectProtocol {
 
 // MARK: -
 
+public extension String {
+  static let bundleId: Self = Bundle.main.bundleIdentifier!
+
+  static func identifier(_ suffixes: String...) -> Self {
+    var result = bundleId
+
+    let dot: String = "."
+    var endsInDot = result.hasSuffix(dot)
+
+    for suffix in suffixes {
+      switch (endsInDot, suffix.hasPrefix(dot)) {
+      case (true, false), (false, true): break
+      case (false, false): result.append(dot)
+      case (true, true): result.removeLast()
+      }
+
+      result.append(suffix)
+      endsInDot = suffix.hasSuffix(dot)
+    }
+
+    return result
+  }
+}
+
+// MARK: -
+
 extension CGPoint: Sequence, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, ExpressibleByArrayLiteral {
   public init(integerLiteral value: Int) {
     self.init(x: CGFloat(value), y: CGFloat(value))

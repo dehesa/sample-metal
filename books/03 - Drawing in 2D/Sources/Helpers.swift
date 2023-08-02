@@ -27,13 +27,24 @@ extension NSObjectProtocol {
 
 public extension String {
   static let bundleId: Self = Bundle.main.bundleIdentifier!
-  static func identifier(_ suffix: String) -> Self {
+
+  static func identifier(_ suffixes: String...) -> Self {
     var result = bundleId
-    switch suffix.first {
-    case .none: break
-    case ".": result.append(suffix)
-    default: result.append(".\(suffix)")
+
+    let dot: String = "."
+    var endsInDot = result.hasSuffix(dot)
+
+    for suffix in suffixes {
+      switch (endsInDot, suffix.hasPrefix(dot)) {
+      case (true, false), (false, true): break
+      case (false, false): result.append(dot)
+      case (true, true): result.removeLast()
+      }
+
+      result.append(suffix)
+      endsInDot = suffix.hasSuffix(dot)
     }
+
     return result
   }
 }
