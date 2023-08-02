@@ -1,6 +1,4 @@
-import Cocoa
-import Metal
-import MetalKit
+import Foundation
 
 // The input image path is expected as the only argument (excluding the program name).
 guard CommandLine.arguments.count == 2 else {

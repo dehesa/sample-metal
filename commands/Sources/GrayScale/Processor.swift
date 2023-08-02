@@ -1,5 +1,4 @@
-import Cocoa
-import Metal
+import CoreGraphics
 import MetalKit
 
 enum Processor {
@@ -15,7 +14,10 @@ enum Processor {
     let pipelineState = try device.makeComputePipelineState(function: kernel)
 
     let loader = MTKTextureLoader(device: device)
-    let inTexture = try loader.newTexture(URL: fileURL, options: [.textureCPUCacheMode:MTLCPUCacheMode.writeCombined.rawValue, .textureUsage:MTLTextureUsage.shaderRead.rawValue])
+    let inTexture = try loader.newTexture(URL: fileURL, options: [
+      .textureCPUCacheMode: MTLCPUCacheMode.writeCombined.rawValue,
+      .textureUsage:MTLTextureUsage.shaderRead.rawValue
+    ])
     let (width, height) = (inTexture.width, inTexture.height)
 
     let outTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Unorm, width: width, height: height, mipmapped: false)

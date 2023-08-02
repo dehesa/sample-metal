@@ -69,14 +69,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8D95590E2012145100B9848C /* Inspector */ = {
-			isa = PBXGroup;
-			children = (
-				8D95590F2012145D00B9848C /* Inspector.xcconfig */,
-			);
-			path = Inspector;
-			sourceTree = "<group>";
-		};
 		8D955916201214A300B9848C /* Inspector */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,27 +128,11 @@
 		8DA8FA0E1F47B95700897B9B /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				8DA8FA0F1F47B95700897B9B /* Common */,
-				8D95590E2012145100B9848C /* Inspector */,
-				8DA8FA111F47B95700897B9B /* GrayScale */,
-			);
-			path = Configuration;
-			sourceTree = "<group>";
-		};
-		8DA8FA0F1F47B95700897B9B /* Common */ = {
-			isa = PBXGroup;
-			children = (
 				8DA8FA101F47B95700897B9B /* Common.xcconfig */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		8DA8FA111F47B95700897B9B /* GrayScale */ = {
-			isa = PBXGroup;
-			children = (
+				8D95590F2012145D00B9848C /* Inspector.xcconfig */,
 				8DA8FA131F47B95700897B9B /* GrayScale.xcconfig */,
 			);
-			path = GrayScale;
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +185,6 @@
 				TargetAttributes = {
 					8D955914201214A300B9848C = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
 					};
 					8DA8F9FB1F47B86D00897B9B = {
 						CreatedOnToolsVersion = 9.0;
@@ -263,7 +238,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D95590F2012145D00B9848C /* Inspector.xcconfig */;
 			buildSettings = {
-				DEAD_CODE_STRIPPING = YES;
+				CODE_SIGN_STYLE = Manual;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -271,7 +247,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D95590F2012145D00B9848C /* Inspector.xcconfig */;
 			buildSettings = {
-				DEAD_CODE_STRIPPING = YES;
+				CODE_SIGN_STYLE = Manual;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
