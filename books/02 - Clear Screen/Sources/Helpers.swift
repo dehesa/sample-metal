@@ -1,6 +1,6 @@
 import Foundation
 
-/// Conforming types expose helper function to configure inline.
+/// Conforming types expose helper function to perform inline configuration.
 public protocol ConfigurableReference: AnyObject {
   /// Makes the receiving value accessible within the passed block parameter and ends up returning the modified value.
   /// - parameter block: Closure executing a given task on the receiving function value.

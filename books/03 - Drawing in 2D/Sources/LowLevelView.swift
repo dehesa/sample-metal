@@ -82,9 +82,7 @@ import Metal
     guard let window else { return }
     self.metalState.layer!.contentsScale = window.screen.nativeScale
     self.metalState.timer = FrameTimer { [unowned(unsafe) self] (now, out) in
-      Task(priority: .high) { @MainActor [self] in
-        self.redraw(now: now, frame: out)
-      }
+      self.redraw(now: now, frame: out)
     }
   }
 
