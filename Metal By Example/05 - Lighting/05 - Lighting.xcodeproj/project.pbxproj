@@ -7,33 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D85336E2A79AABC00E12698 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D85336D2A79AABC00E12698 /* App.swift */; };
-		8D8533722A79AABE00E12698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D8533712A79AABE00E12698 /* Assets.xcassets */; };
-		8D8533842A79ABD400E12698 /* LowLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8533802A79ABD400E12698 /* LowLevelView.swift */; };
-		8D8533852A79ABD400E12698 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8533822A79ABD400E12698 /* MetalView.swift */; };
-		8D8533862A79ABD400E12698 /* FrameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D85337F2A79ABD400E12698 /* FrameTimer.swift */; };
-		8D8533872A79ABD400E12698 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D85337E2A79ABD400E12698 /* Shader.metal */; };
-		8D8533882A79ABD400E12698 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8533812A79ABD400E12698 /* Helpers.swift */; };
-		8D8533892A79ABD400E12698 /* Shader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8533832A79ABD400E12698 /* Shader.swift */; };
-		8D85338B2A79B05C00E12698 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D85338A2A79B05C00E12698 /* Renderer.swift */; };
+		8DF18EEF2A7AAD6D004E0EA0 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF18EEE2A7AAD6D004E0EA0 /* App.swift */; };
+		8DF18EF32A7AAD70004E0EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DF18EF22A7AAD70004E0EA0 /* Assets.xcassets */; };
+		8DF18F082A7AD5FD004E0EA0 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF18EFF2A7AD5FA004E0EA0 /* MetalView.swift */; };
+		8DF18F092A7AD5FD004E0EA0 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF18F022A7AD5FC004E0EA0 /* Renderer.swift */; };
+		8DF18F0A2A7AD5FD004E0EA0 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8DF18F002A7AD5FA004E0EA0 /* Shader.metal */; };
+		8DF18F0B2A7AD5FD004E0EA0 /* Shader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF18F012A7AD5FB004E0EA0 /* Shader.swift */; };
+		8DF18F0C2A7AD5FD004E0EA0 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF18F032A7AD5FC004E0EA0 /* Helpers.swift */; };
+		8DF18F0E2A7AF160004E0EA0 /* teapot.obj in Resources */ = {isa = PBXBuildFile; fileRef = 8DF18F0D2A7AF160004E0EA0 /* teapot.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8D85336A2A79AABC00E12698 /* 04 - Drawing in 3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "04 - Drawing in 3D.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D85336D2A79AABC00E12698 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		8D8533712A79AABE00E12698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8D8533732A79AABE00E12698 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
-		8D85337E2A79ABD400E12698 /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
-		8D85337F2A79ABD400E12698 /* FrameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameTimer.swift; sourceTree = "<group>"; };
-		8D8533802A79ABD400E12698 /* LowLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowLevelView.swift; sourceTree = "<group>"; };
-		8D8533812A79ABD400E12698 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		8D8533822A79ABD400E12698 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
-		8D8533832A79ABD400E12698 /* Shader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shader.swift; sourceTree = "<group>"; };
-		8D85338A2A79B05C00E12698 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		8DF18EEB2A7AAD6D004E0EA0 /* 05 - Lighting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "05 - Lighting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DF18EEE2A7AAD6D004E0EA0 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		8DF18EF22A7AAD70004E0EA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8DF18EF42A7AAD70004E0EA0 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
+		8DF18EFF2A7AD5FA004E0EA0 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
+		8DF18F002A7AD5FA004E0EA0 /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
+		8DF18F012A7AD5FB004E0EA0 /* Shader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shader.swift; sourceTree = "<group>"; };
+		8DF18F022A7AD5FC004E0EA0 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		8DF18F032A7AD5FC004E0EA0 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		8DF18F0D2A7AF160004E0EA0 /* teapot.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = teapot.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8D8533672A79AABC00E12698 /* Frameworks */ = {
+		8DF18EE82A7AAD6D004E0EA0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,83 +41,82 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8D8533612A79AABC00E12698 = {
+		8DF18EE22A7AAD6D004E0EA0 = {
 			isa = PBXGroup;
 			children = (
-				8D85337D2A79AADC00E12698 /* Configuration */,
-				8D85337C2A79AAD600E12698 /* Sources */,
-				8D85336B2A79AABC00E12698 /* Products */,
+				8DF18EFD2A7AAD77004E0EA0 /* Configuration */,
+				8DF18EFE2A7AAD7D004E0EA0 /* Sources */,
+				8DF18EEC2A7AAD6D004E0EA0 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		8D85336B2A79AABC00E12698 /* Products */ = {
+		8DF18EEC2A7AAD6D004E0EA0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D85336A2A79AABC00E12698 /* 04 - Drawing in 3D.app */,
+				8DF18EEB2A7AAD6D004E0EA0 /* 05 - Lighting.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8D85337C2A79AAD600E12698 /* Sources */ = {
+		8DF18EFD2A7AAD77004E0EA0 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				8D85336D2A79AABC00E12698 /* App.swift */,
-				8D8533822A79ABD400E12698 /* MetalView.swift */,
-				8D85338A2A79B05C00E12698 /* Renderer.swift */,
-				8D8533832A79ABD400E12698 /* Shader.swift */,
-				8D85337E2A79ABD400E12698 /* Shader.metal */,
-				8D8533802A79ABD400E12698 /* LowLevelView.swift */,
-				8D85337F2A79ABD400E12698 /* FrameTimer.swift */,
-				8D8533812A79ABD400E12698 /* Helpers.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		8D85337D2A79AADC00E12698 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				8D8533712A79AABE00E12698 /* Assets.xcassets */,
-				8D8533732A79AABE00E12698 /* App.entitlements */,
+				8DF18F0D2A7AF160004E0EA0 /* teapot.obj */,
+				8DF18EF22A7AAD70004E0EA0 /* Assets.xcassets */,
+				8DF18EF42A7AAD70004E0EA0 /* App.entitlements */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		8DF18EFE2A7AAD7D004E0EA0 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8DF18EEE2A7AAD6D004E0EA0 /* App.swift */,
+				8DF18EFF2A7AD5FA004E0EA0 /* MetalView.swift */,
+				8DF18F022A7AD5FC004E0EA0 /* Renderer.swift */,
+				8DF18F012A7AD5FB004E0EA0 /* Shader.swift */,
+				8DF18F002A7AD5FA004E0EA0 /* Shader.metal */,
+				8DF18F032A7AD5FC004E0EA0 /* Helpers.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D8533692A79AABC00E12698 /* 04 - Drawing in 3D */ = {
+		8DF18EEA2A7AAD6D004E0EA0 /* 05 - Lighting */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8D8533792A79AABE00E12698 /* Build configuration list for PBXNativeTarget "04 - Drawing in 3D" */;
+			buildConfigurationList = 8DF18EFA2A7AAD70004E0EA0 /* Build configuration list for PBXNativeTarget "05 - Lighting" */;
 			buildPhases = (
-				8D8533662A79AABC00E12698 /* Sources */,
-				8D8533672A79AABC00E12698 /* Frameworks */,
-				8D8533682A79AABC00E12698 /* Resources */,
+				8DF18EE72A7AAD6D004E0EA0 /* Sources */,
+				8DF18EE82A7AAD6D004E0EA0 /* Frameworks */,
+				8DF18EE92A7AAD6D004E0EA0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "04 - Drawing in 3D";
-			productName = "04 - Drawing in 3D";
-			productReference = 8D85336A2A79AABC00E12698 /* 04 - Drawing in 3D.app */;
+			name = "05 - Lighting";
+			productName = "05 - Lighting";
+			productReference = 8DF18EEB2A7AAD6D004E0EA0 /* 05 - Lighting.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		8D8533622A79AABC00E12698 /* Project object */ = {
+		8DF18EE32A7AAD6D004E0EA0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					8D8533692A79AABC00E12698 = {
+					8DF18EEA2A7AAD6D004E0EA0 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = 8D8533652A79AABC00E12698 /* Build configuration list for PBXProject "04 - Drawing in 3D" */;
+			buildConfigurationList = 8DF18EE62A7AAD6D004E0EA0 /* Build configuration list for PBXProject "05 - Lighting" */;
 			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -127,47 +124,46 @@
 				en,
 				Base,
 			);
-			mainGroup = 8D8533612A79AABC00E12698;
-			productRefGroup = 8D85336B2A79AABC00E12698 /* Products */;
+			mainGroup = 8DF18EE22A7AAD6D004E0EA0;
+			productRefGroup = 8DF18EEC2A7AAD6D004E0EA0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D8533692A79AABC00E12698 /* 04 - Drawing in 3D */,
+				8DF18EEA2A7AAD6D004E0EA0 /* 05 - Lighting */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8D8533682A79AABC00E12698 /* Resources */ = {
+		8DF18EE92A7AAD6D004E0EA0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D8533722A79AABE00E12698 /* Assets.xcassets in Resources */,
+				8DF18F0E2A7AF160004E0EA0 /* teapot.obj in Resources */,
+				8DF18EF32A7AAD70004E0EA0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8D8533662A79AABC00E12698 /* Sources */ = {
+		8DF18EE72A7AAD6D004E0EA0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D85336E2A79AABC00E12698 /* App.swift in Sources */,
-				8D8533852A79ABD400E12698 /* MetalView.swift in Sources */,
-				8D85338B2A79B05C00E12698 /* Renderer.swift in Sources */,
-				8D8533842A79ABD400E12698 /* LowLevelView.swift in Sources */,
-				8D8533892A79ABD400E12698 /* Shader.swift in Sources */,
-				8D8533872A79ABD400E12698 /* Shader.metal in Sources */,
-				8D8533862A79ABD400E12698 /* FrameTimer.swift in Sources */,
-				8D8533882A79ABD400E12698 /* Helpers.swift in Sources */,
+				8DF18F0B2A7AD5FD004E0EA0 /* Shader.swift in Sources */,
+				8DF18F0A2A7AD5FD004E0EA0 /* Shader.metal in Sources */,
+				8DF18F082A7AD5FD004E0EA0 /* MetalView.swift in Sources */,
+				8DF18F0C2A7AD5FD004E0EA0 /* Helpers.swift in Sources */,
+				8DF18EEF2A7AAD6D004E0EA0 /* App.swift in Sources */,
+				8DF18F092A7AD5FD004E0EA0 /* Renderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		8D8533772A79AABE00E12698 /* Debug */ = {
+		8DF18EF82A7AAD70004E0EA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -228,7 +224,7 @@
 			};
 			name = Debug;
 		};
-		8D8533782A79AABE00E12698 /* Release */ = {
+		8DF18EF92A7AAD70004E0EA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -281,7 +277,7 @@
 			};
 			name = Release;
 		};
-		8D85337A2A79AABE00E12698 /* Debug */ = {
+		8DF18EFB2A7AAD70004E0EA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -295,7 +291,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "04 - Drawing in 3D";
+				INFOPLIST_KEY_CFBundleDisplayName = "05 - Lighting";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -310,7 +307,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 4.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.drawing3D;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.lighting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
@@ -322,7 +319,7 @@
 			};
 			name = Debug;
 		};
-		8D85337B2A79AABE00E12698 /* Release */ = {
+		8DF18EFC2A7AAD70004E0EA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -336,7 +333,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "04 - Drawing in 3D";
+				INFOPLIST_KEY_CFBundleDisplayName = "05 - Lighting";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -351,7 +349,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 4.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.drawing3D;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.lighting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
@@ -366,25 +364,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8D8533652A79AABC00E12698 /* Build configuration list for PBXProject "04 - Drawing in 3D" */ = {
+		8DF18EE62A7AAD6D004E0EA0 /* Build configuration list for PBXProject "05 - Lighting" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8D8533772A79AABE00E12698 /* Debug */,
-				8D8533782A79AABE00E12698 /* Release */,
+				8DF18EF82A7AAD70004E0EA0 /* Debug */,
+				8DF18EF92A7AAD70004E0EA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8D8533792A79AABE00E12698 /* Build configuration list for PBXNativeTarget "04 - Drawing in 3D" */ = {
+		8DF18EFA2A7AAD70004E0EA0 /* Build configuration list for PBXNativeTarget "05 - Lighting" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8D85337A2A79AABE00E12698 /* Debug */,
-				8D85337B2A79AABE00E12698 /* Release */,
+				8DF18EFB2A7AAD70004E0EA0 /* Debug */,
+				8DF18EFC2A7AAD70004E0EA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 8D8533622A79AABC00E12698 /* Project object */;
+	rootObject = 8DF18EE32A7AAD6D004E0EA0 /* Project object */;
 }
