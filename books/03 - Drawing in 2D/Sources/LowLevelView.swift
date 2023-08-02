@@ -7,14 +7,14 @@ import Metal
 
 #if os(macOS)
 @MainActor final class LowLevelView: NSView {
-  private let metalState: MetalState
+  private let state: MetalState
 
   init(device: MTLDevice, queue: MTLCommandQueue) {
-    self.metalState = MetalState(device: device, queue: queue)!
+    self.state = MetalState(device: device, queue: queue)!
     super.init(frame: .zero)
 
     self.wantsLayer = true
-    self.metalState.layer = (layer as? CAMetalLayer)?.configure {
+    self.state.layer = (layer as? CAMetalLayer)!.configure {
       $0.device = device
       $0.pixelFormat = .bgra8Unorm
       $0.framebufferOnly = true
@@ -31,35 +31,35 @@ import Metal
   }
 
   override func viewDidMoveToWindow() {
-    self.metalState.timer = .none
+    self.state.timer = .none
     super.viewDidMoveToWindow()
 
     guard let window else { return }
-    self.metalState.layer!.contentsScale = window.backingScaleFactor
-    self.metalState.timer = FrameTimer { [unowned(unsafe) self] (now, out) in
+    self.state.layer.contentsScale = window.backingScaleFactor
+    self.state.timer = FrameTimer { [unowned(unsafe) self] (now, out) in
       self.redraw(now: now, frame: out)
     }
   }
 
   override func setBoundsSize(_ newSize: NSSize) {
     super.setBoundsSize(newSize)
-    self.metalState.layer!.drawableSize = self.convertToBacking(self.bounds).size
+    self.state.layer.drawableSize = self.convertToBacking(self.bounds).size
   }
 
   override func setFrameSize(_ newSize: NSSize) {
     super.setFrameSize(newSize)
-    self.metalState.layer!.drawableSize = self.convertToBacking(self.bounds).size
+    self.state.layer.drawableSize = self.convertToBacking(self.bounds).size
   }
 }
 #elseif canImport(UIKit)
 @MainActor final class LowLevelView: UIView {
-  private let metalState: MetalState
+  private let state: MetalState
 
   init(device: MTLDevice, queue: MTLCommandQueue) {
-    self.metalState = MetalState(device: device, queue: queue)!
+    self.state = MetalState(device: device, queue: queue)!
     super.init(frame: .zero)
 
-    self.metalState.layer = (layer as? CAMetalLayer)?.configure {
+    self.state.layer = (layer as? CAMetalLayer)!.configure {
       $0.device = device
       $0.pixelFormat = .bgra8Unorm
       $0.framebufferOnly = true
@@ -76,12 +76,12 @@ import Metal
   }
 
   override func didMoveToWindow() {
-    self.metalState.timer = .none
+    self.state.timer = .none
     super.didMoveToWindow()
 
     guard let window else { return }
-    self.metalState.layer!.contentsScale = window.screen.nativeScale
-    self.metalState.timer = FrameTimer { [unowned(unsafe) self] (now, out) in
+    self.state.layer.contentsScale = window.screen.nativeScale
+    self.state.timer = FrameTimer { [unowned(unsafe) self] (now, out) in
       self.redraw(now: now, frame: out)
     }
   }
@@ -89,9 +89,10 @@ import Metal
   override func layoutSubviews() {
     super.layoutSubviews()
     // Since drawable size is in pixels, we need to multiply by the scale to move from points to pixels.
-    let scale = self.metalState.layer!.contentsScale
-    let size = self.bounds.size.applying(CGAffineTransform(scaleX: scale, y: scale))
-    self.metalState.layer!.drawableSize = size
+    self.state.layer.configure {
+      let scale = $0.contentsScale
+      $0.drawableSize = self.bounds.size.applying(CGAffineTransform(scaleX: scale, y: scale))
+    }
   }
 }
 #endif
@@ -100,10 +101,10 @@ import Metal
 
 extension LowLevelView {
   nonisolated func redraw(now: Double, frame: Double) {
-    guard let metalLayer = self.metalState.layer,
-          metalLayer.drawableSize.allSatisfy({ $0 > .zero }),
-          let drawable = metalLayer.nextDrawable(),
-          let commandBuffer = metalState.queue.makeCommandBuffer() else { return }
+    let layer = self.state.layer
+    guard layer.drawableSize.allSatisfy({ $0 > .zero }),
+          let drawable = layer.nextDrawable(),
+          let commandBuffer = state.queue.makeCommandBuffer() else { return }
 
     let renderPass = MTLRenderPassDescriptor().configure {
       $0.colorAttachments[0].configure {
@@ -115,8 +116,8 @@ extension LowLevelView {
     }
 
     guard let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPass) else { return }
-    encoder.setRenderPipelineState(self.metalState.pipeline)
-    encoder.setVertexBuffer(self.metalState.buffer, offset: 0, index: 0)
+    encoder.setRenderPipelineState(self.state.pipeline)
+    encoder.setVertexBuffer(self.state.buffer, offset: 0, index: 0)
     encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)
     encoder.endEncoding()
 
@@ -127,16 +128,23 @@ extension LowLevelView {
 
 private extension LowLevelView {
   final class MetalState {
+    /// The GPU doing the rendering.
     let device: MTLDevice
+    /// The queue serializing the tasks to be performed in the GPU.
     let queue: MTLCommandQueue
+    /// The render pipeline state (with MSL functions) to use when drawing the triangle.
     let pipeline: MTLRenderPipelineState
+    /// The buffer containing the triangle vertices in normalize coordinates (that is x: `[-1,1]`, y: `[-1,1]`, z: `[0,1]`)
     let buffer: MTLBuffer
-    weak var layer: CAMetalLayer?
+    /// Pointer to the Metal layer of the view.
+    private let layerPointer: UnsafeMutablePointer<CAMetalLayer>
+    /// The timer synchronized with the screen refresh.
     var timer: FrameTimer?
 
     init?(device: MTLDevice, queue: MTLCommandQueue) {
       self.device = device
       self.queue = queue
+      self.layerPointer = .allocate(capacity: 1)
 
       guard let library = device.makeDefaultLibrary(),
             let vertexFunc = library.makeFunction(name: "main_vertex"),
@@ -163,6 +171,16 @@ private extension LowLevelView {
       self.buffer = buffer.configure {
         $0.label = .identifier("buffer.vertices")
       }
+    }
+
+    deinit {
+      self.layerPointer.deinitialize(count: 1)
+      self.layerPointer.deallocate()
+    }
+
+    var layer: CAMetalLayer {
+      get { self.layerPointer.pointee }
+      set { self.layerPointer.pointee = newValue }
     }
   }
 }

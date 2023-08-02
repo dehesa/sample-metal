@@ -2,10 +2,21 @@ import QuartzCore
 import Metal
 import simd
 
+/// Conforming instances must be able to draw through Metal a frame in a given Core Animation Metal layer.
 protocol Renderer: AnyObject {
-  func draw(layer: CAMetalLayer, time: (now: Double, display: Double))
+  /// The GPU used for rendering.
+  var device: MTLDevice { get }
+  /// This function should perform a rendering call (or ignore the frame).
+  ///
+  /// The function will be called in a high-priority background thread. Be mindful of the amount of work performed here.
+  /// Rendering calls should target a minimum of 60 fps; meaning this function will get call (at least) every 0.0166 seconds.
+  /// - parameter layer: The target of the rendering call (i.e. the Core Animation layer where the frame will be displayed).
+  /// - parameter time: The time received from timer synchronized to screen refresh.
+  ///   Its values represent the seconds since the system bootup; `now` is the time when the timer got triggered, `display` is the time when the fram should be displayed on the screen.
+  nonisolated func draw(layer: CAMetalLayer, time: (now: Double, display: Double))
 }
 
+/// A render that will draw a spinning cube.
 final class CubeRenderer: Renderer {
   let device: MTLDevice
   private let queue: MTLCommandQueue
@@ -16,8 +27,8 @@ final class CubeRenderer: Renderer {
   private let uniformsBuffer: MTLBuffer
   private var depthTexture: MTLTexture?
 
-  private let lock: NSLock
-  private var isRendering: Bool
+  private let lock = NSLock()
+  private var numParallelRenders: Int = .zero
   private var uniforms: Uniforms?
 
   init?(device: MTLDevice) {
@@ -27,7 +38,7 @@ final class CubeRenderer: Renderer {
     self.queue = queue
 
     guard let library = device.makeDefaultLibrary(),
-          let vertexFunc   = library.makeFunction(name: "main_vertex"),
+          let vertexFunc = library.makeFunction(name: "main_vertex"),
           let fragmentFunc = library.makeFunction(name: "main_fragment") else { return nil }
 
     let renderDescriptor = MTLRenderPipelineDescriptor().configure {
@@ -77,14 +88,13 @@ final class CubeRenderer: Renderer {
     guard let uniformsBuffer = device.makeBuffer(length: MemoryLayout<ShaderUniforms>.stride) else { return nil }
     self.uniformsBuffer = uniformsBuffer.configure { $0.label = .identifier(Self.id, "buffer.uniforms") }
 
-    self.lock = NSLock().configure { $0.name = .identifier(Self.id, "lock") }
-    self.isRendering = false
+    self.lock.name = .identifier(Self.id, "lock")
   }
 }
 
 extension CubeRenderer {
   func draw(layer: CAMetalLayer, time: (now: Double, display: Double)) {
-    // Drop the frame if the previous one is not yet done
+    // Drop frames if we are already waiting for other frames to be processed.
     guard self.requestRenderPriviledge() else { return }
 
     guard let size = self.resizeIfNecessary(layer: layer),
@@ -117,6 +127,7 @@ extension CubeRenderer {
     case let uni?: self.uniforms = Uniforms(uni, display: time.display)
     case .none: self.uniforms = Uniforms(now: time.now, display: time.display)
     }
+
     let ptr = self.uniformsBuffer.contents().assumingMemoryBound(to: ShaderUniforms.self)
     ptr.pointee = ShaderUniforms(mvpMatrix: self.uniforms!.projectionMatrix(size: size))
 
@@ -139,21 +150,24 @@ extension CubeRenderer {
 
 private extension CubeRenderer {
   static var id: String { "renderer.cube" }
+  static var maxParallelRenders: Int { 3 }
 
   func requestRenderPriviledge() -> Bool {
     self.lock.lock()
     defer { self.lock.unlock() }
-    guard !isRendering else { return false }
-    isRendering = true
-    self.lock.unlock()
+
+    guard numParallelRenders + 1 < Self.maxParallelRenders else { return false }
+    numParallelRenders += 1
+
     return true
   }
 
   func releaseRenderPriviledge() {
     self.lock.lock()
     defer { self.lock.unlock() }
-    precondition(isRendering)
-    isRendering = false
+
+    numParallelRenders -= 1
+    precondition(numParallelRenders >= .zero, "Release render priviledges is 'over-called'")
   }
 
   func resizeIfNecessary(layer: CAMetalLayer) -> (width: Int, height: Int)? {

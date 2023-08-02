@@ -114,11 +114,9 @@ extension LowLevelView {
         $0.storeAction = .store
       }
     }
-
     // Setup Command Encoder (transient)
     guard let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPass) else { return }
     encoder.endEncoding()
-
     // Present drawable is a convenience completion block that will get executed once your command buffer finishes, and will output the final texture to screen.
     commandBuffer.present(drawable)
     commandBuffer.commit()

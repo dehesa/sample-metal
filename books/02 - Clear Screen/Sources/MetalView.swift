@@ -9,9 +9,7 @@ struct MetalView: NSViewRepresentable {
     return LowLevelView(device: device, queue: queue)
   }
 
-  func updateNSView(_ lowlevelView: LowLevelView, context: Context) {
-    lowlevelView.redraw()
-  }
+  func updateNSView(_ lowlevelView: LowLevelView, context: Context) {}
 }
 #elseif canImport(UIKit)
 /// Wraps a custom `UIView` making drawing calls to the GPU.
@@ -22,8 +20,6 @@ struct MetalView: UIViewRepresentable {
     return LowLevelView(device: device, queue: queue)
   }
 
-  func updateUIView(_ lowlevelView: LowLevelView, context: Context) {
-    lowlevelView.redraw()
-  }
+  func updateUIView(_ lowlevelView: LowLevelView, context: Context) {}
 }
 #endif
