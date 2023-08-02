@@ -1,6 +1,6 @@
 ---
 name: Question
-about: Ask anything related to CodableCSV
+about: Ask anything related to this project
 title: ''
 labels: question
 assignees: dehesa
@@ -14,5 +14,5 @@ One or two-liner with your question.
 Add any other context about the question here (or delete this section if it is unnecessary).
 
 ## System
- - OS: [e.g. macOS 11, iOS 14, watchOS 7]
+ - OS: [e.g. macOS 14, iOS 17, tvOS 17]
  - Metal version

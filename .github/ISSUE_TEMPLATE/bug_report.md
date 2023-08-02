@@ -19,7 +19,7 @@ Steps to reproduce the behavior:
 A clear and concise description of what you expected to happen.
 
 ## System
- - OS: [e.g. macOS 11, iOS 14, watchOS 7]
+ - OS: [e.g. macOS 14, iOS 17, tvOS 17]
  - Metal version
 
 ## Additional context
