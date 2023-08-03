@@ -127,7 +127,7 @@ extension LowLevelView {
 }
 
 private extension LowLevelView {
-  final class MetalState {
+  final class MetalState: @unchecked Sendable {
     /// The GPU doing the rendering.
     let device: MTLDevice
     /// The queue serializing the tasks to be performed in the GPU.
@@ -138,8 +138,10 @@ private extension LowLevelView {
     let buffer: MTLBuffer
     /// Pointer to the Metal layer of the view.
     private let layerPointer: UnsafeMutablePointer<CAMetalLayer>
+    /// The lock used to synchronize the changes in timer.
+    private let lock: Lock
     /// The timer synchronized with the screen refresh.
-    var timer: FrameTimer?
+    private var _timer: FrameTimer?
 
     init?(device: MTLDevice, queue: MTLCommandQueue) {
       self.device = device
@@ -171,16 +173,24 @@ private extension LowLevelView {
       self.buffer = buffer.configure {
         $0.label = .identifier("buffer.vertices")
       }
+
+      self.lock = Lock()
     }
 
     deinit {
       self.layerPointer.deinitialize(count: 1)
       self.layerPointer.deallocate()
+      self.lock.invalidate()
     }
 
     var layer: CAMetalLayer {
       get { self.layerPointer.pointee }
       set { self.layerPointer.pointee = newValue }
+    }
+
+    var timer: FrameTimer? {
+      get { lock.sync { self._timer } }
+      set { lock.sync { self._timer = newValue } }
     }
   }
 }

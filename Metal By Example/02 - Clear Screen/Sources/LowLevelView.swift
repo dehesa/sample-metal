@@ -6,7 +6,7 @@ import UIKit
 import Metal
 
 #if os(macOS)
-final class LowLevelView: NSView {
+@MainActor final class LowLevelView: NSView {
   private let device: MTLDevice
   private let queue: MTLCommandQueue
 
@@ -53,7 +53,7 @@ final class LowLevelView: NSView {
   }
 }
 #elseif canImport(UIKit)
-final class LowLevelView: UIView {
+@MainActor final class LowLevelView: UIView {
   private let device: MTLDevice
   private let queue: MTLCommandQueue
 

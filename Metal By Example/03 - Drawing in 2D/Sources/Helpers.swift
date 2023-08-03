@@ -51,6 +51,37 @@ public extension String {
 
 // MARK: -
 
+struct Lock {
+  let ptr: UnsafeMutablePointer<os_unfair_lock>
+
+  @_transparent init() {
+    ptr = .allocate(capacity: 1)
+    ptr.initialize(to: os_unfair_lock())
+  }
+
+  @_transparent func lock() {
+    os_unfair_lock_lock(ptr)
+  }
+
+  @_transparent func unlock() {
+    os_unfair_lock_unlock(ptr)
+  }
+
+  @discardableResult @_transparent func sync<T>(within closure: () throws -> T) rethrows -> T {
+    os_unfair_lock_lock(ptr)
+    let result = try closure()
+    os_unfair_lock_unlock(ptr)
+    return result
+  }
+
+  @_transparent func invalidate() {
+    ptr.deinitialize(count: 1)
+    ptr.deallocate()
+  }
+}
+
+// MARK: -
+
 extension CGPoint: Sequence, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, ExpressibleByArrayLiteral {
   public init(integerLiteral value: Int) {
     self.init(x: CGFloat(value), y: CGFloat(value))
