@@ -5,7 +5,7 @@ extension NSObjectProtocol {
   /// Makes the receiving value accessible within the passed block parameter and ends up returning the modified value.
   /// - parameter block: Closure executing a given task on the receiving function value.
   /// - returns: The modified value
-  @discardableResult public func set(_ block: (Self)->Void) -> Self {
+  @discardableResult public func configure(_ block: (Self)->Void) -> Self {
     block(self)
     return self
   }

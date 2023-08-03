@@ -41,7 +41,7 @@ for device in MTLCopyAllDevices() {
   let t = device.maxThreadsPerThreadgroup
   result.append("\n\t\tmax threads per threadgroup: [\(t.width), \(t.height), \(t.depth)]")
 
-  let computeDescriptor = MTLComputePipelineDescriptor().set {
+  let computeDescriptor = MTLComputePipelineDescriptor().configure {
     $0.label = .identify("compute.pipeline")
     $0.computeFunction = device.makeDefaultLibrary()!.makeFunction(name: "empty")!
   }

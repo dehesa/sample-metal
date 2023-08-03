@@ -13,6 +13,7 @@
 		8DA8FA151F47B9D100897B9B /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8FA0B1F47B95700897B9B /* Processor.swift */; };
 		8DA8FA161F47B9D100897B9B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8FA0D1F47B95700897B9B /* main.swift */; };
 		8DB64ECF241145D200FB03BC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB64ECE241145D200FB03BC /* Extensions.swift */; };
+		8DE04D942A7B987700B353CB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE04D932A7B987700B353CB /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,7 @@
 		8DA8FA101F47B95700897B9B /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		8DA8FA131F47B95700897B9B /* GrayScale.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = GrayScale.xcconfig; sourceTree = "<group>"; };
 		8DB64ECE241145D200FB03BC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8DE04D932A7B987700B353CB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				8DA8FA0D1F47B95700897B9B /* main.swift */,
 				8DA8FA0B1F47B95700897B9B /* Processor.swift */,
+				8DE04D932A7B987700B353CB /* Extensions.swift */,
 				8DA8FA081F47B95700897B9B /* Assets */,
 				8DA8FA0A1F47B95700897B9B /* GrayScale.metal */,
 			);
@@ -228,6 +231,7 @@
 				8DA8FA151F47B9D100897B9B /* Processor.swift in Sources */,
 				8DA8FA141F47B9D100897B9B /* GrayScale.metal in Sources */,
 				8DA8FA161F47B9D100897B9B /* main.swift in Sources */,
+				8DE04D942A7B987700B353CB /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +312,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Debug;
 		};
@@ -359,6 +364,7 @@
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Release;
 		};
