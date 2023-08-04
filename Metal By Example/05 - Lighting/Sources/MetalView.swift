@@ -3,7 +3,11 @@ import MetalKit
 
 #if os(macOS)
 struct MetalView: NSViewRepresentable {
-  @State private var renderer: Renderer? = TeapotRenderer(device: MTLCreateSystemDefaultDevice()!)
+  @State private var renderer: Renderer?
+
+  @MainActor init(device: MTLDevice) {
+    self._renderer = State(initialValue: TeapotRenderer(device: device))
+  }
 
   func makeNSView(context: Context) -> MTKView {
     let renderer = self.renderer!
@@ -19,7 +23,11 @@ struct MetalView: NSViewRepresentable {
 }
 #elseif canImport(UIKit)
 struct MetalView: UIViewRepresentable {
-  @State private var renderer: Renderer? = TeapotRenderer(device: MTLCreateSystemDefaultDevice()!)
+  @State private var renderer: Renderer?
+
+  @MainActor init(device: MTLDevice) {
+    self._renderer = State(initialValue: TeapotRenderer(device: device))
+  }
 
   func makeUIView(context: Context) -> MTKView {
     let renderer = self.renderer!

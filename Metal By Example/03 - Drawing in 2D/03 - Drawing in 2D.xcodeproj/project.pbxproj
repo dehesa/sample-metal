@@ -61,8 +61,8 @@
 		8D3276C52A7982DE00A1C463 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				8D3276BA2A7982C500A1C463 /* Assets.xcassets */,
 				8D3276BC2A7982C500A1C463 /* App.entitlements */,
+				8D3276BA2A7982C500A1C463 /* Assets.xcassets */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";

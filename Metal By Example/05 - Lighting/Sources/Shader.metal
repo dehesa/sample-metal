@@ -19,7 +19,7 @@ struct VertexProjected {
   float3 normal;
 };
 
-vertex VertexProjected main_vertex(
+[[vertex]] VertexProjected main_vertex(
   const    VertexInput     v [[stage_in]],
   constant ShaderUniforms& u [[buffer(1)]]
 ) {
@@ -60,7 +60,7 @@ constant Material material = {
   .specularPower = 100
 };
 
-fragment float4 main_fragment(
+[[fragment]] float4 main_fragment(
   const VertexProjected v [[stage_in]]
 ) {
   float3 const ambient = light.ambientColor * material.ambientColor;

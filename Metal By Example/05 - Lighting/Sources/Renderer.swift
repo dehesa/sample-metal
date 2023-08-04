@@ -3,11 +3,11 @@ import MetalKit
 import ModelIO
 import simd
 
-protocol Renderer: MTKViewDelegate {
+@MainActor protocol Renderer: MTKViewDelegate {
   var device: MTLDevice { get }
 }
 
-final class TeapotRenderer: NSObject, Renderer {
+@MainActor final class TeapotRenderer: NSObject, Renderer {
   let device: MTLDevice
   private let queue: MTLCommandQueue
   private let renderPipeline: MTLRenderPipelineState
@@ -74,79 +74,83 @@ final class TeapotRenderer: NSObject, Renderer {
     }
   }
 
-  func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-    let (width, height) = (Int(size.width), Int(size.height))
-    guard width > .zero, height > .zero else {
-      self.depthTexture = .none
-      return
-    }
+  nonisolated func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+    MainActor.assumeIsolated {
+      let (width, height) = (Int(size.width), Int(size.height))
+      guard width > .zero, height > .zero else {
+        self.depthTexture = .none
+        return
+      }
 
-    let isDifferent = self.depthTexture.map { $0.width != width || $0.height != height } ?? true
-    guard isDifferent else { return }
+      let isDifferent = self.depthTexture.map { $0.width != width || $0.height != height } ?? true
+      guard isDifferent else { return }
 
-    let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: width, height: height, mipmapped: false).configure {
-      $0.storageMode = .private
-      $0.usage = .renderTarget
-    }
+      let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float, width: width, height: height, mipmapped: false).configure {
+        $0.storageMode = .private
+        $0.usage = .renderTarget
+      }
 
-    guard let texture = self.device.makeTexture(descriptor: descriptor) else {
-      self.depthTexture = .none
-      return
-    }
+      guard let texture = self.device.makeTexture(descriptor: descriptor) else {
+        self.depthTexture = .none
+        return
+      }
 
-    self.depthTexture = texture.configure {
-      $0.label = .identifier(Self.id, "texture.depth")
+      self.depthTexture = texture.configure {
+        $0.label = .identifier(Self.id, "texture.depth")
+      }
     }
   }
 
-  func draw(in view: MTKView) {
-    guard let depthTexture,
-          let mesh = self.meshes.first,
-          let drawable = view.currentDrawable,
-          let descriptor = view.currentRenderPassDescriptor else { return }
+  nonisolated func draw(in view: MTKView) {
+    MainActor.assumeIsolated {
+      guard let depthTexture,
+            let mesh = self.meshes.first,
+            let drawable = view.currentDrawable,
+            let descriptor = view.currentRenderPassDescriptor else { return }
 
-    descriptor.configure {
-      $0.colorAttachments[0].configure {
-        $0.texture = drawable.texture
-        $0.clearColor = MTLClearColorMake(0.5, 0.5, 0.5, 1)
-        $0.loadAction = .clear
-        $0.storeAction = .store
+      descriptor.configure {
+        $0.colorAttachments[0].configure {
+          $0.texture = drawable.texture
+          $0.clearColor = MTLClearColorMake(0.5, 0.5, 0.5, 1)
+          $0.loadAction = .clear
+          $0.storeAction = .store
+        }
+        $0.depthAttachment.configure {
+          $0.texture = depthTexture
+          $0.clearDepth = 1
+          $0.loadAction = .clear
+          $0.storeAction = .dontCare
+        }
       }
-      $0.depthAttachment.configure {
-        $0.texture = depthTexture
-        $0.clearDepth = 1
-        $0.loadAction = .clear
-        $0.storeAction = .dontCare
+
+      guard let commandBuffer = self.queue.makeCommandBuffer(),
+            let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor) else { return }
+
+      self.uniforms = Uniforms(self.uniforms)
+      let matrix = self.uniforms!.matrices(size: drawable.layer.drawableSize)
+      self.uniformsBuffer.contents()
+        .assumingMemoryBound(to: ShaderUniforms.self)
+        .pointee = ShaderUniforms(modelViewProjectionMatrix: matrix.projection, modelViewMatrix: matrix.modelView, normalMatrix: matrix.normal)
+
+      do {
+        encoder.setRenderPipelineState(self.renderPipeline)
+        encoder.setDepthStencilState(self.depthPipeline)
+        encoder.setCullMode(.back)
+        encoder.setFrontFacing(.counterClockwise)
+
+        let vertexBuffer = mesh.vertexBuffers[0]
+        encoder.setVertexBuffer(vertexBuffer.buffer, offset: vertexBuffer.offset, index: 0)
+        encoder.setVertexBuffer(self.uniformsBuffer, offset: 0, index: 1)
+
+        guard let submesh = mesh.submeshes.first else { fatalError("Submesh not found.") }
+        encoder.drawIndexedPrimitives(type: submesh.primitiveType, indexCount: submesh.indexCount, indexType: submesh.indexType, indexBuffer: submesh.indexBuffer.buffer, indexBufferOffset: submesh.indexBuffer.offset)
+
+        encoder.endEncoding()
       }
+
+      commandBuffer.present(drawable)
+      commandBuffer.commit()
     }
-
-    guard let commandBuffer = self.queue.makeCommandBuffer(),
-          let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor) else { return }
-
-    self.uniforms = Uniforms(self.uniforms)
-    let matrix = self.uniforms!.matrices(size: drawable.layer.drawableSize)
-    self.uniformsBuffer.contents()
-      .assumingMemoryBound(to: ShaderUniforms.self)
-      .pointee = ShaderUniforms(modelViewProjectionMatrix: matrix.projection, modelViewMatrix: matrix.modelView, normalMatrix: matrix.normal)
-
-    do {
-      encoder.setRenderPipelineState(self.renderPipeline)
-      encoder.setDepthStencilState(self.depthPipeline)
-      encoder.setCullMode(.back)
-      encoder.setFrontFacing(.counterClockwise)
-
-      let vertexBuffer = mesh.vertexBuffers[0]
-      encoder.setVertexBuffer(vertexBuffer.buffer, offset: vertexBuffer.offset, index: 0)
-      encoder.setVertexBuffer(self.uniformsBuffer, offset: 0, index: 1)
-
-      guard let submesh = mesh.submeshes.first else { fatalError("Submesh not found.") }
-      encoder.drawIndexedPrimitives(type: submesh.primitiveType, indexCount: submesh.indexCount, indexType: submesh.indexType, indexBuffer: submesh.indexBuffer.buffer, indexBufferOffset: submesh.indexBuffer.offset)
-
-      encoder.endEncoding()
-    }
-
-    commandBuffer.present(drawable)
-    commandBuffer.commit()
   }
 }
 

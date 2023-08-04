@@ -78,8 +78,8 @@
 		8D85337D2A79AADC00E12698 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				8D8533712A79AABE00E12698 /* Assets.xcassets */,
 				8D8533732A79AABE00E12698 /* App.entitlements */,
+				8D8533712A79AABE00E12698 /* Assets.xcassets */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -225,6 +225,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Debug;
 		};
@@ -278,6 +279,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Release;
 		};
