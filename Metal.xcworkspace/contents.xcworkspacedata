@@ -39,9 +39,6 @@
       <FileRef
          location = "group:06 - Texturing/06 - Texturing.xcodeproj">
       </FileRef>
-      <FileRef
-         location = "group:07 - Mipmapping/07 - Mipmapping.xcodeproj">
-      </FileRef>
    </Group>
    <FileRef
       location = "group:Shader Exam/Shader Exam.xcodeproj">

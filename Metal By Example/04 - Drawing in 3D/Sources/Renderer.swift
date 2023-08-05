@@ -212,8 +212,8 @@ private extension CubeRenderer {
       self.lastTimestamp = display
 
       let duration = display - now
-      self.rotation.x = Float(duration * Double.𝝉 / 4)
-      self.rotation.y = Float(duration * Double.𝝉 / 6)
+      self.rotation.x = Float(duration * Double.τ / 4)
+      self.rotation.y = Float(duration * Double.τ / 6)
     }
 
     init(_ previous: Self, display: Double) {
@@ -221,8 +221,8 @@ private extension CubeRenderer {
       self.lastTimestamp = display
 
       let duration = display - startTimestamp
-      self.rotation.x = Float(duration * Double.𝝉 / 4)
-      self.rotation.y = Float(duration * Double.𝝉 / 6)
+      self.rotation.x = Float(duration * Double.τ / 4)
+      self.rotation.y = Float(duration * Double.τ / 6)
     }
 
     func projectionMatrix(size: (width: Int, height: Int)) -> float4x4 {

@@ -7,13 +7,15 @@ import simd
   var device: MTLDevice { get }
 }
 
-@MainActor final class TeapotRenderer: NSObject, Renderer {
+@MainActor final class CowRenderer: NSObject, Renderer {
   let device: MTLDevice
   private let queue: MTLCommandQueue
   private let renderPipeline: MTLRenderPipelineState
   private let depthPipeline: MTLDepthStencilState
   private var depthTexture: MTLTexture?
   private let meshes: [MTKMesh]
+  private let diffuseTexture: MTLTexture
+  private let textureSampler: MTLSamplerState
   private let uniformsBuffer: MTLBuffer
   private var uniforms: Uniforms?
 
@@ -41,7 +43,12 @@ import simd
           attribute.offset = MemoryLayout<Float>.stride * 3
           attribute.format = .float4
         }
-        $0.layouts[0].stride = MemoryLayout<Float>.stride * 7
+        $0.attributes[2].configure { attribute in
+          attribute.bufferIndex = 0
+          attribute.offset = MemoryLayout<Float>.stride * 7
+          attribute.format = .float2
+        }
+        $0.layouts[0].stride = MemoryLayout<Float>.stride * 9
       }
       $0.fragmentFunction = fragmentFunc
       $0.colorAttachments[0].pixelFormat = .bgra8Unorm
@@ -61,11 +68,32 @@ import simd
     let modelDescriptor = MTKModelIOVertexDescriptorFromMetal(renderDescriptor.vertexDescriptor!).configure {
       ($0.attributes[0] as! MDLVertexAttribute).name = MDLVertexAttributePosition
       ($0.attributes[1] as! MDLVertexAttribute).name = MDLVertexAttributeNormal
+      ($0.attributes[2] as! MDLVertexAttribute).name = MDLVertexAttributeTextureCoordinate
     }
-    guard let url = Bundle.main.url(forResource: "teapot", withExtension: "obj") else { return nil }
-    let asset = MDLAsset(url: url, vertexDescriptor: modelDescriptor, bufferAllocator: MTKMeshBufferAllocator(device: device))
-    guard let meshes = try? MTKMesh.newMeshes(asset: asset, device: device).metalKitMeshes else { return nil }
-    self.meshes = meshes
+
+    do {
+      guard let url = Bundle.main.url(forResource: "spot", withExtension: "obj") else { return nil }
+      let asset = MDLAsset(url: url, vertexDescriptor: modelDescriptor, bufferAllocator: MTKMeshBufferAllocator(device: device))
+      guard let meshes = try? MTKMesh.newMeshes(asset: asset, device: device).metalKitMeshes else { return nil }
+      self.meshes = meshes
+    }
+
+    do {
+      guard let url = Bundle.main.url(forResource: "spot_texture", withExtension: "png") else { return nil }
+      let loader = MTKTextureLoader(device: device)
+      guard let texture = try? loader.newTexture(URL: url, options: [.origin: MTKTextureLoader.Origin.bottomLeft, .generateMipmaps: true]) else { return nil }
+      self.diffuseTexture = texture
+
+      let descriptor = MTLSamplerDescriptor().configure {
+        $0.sAddressMode = .clampToEdge
+        $0.tAddressMode = .clampToEdge
+        $0.minFilter = .nearest
+        $0.magFilter = .linear
+        $0.mipFilter = .linear
+      }
+      guard let sampler = device.makeSamplerState(descriptor: descriptor) else { return nil }
+      self.textureSampler = sampler
+    }
 
     guard let uniformBuffer = device.makeBuffer(length: MemoryLayout<ShaderUniforms>.stride) else { return nil }
     self.uniformsBuffer = uniformBuffer.configure {
@@ -141,6 +169,8 @@ import simd
         let vertexBuffer = mesh.vertexBuffers[0]
         encoder.setVertexBuffer(vertexBuffer.buffer, offset: vertexBuffer.offset, index: 0)
         encoder.setVertexBuffer(self.uniformsBuffer, offset: 0, index: 1)
+        encoder.setFragmentTexture(self.diffuseTexture, index: 0)
+        encoder.setFragmentSamplerState(self.textureSampler, index: 0)
 
         guard let submesh = mesh.submeshes.first else { fatalError("Submesh not found.") }
         encoder.drawIndexedPrimitives(type: submesh.primitiveType, indexCount: submesh.indexCount, indexType: submesh.indexType, indexBuffer: submesh.indexBuffer.buffer, indexBufferOffset: submesh.indexBuffer.offset)
@@ -154,7 +184,7 @@ import simd
   }
 }
 
-private extension TeapotRenderer {
+private extension CowRenderer {
   static var id: String { "renderer.teapot" }
 
   struct Uniforms {
@@ -184,7 +214,7 @@ private extension TeapotRenderer {
       let yRotMatrix  = float4x4(rotate: SIMD3<Float>(0, 1, 0), angle: self.rotation.y)
 
       let modelMatrix = (yRotMatrix * xRotMatrix) * scaleMatrix
-      let viewMatrix = float4x4(translate: [0, 0, -1])
+      let viewMatrix = float4x4(translate: [0, 0, -1.25])
       let projectionMatrix = float4x4(perspectiveWithAspect: Float(size.width)/Float(size.height), fovy: .τ/5, near: 0.1, far: 100)
 
       let modelViewMatrix = viewMatrix * modelMatrix

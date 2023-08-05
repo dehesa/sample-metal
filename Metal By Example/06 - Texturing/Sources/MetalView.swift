@@ -32,8 +32,8 @@ struct MetalView: UIViewRepresentable {
 #endif
 
 extension MetalView {
-  @MainActor func makeCoordinator() -> TeapotRenderer {
+  @MainActor func makeCoordinator() -> CowRenderer {
     let device = MTLCreateSystemDefaultDevice()!
-    return TeapotRenderer(device: device)!
+    return CowRenderer(device: device)!
   }
 }

@@ -54,14 +54,14 @@ public extension String {
 
 extension Double {
   /// Number of radians in *one turn*.
-  @_transparent public static var 𝝉: Double { Double.pi * 2 }
+  @_transparent public static var τ: Double { Double.pi * 2 }
   /// Number of radians in *half a turn*.
   @_transparent public static var π: Double { Double.pi }
 }
 
 extension Float {
   /// Number of radians in *one turn*.
-  @_transparent public static var 𝝉: Float { Float(Double.𝝉) }
+  @_transparent public static var τ: Float { Float(Double.τ) }
   /// Number of radians in *half a turn*.
   @_transparent public static var π: Float { Float(Double.π) }
 }

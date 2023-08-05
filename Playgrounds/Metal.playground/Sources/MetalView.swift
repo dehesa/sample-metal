@@ -1,5 +1,5 @@
 #if os(macOS)
-import Cocoa
+import AppKit
 #elseif canImport(UIKit)
 import UIKit
 #endif

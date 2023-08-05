@@ -39,16 +39,13 @@
 
 /* Begin PBXFileReference section */
 		8D30F7CC226A5DDF00518A46 /* Empty.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Empty.metal; sourceTree = "<group>"; };
-		8D95590F2012145D00B9848C /* Inspector.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Inspector.xcconfig; sourceTree = "<group>"; };
-		8D955915201214A300B9848C /* gpgpu_inspector */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gpgpu_inspector; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D955915201214A300B9848C /* gpgu_inspector */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gpgu_inspector; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D955917201214A300B9848C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		8DA8F9FC1F47B86D00897B9B /* gpgpu_grayscale */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gpgpu_grayscale; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DA8F9FC1F47B86D00897B9B /* gpgu_gray */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gpgu_gray; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA8FA091F47B95700897B9B /* Sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sample.jpg; sourceTree = "<group>"; };
 		8DA8FA0A1F47B95700897B9B /* GrayScale.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GrayScale.metal; sourceTree = "<group>"; };
 		8DA8FA0B1F47B95700897B9B /* Processor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Processor.swift; sourceTree = "<group>"; };
 		8DA8FA0D1F47B95700897B9B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		8DA8FA101F47B95700897B9B /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
-		8DA8FA131F47B95700897B9B /* GrayScale.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = GrayScale.xcconfig; sourceTree = "<group>"; };
 		8DB64ECE241145D200FB03BC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8DE04D932A7B987700B353CB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,7 +81,6 @@
 		8DA8F9F31F47B86D00897B9B = {
 			isa = PBXGroup;
 			children = (
-				8DA8FA0E1F47B95700897B9B /* Configuration */,
 				8DA8FA061F47B95700897B9B /* Sources */,
 				8DA8F9FD1F47B86D00897B9B /* Products */,
 			);
@@ -93,8 +89,8 @@
 		8DA8F9FD1F47B86D00897B9B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DA8F9FC1F47B86D00897B9B /* gpgpu_grayscale */,
-				8D955915201214A300B9848C /* gpgpu_inspector */,
+				8DA8F9FC1F47B86D00897B9B /* gpgu_gray */,
+				8D955915201214A300B9848C /* gpgu_inspector */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,16 +124,6 @@
 			path = GrayScale;
 			sourceTree = "<group>";
 		};
-		8DA8FA0E1F47B95700897B9B /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				8DA8FA101F47B95700897B9B /* Common.xcconfig */,
-				8D95590F2012145D00B9848C /* Inspector.xcconfig */,
-				8DA8FA131F47B95700897B9B /* GrayScale.xcconfig */,
-			);
-			path = Configuration;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,7 +141,7 @@
 			);
 			name = Inspector;
 			productName = Detector;
-			productReference = 8D955915201214A300B9848C /* gpgpu_inspector */;
+			productReference = 8D955915201214A300B9848C /* gpgu_inspector */;
 			productType = "com.apple.product-type.tool";
 		};
 		8DA8F9FB1F47B86D00897B9B /* Grayscale */ = {
@@ -172,7 +158,7 @@
 			);
 			name = Grayscale;
 			productName = "Metal-CLI";
-			productReference = 8DA8F9FC1F47B86D00897B9B /* gpgpu_grayscale */;
+			productReference = 8DA8F9FC1F47B86D00897B9B /* gpgu_gray */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -240,25 +226,30 @@
 /* Begin XCBuildConfiguration section */
 		8D95591A201214A300B9848C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D95590F2012145D00B9848C /* Inspector.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 4.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.commandline.gpgpu.inspector;
+				PRODUCT_NAME = gpgu_inspector;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
 		8D95591B201214A300B9848C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D95590F2012145D00B9848C /* Inspector.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 4.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.commandline.gpgpu.inspector;
+				PRODUCT_NAME = gpgu_inspector;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
 		8DA8FA011F47B86D00897B9B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DA8FA101F47B95700897B9B /* Common.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -308,17 +299,19 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_MODULE_NAME = gpgu;
+				PRODUCT_NAME = gpgu;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		8DA8FA021F47B86D00897B9B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DA8FA101F47B95700897B9B /* Common.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -361,26 +354,35 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_MODULE_NAME = gpgu;
+				PRODUCT_NAME = gpgu;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 		8DA8FA041F47B86D00897B9B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DA8FA131F47B95700897B9B /* GrayScale.xcconfig */;
 			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
+				DYLIB_CURRENT_VERSION = 4.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.commandline.gpgpu.grayscale;
+				PRODUCT_NAME = gpgu_gray;
 			};
 			name = Debug;
 		};
 		8DA8FA051F47B86D00897B9B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DA8FA131F47B95700897B9B /* GrayScale.xcconfig */;
 			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
+				DYLIB_CURRENT_VERSION = 4.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.commandline.gpgpu.grayscale;
+				PRODUCT_NAME = gpgu_gray;
 			};
 			name = Release;
 		};
