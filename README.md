@@ -9,7 +9,7 @@
     <a href="http://doge.mit-license.org"><img src="Documentation/Assets/Badges/License.svg" alt="MIT License"></a>
 </p>
 
-This repo contains code with examples on how to use Apple's Metal GPU APIs. Some sample code has been created entirely by [me](https://github.com/dehesa), while others have been picked from Github. The latter ones are in this repo because they have been heavily modified, not only to support the latest version of Swift, but also to add support to iOS, macOS, and tvOS. Links to the source Github repos or websites are provided.
+This repo contains code with examples on how to use Apple's Metal GPU APIs. Some sample code has been created entirely by [me](https://github.com/dehesa), while others have been picked from Github. The latter ones are in this repo because they have been heavily modified, not only to support the latest version of Swift and SwiftUI, but also to add support to macOS, iOS, and tvOS. Links to the source Github repos or websites are provided.
 
 ## Projects
 
@@ -85,6 +85,12 @@ This repo contains code with examples on how to use Apple's Metal GPU APIs. Some
 -   [Metal by Example](https://metalbyexample.com).
     <br>[Warren Moore](https://warrenmoore.net) wrote this book in 2015. It was and it remains one of the best introductions to Metal I have found.
     I've migrated most chapters to the latest Swift and I've added support to macOS.
+
+    - Clear Screen.
+    - Draw 2D triangle.
+    - Draw spinning 3D cube.
+    - Draw spinning cube with manual lighting.
+    - Draw a _cow_ with manual lighting and custom texture.
 
 -   [**Shader Exam**](https://github.com/leon196/SIGExam).
     <br>[Leon Denise](http://leon196.github.io) wrote a [tweet](https://twitter.com/leondenise/status/953716696161882114) with a typical shader exam he gives to his students on [SupInfo.com](https://rubika-edu.com).
