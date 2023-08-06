@@ -1,13 +1,8 @@
-import Metal
 import MetalKit
 import ModelIO
 import simd
 
-@MainActor protocol Renderer: MTKViewDelegate {
-  var device: MTLDevice { get }
-}
-
-@MainActor final class CowRenderer: NSObject, Renderer {
+@MainActor final class CowRenderer: NSObject, MTKViewDelegate {
   let device: MTLDevice
   private let queue: MTLCommandQueue
   private let renderPipeline: MTLRenderPipelineState

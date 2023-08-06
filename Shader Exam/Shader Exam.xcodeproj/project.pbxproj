@@ -3,58 +3,50 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D50AC3A202BBA2E00221070 /* ShadersPage1.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D50AC39202BBA2E00221070 /* ShadersPage1.metal */; };
-		8D50AC3C202BBABF00221070 /* ShadersPage2.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D50AC3B202BBABF00221070 /* ShadersPage2.metal */; };
-		8D50AC3E202BBAC700221070 /* ShadersPage3.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D50AC3D202BBAC700221070 /* ShadersPage3.metal */; };
-		8D50AC40202BBAD200221070 /* ShadersPage4.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D50AC3F202BBAD200221070 /* ShadersPage4.metal */; };
-		8D50AC42202BBAD900221070 /* ShadersPage5.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D50AC41202BBAD900221070 /* ShadersPage5.metal */; };
-		8D9954942026245200AD8D1B /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9954932026245200AD8D1B /* Renderer.swift */; };
-		8D9954A220262A0A00AD8D1B /* pikachu.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D99549F20262A0A00AD8D1B /* pikachu.png */; };
-		8D9954A320262A0A00AD8D1B /* pikachu.obj in Resources */ = {isa = PBXBuildFile; fileRef = 8D9954A020262A0A00AD8D1B /* pikachu.obj */; };
-		8D9954A420262A0A00AD8D1B /* pikachu.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 8D9954A120262A0A00AD8D1B /* pikachu.mtl */; };
-		8D9954A620262BEA00AD8D1B /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9954A520262BEA00AD8D1B /* SetUp.swift */; };
-		8D9954A82026337600AD8D1B /* ShadersMain.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D9954A72026337600AD8D1B /* ShadersMain.metal */; };
-		8D9954AA2026339500AD8D1B /* ShadersQuad.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D9954A92026339500AD8D1B /* ShadersQuad.metal */; };
-		8D9954AC202652DA00AD8D1B /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9954AB202652DA00AD8D1B /* Loader.swift */; };
-		8D9954AE2026598500AD8D1B /* MathUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9954AD2026598500AD8D1B /* MathUtils.swift */; };
-		8DFB845B2023A79C00F0A6D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB845A2023A79C00F0A6D1 /* AppDelegate.swift */; };
-		8DFB845D2023A79C00F0A6D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB845C2023A79C00F0A6D1 /* ViewController.swift */; };
-		8DFB845F2023A79C00F0A6D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DFB845E2023A79C00F0A6D1 /* Assets.xcassets */; };
-		8DFB84622023A79C00F0A6D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DFB84602023A79C00F0A6D1 /* Main.storyboard */; };
+		8D08A7682A7FCB2A008E3E3E /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D08A7672A7FCB2A008E3E3E /* App.swift */; };
+		8D08A76C2A7FCB2C008E3E3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D08A76B2A7FCB2C008E3E3E /* Assets.xcassets */; };
+		8D08A7782A7FCB80008E3E3E /* Foundation+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D08A7752A7FCB80008E3E3E /* Foundation+Additions.swift */; };
+		8D08A7792A7FCB80008E3E3E /* CoreGraphics+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D08A7762A7FCB80008E3E3E /* CoreGraphics+Additions.swift */; };
+		8D08A77A2A7FCB80008E3E3E /* SIMD+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D08A7772A7FCB80008E3E3E /* SIMD+Additions.swift */; };
+		8D08A77E2A7FD1A4008E3E3E /* pikachu.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 8D08A77B2A7FD1A3008E3E3E /* pikachu.mtl */; };
+		8D08A77F2A7FD1A4008E3E3E /* pikachu.obj in Resources */ = {isa = PBXBuildFile; fileRef = 8D08A77C2A7FD1A3008E3E3E /* pikachu.obj */; };
+		8D08A7802A7FD1A4008E3E3E /* pikachu.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D08A77D2A7FD1A4008E3E3E /* pikachu.png */; };
+		8D82E0CE2A7FD4FC005F1660 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D82E0CD2A7FD4FC005F1660 /* Renderer.swift */; };
+		8D82E0D02A7FD579005F1660 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D82E0CF2A7FD579005F1660 /* MetalView.swift */; };
+		8D82E0D42A7FE33C005F1660 /* FirstPass.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D82E0D32A7FE33C005F1660 /* FirstPass.metal */; };
+		8D82E0D62A7FE7EB005F1660 /* SecondPass.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D82E0D52A7FE7EB005F1660 /* SecondPass.metal */; };
+		8D82E0D82A7FE93A005F1660 /* Shaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D82E0D72A7FE93A005F1660 /* Shaders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8D4027022708E7C3005C2681 /* Exam */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Exam; sourceTree = "<group>"; };
-		8D50AC39202BBA2E00221070 /* ShadersPage1.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersPage1.metal; sourceTree = "<group>"; };
-		8D50AC3B202BBABF00221070 /* ShadersPage2.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersPage2.metal; sourceTree = "<group>"; };
-		8D50AC3D202BBAC700221070 /* ShadersPage3.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersPage3.metal; sourceTree = "<group>"; };
-		8D50AC3F202BBAD200221070 /* ShadersPage4.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersPage4.metal; sourceTree = "<group>"; };
-		8D50AC41202BBAD900221070 /* ShadersPage5.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersPage5.metal; sourceTree = "<group>"; };
-		8D9954932026245200AD8D1B /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		8D9954962026257700AD8D1B /* macOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = macOS.xcconfig; sourceTree = "<group>"; };
-		8D9954982026257700AD8D1B /* macOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = macOS.plist; sourceTree = "<group>"; };
-		8D99549A2026257800AD8D1B /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
-		8D99549F20262A0A00AD8D1B /* pikachu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pikachu.png; sourceTree = "<group>"; };
-		8D9954A020262A0A00AD8D1B /* pikachu.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pikachu.obj; sourceTree = "<group>"; };
-		8D9954A120262A0A00AD8D1B /* pikachu.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pikachu.mtl; sourceTree = "<group>"; };
-		8D9954A520262BEA00AD8D1B /* SetUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUp.swift; sourceTree = "<group>"; };
-		8D9954A72026337600AD8D1B /* ShadersMain.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersMain.metal; sourceTree = "<group>"; };
-		8D9954A92026339500AD8D1B /* ShadersQuad.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ShadersQuad.metal; sourceTree = "<group>"; };
-		8D9954AB202652DA00AD8D1B /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
-		8D9954AD2026598500AD8D1B /* MathUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathUtils.swift; sourceTree = "<group>"; };
-		8DFB84572023A79C00F0A6D1 /* Shader Exam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shader Exam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8DFB845A2023A79C00F0A6D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8DFB845C2023A79C00F0A6D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8DFB845E2023A79C00F0A6D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8DFB84612023A79C00F0A6D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8D08A7642A7FCB2A008E3E3E /* Page 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Page 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D08A7672A7FCB2A008E3E3E /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		8D08A76B2A7FCB2C008E3E3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8D08A76D2A7FCB2C008E3E3E /* Page.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Page.entitlements; sourceTree = "<group>"; };
+		8D08A7752A7FCB80008E3E3E /* Foundation+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Additions.swift"; sourceTree = "<group>"; };
+		8D08A7762A7FCB80008E3E3E /* CoreGraphics+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Additions.swift"; sourceTree = "<group>"; };
+		8D08A7772A7FCB80008E3E3E /* SIMD+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SIMD+Additions.swift"; sourceTree = "<group>"; };
+		8D08A77B2A7FD1A3008E3E3E /* pikachu.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pikachu.mtl; sourceTree = "<group>"; };
+		8D08A77C2A7FD1A3008E3E3E /* pikachu.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pikachu.obj; sourceTree = "<group>"; };
+		8D08A77D2A7FD1A4008E3E3E /* pikachu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pikachu.png; sourceTree = "<group>"; };
+		8D08A7812A7FD226008E3E3E /* Page1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page1.png; sourceTree = "<group>"; };
+		8D82E0CD2A7FD4FC005F1660 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		8D82E0CF2A7FD579005F1660 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
+		8D82E0D32A7FE33C005F1660 /* FirstPass.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = FirstPass.metal; sourceTree = "<group>"; };
+		8D82E0D52A7FE7EB005F1660 /* SecondPass.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SecondPass.metal; sourceTree = "<group>"; };
+		8D82E0D72A7FE93A005F1660 /* Shaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shaders.swift; sourceTree = "<group>"; };
+		8D82E0DA2A801335005F1660 /* Page5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page5.png; sourceTree = "<group>"; };
+		8D82E0DB2A801335005F1660 /* Page4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page4.png; sourceTree = "<group>"; };
+		8D82E0DC2A801336005F1660 /* Page2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page2.png; sourceTree = "<group>"; };
+		8D82E0DD2A801336005F1660 /* Page3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Page3.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8DFB84542023A79C00F0A6D1 /* Frameworks */ = {
+		8D08A7612A7FCB2A008E3E3E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -64,272 +56,187 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8D2831112028A81F007A5CF7 /* Assets */ = {
+		8D08A7592A7FC9CA008E3E3E = {
 			isa = PBXGroup;
 			children = (
-				8D4027022708E7C3005C2681 /* Exam */,
-				8D99549E20262A0A00AD8D1B /* Pikachu */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		8D7D8FC62032D30300483F3B /* Pages */ = {
-			isa = PBXGroup;
-			children = (
-				8D50AC39202BBA2E00221070 /* ShadersPage1.metal */,
-				8D50AC3B202BBABF00221070 /* ShadersPage2.metal */,
-				8D50AC3D202BBAC700221070 /* ShadersPage3.metal */,
-				8D50AC3F202BBAD200221070 /* ShadersPage4.metal */,
-				8D50AC41202BBAD900221070 /* ShadersPage5.metal */,
-			);
-			path = Pages;
-			sourceTree = "<group>";
-		};
-		8D9954952026257700AD8D1B /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				8D9954962026257700AD8D1B /* macOS.xcconfig */,
-				8D9954982026257700AD8D1B /* macOS.plist */,
-			);
-			name = macOS;
-			path = Configuration/macOS;
-			sourceTree = SOURCE_ROOT;
-		};
-		8D9954992026257800AD8D1B /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				8D99549A2026257800AD8D1B /* Common.xcconfig */,
-			);
-			name = Common;
-			path = Configuration/Common;
-			sourceTree = SOURCE_ROOT;
-		};
-		8D99549E20262A0A00AD8D1B /* Pikachu */ = {
-			isa = PBXGroup;
-			children = (
-				8D99549F20262A0A00AD8D1B /* pikachu.png */,
-				8D9954A020262A0A00AD8D1B /* pikachu.obj */,
-				8D9954A120262A0A00AD8D1B /* pikachu.mtl */,
-			);
-			path = Pikachu;
-			sourceTree = "<group>";
-		};
-		8DFB84412023A61C00F0A6D1 = {
-			isa = PBXGroup;
-			children = (
-				8DFB84492023A72E00F0A6D1 /* Configuration */,
-				8DFB84482023A72E00F0A6D1 /* Sources */,
-				8DFB84582023A79C00F0A6D1 /* Products */,
+				8D82E0D92A801316005F1660 /* Exam */,
+				8D08A7662A7FCB2A008E3E3E /* Page 1 */,
+				8D08A7742A7FCB49008E3E3E /* Utilities */,
+				8D08A7652A7FCB2A008E3E3E /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		8DFB84482023A72E00F0A6D1 /* Sources */ = {
+		8D08A7652A7FCB2A008E3E3E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DFB84682023A7AE00F0A6D1 /* Common */,
-				8DFB84692023A7B700F0A6D1 /* macOS */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		8DFB84492023A72E00F0A6D1 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				8D9954992026257800AD8D1B /* Common */,
-				8D9954952026257700AD8D1B /* macOS */,
-			);
-			path = Configuration;
-			sourceTree = "<group>";
-		};
-		8DFB84582023A79C00F0A6D1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8DFB84572023A79C00F0A6D1 /* Shader Exam.app */,
+				8D08A7642A7FCB2A008E3E3E /* Page 1.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8DFB84682023A7AE00F0A6D1 /* Common */ = {
+		8D08A7662A7FCB2A008E3E3E /* Page 1 */ = {
 			isa = PBXGroup;
 			children = (
-				8D9954932026245200AD8D1B /* Renderer.swift */,
-				8D9954AB202652DA00AD8D1B /* Loader.swift */,
-				8D9954A72026337600AD8D1B /* ShadersMain.metal */,
-				8D9954A92026339500AD8D1B /* ShadersQuad.metal */,
-				8D7D8FC62032D30300483F3B /* Pages */,
-				8D2831112028A81F007A5CF7 /* Assets */,
-				8D9954A520262BEA00AD8D1B /* SetUp.swift */,
-				8D9954AD2026598500AD8D1B /* MathUtils.swift */,
+				8D08A7672A7FCB2A008E3E3E /* App.swift */,
+				8D82E0CF2A7FD579005F1660 /* MetalView.swift */,
+				8D82E0CD2A7FD4FC005F1660 /* Renderer.swift */,
+				8D82E0D72A7FE93A005F1660 /* Shaders.swift */,
+				8D82E0D32A7FE33C005F1660 /* FirstPass.metal */,
+				8D82E0D52A7FE7EB005F1660 /* SecondPass.metal */,
 			);
-			path = Common;
+			path = "Page 1";
 			sourceTree = "<group>";
 		};
-		8DFB84692023A7B700F0A6D1 /* macOS */ = {
+		8D08A7742A7FCB49008E3E3E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				8DFB845A2023A79C00F0A6D1 /* AppDelegate.swift */,
-				8DFB845C2023A79C00F0A6D1 /* ViewController.swift */,
-				8DFB846A2023A7D000F0A6D1 /* Assets */,
+				8D08A76D2A7FCB2C008E3E3E /* Page.entitlements */,
+				8D08A76B2A7FCB2C008E3E3E /* Assets.xcassets */,
+				8D08A7752A7FCB80008E3E3E /* Foundation+Additions.swift */,
+				8D08A7762A7FCB80008E3E3E /* CoreGraphics+Additions.swift */,
+				8D08A7772A7FCB80008E3E3E /* SIMD+Additions.swift */,
+				8D08A77C2A7FD1A3008E3E3E /* pikachu.obj */,
+				8D08A77B2A7FD1A3008E3E3E /* pikachu.mtl */,
+				8D08A77D2A7FD1A4008E3E3E /* pikachu.png */,
 			);
-			path = macOS;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
-		8DFB846A2023A7D000F0A6D1 /* Assets */ = {
+		8D82E0D92A801316005F1660 /* Exam */ = {
 			isa = PBXGroup;
 			children = (
-				8DFB845E2023A79C00F0A6D1 /* Assets.xcassets */,
-				8DFB84602023A79C00F0A6D1 /* Main.storyboard */,
+				8D08A7812A7FD226008E3E3E /* Page1.png */,
+				8D82E0DC2A801336005F1660 /* Page2.png */,
+				8D82E0DD2A801336005F1660 /* Page3.png */,
+				8D82E0DB2A801335005F1660 /* Page4.png */,
+				8D82E0DA2A801335005F1660 /* Page5.png */,
 			);
-			path = Assets;
+			path = Exam;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8DFB84562023A79C00F0A6D1 /* Shader Exam */ = {
+		8D08A7632A7FCB2A008E3E3E /* Page 1 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8DFB84652023A79C00F0A6D1 /* Build configuration list for PBXNativeTarget "Shader Exam" */;
+			buildConfigurationList = 8D08A7712A7FCB2C008E3E3E /* Build configuration list for PBXNativeTarget "Page 1" */;
 			buildPhases = (
-				8DFB84532023A79C00F0A6D1 /* Sources */,
-				8DFB84542023A79C00F0A6D1 /* Frameworks */,
-				8DFB84552023A79C00F0A6D1 /* Resources */,
+				8D08A7602A7FCB2A008E3E3E /* Sources */,
+				8D08A7612A7FCB2A008E3E3E /* Frameworks */,
+				8D08A7622A7FCB2A008E3E3E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Shader Exam";
-			productName = "Shader Exam";
-			productReference = 8DFB84572023A79C00F0A6D1 /* Shader Exam.app */;
+			name = "Page 1";
+			productName = "Page 1";
+			productReference = 8D08A7642A7FCB2A008E3E3E /* Page 1.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		8DFB84422023A61C00F0A6D1 /* Project object */ = {
+		8D08A75A2A7FC9CA008E3E3E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 1200;
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					8DFB84562023A79C00F0A6D1 = {
-						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1010;
+					8D08A7632A7FCB2A008E3E3E = {
+						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = 8DFB84452023A61C00F0A6D1 /* Build configuration list for PBXProject "Shader Exam" */;
-			compatibilityVersion = "Xcode 13.0";
+			buildConfigurationList = 8D08A75D2A7FC9CA008E3E3E /* Build configuration list for PBXProject "Shader Exam" */;
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 8DFB84412023A61C00F0A6D1;
-			productRefGroup = 8DFB84582023A79C00F0A6D1 /* Products */;
+			mainGroup = 8D08A7592A7FC9CA008E3E3E;
+			productRefGroup = 8D08A7652A7FCB2A008E3E3E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8DFB84562023A79C00F0A6D1 /* Shader Exam */,
+				8D08A7632A7FCB2A008E3E3E /* Page 1 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8DFB84552023A79C00F0A6D1 /* Resources */ = {
+		8D08A7622A7FCB2A008E3E3E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DFB845F2023A79C00F0A6D1 /* Assets.xcassets in Resources */,
-				8D9954A420262A0A00AD8D1B /* pikachu.mtl in Resources */,
-				8D9954A320262A0A00AD8D1B /* pikachu.obj in Resources */,
-				8DFB84622023A79C00F0A6D1 /* Main.storyboard in Resources */,
-				8D9954A220262A0A00AD8D1B /* pikachu.png in Resources */,
+				8D08A76C2A7FCB2C008E3E3E /* Assets.xcassets in Resources */,
+				8D08A77F2A7FD1A4008E3E3E /* pikachu.obj in Resources */,
+				8D08A77E2A7FD1A4008E3E3E /* pikachu.mtl in Resources */,
+				8D08A7802A7FD1A4008E3E3E /* pikachu.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8DFB84532023A79C00F0A6D1 /* Sources */ = {
+		8D08A7602A7FCB2A008E3E3E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D9954A82026337600AD8D1B /* ShadersMain.metal in Sources */,
-				8D50AC3A202BBA2E00221070 /* ShadersPage1.metal in Sources */,
-				8DFB845D2023A79C00F0A6D1 /* ViewController.swift in Sources */,
-				8D9954942026245200AD8D1B /* Renderer.swift in Sources */,
-				8D50AC3C202BBABF00221070 /* ShadersPage2.metal in Sources */,
-				8DFB845B2023A79C00F0A6D1 /* AppDelegate.swift in Sources */,
-				8D9954A620262BEA00AD8D1B /* SetUp.swift in Sources */,
-				8D9954AE2026598500AD8D1B /* MathUtils.swift in Sources */,
-				8D50AC3E202BBAC700221070 /* ShadersPage3.metal in Sources */,
-				8D9954AC202652DA00AD8D1B /* Loader.swift in Sources */,
-				8D50AC40202BBAD200221070 /* ShadersPage4.metal in Sources */,
-				8D9954AA2026339500AD8D1B /* ShadersQuad.metal in Sources */,
-				8D50AC42202BBAD900221070 /* ShadersPage5.metal in Sources */,
+				8D08A7682A7FCB2A008E3E3E /* App.swift in Sources */,
+				8D82E0D02A7FD579005F1660 /* MetalView.swift in Sources */,
+				8D82E0CE2A7FD4FC005F1660 /* Renderer.swift in Sources */,
+				8D82E0D82A7FE93A005F1660 /* Shaders.swift in Sources */,
+				8D82E0D42A7FE33C005F1660 /* FirstPass.metal in Sources */,
+				8D82E0D62A7FE7EB005F1660 /* SecondPass.metal in Sources */,
+				8D08A7782A7FCB80008E3E3E /* Foundation+Additions.swift in Sources */,
+				8D08A7792A7FCB80008E3E3E /* CoreGraphics+Additions.swift in Sources */,
+				8D08A77A2A7FCB80008E3E3E /* SIMD+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		8DFB84602023A79C00F0A6D1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8DFB84612023A79C00F0A6D1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		8DFB84462023A61C00F0A6D1 /* Debug */ = {
+		8D08A75E2A7FC9CA008E3E3E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D99549A2026257800AD8D1B /* Common.xcconfig */;
 			buildSettings = {
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				CODE_SIGN_ENTITLEMENTS = Utilities/Page.entitlements;
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Debug;
 		};
-		8DFB84472023A61C00F0A6D1 /* Release */ = {
+		8D08A75F2A7FC9CA008E3E3E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D99549A2026257800AD8D1B /* Common.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Utilities/Page.entitlements;
+				SWIFT_STRICT_CONCURRENCY = complete;
+			};
+			name = Release;
+		};
+		8D08A7722A7FCB2C008E3E3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -337,121 +244,177 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-			};
-			name = Release;
-		};
-		8DFB84662023A79C00F0A6D1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D9954962026257700AD8D1B /* macOS.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = V4LZL56CA7;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.exam.page1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 			};
 			name = Debug;
 		};
-		8DFB84672023A79C00F0A6D1 /* Release */ = {
+		8D08A7732A7FCB2C008E3E3E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D9954962026257700AD8D1B /* macOS.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = V4LZL56CA7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.exam.page1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8DFB84452023A61C00F0A6D1 /* Build configuration list for PBXProject "Shader Exam" */ = {
+		8D08A75D2A7FC9CA008E3E3E /* Build configuration list for PBXProject "Shader Exam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8DFB84462023A61C00F0A6D1 /* Debug */,
-				8DFB84472023A61C00F0A6D1 /* Release */,
+				8D08A75E2A7FC9CA008E3E3E /* Debug */,
+				8D08A75F2A7FC9CA008E3E3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8DFB84652023A79C00F0A6D1 /* Build configuration list for PBXNativeTarget "Shader Exam" */ = {
+		8D08A7712A7FCB2C008E3E3E /* Build configuration list for PBXNativeTarget "Page 1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8DFB84662023A79C00F0A6D1 /* Debug */,
-				8DFB84672023A79C00F0A6D1 /* Release */,
+				8D08A7722A7FCB2C008E3E3E /* Debug */,
+				8D08A7732A7FCB2C008E3E3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 8DFB84422023A61C00F0A6D1 /* Project object */;
+	rootObject = 8D08A75A2A7FC9CA008E3E3E /* Project object */;
 }

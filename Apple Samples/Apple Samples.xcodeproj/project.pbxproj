@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,7 +13,6 @@
 		8D16D40F2A7E556600E7BA2E /* SIMD+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D16D40C2A7E556600E7BA2E /* SIMD+Additions.swift */; };
 		8D16D4112A7E55C800E7BA2E /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D16D4102A7E55C800E7BA2E /* Shader.metal */; };
 		8D16D4132A7E55CB00E7BA2E /* TessellationRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D16D4122A7E55CB00E7BA2E /* TessellationRenderer.swift */; };
-		8D16D4152A7E56AD00E7BA2E /* Shader copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D16D4142A7E56AD00E7BA2E /* Shader copy.swift */; };
 		8D16D4172A7E580500E7BA2E /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D16D4162A7E580500E7BA2E /* App.swift */; };
 		8D16D4192A7E608E00E7BA2E /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D16D4182A7E608E00E7BA2E /* MetalView.swift */; };
 /* End PBXBuildFile section */
@@ -27,7 +26,6 @@
 		8D16D40C2A7E556600E7BA2E /* SIMD+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SIMD+Additions.swift"; sourceTree = "<group>"; };
 		8D16D4102A7E55C800E7BA2E /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
 		8D16D4122A7E55CB00E7BA2E /* TessellationRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TessellationRenderer.swift; sourceTree = "<group>"; };
-		8D16D4142A7E56AD00E7BA2E /* Shader copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shader copy.swift"; sourceTree = "<group>"; };
 		8D16D4162A7E580500E7BA2E /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		8D16D4182A7E608E00E7BA2E /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,9 +64,7 @@
 				8D16D4162A7E580500E7BA2E /* App.swift */,
 				8D16D4182A7E608E00E7BA2E /* MetalView.swift */,
 				8D16D4122A7E55CB00E7BA2E /* TessellationRenderer.swift */,
-				8D16D4142A7E56AD00E7BA2E /* Shader copy.swift */,
 				8D16D4102A7E55C800E7BA2E /* Shader.metal */,
-				8D16D4002A7E54A600E7BA2E /* Assets.xcassets */,
 			);
 			path = Tessellation;
 			sourceTree = "<group>";
@@ -77,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				8D16D4022A7E54A600E7BA2E /* App.entitlements */,
+				8D16D4002A7E54A600E7BA2E /* Assets.xcassets */,
 				8D16D40A2A7E556600E7BA2E /* Foundation+Additions.swift */,
 				8D16D40B2A7E556600E7BA2E /* CoreGraphics+Additions.swift */,
 				8D16D40C2A7E556600E7BA2E /* SIMD+Additions.swift */,
@@ -120,7 +117,7 @@
 				};
 			};
 			buildConfigurationList = 8D16D3F22A7E543F00E7BA2E /* Build configuration list for PBXProject "Apple Samples" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -156,7 +153,6 @@
 				8D16D4192A7E608E00E7BA2E /* MetalView.swift in Sources */,
 				8D16D4112A7E55C800E7BA2E /* Shader.metal in Sources */,
 				8D16D40D2A7E556600E7BA2E /* Foundation+Additions.swift in Sources */,
-				8D16D4152A7E56AD00E7BA2E /* Shader copy.swift in Sources */,
 				8D16D40F2A7E556600E7BA2E /* SIMD+Additions.swift in Sources */,
 				8D16D40E2A7E556600E7BA2E /* CoreGraphics+Additions.swift in Sources */,
 				8D16D4172A7E580500E7BA2E /* App.swift in Sources */,
@@ -347,7 +343,7 @@
 				MARKETING_VERSION = 2.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.apple.Tessellation;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.apple.tessellation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";

@@ -14,7 +14,7 @@ import Metal
           .frame(minWidth: 200, minHeight: 200)
 
         VStack(alignment: .leading, spacing: 16) {
-          Picker("Type", selection: self.$tessellationType) {
+          Picker("Tesselation Type", selection: self.$tessellationType) {
             ForEach(TessellationType.allCases) {
               Text($0.description)
             }

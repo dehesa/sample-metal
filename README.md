@@ -89,25 +89,25 @@ This repo contains code with examples on how to use Apple's Metal GPU APIs. Some
     - Clear Screen.
     - Draw 2D triangle.
     - Draw spinning 3D cube.
-    - Draw spinning cube with manual lighting.
+    - Draw spinning _teapot_ with manual lighting.
     - Draw a _cow_ with manual lighting and custom texture.
 
 -   [**Shader Exam**](https://github.com/leon196/SIGExam).
     <br>[Leon Denise](http://leon196.github.io) wrote a [tweet](https://twitter.com/leondenise/status/953716696161882114) with a typical shader exam he gives to his students on [SupInfo.com](https://rubika-edu.com).
-    -   [Page 1](Shader%20Exam/Sources/Common/Assets/Exam/Page1.png) shaders:
-        [pass](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L7),
-        [mirror](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L17),
-        [symmetry](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L24),
-        [rotation](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L32),
-        [zoom](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L50),
-        [zoomDistortion](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L59),
-        [repetition](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L70),
-        [spiral](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L77),
-        [thunder](Shader%20Exam/Sources/Common/Pages/ShadersPage1.metal#L91).
-    -   [Page 2](Shader%20Exam/Sources/Common/Assets/Exam/Page2.png) shaders:
-    -   [Page 3](Shader%20Exam/Sources/Common/Assets/Exam/Page3.png) shaders:
-    -   [Page 4](Shader%20Exam/Sources/Common/Assets/Exam/Page4.png) shaders:
-    -   [Page 5](Shader%20Exam/Sources/Common/Assets/Exam/Page5.png) shaders:
+    -   [Page 1](Shader%20Exam/Exam/Page1.png) shaders:
+        [pass](Shader%20Exam/Page%201/SecondPass.metal#L35),
+        [mirror](Shader%20Exam/Page%201/SecondPass.metal#L47),
+        [symmetry](Shader%20Exam/Page%201/SecondPass.metal#L57),
+        [rotation](Shader%20Exam/Page%201/SecondPass.metal#L67),
+        [zoom](Shader%20Exam/Page%201/SecondPass.metal#L91),
+        [zoomDistortion](Shader%20Exam/Page%201/SecondPass.metal#L103),
+        [repetition](Shader%20Exam/Page%201/SecondPass.metal#L116),
+        [spiral](Shader%20Exam/Page%201/SecondPass.metal#L128),
+        [thunder](Shader%20Exam/Page%201/SecondPass.metal#L145),
+    -   [Page 2](Shader%20Exam/Exam/Page2.png) shaders: clamp, pli, color direction, pixelated, vague, column, crash, scanline, double frequency.
+    -   [Page 3](Shader%20Exam/Exam/Page3.png) shaders: black & white, threshold, thresholds, sonar, grill, stamp, local negative, chromatic aberration, chroma key
+    -   [Page 4](Shader%20Exam/Exam/Page4.png) shaders: vague, chubby, skinny, twist, glitch, voxel glitch, basic shading, toon shading, cell shading
+    -   [Page 5](Shader%20Exam/Exam/Page5.png) shaders: sphere, sphere repeat, pyramid, polar module, tube twist, tube web, volumetric cloud, strangler fig, kirby
 
 ## Command-Line Apps
 
