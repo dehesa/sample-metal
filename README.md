@@ -13,9 +13,10 @@ This repo contains code with examples on how to use Apple's Metal GPU APIs. Some
 
 ## Projects
 
--   Playground
+-   Playgrounds.
 
-    Xcode playgrounds to play with several concepts such as memory size/strides or quick view drawings.
+    - Memory size, stride, and alignment.
+    - `MTKView` as a Playground live view.
 
 -   Command-Line apps.
 
@@ -90,11 +91,11 @@ This repo contains code with examples on how to use Apple's Metal GPU APIs. Some
     - Draw 2D triangle.
     - Draw spinning 3D cube.
     - Draw spinning _teapot_ with manual lighting.
-    - Draw a _cow_ with manual lighting and custom texture.
+    - Draw spinning _cow_ with manual lighting and custom texture.
 
 -   [**Shader Exam**](https://github.com/leon196/SIGExam).
     <br>[Leon Denise](http://leon196.github.io) wrote a [tweet](https://twitter.com/leondenise/status/953716696161882114) with a typical shader exam he gives to his students on [SupInfo.com](https://rubika-edu.com).
-    -   [Page 1](Shader%20Exam/Exam/Page1.png) shaders:
+    -   [Page 1](Shader%20Exam/Exam/Page1.png):
         [pass](Shader%20Exam/Page%201/SecondPass.metal#L35),
         [mirror](Shader%20Exam/Page%201/SecondPass.metal#L47),
         [symmetry](Shader%20Exam/Page%201/SecondPass.metal#L57),
@@ -103,36 +104,8 @@ This repo contains code with examples on how to use Apple's Metal GPU APIs. Some
         [zoomDistortion](Shader%20Exam/Page%201/SecondPass.metal#L103),
         [repetition](Shader%20Exam/Page%201/SecondPass.metal#L116),
         [spiral](Shader%20Exam/Page%201/SecondPass.metal#L128),
-        [thunder](Shader%20Exam/Page%201/SecondPass.metal#L145),
-    -   [Page 2](Shader%20Exam/Exam/Page2.png) shaders: clamp, pli, color direction, pixelated, vague, column, crash, scanline, double frequency.
-    -   [Page 3](Shader%20Exam/Exam/Page3.png) shaders: black & white, threshold, thresholds, sonar, grill, stamp, local negative, chromatic aberration, chroma key
-    -   [Page 4](Shader%20Exam/Exam/Page4.png) shaders: vague, chubby, skinny, twist, glitch, voxel glitch, basic shading, toon shading, cell shading
-    -   [Page 5](Shader%20Exam/Exam/Page5.png) shaders: sphere, sphere repeat, pyramid, polar module, tube twist, tube web, volumetric cloud, strangler fig, kirby
-
-## Command-Line Apps
-
-You can run Command-Line projects from Xcode and see the result in Xcode console; however, you can also build those projects on your terminal and execute them outside.
-
-1. [Clone the project](xcode://clone?repo=https://github.com/dehesa/Metal).
-
-    ```swift
-    git clone https://github.com/dehesa/Metal
-    ```
-
-2. Navigate to the _Command-Line_ source folder.
-
-    ```
-    cd "commands"
-    ```
-
-3. Build the project you are interested in.
-
-    ```swift
-    xcodebuild -project "$PROJECT_NAME.xcodeproj"
-    ```
-
-4. Execute the Command-Line tool from the `build/Release` folder.
-    ```swift
-    cd build/Release
-    ./$TOOL_NAME
-    ```
+        [thunder](Shader%20Exam/Page%201/SecondPass.metal#L145).
+    -   [Page 2](Shader%20Exam/Exam/Page2.png): clamp, pli, color direction, pixelated, vague, column, crash, scanline, double frequency.
+    -   [Page 3](Shader%20Exam/Exam/Page3.png): black & white, threshold, thresholds, sonar, grill, stamp, local negative, chromatic aberration, chroma key
+    -   [Page 4](Shader%20Exam/Exam/Page4.png): vague, chubby, skinny, twist, glitch, voxel glitch, basic shading, toon shading, cell shading
+    -   [Page 5](Shader%20Exam/Exam/Page5.png): sphere, sphere repeat, pyramid, polar module, tube twist, tube web, volumetric cloud, strangler fig, kirby

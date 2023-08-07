@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "ios-marketing.png",
+      "filename" : "icon_512x512@2x.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -13,7 +13,7 @@
       "size" : "16x16"
     },
     {
-      "filename" : "icon_16x16@2x.png",
+      "filename" : "icon_32x32.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "16x16"
@@ -37,7 +37,7 @@
       "size" : "128x128"
     },
     {
-      "filename" : "icon_128x128@2x.png",
+      "filename" : "icon_256x256.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "128x128"
@@ -49,7 +49,7 @@
       "size" : "256x256"
     },
     {
-      "filename" : "icon_256x256@2x.png",
+      "filename" : "icon_512x512.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "256x256"

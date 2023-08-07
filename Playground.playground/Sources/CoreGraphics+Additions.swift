@@ -1,43 +1,4 @@
-import Foundation
-
-/// Conforming types expose helper function to configure inline.
-public protocol ConfigurableReference: AnyObject {
-  /// Makes the receiving value accessible within the passed block parameter and ends up returning the modified value.
-  /// - parameter block: Closure executing a given task on the receiving function value.
-  /// - returns: The modified reference.
-  @discardableResult func configure(_ block: (Self) -> Void) -> Self
-}
-
-extension ConfigurableReference {
-  @_transparent @discardableResult public func configure(_ block: (Self) -> Void) -> Self {
-    block(self)
-    return self
-  }
-}
-
-// Swift doesn't allow to extend a protocol with another protocol; however, we can do default implementation for a specific protocol.
-extension NSObjectProtocol {
-  @_transparent @discardableResult public func configure(_ block: (Self)->Void) -> Self {
-    block(self)
-    return self
-  }
-}
-
-// MARK: -
-
-extension Double {
-  /// Number of radians in *one turn*.
-  @_transparent public static var τ: Double { Double.pi * 2 }
-  /// Number of radians in *half a turn*.
-  @_transparent public static var π: Double { Double.pi }
-}
-
-extension Float {
-  /// Number of radians in *one turn*.
-  @_transparent public static var τ: Float { Float(Double.τ) }
-  /// Number of radians in *half a turn*.
-  @_transparent public static var π: Float { Float(Double.π) }
-}
+import CoreGraphics
 
 extension CGPoint: Sequence, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, ExpressibleByArrayLiteral {
   public init(integerLiteral value: Int) {
