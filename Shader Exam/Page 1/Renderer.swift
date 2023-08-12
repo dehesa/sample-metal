@@ -3,21 +3,21 @@ import MetalKit
 import simd
 
 @MainActor final class PikachuRenderer: NSObject, MTKViewDelegate {
-  let device: MTLDevice
+  let device: any MTLDevice
   private(set) var exercise: Exercise
 
-  private let queue: MTLCommandQueue
-  private let library: MTLLibrary
+  private let queue: any MTLCommandQueue
+  private let library: any MTLLibrary
   private let pikachuMesh: MTKMesh
-  private let pikacheTexture: MTLTexture
-  private let firstPassPipeline: MTLRenderPipelineState
-  private let depthPipeline: MTLDepthStencilState
+  private let pikacheTexture: any MTLTexture
+  private let firstPassPipeline: any MTLRenderPipelineState
+  private let depthPipeline: any MTLDepthStencilState
   private var secondPassDescriptor: MTLRenderPipelineDescriptor
-  private var secondPassPipeline: MTLRenderPipelineState
-  private var depthTexture: MTLTexture?
-  private var colorTexture: MTLTexture?
+  private var secondPassPipeline: any MTLRenderPipelineState
+  private var depthTexture: (any MTLTexture)?
+  private var colorTexture: (any MTLTexture)?
 
-  init(device: MTLDevice, exercise: Exercise) {
+  init(device: any MTLDevice, exercise: Exercise) {
     self.device = device
     self.exercise = exercise
     self.queue = device.makeCommandQueue()!

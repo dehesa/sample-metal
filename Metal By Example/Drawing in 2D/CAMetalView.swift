@@ -6,10 +6,11 @@ import UIKit
 import Metal
 
 #if os(macOS)
-@MainActor final class LowLevelView: NSView {
+/// Custom `NSView` holding the `CAMetalLayer` where the drawing will end up.
+@MainActor final class CAMetalView: NSView {
   private let state: MetalState
 
-  init(device: MTLDevice, queue: MTLCommandQueue) {
+  init(device: any MTLDevice, queue: any MTLCommandQueue) {
     self.state = MetalState(device: device, queue: queue)!
     super.init(frame: .zero)
 
@@ -37,7 +38,7 @@ import Metal
     guard let window else { return }
     self.state.layer.contentsScale = window.backingScaleFactor
     self.state.timer = FrameTimer { [unowned(unsafe) self] (now, out) in
-      self.redraw(now: now, frame: out)
+      self.draw(now: now, frame: out)
     }
   }
 
@@ -52,10 +53,11 @@ import Metal
   }
 }
 #elseif canImport(UIKit)
-@MainActor final class LowLevelView: UIView {
+/// Custom `UIView` holding the `CAMetalLayer` where the drawing will end up.
+@MainActor final class CAMetalView: UIView {
   private let state: MetalState
 
-  init(device: MTLDevice, queue: MTLCommandQueue) {
+  init(device: any MTLDevice, queue: any MTLCommandQueue) {
     self.state = MetalState(device: device, queue: queue)!
     super.init(frame: .zero)
 
@@ -82,7 +84,7 @@ import Metal
     guard let window else { return }
     self.state.layer.contentsScale = window.screen.nativeScale
     self.state.timer = FrameTimer { [unowned(unsafe) self] (now, out) in
-      self.redraw(now: now, frame: out)
+      self.draw(now: now, frame: out)
     }
   }
 
@@ -99,8 +101,8 @@ import Metal
 
 // MARK: - Shared
 
-extension LowLevelView {
-  nonisolated func redraw(now: Double, frame: Double) {
+extension CAMetalView {
+  nonisolated func draw(now: Double, frame: Double) {
     let layer = self.state.layer
     guard layer.drawableSize.allSatisfy({ $0 > .zero }),
           let drawable = layer.nextDrawable(),
@@ -126,27 +128,26 @@ extension LowLevelView {
   }
 }
 
-private extension LowLevelView {
+private extension CAMetalView {
   final class MetalState: @unchecked Sendable {
     /// The GPU doing the rendering.
-    let device: MTLDevice
+    let device: any MTLDevice
     /// The queue serializing the tasks to be performed in the GPU.
-    let queue: MTLCommandQueue
+    let queue: any MTLCommandQueue
     /// The render pipeline state (with MSL functions) to use when drawing the triangle.
-    let pipeline: MTLRenderPipelineState
+    let pipeline: any MTLRenderPipelineState
     /// The buffer containing the triangle vertices in normalize coordinates (that is x: `[-1,1]`, y: `[-1,1]`, z: `[0,1]`)
-    let buffer: MTLBuffer
+    let buffer: any MTLBuffer
     /// Pointer to the Metal layer of the view.
     private let layerPointer: UnsafeMutablePointer<CAMetalLayer>
     /// The lock used to synchronize the changes in timer.
-    private let lock: UnfairLock
+    private let lock: NSLock
     /// The timer synchronized with the screen refresh.
     private var _timer: FrameTimer?
 
-    init?(device: MTLDevice, queue: MTLCommandQueue) {
+    init?(device: any MTLDevice, queue: any MTLCommandQueue) {
       self.device = device
       self.queue = queue
-      self.layerPointer = .allocate(capacity: 1)
 
       guard let library = device.makeDefaultLibrary(),
             let vertexFunc = library.makeFunction(name: "main_vertex"),
@@ -163,24 +164,22 @@ private extension LowLevelView {
       self.pipeline = pipeline
 
       let vertices: [ShaderVertex] = [
-        ShaderVertex(position: [ 0.0,  0.5, 0, 1], color: [1, 0, 0, 1]), // Top vertex
+        ShaderVertex(position: [   0,  0.5, 0, 1], color: [1, 0, 0, 1]), // Top vertex
         ShaderVertex(position: [-0.5, -0.5, 0, 1], color: [0, 1, 0, 1]), // Left vertex
         ShaderVertex(position: [ 0.5, -0.5, 0, 1], color: [0, 0, 1, 1])  // Right vertex
       ]
 
       let length = vertices.count * MemoryLayout<ShaderVertex>.stride
       guard let buffer = device.makeBuffer(bytes: vertices, length: length, options: .cpuCacheModeWriteCombined) else { return nil }
-      self.buffer = buffer.configure {
-        $0.label = .identifier("buffer.vertices")
-      }
+      self.buffer = buffer.configure { $0.label = .identifier("buffer", "vertices") }
 
-      self.lock = UnfairLock()
+      self.layerPointer = .allocate(capacity: 1)
+      self.lock = NSLock().configure { $0.name = .identifier("cametalview", "lock") }
     }
 
     deinit {
       self.layerPointer.deinitialize(count: 1)
       self.layerPointer.deallocate()
-      self.lock.invalidate()
     }
 
     var layer: CAMetalLayer {
@@ -189,8 +188,8 @@ private extension LowLevelView {
     }
 
     var timer: FrameTimer? {
-      get { lock.sync { self._timer } }
-      set { lock.sync { self._timer = newValue } }
+      get { lock.withLock { self._timer } }
+      set { lock.withLock { self._timer = newValue } }
     }
   }
 }

@@ -23,14 +23,13 @@
 		8D16D3E92A7E52B100E7BA2E /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D16D3E12A7E52B100E7BA2E /* MetalView.swift */; };
 		8D16D3EA2A7E52DE00E7BA2E /* spot_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D16D3DF2A7E52A900E7BA2E /* spot_texture.png */; };
 		8D34F44E2A7E489300016B40 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F44C2A7E489300016B40 /* MetalView.swift */; };
-		8D34F4502A7E489300016B40 /* LowLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F44A2A7E489300016B40 /* LowLevelView.swift */; };
+		8D34F4502A7E489300016B40 /* CAMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F44A2A7E489300016B40 /* CAMetalView.swift */; };
 		8D34F4512A7E489300016B40 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F44D2A7E489300016B40 /* App.swift */; };
 		8D34F4532A7E48F800016B40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D34F4492A7E488E00016B40 /* Assets.xcassets */; };
 		8D34F4702A7E4AB400016B40 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F46A2A7E4AB400016B40 /* Shader.metal */; };
 		8D34F4712A7E4AB400016B40 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F46B2A7E4AB400016B40 /* App.swift */; };
 		8D34F4722A7E4AB400016B40 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F46C2A7E4AB400016B40 /* MetalView.swift */; };
-		8D34F4732A7E4AB400016B40 /* Shader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F46D2A7E4AB400016B40 /* Shader.swift */; };
-		8D34F4742A7E4AB400016B40 /* LowLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F46E2A7E4AB400016B40 /* LowLevelView.swift */; };
+		8D34F4742A7E4AB400016B40 /* CAMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F46E2A7E4AB400016B40 /* CAMetalView.swift */; };
 		8D34F4762A7E4AD100016B40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D34F4752A7E4AC200016B40 /* Assets.xcassets */; };
 		8D34F47A2A7E4AF800016B40 /* FrameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F4692A7E4AB400016B40 /* FrameTimer.swift */; };
 		8D34F4942A7E4FCC00016B40 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F48E2A7E4FCB00016B40 /* Shader.metal */; };
@@ -38,9 +37,10 @@
 		8D34F4962A7E4FCC00016B40 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F4902A7E4FCB00016B40 /* Renderer.swift */; };
 		8D34F4972A7E4FCC00016B40 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F4912A7E4FCB00016B40 /* MetalView.swift */; };
 		8D34F4982A7E4FCC00016B40 /* Shader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F4922A7E4FCB00016B40 /* Shader.swift */; };
-		8D34F4992A7E4FCC00016B40 /* LowLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F4932A7E4FCC00016B40 /* LowLevelView.swift */; };
+		8D34F4992A7E4FCC00016B40 /* CAMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F4932A7E4FCC00016B40 /* CAMetalView.swift */; };
 		8D34F49B2A7E4FD700016B40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D34F49A2A7E4FCE00016B40 /* Assets.xcassets */; };
 		8D34F49E2A7E4FF100016B40 /* FrameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D34F4692A7E4AB400016B40 /* FrameTimer.swift */; };
+		8DB8CF212A87CA870063A3D0 /* Shader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8CF202A87CA870063A3D0 /* Shader.swift */; };
 		8DD505292A80C2BA00A4EDC6 /* CoreGraphics+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD505272A80C2BA00A4EDC6 /* CoreGraphics+Additions.swift */; };
 		8DD5052A2A80C2BA00A4EDC6 /* CoreGraphics+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD505272A80C2BA00A4EDC6 /* CoreGraphics+Additions.swift */; };
 		8DD5052B2A80C2BA00A4EDC6 /* SIMD+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD505262A80C2BA00A4EDC6 /* SIMD+Additions.swift */; };
@@ -80,7 +80,7 @@
 		8D34F4382A7E47D200016B40 /* Clear Screen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clear Screen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D34F4412A7E47D500016B40 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
 		8D34F4492A7E488E00016B40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8D34F44A2A7E489300016B40 /* LowLevelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LowLevelView.swift; sourceTree = "<group>"; };
+		8D34F44A2A7E489300016B40 /* CAMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAMetalView.swift; sourceTree = "<group>"; };
 		8D34F44C2A7E489300016B40 /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		8D34F44D2A7E489300016B40 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		8D34F45A2A7E4A5300016B40 /* Drawing in 2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drawing in 2D.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,8 +88,7 @@
 		8D34F46A2A7E4AB400016B40 /* Shader.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
 		8D34F46B2A7E4AB400016B40 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		8D34F46C2A7E4AB400016B40 /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
-		8D34F46D2A7E4AB400016B40 /* Shader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shader.swift; sourceTree = "<group>"; };
-		8D34F46E2A7E4AB400016B40 /* LowLevelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LowLevelView.swift; sourceTree = "<group>"; };
+		8D34F46E2A7E4AB400016B40 /* CAMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAMetalView.swift; sourceTree = "<group>"; };
 		8D34F4752A7E4AC200016B40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D34F47F2A7E4F8A00016B40 /* Drawing in 3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drawing in 3D.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D34F48E2A7E4FCB00016B40 /* Shader.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
@@ -97,8 +96,9 @@
 		8D34F4902A7E4FCB00016B40 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		8D34F4912A7E4FCB00016B40 /* MetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		8D34F4922A7E4FCB00016B40 /* Shader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shader.swift; sourceTree = "<group>"; };
-		8D34F4932A7E4FCC00016B40 /* LowLevelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LowLevelView.swift; sourceTree = "<group>"; };
+		8D34F4932A7E4FCC00016B40 /* CAMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAMetalView.swift; sourceTree = "<group>"; };
 		8D34F49A2A7E4FCE00016B40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8DB8CF202A87CA870063A3D0 /* Shader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shader.swift; sourceTree = "<group>"; };
 		8DD505262A80C2BA00A4EDC6 /* SIMD+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SIMD+Additions.swift"; sourceTree = "<group>"; };
 		8DD505272A80C2BA00A4EDC6 /* CoreGraphics+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Additions.swift"; sourceTree = "<group>"; };
 		8DD505282A80C2BA00A4EDC6 /* Foundation+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Additions.swift"; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 			children = (
 				8D34F44D2A7E489300016B40 /* App.swift */,
 				8D34F44C2A7E489300016B40 /* MetalView.swift */,
-				8D34F44A2A7E489300016B40 /* LowLevelView.swift */,
+				8D34F44A2A7E489300016B40 /* CAMetalView.swift */,
 				8D34F4492A7E488E00016B40 /* Assets.xcassets */,
 			);
 			path = "Clear Screen";
@@ -226,8 +226,8 @@
 			children = (
 				8D34F46B2A7E4AB400016B40 /* App.swift */,
 				8D34F46C2A7E4AB400016B40 /* MetalView.swift */,
-				8D34F46E2A7E4AB400016B40 /* LowLevelView.swift */,
-				8D34F46D2A7E4AB400016B40 /* Shader.swift */,
+				8D34F46E2A7E4AB400016B40 /* CAMetalView.swift */,
+				8DB8CF202A87CA870063A3D0 /* Shader.swift */,
 				8D34F46A2A7E4AB400016B40 /* Shader.metal */,
 				8D34F4752A7E4AC200016B40 /* Assets.xcassets */,
 			);
@@ -239,8 +239,8 @@
 			children = (
 				8D34F48F2A7E4FCB00016B40 /* App.swift */,
 				8D34F4912A7E4FCB00016B40 /* MetalView.swift */,
+				8D34F4932A7E4FCC00016B40 /* CAMetalView.swift */,
 				8D34F4902A7E4FCB00016B40 /* Renderer.swift */,
-				8D34F4932A7E4FCC00016B40 /* LowLevelView.swift */,
 				8D34F4922A7E4FCB00016B40 /* Shader.swift */,
 				8D34F48E2A7E4FCB00016B40 /* Shader.metal */,
 				8D34F49A2A7E4FCE00016B40 /* Assets.xcassets */,
@@ -468,7 +468,7 @@
 			files = (
 				8D34F4512A7E489300016B40 /* App.swift in Sources */,
 				8D34F44E2A7E489300016B40 /* MetalView.swift in Sources */,
-				8D34F4502A7E489300016B40 /* LowLevelView.swift in Sources */,
+				8D34F4502A7E489300016B40 /* CAMetalView.swift in Sources */,
 				8DD505322A80C37700A4EDC6 /* Foundation+Additions.swift in Sources */,
 				8DD505332A80C37900A4EDC6 /* CoreGraphics+Additions.swift in Sources */,
 				8DD505342A80C37B00A4EDC6 /* SIMD+Additions.swift in Sources */,
@@ -481,10 +481,10 @@
 			files = (
 				8D34F4712A7E4AB400016B40 /* App.swift in Sources */,
 				8D34F4722A7E4AB400016B40 /* MetalView.swift in Sources */,
-				8D34F4742A7E4AB400016B40 /* LowLevelView.swift in Sources */,
-				8D34F4732A7E4AB400016B40 /* Shader.swift in Sources */,
+				8D34F4742A7E4AB400016B40 /* CAMetalView.swift in Sources */,
 				8D34F4702A7E4AB400016B40 /* Shader.metal in Sources */,
 				8DD5052E2A80C2BA00A4EDC6 /* Foundation+Additions.swift in Sources */,
+				8DB8CF212A87CA870063A3D0 /* Shader.swift in Sources */,
 				8DD5052A2A80C2BA00A4EDC6 /* CoreGraphics+Additions.swift in Sources */,
 				8DD5052C2A80C2BA00A4EDC6 /* SIMD+Additions.swift in Sources */,
 				8D34F47A2A7E4AF800016B40 /* FrameTimer.swift in Sources */,
@@ -497,7 +497,7 @@
 			files = (
 				8D34F4952A7E4FCC00016B40 /* App.swift in Sources */,
 				8D34F4972A7E4FCC00016B40 /* MetalView.swift in Sources */,
-				8D34F4992A7E4FCC00016B40 /* LowLevelView.swift in Sources */,
+				8D34F4992A7E4FCC00016B40 /* CAMetalView.swift in Sources */,
 				8D34F4962A7E4FCC00016B40 /* Renderer.swift in Sources */,
 				8D34F4982A7E4FCC00016B40 /* Shader.swift in Sources */,
 				8D34F4942A7E4FCC00016B40 /* Shader.metal in Sources */,
@@ -551,7 +551,6 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -583,16 +582,14 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.lighting;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.mbe.lighting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
@@ -645,7 +642,6 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -671,15 +667,13 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.lighting;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.mbe.lighting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
@@ -731,7 +725,6 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -762,16 +755,14 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.texturing;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.mbe.texturing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
@@ -824,7 +815,6 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
@@ -849,15 +839,13 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.texturing;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.mbe.texturing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
@@ -873,7 +861,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Utilities/App.entitlements;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				OTHER_SWIFT_FLAGS = "-enable-upcoming-feature BareSlashRegexLiterals -enable-upcoming-feature ConciseMagicFile -enable-upcoming-feature ExistentialAny -enable-upcoming-feature ForwardTrailingClosures -enable-upcoming-feature ImportObjcForwardDeclarations";
 				SWIFT_STRICT_CONCURRENCY = complete;
+				TVOS_DEPLOYMENT_TARGET = 17.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Debug;
 		};
@@ -881,7 +875,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Utilities/App.entitlements;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				OTHER_SWIFT_FLAGS = "-enable-upcoming-feature BareSlashRegexLiterals -enable-upcoming-feature ConciseMagicFile -enable-upcoming-feature ExistentialAny -enable-upcoming-feature ForwardTrailingClosures -enable-upcoming-feature ImportObjcForwardDeclarations";
 				SWIFT_STRICT_CONCURRENCY = complete;
+				TVOS_DEPLOYMENT_TARGET = 17.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Release;
 		};
@@ -956,16 +956,14 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.clearScreen;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.mbe.clearScreen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
@@ -1043,15 +1041,13 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.clearScreen;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.mbe.clearScreen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
@@ -1135,16 +1131,14 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.drawing2D;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.mbe.drawing2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
@@ -1223,15 +1217,13 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.drawing2D;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.mbe.drawing2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
@@ -1315,16 +1307,14 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.drawing3D;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.mbe.drawing3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";
@@ -1403,15 +1393,13 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.drawing3D;
+				PRODUCT_BUNDLE_IDENTIFIER = io.dehesa.metal.book.mbe.drawing3D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx";

@@ -13,7 +13,9 @@ import SwiftUI
             }
           }
         }.navigationTitle("Page 1")
+        #if os(iOS)
         .ignoresSafeArea()
+        #endif
     }
   }
 }
@@ -29,9 +31,7 @@ enum Exercise: Identifiable, CustomStringConvertible, CaseIterable {
   case spiral
   case thunder
 
-  var id: Self {
-    self
-  }
+  var id: Self { self }
 
   var description: String {
     switch self {

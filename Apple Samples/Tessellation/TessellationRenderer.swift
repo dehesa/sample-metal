@@ -10,15 +10,15 @@ import MetalKit
   /// Tessellation factors to be applied on the following renders.
   var factors: (edge: Float, inside: Float) = (2, 2)
 
-  let device: MTLDevice
-  private let queue: MTLCommandQueue
-  private let library: MTLLibrary
+  let device: any MTLDevice
+  private let queue: any MTLCommandQueue
+  private let library: any MTLLibrary
   /// Compute pipelines for tessellation triangles and quads.
-  private let computePipelines: (triangle: MTLComputePipelineState, quad: MTLComputePipelineState)
+  private let computePipelines: (triangle: any MTLComputePipelineState, quad: any MTLComputePipelineState)
   /// Render pipelines for this project.
-  private var renderPipelines: (triangle: MTLRenderPipelineState, quad: MTLRenderPipelineState)?
+  private var renderPipelines: (triangle: any MTLRenderPipelineState, quad: any MTLRenderPipelineState)?
   /// Buffer needed to feed the compute/render pipelines.
-  private let buffers: (tessellationFactors: MTLBuffer, triangleControlPoints: MTLBuffer, quadControlPoints: MTLBuffer)
+  private let buffers: (tessellationFactors: any MTLBuffer, triangleControlPoints: any MTLBuffer, quadControlPoints: any MTLBuffer)
 
   /// Designated initializer requiring passing the MetalKit view that will be driven by this pipeline.
   /// - parameter view: MetalKit view driven by the created pipeline.
@@ -62,7 +62,7 @@ import MetalKit
 }
 
 private extension TessellationRenderer {
-  static func makeRenderPipelines(device: MTLDevice, library: MTLLibrary, view: MTKView) -> (triangle: MTLRenderPipelineState, quad: MTLRenderPipelineState) {
+  static func makeRenderPipelines(device: any MTLDevice, library: any MTLLibrary, view: MTKView) -> (triangle: any MTLRenderPipelineState, quad: any MTLRenderPipelineState) {
     let pipelineDescriptor = MTLRenderPipelineDescriptor().configure { (pipeline) in
       // Vertex descriptor for the control point data.
       // This describes the inputs to the post-tessellation vertex function, delcared with the `stage_in` qualifier.
@@ -102,7 +102,7 @@ private extension TessellationRenderer {
     return (trianglePipeline, quadPipeline)
   }
 
-  static func makeBuffers(device: MTLDevice) -> (tessellationFactors: MTLBuffer, triangleControlPoints: MTLBuffer, quadControlPoints: MTLBuffer) {
+  static func makeBuffers(device: any MTLDevice) -> (tessellationFactors: any MTLBuffer, triangleControlPoints: any MTLBuffer, quadControlPoints: any MTLBuffer) {
     let triangleControlPointPositions: [Float] = [
       -0.8, -0.8, 0.0, 1.0,   // lower-left
        0.0,  0.8, 0.0, 1.0,   // upper-middle
@@ -131,7 +131,7 @@ private extension TessellationRenderer {
             quadBuffer.configure { $0.label = "Control Points Quad" })
   }
 
-  func computeTessellationFactors(on commandBuffer: MTLCommandBuffer) -> Bool {
+  func computeTessellationFactors(on commandBuffer: any MTLCommandBuffer) -> Bool {
     guard let encoder = commandBuffer.makeComputeCommandEncoder() else { return false }
     encoder.label = "Compute Command Encoder"
     encoder.pushDebugGroup("Compute Tessellation Factors")
@@ -149,7 +149,7 @@ private extension TessellationRenderer {
     return true
   }
 
-  func tessellateAndRender(view: MTKView, on commandBuffer: MTLCommandBuffer, renderPipelines: (triangle: MTLRenderPipelineState, quad: MTLRenderPipelineState)) -> Bool {
+  func tessellateAndRender(view: MTKView, on commandBuffer: any MTLCommandBuffer, renderPipelines: (triangle: any MTLRenderPipelineState, quad: any MTLRenderPipelineState)) -> Bool {
     guard let renderPassDescriptor = view.currentRenderPassDescriptor,
           let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else { return false }
     encoder.label = "Render Command Encoder"

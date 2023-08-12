@@ -6,10 +6,10 @@ import UIKit
 import Metal
 
 #if os(macOS)
-@MainActor final class LowLevelView: NSView {
+@MainActor final class CAMetalView: NSView {
   private let metalState: MetalState
 
-  init(device: MTLDevice, renderer: Renderer?) {
+  init(device: any MTLDevice, renderer: (any Renderer)?) {
     self.metalState = MetalState(device: device, renderer: renderer)!
     super.init(frame: .zero)
 
@@ -44,10 +44,10 @@ import Metal
   }
 }
 #elseif canImport(UIKit)
-@MainActor final class LowLevelView: UIView {
+@MainActor final class CAMetalView: UIView {
   private let metalState: MetalState
 
-  init(device: MTLDevice, renderer: Renderer?) {
+  init(device: any MTLDevice, renderer: (any Renderer)?) {
     self.metalState = MetalState(device: device, renderer: renderer)!
     super.init(frame: .zero)
 
@@ -84,14 +84,14 @@ import Metal
 
 // MARK: -
 
-private extension LowLevelView {
+private extension CAMetalView {
   final class MetalState {
-    let device: MTLDevice
+    let device: any MTLDevice
     weak var layer: CAMetalLayer?
-    weak var renderer: Renderer?
+    weak var renderer: (any Renderer)?
     var timer: FrameTimer?
 
-    init?(device: MTLDevice, renderer: Renderer?) {
+    init?(device: any MTLDevice, renderer: (any Renderer)?) {
       self.device = device
       self.renderer = renderer
     }

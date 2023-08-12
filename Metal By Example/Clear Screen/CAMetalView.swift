@@ -6,15 +6,18 @@ import UIKit
 import Metal
 
 #if os(macOS)
-@MainActor final class LowLevelView: NSView {
-  private let device: MTLDevice
-  private let queue: MTLCommandQueue
+/// Custom `NSView` holding the `CAMetalLayer` where the drawing will end up.
+@MainActor final class CAMetalView: NSView {
+  /// Representation of the system GPU.
+  private let device: any MTLDevice
+  /// Serial queue of buffer commands.
+  private let queue: any MTLCommandQueue
 
-  init(device: MTLDevice, queue: MTLCommandQueue) {
+  init(device: any MTLDevice, queue: any MTLCommandQueue) {
     self.device = device
     self.queue = queue
     super.init(frame: .zero)
-
+    // A special layer is created to draw with Metal
     self.wantsLayer = true
     self.metalLayer.configure {
       $0.device = device
@@ -37,27 +40,30 @@ import Metal
 
     guard let window else { return }
     self.metalLayer.contentsScale = window.backingScaleFactor
-    self.redraw()
+    self.draw()
   }
 
   override func setBoundsSize(_ newSize: NSSize) {
     super.setBoundsSize(newSize)
     self.metalLayer.drawableSize = self.convertToBacking(bounds).size
-    self.redraw()
+    self.draw()
   }
 
   override func setFrameSize(_ newSize: NSSize) {
     super.setFrameSize(newSize)
     self.metalLayer.drawableSize = self.convertToBacking(bounds).size
-    self.redraw()
+    self.draw()
   }
 }
 #elseif canImport(UIKit)
-@MainActor final class LowLevelView: UIView {
-  private let device: MTLDevice
-  private let queue: MTLCommandQueue
+/// Custom `UIView` holding the `CAMetalLayer` where the drawing will end up.
+@MainActor final class CAMetalView: UIView {
+  /// Representation of the system GPU.
+  private let device: any MTLDevice
+  /// Serial queue of buffer commands.
+  private let queue: any MTLCommandQueue
 
-  init(device: MTLDevice, queue: MTLCommandQueue) {
+  init(device: any MTLDevice, queue: any MTLCommandQueue) {
     self.device = device
     self.queue = queue
     super.init(frame: .zero)
@@ -82,7 +88,7 @@ import Metal
     super.didMoveToWindow()
     guard let window else { return }
     self.metalLayer.contentsScale = window.screen.nativeScale
-    self.redraw()
+    self.draw()
   }
 
   override func layoutSubviews() {
@@ -91,16 +97,16 @@ import Metal
     let scale = self.metalLayer.contentsScale
     let size = self.bounds.size.applying(CGAffineTransform(scaleX: scale, y: scale))
     self.metalLayer.drawableSize = size
-    self.redraw()
+    self.draw()
   }
 }
 #endif
 
 // MARK: - Shared
 
-extension LowLevelView {
+private extension CAMetalView {
   /// Fills the metal layer with a solid color.
-  func redraw() {
+  func draw() {
     // Setup Command Buffer (transient)
     guard self.metalLayer.drawableSize.allSatisfy({ $0 > .zero }),
           let drawable = self.metalLayer.nextDrawable(),
@@ -121,9 +127,7 @@ extension LowLevelView {
     commandBuffer.present(drawable)
     commandBuffer.commit()
   }
-}
 
-private extension LowLevelView {
   var metalLayer: CAMetalLayer {
     self.layer as! CAMetalLayer
   }

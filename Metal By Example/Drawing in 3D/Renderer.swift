@@ -5,7 +5,7 @@ import simd
 /// Conforming instances must be able to draw through Metal a frame in a given Core Animation Metal layer.
 protocol Renderer: AnyObject {
   /// The GPU used for rendering.
-  var device: MTLDevice { get }
+  var device: any MTLDevice { get }
   /// This function should perform a rendering call (or ignore the frame).
   ///
   /// The function will be called in a high-priority background thread. Be mindful of the amount of work performed here.
@@ -18,20 +18,20 @@ protocol Renderer: AnyObject {
 
 /// A render that will draw a spinning cube.
 final class CubeRenderer: Renderer {
-  let device: MTLDevice
-  private let queue: MTLCommandQueue
-  private let renderPipeline: MTLRenderPipelineState
-  private let depthPipeline: MTLDepthStencilState
-  private let verticesBuffer: MTLBuffer
-  private let indecesBuffer: MTLBuffer
-  private let uniformsBuffer: MTLBuffer
-  private var depthTexture: MTLTexture?
+  let device: any MTLDevice
+  private let queue: any MTLCommandQueue
+  private let renderPipeline: any MTLRenderPipelineState
+  private let depthPipeline: any MTLDepthStencilState
+  private let verticesBuffer: any MTLBuffer
+  private let indecesBuffer: any MTLBuffer
+  private let uniformsBuffer: any MTLBuffer
+  private var depthTexture: (any MTLTexture)?
 
   private let lock = NSLock()
   private var numParallelRenders: Int = .zero
   private var uniforms: Uniforms?
 
-  init?(device: MTLDevice) {
+  init?(device: any MTLDevice) {
     self.device = device
 
     guard let queue = device.makeCommandQueue() else { return nil }

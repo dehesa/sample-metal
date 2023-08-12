@@ -3,18 +3,18 @@ import ModelIO
 import simd
 
 @MainActor final class CowRenderer: NSObject, MTKViewDelegate {
-  let device: MTLDevice
-  private let queue: MTLCommandQueue
-  private let renderPipeline: MTLRenderPipelineState
-  private let depthPipeline: MTLDepthStencilState
-  private var depthTexture: MTLTexture?
+  let device: any MTLDevice
+  private let queue: any MTLCommandQueue
+  private let renderPipeline: any MTLRenderPipelineState
+  private let depthPipeline: any MTLDepthStencilState
+  private var depthTexture: (any MTLTexture)?
   private let meshes: [MTKMesh]
-  private let diffuseTexture: MTLTexture
-  private let textureSampler: MTLSamplerState
-  private let uniformsBuffer: MTLBuffer
+  private let diffuseTexture: any MTLTexture
+  private let textureSampler: any MTLSamplerState
+  private let uniformsBuffer: any MTLBuffer
   private var uniforms: Uniforms?
 
-  init?(device: MTLDevice) {
+  init?(device: any MTLDevice) {
     self.device = device
 
     guard let commandQueue = device.makeCommandQueue() else { return nil }
